@@ -1,5 +1,10 @@
 import os
+import sys
 import pandas as pd
+# Ensure project root is on sys.path so local packages can be imported
+# when this module is executed directly (python Processing/controllo_sintattico.py)
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from llm.llm import a_invoke_model
 from utils.simple_functions import *
 import asyncio
@@ -9,19 +14,21 @@ from openpyxl.styles import Font
 from openpyxl.utils import get_column_letter
 from openpyxl.cell.rich_text import CellRichText, TextBlock
 import re
+from Input_extraction.extract_polarion_field_mapping import *
 
 
-async def prepare_prompt(input:str, mapping:str =None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
+async def prepare_prompt(input:Dict, mapping:str =None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
     """ Prepare prompt for the LLM"""
 
     system_prompt= load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "system_prompt.txt"))
     user_prompt= load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "user_prompt.txt")) 
     schema= load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
 
-    user_prompt=user_prompt.replace(f"{input}", input)
+    user_prompt=user_prompt.replace(f"{input}", json.dumps(input))
     
-    if mapping and "{mapping}" in user_prompt:
-        user_prompt = user_prompt.replace("{mapping}", mapping)
+    mapping_as_string = mapping.to_json() 
+    user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
+    print("finishing prepare prompt")
 
     messages=[
         {"role": "system", "content": system_prompt},
@@ -31,8 +38,9 @@ async def prepare_prompt(input:str, mapping:str =None) -> Tuple[List[Dict[str, s
     return messages, schema
 
 
-async def AI_check_TC(input:str, mapping:str =None) -> Dict:
+async def AI_check_TC(input:Dict, mapping:str =None) -> Dict:
 
+    #input = json.loads(input)
     messages, schema= await prepare_prompt(input, mapping)
     response = await a_invoke_model(messages, schema)
 
@@ -98,4 +106,25 @@ def fill_excel_file(llm_response: Dict):
 
 
 
+async def main():
+    mapping = extract_field_mapping()
+    print("finishing mapping")
+    input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")
+    dic = excel_to_json(input_path) 
+    print("finishing excel to json")
+    tasks = [AI_check_TC(tc, mapping) for tc in dic]
+    
+    results_list = await asyncio.gather(*tasks)
+    print("finishing gpt call")
+    
+    merged_results = {}
+    for result in results_list:
+        merged_results.update(result)
 
+    print(f"Merged result: {merged_results}")
+
+    #fill_excel_file(merged_results)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

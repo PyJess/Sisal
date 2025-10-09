@@ -1,0 +1,1554 @@
+{
+  "ANB-5368": {
+    "Title": "[NRT] Update real bonus service - betting bonus",
+    "#": 1,
+    "Test Group": "App IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "iOS",
+    "Precondizioni": "Open ANB app while logged in and land on home page and profile menu.",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "ProfileMenu",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Replace the current Real Bonus Service with the new one",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Sota Mario",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-5368",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app while logged in with an account balance of 0 euros.",
+        "Expected Result": "ANB App opens correctly and user lands on homepage when logged in."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Add a betting bonus (e.g. 10eu) from the NPPL platform.",
+        "Expected Result": "The bonus addition is successful."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on another section of the app (e.g. mybets/cart).",
+        "Expected Result": "User finds the updated bonus balance on the app header."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on Profile menu.",
+        "Expected Result": "The user's profile menu should be opened and the betting bonus balance should be updated."
+      }
+    ]
+  },
+  "ANB-6078": {
+    "Title": "[NRT] - Bookings - Bookings - Booking with username + Point of sale (PDV)",
+    "#": 2,
+    "Test Group": "App IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "iOS",
+    "Precondizioni": "Registered user on sisal",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Viewing successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Pizzo Davide EXT",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-6078",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app",
+        "Expected Result": "The app must be opened correctly."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Bring results to cart (single/multiple/system).",
+        "Expected Result": "The cart it must be populated correctly with the results."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on the CTA \"Book\"",
+        "Expected Result": "It is verified that the ticket must be booked correctly and the informative snackbar \"Bet booked - Go to mybets\" comes out"
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on CTA \"Add store\" from mybets booked.",
+        "Expected Result": "It is verified that when you tap on the item 'Add point of sale' a panel is displayed as follows:  Title: 'Add point of sale' Icon X > closes the panel without memorizing any characters entered in the input fields (it is possible to closeAlso by swipe down or tap in the section outside the panel) Description: 'Speed up the validation process of your booked plays' Input field Point of sale code > (described in the next ac) Input field username > (described in the next ac)Text: 'You can always play your reservations in all points of sale even if you haven't set a favorite one' CTA 'Save' > activates only if all fields have been filled in"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Bring another bet on Book with configured point of sale code.",
+        "Expected Result": "It is verified that the ticket card appears at the lInstant Book together with the username of the store."
+      }
+    ]
+  },
+  "ANB-7684": {
+    "Title": "[NRT] - Bookings - Prematch - Check on retail - multipla prematch without bonus IOS",
+    "#": 3,
+    "Test Group": "App IOS",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Terminale",
+    "Precondizioni": "multipla prematch without bonus bet made on app",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Booking successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-7684",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the reservation made on the app",
+        "Expected Result": "Verify that it is possible and that all the data corresponds to those of the original booking"
+      }
+    ]
+  },
+  "ANB-7692": {
+    "Title": "[NRT] - Bookings - Prematch - Check on retail - error correction system Android",
+    "#": 4,
+    "Test Group": "App Android",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Terminale",
+    "Precondizioni": "error correction system bet made on app",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Booking successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-7692",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the reservation made on the app",
+        "Expected Result": "Verify that it is possible and that all the data corresponds to those of the original booking"
+      }
+    ]
+  },
+  "ANB-8462": {
+    "Title": "[NRT] - TY Page - Thank You Page Postvendita - Sistema - Integrale",
+    "#": 5,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "ANDROID",
+    "Precondizioni": "Finalize the bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "TYPage",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that when TYP is closed, the user's balance in the header appears to be updated..",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8462",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user logs ANB app",
+        "Expected Result": "The app opens correctly and the user lands on Home Page"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user brings a (sistema- integrale) \"Live\" outcome to cart",
+        "Expected Result": "Cart is populated correctly"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user taps on CTA \"Scommetti\" and finalizes the bet",
+        "Expected Result": "Succesfully bet and the user lands on TYP (Thank You Page) with a label_x000D_\n \"Complimenti! La scommessa è andata a buon fine!\"._x000D_\n_x000D_\n TYP is composed by :_x000D_\n_x000D_\n 1. Codice biglietto_x000D_\n 2. L'importo di Puntata_x000D_\n 3. Quota totale_x000D_\n 4. Vincita Potenziale (in €)_x000D_\n 5. Dettaglio Biglietto_x000D_\n_x000D_\n TYP is composed by CTA:_x000D_\n_x000D_\n 0. CTA \" X\"_x000D_\n 1. Riporta Eventi Nel Biglietto_x000D_\n 2. Notifiche_x000D_\n 3. Contina a scommettere_x000D_\n 4. Condividi_x000D_\n 5. Pubblica su Tipster_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user exits the TYP",
+        "Expected Result": "The user verifies that when TYP is closed, the user's balance in the header appears to be updated."
+      }
+    ]
+  },
+  "ANB-8468": {
+    "Title": "[NRT] - TY Page - Thank You Page Postvendita - Link Sharing",
+    "#": 6,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "ANDROID",
+    "Precondizioni": "Finalize the bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "TYPage",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "On tap on \"Condividi il link per far rigiocare il biglietto\", the device sharing panel opens.",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8468",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user logs ANB app",
+        "Expected Result": "The app opens correctly and the user lands on Home Page"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user brings a (single) Prematch outcome to cart_x000D_\n",
+        "Expected Result": "Cart is populated correctly"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user taps on CTA \"Scommetti\" and finalizes the bet",
+        "Expected Result": "Succesfully bet and the user lands on TYP (Thank You Page) with a label_x000D_\n \"Complimenti! La scommessa è andata a buon fine!\"._x000D_\n_x000D_\n TYP is composed by :_x000D_\n_x000D_\n 1. Codice biglietto_x000D_\n 2. L'importo di Puntata_x000D_\n 3. Quota totale_x000D_\n 4. Vincita Potenziale (in €)_x000D_\n 5. Dettaglio Biglietto_x000D_\n_x000D_\n TYP is composed by CTA:_x000D_\n_x000D_\n 0. CTA \" X\"_x000D_\n 1. Riporta Eventi Nel Biglietto_x000D_\n 2. Notifiche_x000D_\n 3. Contina a scommettere_x000D_\n 4. Condividi_x000D_\n 5. Pubblica su Tipster_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user taps on CTA \"Condividi\"",
+        "Expected Result": "The user verifies that by tapping on CTA \"Condividi\", the ticket link or image sharing panel opens"
+      },
+      {
+        "Step": 5,
+        "Step Description": "The user taps on \"Condividi il link per far rigiocare il biglietto \"",
+        "Expected Result": "On tap on \"Condividi il link per far rigiocare il biglietto\", the device sharing panel opens"
+      }
+    ]
+  },
+  "ANB-8737": {
+    "Title": "[NRT] Update real bonus service - Freebet bonus",
+    "#": 7,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Android",
+    "Precondizioni": "Open ANB app while logged in and land on home page and profile menu.",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "ProfileMenu",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Replace the current Real Bonus Service with the new one",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8737",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app while logged in.",
+        "Expected Result": "ANB App opens correctly and user lands on homepage when logged in."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Add a Freebet (e.g. 10eu) from NPPL platform.",
+        "Expected Result": "The bonus addition is successful."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Profile menu.",
+        "Expected Result": "The user profile menu should be opened and the Freebet label should be updated."
+      }
+    ]
+  },
+  "DIGB-55563": {
+    "Title": "Reskin Betting - Sezione Live - Live Ora",
+    "#": 8,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "precondition",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Navigazione - Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "By default the user lands in the Live Ora - Quote Top section",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-55563",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user click on Live",
+        "Expected Result": "By default the user lands in the Live Ora - Quote Top section"
+      }
+    ]
+  },
+  "DIGB-55565": {
+    "Title": "Reskin Betting - Sezione Live - Ordinamento Manifestazione",
+    "#": 9,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "precondition",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Navigazione - Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Event sorting displayed correctly",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-55565",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user click on Live",
+        "Expected Result": "the user views for each discipline the events listed in the live schedule organized in lists"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Within the disciplines, the matches are grouped by competition",
+        "Expected Result": "Competition sorting displayed correctly"
+      }
+    ]
+  },
+  "DIGB-56024": {
+    "Title": "Reskin Betting - Metatemplate TOP SCOMMESSE CASA (CALCIO) (1000006)",
+    "#": 10,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "Configurare un metatemplate TOP SCOMMESSE CASA (CALCIO) (1000006)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Metatemplate",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "the metatemplate is displayed",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-56024",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user selects a calcio event and clicks on Giocatori tab",
+        "Expected Result": "the metatemplate is displayed"
+      }
+    ]
+  },
+  "DIGB-63480": {
+    "Title": "Reskin Betting - Mobile - Biglietto - Composizione Sezione",
+    "#": 11,
+    "Test Group": "Mobile IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Mobile",
+    "Precondizioni": "Add outcomes to cart",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Biglietto",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "A panel is opened from the bottom with all outcomes added to cart.\nThe panel is composed as shown in the figma\nhttps://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63480",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add an outcome to cart",
+        "Expected Result": "The cart is populated and a number icon is shown next to \"Biglietto\""
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "A panel is opened from the bottom with all outcomes added to cart._x000D_\n The panel is composed as shown in the figma_x000D_\n https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      }
+    ]
+  },
+  "DIGB-63508": {
+    "Title": "Reskin Betting- Mobile - Sezione Live - I miei live",
+    "#": 12,
+    "Test Group": "Mobile IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Mobile",
+    "Precondizioni": "Live events available",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user correctly views the lists of match with eye icon enabled.",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63508",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Live",
+        "Expected Result": "The user lands succesfully in the section by default in tab \"Live ora\"._x000D_\n"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on eye icon next to mach in \"Live ora\" section",
+        "Expected Result": "The match is correctly added  in \"I miei live\" section and a number icon is shown next to \"I miei Live\"_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on \"I miei live\"",
+        "Expected Result": "The user correctly views the lists of match with eye icon enabled."
+      }
+    ]
+  },
+  "DIGB-63555": {
+    "Title": "Reskin Betting - Tablet - Dettaglio Biglietto - Vincente con Cash Out",
+    "#": 13,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Place a bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "MyBets",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that the ticket detail displays the label “Hai vinto” followed by the value cashed out via Cash Out.\nThere are also:\n1. Puntata totale del biglietto\n2. Quota totale del biglietto  \n3. Bonus associato al biglietto\n4. Vincita potenziale originale del biglietto.\n\nSee the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=WKxXbw4kvTQIJ5Qh-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63555",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add an outcomes to cart and place a bet",
+        "Expected Result": "Succesfully bet"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on \"Mie Giocate->Chiuse\"",
+        "Expected Result": "A panel is opened from the bottom with a listing of all bets._x000D_\n The section is set by default on \"Aperte\"_x000D_\n The section is composed by:_x000D_\n 1.  Aperte_x000D_\n 2. Chiuse_x000D_\n_x000D_\n https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      },
+      {
+        "Step": 6,
+        "Step Description": "Tap on \"Vedi dettaglio\"",
+        "Expected Result": "The user verifies that the ticket detail displays the label “Hai vinto” followed by the value cashed out via Cash Out._x000D_\n There are also:_x000D_\n 1. Puntata totale del biglietto_x000D_\n 2. Quota totale del biglietto  _x000D_\n 3. Bonus associato al biglietto_x000D_\n 4. Vincita potenziale originale del biglietto._x000D_\n_x000D_\n See the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=WKxXbw4kvTQIJ5Qh-0"
+      }
+    ]
+  },
+  "DIGB-63594": {
+    "Title": "Reskin Betting - Tablet - Smart Search -Risultato Trovato",
+    "#": 14,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Enter characters in Smart Search",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Smart Search",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user views the results of the search",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63594",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_fe_drop7",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on Smart Search",
+        "Expected Result": "The user lands on a second-level page composed by:_x000D_\n_x000D_\n - Search bar with X and search icon"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Enter at least 3 characters (es: Inter)",
+        "Expected Result": "The user views the results of the search grouped in accordion"
+      }
+    ]
+  },
+  "DIGB-63603": {
+    "Title": "Reskin Betting - Tablet - Biglietto - SGP",
+    "#": 15,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Add outcomes to cart",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Biglietto",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that if there are two or more outcomes within the ticket referring to the same event and the ticket is in multiple status, the outcomes are graphically linked to each other by the appropriate element.\n\nSee the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63603",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add two or more outcomes referring to the same event",
+        "Expected Result": "The cart is populated and a number icon quota are shown next to \"Biglietto\""
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "A panel is opened from the bottom with the outcomes added to cart with a label \"Multipla/Sistema\" displayed."
+      },
+      {
+        "Step": 6,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "The user verifies that if there are two or more outcomes within the ticket referring to the same event and the ticket is in multiple status, the outcomes are graphically linked to each other by the appropriate element._x000D_\n_x000D_\n See the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      }
+    ]
+  },
+  "DIGB-67786": {
+    "Title": "Vendita Offerta di Gioco - Portale e APP - Vendita Scommessa 3 da SITO",
+    "#": 16,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Sito",
+    "Precondizioni": "The application must be available",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Vendita Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Check that the sale from FR is successful",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-67786",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "From FR sell a play with the cde 3",
+        "Expected Result": "Check that the sale from FR is successful"
+      }
+    ]
+  },
+  "DIGB-68096": {
+    "Title": "Creazione Offerta di Gioco - Simp - Inserimento Quote Manuale Scommessa 6513",
+    "#": 17,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "SIMP",
+    "Precondizioni": "The application must be available",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Creazione Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The quota insertion must be successful and the cde must be available on FR and APP",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-68096",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "N",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "Waiting Excel Download/Upload Solution",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "From SIMP enter the quotas of cde 6513 for the manually created event",
+        "Expected Result": "The quota insertion must be successful and the cde must be available on FR and APP"
+      }
+    ]
+  },
+  "DIGB-68416": {
+    "Title": "Gestione Offerta di Gioco - BODG  - Ripristina su un brand le legature di uno o più market type per una manifestazione in BODG - Ripristina",
+    "#": 18,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "BODG",
+    "Precondizioni": "The application must be reachable",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Gestione Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "6. Enable the \"Confirm\" button",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-68416",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Medium",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Click on the \"Restore\" button",
+        "Expected Result": "The system, after confirmation by the Actor, for each selected market type that has personalized binding values:1. Eliminates customizations on binding values 2. If the reference event has custom binding values: Displays in the grid the personalized binding values of the reference event 3. If the manifeReference station does NOT have personalized ligation values and the same market type has personalized ligation values for the reference sport: Displays in the grid the personalized binding values of the same market type for the reference sport;"
+      },
+      {
+        "Step": 2,
+        "Step Description": "*",
+        "Expected Result": "4. If the reference event does NOT have personalized ligation values, the same market type does NOT have personalized ligation values for the reference sportAnd the reference sport has personalized ligation values: Displays in the grid the personalized ligation values of the reference sport; 5. If the reference manifestation does NOT have personalized binding values, theSame market type does NOT have customized binding values for the reference sport and the reference sport does NOT have customized binding values: Displays the dashe \"-\" in the grid in correspondence with the four expected ligation values (theMinimum and maximum guarantee for prematch and live);"
+      },
+      {
+        "Step": 3,
+        "Step Description": "*",
+        "Expected Result": "6. Enable the \"Confirm\" button"
+      }
+    ]
+  },
+  "DIGB-69637": {
+    "Title": "Modulo Trading - Registro accettazione - Brand Master+Italia -    Dettaglio biglietto - Indicazione dispositivi di vendita su biglietti venduti da TG Best Agenzia",
+    "#": 19,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.Sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Registro Accettazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "In the Ticket Detail, before the list of predictions, the Brand, the channel, the subchannel, the device and the number of sales TG must be reported.With tickets sold by portal by the Italia brand you can see: \"ITALY - RETAIL - Agency - BEST - 191\" followed by the thumbs up icon and the name of the trader who accepted the bet",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-69637",
+    "Analysis": "Not Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Medium",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Login to the TG Best certified on the agency network",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "From the SPORT section select from the tree on the left the discipline and then the event and compile a multiple bet by entering a bet that sends the bet to the console and then click on the bet button",
+        "Expected Result": "The message is displayed \"The bet is being accepted  Our players are evaluating your play. Don't refresh the page.\""
+      },
+      {
+        "Step": 3,
+        "Step Description": "Access the Trading Module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console and enable the console by clicking on AcceptNe ticket- Ticket acceptance and alarms and accept the bet just made",
+        "Expected Result": "The bet is correctly sold"
+      },
+      {
+        "Step": 4,
+        "Step Description": "From the trading module, Click sUl menu Monitoring - Register Acceptances and alarms and set through the selectboxes present in the header, the brand as master+Italy, the currency in EUR and on the selectbox Type leave \"Acceptance\" and press search and then click on the newly sold TSN",
+        "Expected Result": "In the Ticket Detail, before the list of predictions, the Brand, the channel, the subchannel, the device and the number of sales TG must be reported.With tickets sold by portal by the Italia brand you can see: \"ITALY - RETAIL - Agency - BEST - 191\" followed by the thumbs up icon and the name of the trader who accepted the bet"
+      }
+    ]
+  },
+  "DIGB-69737": {
+    "Title": "Modulo Trading - Registro autorizzazione - Brand Master+Pokerstars - Dettaglio Autorizzazione - Stato Rifiutato timeout",
+    "#": 20,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.Sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Registro Accettazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The Authorization Detail opens and at the top right must be the red Label \"Rejected timeout\"",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-69737",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the trading module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Click on the Monitoring menu - Acceptances and alarms register and set through the selectboxes in the header, the brand as master+Pokerstars and the currencyIn EUR and on the selectbox Type leave \"Acceptance\"",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Set the date set to \"Date from\" by entering a few days back from the current date so as to have a rangeOf wider results and set on the selectbox \"Status\" the Rejected timeout status and click on the search button",
+        "Expected Result": "Tickets ordered by default by descending date, from the most recent to the oldest that meet the criterion are returnedEntered, in this case the tickets with the status Rejected timeout issued by the date-Time set."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click on an authorization code",
+        "Expected Result": "The Authorization Detail opens and at the top right must be the red Label \"Rejected timeout\""
+      }
+    ]
+  },
+  "DIGB-70068": {
+    "Title": "Modulo Trading - Ricerca Biglietto - Brand Master + Pokerstars -    Dettaglio biglietto -  Stato biglietto Pagato",
+    "#": 21,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Ricerca Biglietti",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The ticket detail opens and the green label \"Paid\" must be shown at the top right",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-70068",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the trading module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "ClickAnd on the menu Monitoring - Search Ticket and set through the selectboxes present in the header, the brand as master+Pokerstars and the currency in EUR",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Set the date set to \"Issued by\" by entering a few days back from the current date in order to have a range of resultsLarger and set the status Paid on the \"Status\" select box and click on the search button",
+        "Expected Result": "Tickets ordered by default by decreasing date, from the most recent to the oldest that meet the criterion entered, are returned, in thisOr case the tickets with the Paid status issued by the date-Time set."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click on a TSN to open the ticket",
+        "Expected Result": "The ticket detail opens and the green label \"Paid\" must be shown at the top right"
+      }
+    ]
+  },
+  "DIGB-70895": {
+    "Title": "Inserimento Risultati - Blocco Pagamenti - Verifiche lato My Bets - Scommessa Singola Prematch - Cluster semplici - Biglietto 1",
+    "#": 22,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "High",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "FR",
+    "Precondizioni": "Access to the My BETS section",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Blocco Pagamenti",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "Biglietto 1",
+    "Risultato Atteso": "The system will show the winning tickets with the winning label in green with their amount and the balance upstream of the page will be increased.There will also be a link to view the ticket details",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Corsi Alessia",
+    "Assignee(s)": "Corsi Alessia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-70895",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the link https://testfr-www.sisal.it/scommesse-matchpoint, authenticate NO with your user and anGive in the My Bets section and search for the winning tickets among the CLOSED bets",
+        "Expected Result": "The system will show the vincent ticketsThem accompanied by a green winning label with its amount and the balance upstream of the page will be increased. There will also be a link to view the ticket details"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Access the ticket details",
+        "Expected Result": "By accessing the ticket details from the appropriate link, the system will open the relative pop-up with: - typeOgia played (SNG, MUL, SYS) and date/time of sale - preview winning amount - event detail (event, Pal/Avv, description and competence) - bet sold and relative quota (if available info icon for CdE regulations) - total bet - sales share- winning or potential winning - drop-down menu showing ticket information (code, account number, date/time of sale, expiration date) - Message: Attention The payment of the bet is waiting for all results to be confirmed by AAMS. For more deTtagli consult the official results of the last 72 hours."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Select the IB present in the ticket detail pop-up and copy it. Access the reserved area from the link https://testfr-www.sisal.it/scommesse-matchpoint, click on the Reserved Area icon at the top right, and on the \"Account Movements\" item in the menu on the left andSearch for movements related to the copied IB (e.g. DF07X00X0X00000X0000)",
+        "Expected Result": "The system will show the list of movements related to the IB sought (e.g. DF07X00X0X00000X0000), The systemBut it will allow you to limit the list of tickets to the type of game that will be organized for: - date - type (sales, credits, transfers, etc.) - description - amount - receipt and serial ID"
+      }
+    ]
+  },
+  "DIGB-81467": {
+    "Title": "Pokerstars Promo Generic Real Bonus - Edit",
+    "#": 23,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "Having configured a generic promo with bonus type real bonus (see promo creation test)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Generic Real Bonus - Edit",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The change is saved",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-81467",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "From the \"promotions\" list click on the promotions section click on generic",
+        "Expected Result": "The list of generic promotions is displayed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the pencil icon (edit promotion) of the reference promo",
+        "Expected Result": "the user sees the \"edit promotion\" mask"
+      },
+      {
+        "Step": 4,
+        "Step Description": "the user makes the change to the promo end date. click on the button: Save",
+        "Expected Result": "The change is saved"
+      }
+    ]
+  },
+  "DIGB-82965": {
+    "Title": "POKERSTARS Promo Lost Delayed Freebet with Optin - Edit Not Active promo",
+    "#": 24,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "Having logged in to the NPPL portal https://test-promo-manager-pokerstars.sisal.it/fe/#/promo Having a non-active promo in the promotions list (see promo creation test)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Lost Delayed Freebet - Edit Not Active promo",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The change is saved",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-82965",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "the user accesses the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "the user from the \"PROMOTIONS\" section clicks \"on products\"",
+        "Expected Result": "the user views the list of product promotions"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the Pencil icon (edit promotion)",
+        "Expected Result": "the user sees the Edit Promotion mask"
+      },
+      {
+        "Step": 4,
+        "Step Description": "the user makes a change to any field clicks on the button: Save",
+        "Expected Result": "The change is saved"
+      }
+    ]
+  },
+  "DIGB-83028": {
+    "Title": "POKERSTARS Promo Dynamic Recharge real bonus - Promo creation",
+    "#": 25,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "have valid login credentials (LDAP) have logged in to the NPPL portal https://test-promo-manager-pokerstars.sisal.it/fe/#/promo the promotional code must be made up of two alphanumeric strings separated by a hyphen (-)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Dynamic Recharge real bonus - Promo creation",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The promotion is successfully created by generating an identifying Promo ID.",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-83028",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "the user accesses the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "the user from the \"PROMOTIONS\" section clicks \"on products\"",
+        "Expected Result": "the user views the list of product promotions"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the button: CREATE",
+        "Expected Result": "the user opens the Create Promotion form"
+      },
+      {
+        "Step": 4,
+        "Step Description": "ANAGRAFICA TABfill in name fill in description select calculation type: top-up select promo category: test select prize nature: Bonus select bonus type: Real bonus select deductibility: deductible select promotion type: single select prize accrual method: dynamic select prize payment method: manual \"protocol required\" flag: active",
+        "Expected Result": "The \"Next\" CTA is activated"
+      },
+      {
+        "Step": 5,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the ELIGIBILITY tab"
+      },
+      {
+        "Step": 6,
+        "Step Description": "ELIGIBILITY TAB select \"Promo Eligibility Type\": public",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 7,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the CONDITIONS tab"
+      },
+      {
+        "Step": 8,
+        "Step Description": "CONDITIONS TAB select validity type: range insert date from/to select Membership method: promotional code fill in promotional code select Payment Channels: select all select Payment Methods: select all select Payment Channel Details: select all",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 9,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the CALCULATION PARAMETERS tab"
+      },
+      {
+        "Step": 10,
+        "Step Description": "CALCULATION PARAMETERS TAB select bonus payment: instant select bonus amount type: fixed select bach type: single enter minimum top-up: €50 bonus amount: €10",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 11,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the EROGAZIONE tab"
+      },
+      {
+        "Step": 12,
+        "Step Description": "EROGAZIONE TAB preview information flag: on Bonus distribution: single select template: casino select spendability channels: select all fill in bonus name select bonus expiry: within + number of days",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 13,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the INFORMATION tab"
+      },
+      {
+        "Step": 14,
+        "Step Description": "INFORMATION TAB click on: generate information",
+        "Expected Result": "inside the fields: \"title\" and \"information\" the information relating to the promo is generated"
+      },
+      {
+        "Step": 15,
+        "Step Description": "user clicks on CTA : save",
+        "Expected Result": "The promotion is successfully created by generating an identifying Promo ID."
+      }
+    ]
+  },
+  "RETB-8897": {
+    "Title": "[QA Automation] TG Best Italia - R2I - SPORT - 'Sisal.it' mode - Create and sell a \"Multipla with NUMBER OF ESITI = MAX NUMBER\" ticket from PREMATCH section",
+    "#": 26,
+    "Test Group": "Terminale",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "TG Best Italia R2I - Betting",
+    "Precondizioni": "-",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Compilazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The ticket is sold",
+    "Country": "Italy",
+    "Project": "Betting Retail",
+    "Author": "De Matteis Vera",
+    "Assignee(s)": "Baldassarre Silvia",
+    "Type": "Test ",
+    "_polarion": "retailbetting/RETB-8897",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user clicks on section PREMATCH (F1)",
+        "Expected Result": "Section opened_x000D_\n​​"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user select Client1from cart",
+        "Expected Result": "Cart section related to client selected is displayed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Using \"Sisal it\" mode, the user inserts 30 esiti for a MULTIPLA_x000D_\n (MAX NUMBER of esiti = 30)",
+        "Expected Result": "Esiti added to cart section related to Client selected"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user set a valid stake amout (default or higher) choosing one of the following ways:_x000D_\n _x000D_\n* OR clicking on + button_x000D_\n",
+        "Expected Result": "Stake amount inserted without errors"
+      },
+      {
+        "Step": 5,
+        "Step Description": "The user sell the ticket choosing one of the following ways:_x000D_\n _x000D_\n* OR using shortcut CTRL+ENTER _x000D_\n",
+        "Expected Result": "Verify that the ticket is sold"
+      }
+    ]
+  },
+  "RETB-10442": {
+    "Title": "[QA Automation] TG Best Italia - R2I - SPORT - Reservation by CODE - Check that reservation can be sold from cart",
+    "#": 27,
+    "Test Group": "Terminale",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "TG Best Italia R2I - Betting",
+    "Precondizioni": "A SINGOLA/MULTIPLA/SISTEMA reservation has been created from Betting Online",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Prenotazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Reservation' can be sold from cart",
+    "Country": "Italy",
+    "Project": "Betting Retail",
+    "Author": "De Matteis Vera",
+    "Assignee(s)": "Baldassarre Silvia",
+    "Type": "Test ",
+    "_polarion": "retailbetting/RETB-10442",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "High",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user clicks on section PRENOTAZIONI (F7)",
+        "Expected Result": "Section opened_x000D_\n​​"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user reads the actual cash balance and the current tickets status",
+        "Expected Result": "Information about cash balance, Client1's ticket status and Client2's ticket status are displayed "
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user select Client1 or Client2 from cart",
+        "Expected Result": "Cart section related to client selected is displayed"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user inserts the reservation Code of a SINGOLA reservation",
+        "Expected Result": "Reservation pop-up is opened_x000D_\n"
+      },
+      {
+        "Step": 5,
+        "Step Description": "The user clicks on MODIFY BUTTON from reservation",
+        "Expected Result": "Reservation is updated in the cart"
+      },
+      {
+        "Step": 6,
+        "Step Description": "The user clicks on SELL BUTTON from cart",
+        "Expected Result": "Verify that:_x000D_\n _x000D_\n* The ticket is sold from reservation section_x000D_\n* The TICKET NUMBER (emitted) is updated correctly for CLIENT selected in cart_x000D_\n* The TICKET NUMBER (emitted) is NOT updated for other CLIENT_x000D_\n* The TOTAL related to CLIENT selected in cart is updated correctly_x000D_\n* The TOTAL related to other CLIENT is NOT updated_x000D_\n* The CASH BALANCE is updated correctly_x000D_\n"
+      }
+    ]
+  }
+}
