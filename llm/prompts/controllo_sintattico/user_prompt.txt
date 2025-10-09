@@ -1,3 +1,7 @@
 Here you find the test case:
 
 {input}
+
+Use the following field mapping as the ground truth to check whether the input fields are correctly mapped:
+
+{mapping}

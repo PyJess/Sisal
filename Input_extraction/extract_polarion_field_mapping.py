@@ -8,5 +8,10 @@ def extract_field_mapping() -> pd.DataFrame:
 
     print(path)
     df = pd.read_excel(os.path.join(path, 'polarionfieldmapping.xlsx'))
-    #print(df)
+    print(df)
     return df
+
+file=extract_field_mapping()
+print(file)
+
+# TODO togliere Field
