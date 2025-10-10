@@ -15,6 +15,8 @@ from openpyxl.utils import get_column_letter
 from openpyxl.cell.rich_text import CellRichText, TextBlock
 import re
 from Input_extraction.extract_polarion_field_mapping import *
+from openpyxl.cell.text import InlineFont
+from openpyxl.cell.rich_text import TextBlock
 
 
 async def prepare_prompt(input:Dict, mapping:str =None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
@@ -24,8 +26,7 @@ async def prepare_prompt(input:Dict, mapping:str =None) -> Tuple[List[Dict[str, 
     user_prompt= load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "user_prompt.txt")) 
     schema= load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
 
-    user_prompt=user_prompt.replace(f"{input}", json.dumps(input))
-    
+    user_prompt=user_prompt.replace("{input}", json.dumps(input))
     mapping_as_string = mapping.to_json() 
     user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
     print("finishing prepare prompt")
@@ -42,6 +43,8 @@ async def AI_check_TC(input:Dict, mapping:str =None) -> Dict:
 
     #input = json.loads(input)
     messages, schema= await prepare_prompt(input, mapping)
+    print("starting calling llm")
+    print(f"{messages}")
     response = await a_invoke_model(messages, schema)
 
     return response
@@ -64,46 +67,65 @@ def apply_red_text(cell):
             elif part == "[[/RED]]":
                 red = False
             elif part:
-                rich_text.append(TextBlock(Font(color="FF0000") if red else Font(color="000000"), part))
+                rich_text.append(TextBlock(InlineFont(color="FF0000") if red else InlineFont(color="000000"), part))
 
         cell.value = rich_text
 
 
 
-def fill_excel_file(llm_response: Dict):
-    """Create or append to the testbook Excel file and highlight [[RED]] text in red."""
-    
-    data = llm_response
-    df = pd.DataFrame([data])
+def fill_excel_file(test_cases: dict):
+    """
+    Salva i test case in Excel, mantenendo gli step su righe separate
+    e applica i testi rossi dove necessario.
+    """
+    # Costruzione righe per DataFrame
+    columns = [
+        'Title', 'ID', 'Test Group', 'Channel', 'Device', 'Priority',
+        'Test Stage', 'Reference System', 'Preconditions', 'Execution Mode',
+        'Functionality', 'Test Type', 'Regression Test', 'Automation Candidate',
+        'Expected Final Result', 'Step', 'Step Description', 'Step Expected Result'
+    ]
 
+    rows = []
+    for tc_id, tc_data in test_cases.items():
+        steps = tc_data.get('Steps', [])
+        first = True
+        for step in steps:
+            row = {}
+            if first:
+                for col in columns[:15]:
+                    row[col] = tc_data.get(col, '')
+                first = False
+            else:
+                for col in columns[:15]:
+                    row[col] = ''
+            row['Step'] = step.get('Step', '')
+            row['Step Description'] = step.get('Step Description', '')
+            row['Step Expected Result'] = step.get('Expected Result', '')
+            rows.append(row)
+
+    df = pd.DataFrame(rows, columns=columns)
+
+    # Percorso Excel
     excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook.xlsx")
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
 
-    if os.path.exists(excel_path):
-        df_existing = pd.read_excel(excel_path)
-        df_combined = pd.concat([df_existing, df], ignore_index=True)
-    else:
-        df_combined = df
+    # 1️⃣ Prima: salva il file Excel (senza formattazione)
+    df.to_excel(excel_path, index=False)
 
-    df_combined.to_excel(excel_path, index=False)
-
+    # 2️⃣ Poi: riapri con openpyxl e applica apply_red_text
+    from openpyxl import load_workbook
     wb = load_workbook(excel_path)
     ws = wb.active
 
-    last_row = ws.max_row
-    for col in range(1, ws.max_column + 1):
-        cell = ws.cell(row=last_row, column=col)
-        if isinstance(cell.value, str) and "[[RED]]" in cell.value:
-            apply_red_text(cell)
+    for row in ws.iter_rows():
+        for cell in row:
+            if cell.value and isinstance(cell.value, str) and "[[RED]]" in cell.value:
+                apply_red_text(cell)
 
-    for col in ws.columns:
-        max_length = max(len(str(cell.value or "")) for cell in col)
-        ws.column_dimensions[get_column_letter(col[0].column)].width = min(max_length + 2, 80)
-
+    # 3️⃣ Salva di nuovo con il testo colorato
     wb.save(excel_path)
-    print(f"Test case added with red highlights in {excel_path}")
-
-
+    print(f"✅ Excel salvato con testi rossi: {excel_path}")
 
 
 async def main():
@@ -112,19 +134,19 @@ async def main():
     input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")
     dic = excel_to_json(input_path) 
     print("finishing excel to json")
-    tasks = [AI_check_TC(tc, mapping) for tc in dic]
-    
+ 
+    tasks = [AI_check_TC(input={"ID": tc_id, **tc_data}, mapping=mapping) for tc_id, tc_data in dic.items()]
     results_list = await asyncio.gather(*tasks)
     print("finishing gpt call")
     
-    merged_results = {}
-    for result in results_list:
-        merged_results.update(result)
+    merged_results = {tc["ID"]: tc for tc in results_list}
+
 
     print(f"Merged result: {merged_results}")
 
-    #fill_excel_file(merged_results)
+    fill_excel_file(merged_results)
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+
