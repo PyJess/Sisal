@@ -1,0 +1,7 @@
+Here you find the test case:
+
+{input}
+
+Use the following field mapping as the ground truth for your generation if needed:
+
+{mapping}

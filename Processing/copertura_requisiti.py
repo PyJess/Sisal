@@ -32,12 +32,11 @@ def prepare_test_texts(excel):
     return test_texts
 
 
-def research_vectordb(paragraph, excel):
+def research_vectordb(paragraph, excel, k=1, similarity_threshold=0.75):
     test_texts = prepare_test_texts(excel)
-    similarity_threshold=0.75
     embeddings = OpenAIEmbeddings(model=embedding_model)
     vectorstore = FAISS.from_texts(test_texts, embeddings)
-    docs_found = vectorstore.similarity_search_with_score(paragraph, k=1)
+    docs_found = vectorstore.similarity_search_with_score(paragraph, k)
 
     if docs_found:
         closest_doc, score = docs_found[0]
@@ -65,7 +64,6 @@ async def gen_TC(paragraph, results):
         return None
     else:
         print("This requirement has no TC")
-        sys.exit()
         mapping = extract_field_mapping()
         print("finishing mapping")
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
@@ -161,7 +159,7 @@ async def main():
     new_TC=[]
     for i, par in enumerate(paragraphs, 1):
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
-        result = research_vectordb(par, dic)
+        result = research_vectordb(par, dic, k=1, similarity_threshold=0.75)
         tc = await gen_TC(par, result)
         new_TC.append(tc)
 
