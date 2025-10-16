@@ -68,11 +68,11 @@
         "enum": ["functional", "automation", "ux_ui", "content", "vapt", "performance", "seo"],
         "description": "Main category of the test case."
       },
-      "Regression Test": {
+      "No Regression Test": {
         "type": "boolean",
         "description": "Indicates whether this test should be included in regression test suites."
       },
-      "Automation Candidate": {
+      "Automation": {
         "type": "boolean",
         "description": "Indicates whether this test should be considered for automation."
       },
@@ -80,7 +80,7 @@
         "type": "string",
         "description": "Data required for test execution (e.g., specific user credentials, input files, environment data)."
       },
-      "Expected Final Result": {
+      "Expected Result": {
         "type": "string",
         "description": "Overall expected result after all steps have been executed (final objective of the scenario)."
       },
@@ -96,7 +96,7 @@
         "type": "string",
         "description": "Optional field describing any partial coverage of the functionality under test."
       },
-      "Linked Work Items": {
+      "_polarion": {
         "type": "string",
         "description": "Polarion ID(s) of related requirements, user stories, or test cases from which this test is derived."
       }
@@ -115,13 +115,13 @@
       "Execution Mode",
       "Functionality",
       "Test Type",
-      "Regression Test",
-      "Automation Candidate",
+      "No Regression Test",
+      "Automation",
       "Dataset",
-      "Expected Final Result",
+      "Expected Result",
       "Country",
       "Type",
-      "Linked Work Items",
+      "_polarion",
       "Partial Coverage Description"
     ],
     "additionalProperties": false

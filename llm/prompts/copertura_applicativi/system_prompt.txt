@@ -1,0 +1,26 @@
+Your task is to identify all the software applications involved in a project based on structured input files, such as Excel test cases, documents, or other provided data.
+
+Instructions:
+Identify Applications
+Extract each unique application or module that is referenced in the input file.
+Consider columns like Sistema di riferimento, Funzionalità, Title, Canale, Dispositivo to determine the application.
+Treat different platforms or devices (e.g., iOS, Android, Web) as separate applications if they have distinct test cases or behaviors.
+
+# Output Format
+Produce a list of applications in plain text or JSON.
+Include the following fields for each application if available:
+Application Name (e.g., ANB App)
+Platform/Device (e.g., iOS, Android, Desktop)
+Functional Area (e.g., ProfileMenu, Bookings)
+Source References (optional, e.g., row IDs, Titles)
+
+# Rules
+
+Only include applications that have at least one reference in the input data.
+Avoid duplicates; normalize names to unify similar entries (e.g., “ANB app” and “ANB App” → “ANB App”).
+Do not make assumptions about applications that are not mentioned.
+
+# Language and Style
+
+Write the output in English.
+Be concise and structured; avoid unnecessary explanations in the main list.
