@@ -2,7 +2,7 @@ import sys
 import os
 
 from pathlib import Path
-from docx import Document
+# from docx import Document
 import subprocess
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -10,7 +10,7 @@ from utils.simple_functions import group_by_funzionalita, load_json
 from Processing.controllo_sintattico import *
 import json
 
-data= load_json("C:\\Users\\x.hita\\OneDrive - Reply\\Workspace\\Sisal\\Test_Design\\input\\tests_output.json")
+data= load_json(Path(__file__).parent.parent/"input/tests_output.json")
 
 grouped_json=group_by_funzionalita(data)
 
@@ -84,8 +84,10 @@ def process_docx_sections(docx_path, output_base)-> list:
         print(len(chunks))
 
         return chunks
+doc_path = Path(__file__).parent.parent / "input" / "RU_ZENIT_V_0.4_FASE_1.docx"
+output_base = Path(__file__).parent/"/outputs"
 
-chunks=process_docx_sections("C:\\Users\\x.hita\\OneDrive - Reply\\Workspace\\Sisal\\Test_Design\\input\\RU_ZENIT_V_0.4_FASE_1.docx","C:\\Users\\x.hita\\OneDrive - Reply\\Workspace\\Sisal\\Test_Design\\outputs" )
+chunks=process_docx_sections(doc_path,output_base)
 
 sys.exit()
 async def main():

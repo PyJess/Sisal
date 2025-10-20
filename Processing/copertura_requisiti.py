@@ -1,7 +1,13 @@
-from langchain.document_loaders import UnstructuredWordDocumentLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import UnstructuredWordDocumentLoader
+# from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
+
+# from langchain.document_loaders import UnstructuredWordDocumentLoader
+
+# from langchain.text_splitter import RecursiveCharacterTextSplitter
+# from langchain_openai import OpenAIEmbeddings
+# from langchain.vectorstores import FAISS
 import pandas as pd
 from langchain_openai import ChatOpenAI
 from docx import Document
@@ -148,8 +154,11 @@ def save_updated_json(updated_json, output_path='updated_test_cases.json'):
 
 
 async def main():
+    
 
-    input_path=r"C:\Users\x.hita\OneDrive - Reply\Workspace\Sisal\Test_Design\input\RU_ZENIT_V_0.4_FASE_1.docx"
+    input_path = Path(__file__).parent.parent / "input" / "RU_ZENIT_V_0.4_FASE_1.docx"
+
+    # input_path=r"C:\Users\x.hita\OneDrive - Reply\Workspace\Sisal\Test_Design\input\RU_ZENIT_V_0.4_FASE_1.docx"
     print(os.path.dirname(input_path))
     paragraphs=process_docx(input_path, os.path.dirname(input_path))
     input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")
