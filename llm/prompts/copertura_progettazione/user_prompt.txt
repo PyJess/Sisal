@@ -1,7 +1,11 @@
-Here you find the test case:
+Here you find the software requirement:
 
 {input}
 
 Use the following field mapping as the ground truth for your generation if needed:
 
 {mapping}
+
+Here the test cases associated with the requirement:
+
+{TC}
