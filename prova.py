@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import os
+from pathlib import Path
 
 def excel_to_json_dynamic(path):
     # Carica il file Excel
@@ -48,4 +49,4 @@ def excel_to_json_dynamic(path):
 
 
 # Esempio di uso:
-excel_to_json_dynamic(r"C:\Users\x.hita\OneDrive - Reply\Workspace\Sisal\Test_Design\input\tests_cases.xlsx")
+excel_to_json_dynamic(Path(__file__).parent / "input" / "tests_cases.xlsx")
