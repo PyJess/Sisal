@@ -1,5 +1,7 @@
 from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
 
+load_dotenv()
 
 async def a_invoke_model(msgs, schema):
         """Invoke the LLM model"""
