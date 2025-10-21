@@ -187,5 +187,6 @@ async def main():
     print("✅ File Excel generato con successo!")
 
 
+
 if __name__ == "__main__":
     asyncio.run(main())

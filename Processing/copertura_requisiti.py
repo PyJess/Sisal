@@ -149,7 +149,7 @@ def save_updated_json(updated_json, output_path='updated_test_cases.json'):
 
 async def main():
 
-    input_path=r"C:\Users\x.hita\OneDrive - Reply\Workspace\Sisal\Test_Design\input\RU_ZENIT_V_0.4_FASE_1.docx"
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input", "RU_ZENIT_V_0.4_FASE_1.docx")
     print(os.path.dirname(input_path))
     paragraphs=process_docx(input_path, os.path.dirname(input_path))
     input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")

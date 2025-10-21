@@ -21,7 +21,7 @@ embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 
 
-async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
+async def prepare_prompt(input: Dict, context:str, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
     """Prepare prompt for the LLM"""
 
     system_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "test_design", "system_prompt.txt"))
@@ -31,6 +31,8 @@ async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[st
     user_prompt = user_prompt.replace("{input}", json.dumps(input))
     mapping_as_string = mapping.to_json() 
     user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
+    user_prompt= user_prompt.replace("{context}", context)
+
     print("finishing prepare prompt")
 
     messages = [
@@ -40,18 +42,31 @@ async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[st
 
     return messages, schema
 
-async def gen_TC(paragraph):
-        print("This requirement has no TC")
-        mapping = extract_field_mapping()
-        print("finishing mapping")
+async def gen_TC(paragraph, context, mapping):
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
-        messages, schema = await prepare_prompt(paragraph, mapping)
+        messages, schema = await prepare_prompt(paragraph, context, mapping)
         print("starting calling llm")
         print(f"{messages}")
         response = await a_invoke_model(messages, schema)
         print("✅ File Excel generato con successo!")
         return response
 
+
+def create_vectordb(paragraph, vectorstore, k=3, similarity_threshold=0.75):
+    docs_found = vectorstore.similarity_search_with_score(paragraph, k)
+
+    closest_test=[]
+    if docs_found:
+        closest_doc, score = docs_found[0]
+        score = 1 - (score / 2)
+        if score >= similarity_threshold:  
+            print(f"Score: {score}")
+            closest_test.append(closest_doc.page_content)
+        else:
+            closest_test = None
+
+    return closest_test
+    
 
 def merge_TC(new_TC):
     """
@@ -82,22 +97,54 @@ def merge_TC(new_TC):
         "total_count": len(all_test_cases)
     }
 
+async def process_paragraphs(paragraphs, vectorstore, mapping):
+    """Process all paragraphs asynchronously to generate test cases."""
+    
+    async def process_single_paragraph(i, par):
+        print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
+        # context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
+        context = ""
+        tc = await gen_TC(par, context, mapping)
+        return tc
+    
+    # Crea tutte le tasks e le esegue in parallelo
+    tasks = [process_single_paragraph(i, par) for i, par in enumerate(paragraphs, 1)]
+    new_TC = await asyncio.gather(*tasks)
+    
+    return new_TC
+
 
 async def main():
 
-    input_path=r"C:\Users\x.hita\OneDrive - Reply\Workspace\Sisal\Test_Design\input\RU_ZENIT_V_0.4_FASE_1.docx"
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input", "RU_ZENIT_V_0.4_FASE_1.docx")
     print(os.path.dirname(input_path))
     paragraphs=process_docx(input_path, os.path.dirname(input_path))
 
-    new_TC=[]
-    for i, par in enumerate(paragraphs, 1):
-        print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
+    #rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "")
+    #chunks = process_docx(input_path, os.path.dirname(rag_path))
+    #embeddings = OpenAIEmbeddings(model=embedding_model)
+    #vectorstore = FAISS.from_texts(chunks, embeddings)
 
-        tc = await gen_TC(par)
-        new_TC.append(tc)
+    mapping = extract_field_mapping()
+    vectorstore = None
+    print("finishing mapping")
+    new_TC= await process_paragraphs(paragraphs, vectorstore, mapping)
 
     updated_json=merge_TC(new_TC)
-    save_updated_json(updated_json, output_path='updated_test_cases.json')
+
+    start_number = 1
+    prefix = "TC"
+    padding = 3
+    for i, test_case in enumerate(updated_json["test_cases"], start=start_number):
+        old_id = test_case.get("ID", "N/A")
+        new_id = f"{prefix}-{str(i).zfill(padding)}"
+        test_case["ID"] = new_id
+        print(f"Updated ID: {old_id} -> {new_id}")
+    
+    print(f"\n✅ Total test cases updated: {len(updated_json['test_cases'])}")
+
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "updated_test_cases.json")
+    save_updated_json(updated_json, output_path)
 
 
 
