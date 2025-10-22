@@ -70,7 +70,7 @@ async def gen_TC(paragraph, results):
         messages, schema = await prepare_prompt(paragraph, mapping)
         print("starting calling llm")
         print(f"{messages}")
-        response = await a_invoke_model(messages, schema)
+        response = await a_invoke_model(messages, schema, model="gpt-4.1")
         print("✅ File Excel generato con successo!")
 
 

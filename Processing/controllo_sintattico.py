@@ -46,7 +46,7 @@ async def AI_check_TC(input: Dict, mapping: str = None) -> Dict:
     messages, schema = await prepare_prompt(input, mapping)
     print("starting calling llm")
     print(f"{messages}")
-    response = await a_invoke_model(messages, schema)
+    response = await a_invoke_model(messages, schema, model="gpt-4.1")
     return response
 
 

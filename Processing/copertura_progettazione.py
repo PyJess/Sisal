@@ -41,7 +41,7 @@ async def gen_new_TC(paragraph, results):
         messages, schema = await prepare_prompt(paragraph,results, mapping)
         print("starting calling llm")
         print(f"{messages}")
-        response = await a_invoke_model(messages, schema)
+        response = await a_invoke_model(messages, schema, model="gpt-4.1")
         return response
 
 
