@@ -6,6 +6,6 @@ Use the following field mapping as the ground truth for your generation if neede
 
 {mapping}
 
-Here the test cases associated with the requirement:
+Here you find some additional informations that you can use to generate more accurate and dettailed test cases:
 
-{TC}
+{context}

@@ -1,6 +1,9 @@
 import os
 import sys
+<<<<<<< HEAD
 from pathlib import Path
+=======
+>>>>>>> Jess
 import asyncio
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -9,18 +12,43 @@ from Processing.copertura_requisiti import research_vectordb
 from Input_extraction.extract_polarion_field_mapping import *
 from utils.simple_functions import *
 from llm.llm import a_invoke_model
-from Processing.controllo_sintattico import prepare_prompt
+#from Processing.controllo_sintattico import prepare_prompt
 from Processing.copertura_requisiti import add_new_TC, save_updated_json
+<<<<<<< HEAD
 from utils.simple_functions import fill_excel_file
+=======
+from typing import Tuple, List, Dict, Any
+
+>>>>>>> Jess
+
+async def prepare_prompt(input: Dict,excel: Dict, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
+    """Prepare prompt for the LLM"""
+    system_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_progettazione", "system_prompt.txt"))
+    user_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_progettazione", "user_prompt.txt")) 
+    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
+
+    user_prompt = user_prompt.replace("{input}", json.dumps(input))
+    mapping_as_string = mapping.to_json() 
+    user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
+    user_prompt = user_prompt.replace("{TC}", json.dumps(excel))
+
+    print("finishing prepare prompt")
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    return messages, schema
 
 async def gen_new_TC(paragraph, results):
         mapping = extract_field_mapping()
         print("finishing mapping")
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
-        messages, schema = await prepare_prompt(paragraph, mapping)
+        messages, schema = await prepare_prompt(paragraph,results, mapping)
         print("starting calling llm")
         print(f"{messages}")
-        response = await a_invoke_model(messages, schema)
+        response = await a_invoke_model(messages, schema, model="gpt-4.1")
         return response
 
 async def main():
