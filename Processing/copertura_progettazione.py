@@ -1,9 +1,6 @@
 import os
 import sys
-<<<<<<< HEAD
 from pathlib import Path
-=======
->>>>>>> Jess
 import asyncio
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -14,12 +11,9 @@ from utils.simple_functions import *
 from llm.llm import a_invoke_model
 #from Processing.controllo_sintattico import prepare_prompt
 from Processing.copertura_requisiti import add_new_TC, save_updated_json
-<<<<<<< HEAD
 from utils.simple_functions import fill_excel_file
-=======
-from typing import Tuple, List, Dict, Any
+from typing import List, Dict, Any, Tuple
 
->>>>>>> Jess
 
 async def prepare_prompt(input: Dict,excel: Dict, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
     """Prepare prompt for the LLM"""
