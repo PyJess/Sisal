@@ -31,6 +31,8 @@ async def prepare_prompt(input: Dict, context:str, mapping: str = None) -> Tuple
     user_prompt = user_prompt.replace("{input}", json.dumps(input))
     mapping_as_string = mapping.to_json() 
     user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
+
+    context = "\n\n".join(context) if context else ""
     user_prompt= user_prompt.replace("{context}", context)
 
     print("finishing prepare prompt")
@@ -102,8 +104,9 @@ async def process_paragraphs(paragraphs, vectorstore, mapping):
     
     async def process_single_paragraph(i, par):
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
-        # context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
-        context = ""
+        context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
+        print(f"Context retrieved: {context}")
+        #context = ""
         tc = await gen_TC(par, context, mapping)
         return tc
     
@@ -120,13 +123,13 @@ async def main():
     print(os.path.dirname(input_path))
     paragraphs=process_docx(input_path, os.path.dirname(input_path))
 
-    #rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "")
-    #chunks = process_docx(input_path, os.path.dirname(rag_path))
-    #embeddings = OpenAIEmbeddings(model=embedding_model)
-    #vectorstore = FAISS.from_texts(chunks, embeddings)
+    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_ZENIT_V_0.4_FASE_1.docx")
+    chunks = process_docx(input_path, os.path.dirname(rag_path))
+    embeddings = OpenAIEmbeddings(model=embedding_model)
+    vectorstore = FAISS.from_texts(chunks, embeddings)
 
     mapping = extract_field_mapping()
-    vectorstore = None
+    #vectorstore = None
     print("finishing mapping")
     new_TC= await process_paragraphs(paragraphs, vectorstore, mapping)
 

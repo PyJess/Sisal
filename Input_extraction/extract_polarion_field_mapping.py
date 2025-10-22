@@ -10,7 +10,7 @@ def extract_field_mapping() -> pd.DataFrame:
     df = pd.read_excel(os.path.join(path, 'polarionfieldmapping.xlsx'))
     # Delete the Field column
     df = df.iloc[:, :-1] 
-    print(df)
+    #print(df)
     return df
 
 # file=extract_field_mapping()
