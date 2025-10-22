@@ -27,7 +27,7 @@ async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[st
     """Prepare prompt for the LLM"""
     system_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "system_prompt.txt"))
     user_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "user_prompt.txt")) 
-    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
+    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output1.json"))
 
     user_prompt = user_prompt.replace("{input}", json.dumps(input))
     mapping_as_string = mapping.to_json() 

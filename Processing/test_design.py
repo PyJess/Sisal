@@ -146,7 +146,7 @@ async def main():
     
     print(f"\n✅ Total test cases updated: {len(updated_json['test_cases'])}")
 
-    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "updated_test_cases.json")
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases.json")
     save_updated_json(updated_json, output_path)
 
 
