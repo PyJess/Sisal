@@ -1,0 +1,3926 @@
+{
+  "ANB-5368": {
+    "Title": "[NRT] Update real bonus service - betting bonus",
+    "#": 1,
+    "Test Group": "App IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "iOS",
+    "Precondizioni": "Open ANB app while logged in and land on home page and profile menu.",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "ProfileMenu",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Replace the current Real Bonus Service with the new one",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Sota Mario",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-5368",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app while logged in with an account balance of 0 euros.",
+        "Expected Result": "ANB App opens correctly and user lands on homepage when logged in."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Add a betting bonus (e.g. 10eu) from the NPPL platform.",
+        "Expected Result": "The bonus addition is successful."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on another section of the app (e.g. mybets/cart).",
+        "Expected Result": "User finds the updated bonus balance on the app header."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on Profile menu.",
+        "Expected Result": "The user's profile menu should be opened and the betting bonus balance should be updated."
+      }
+    ]
+  },
+  "ANB-6078": {
+    "Title": "[NRT] - Bookings - Bookings - Booking with username + Point of sale (PDV)",
+    "#": 2,
+    "Test Group": "App IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "iOS",
+    "Precondizioni": "Registered user on sisal",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Viewing successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Pizzo Davide EXT",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-6078",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app",
+        "Expected Result": "The app must be opened correctly."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Bring results to cart (single/multiple/system).",
+        "Expected Result": "The cart it must be populated correctly with the results."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on the CTA \"Book\"",
+        "Expected Result": "It is verified that the ticket must be booked correctly and the informative snackbar \"Bet booked - Go to mybets\" comes out"
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on CTA \"Add store\" from mybets booked.",
+        "Expected Result": "It is verified that when you tap on the item 'Add point of sale' a panel is displayed as follows:  Title: 'Add point of sale' Icon X > closes the panel without memorizing any characters entered in the input fields (it is possible to closeAlso by swipe down or tap in the section outside the panel) Description: 'Speed up the validation process of your booked plays' Input field Point of sale code > (described in the next ac) Input field username > (described in the next ac)Text: 'You can always play your reservations in all points of sale even if you haven't set a favorite one' CTA 'Save' > activates only if all fields have been filled in"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Bring another bet on Book with configured point of sale code.",
+        "Expected Result": "It is verified that the ticket card appears at the lInstant Book together with the username of the store."
+      }
+    ]
+  },
+  "ANB-7684": {
+    "Title": "[NRT] - Bookings - Prematch - Check on retail - multipla prematch without bonus IOS",
+    "#": 3,
+    "Test Group": "App IOS",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Terminale",
+    "Precondizioni": "multipla prematch without bonus bet made on app",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Booking successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-7684",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the reservation made on the app",
+        "Expected Result": "Verify that it is possible and that all the data corresponds to those of the original booking"
+      }
+    ]
+  },
+  "ANB-7692": {
+    "Title": "[NRT] - Bookings - Prematch - Check on retail - error correction system Android",
+    "#": 4,
+    "Test Group": "App Android",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Terminale",
+    "Precondizioni": "error correction system bet made on app",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Booking successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-7692",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the reservation made on the app",
+        "Expected Result": "Verify that it is possible and that all the data corresponds to those of the original booking"
+      }
+    ]
+  },
+  "ANB-8462": {
+    "Title": "[NRT] - TY Page - Thank You Page Postvendita - Sistema - Integrale",
+    "#": 5,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "ANDROID",
+    "Precondizioni": "Finalize the bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "TYPage",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that when TYP is closed, the user's balance in the header appears to be updated..",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8462",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user logs ANB app",
+        "Expected Result": "The app opens correctly and the user lands on Home Page"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user brings a (sistema- integrale) \"Live\" outcome to cart",
+        "Expected Result": "Cart is populated correctly"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user taps on CTA \"Scommetti\" and finalizes the bet",
+        "Expected Result": "Succesfully bet and the user lands on TYP (Thank You Page) with a label_x000D_\n \"Complimenti! La scommessa è andata a buon fine!\"._x000D_\n_x000D_\n TYP is composed by :_x000D_\n_x000D_\n 1. Codice biglietto_x000D_\n 2. L'importo di Puntata_x000D_\n 3. Quota totale_x000D_\n 4. Vincita Potenziale (in €)_x000D_\n 5. Dettaglio Biglietto_x000D_\n_x000D_\n TYP is composed by CTA:_x000D_\n_x000D_\n 0. CTA \" X\"_x000D_\n 1. Riporta Eventi Nel Biglietto_x000D_\n 2. Notifiche_x000D_\n 3. Contina a scommettere_x000D_\n 4. Condividi_x000D_\n 5. Pubblica su Tipster_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user exits the TYP",
+        "Expected Result": "The user verifies that when TYP is closed, the user's balance in the header appears to be updated."
+      }
+    ]
+  },
+  "ANB-8468": {
+    "Title": "[NRT] - TY Page - Thank You Page Postvendita - Link Sharing",
+    "#": 6,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "ANDROID",
+    "Precondizioni": "Finalize the bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "TYPage",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "On tap on \"Condividi il link per far rigiocare il biglietto\", the device sharing panel opens.",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8468",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user logs ANB app",
+        "Expected Result": "The app opens correctly and the user lands on Home Page"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user brings a (single) Prematch outcome to cart_x000D_\n",
+        "Expected Result": "Cart is populated correctly"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user taps on CTA \"Scommetti\" and finalizes the bet",
+        "Expected Result": "Succesfully bet and the user lands on TYP (Thank You Page) with a label_x000D_\n \"Complimenti! La scommessa è andata a buon fine!\"._x000D_\n_x000D_\n TYP is composed by :_x000D_\n_x000D_\n 1. Codice biglietto_x000D_\n 2. L'importo di Puntata_x000D_\n 3. Quota totale_x000D_\n 4. Vincita Potenziale (in €)_x000D_\n 5. Dettaglio Biglietto_x000D_\n_x000D_\n TYP is composed by CTA:_x000D_\n_x000D_\n 0. CTA \" X\"_x000D_\n 1. Riporta Eventi Nel Biglietto_x000D_\n 2. Notifiche_x000D_\n 3. Contina a scommettere_x000D_\n 4. Condividi_x000D_\n 5. Pubblica su Tipster_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user taps on CTA \"Condividi\"",
+        "Expected Result": "The user verifies that by tapping on CTA \"Condividi\", the ticket link or image sharing panel opens"
+      },
+      {
+        "Step": 5,
+        "Step Description": "The user taps on \"Condividi il link per far rigiocare il biglietto \"",
+        "Expected Result": "On tap on \"Condividi il link per far rigiocare il biglietto\", the device sharing panel opens"
+      }
+    ]
+  },
+  "ANB-8737": {
+    "Title": "[NRT] Update real bonus service - Freebet bonus",
+    "#": 7,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Android",
+    "Precondizioni": "Open ANB app while logged in and land on home page and profile menu.",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "ProfileMenu",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Replace the current Real Bonus Service with the new one",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8737",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app while logged in.",
+        "Expected Result": "ANB App opens correctly and user lands on homepage when logged in."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Add a Freebet (e.g. 10eu) from NPPL platform.",
+        "Expected Result": "The bonus addition is successful."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Profile menu.",
+        "Expected Result": "The user profile menu should be opened and the Freebet label should be updated."
+      }
+    ]
+  },
+  "DIGB-55563": {
+    "Title": "Reskin Betting - Sezione Live - Live Ora",
+    "#": 8,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "precondition",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Navigazione - Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "By default the user lands in the Live Ora - Quote Top section",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-55563",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user click on Live",
+        "Expected Result": "By default the user lands in the Live Ora - Quote Top section"
+      }
+    ]
+  },
+  "DIGB-55565": {
+    "Title": "Reskin Betting - Sezione Live - Ordinamento Manifestazione",
+    "#": 9,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "precondition",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Navigazione - Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Event sorting displayed correctly",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-55565",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user click on Live",
+        "Expected Result": "the user views for each discipline the events listed in the live schedule organized in lists"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Within the disciplines, the matches are grouped by competition",
+        "Expected Result": "Competition sorting displayed correctly"
+      }
+    ]
+  },
+  "DIGB-56024": {
+    "Title": "Reskin Betting - Metatemplate TOP SCOMMESSE CASA (CALCIO) (1000006)",
+    "#": 10,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "Configurare un metatemplate TOP SCOMMESSE CASA (CALCIO) (1000006)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Metatemplate",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "the metatemplate is displayed",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-56024",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user selects a calcio event and clicks on Giocatori tab",
+        "Expected Result": "the metatemplate is displayed"
+      }
+    ]
+  },
+  "DIGB-63480": {
+    "Title": "Reskin Betting - Mobile - Biglietto - Composizione Sezione",
+    "#": 11,
+    "Test Group": "Mobile IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Mobile",
+    "Precondizioni": "Add outcomes to cart",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Biglietto",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "A panel is opened from the bottom with all outcomes added to cart.\nThe panel is composed as shown in the figma\nhttps://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63480",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add an outcome to cart",
+        "Expected Result": "The cart is populated and a number icon is shown next to \"Biglietto\""
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "A panel is opened from the bottom with all outcomes added to cart._x000D_\n The panel is composed as shown in the figma_x000D_\n https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      }
+    ]
+  },
+  "DIGB-63508": {
+    "Title": "Reskin Betting- Mobile - Sezione Live - I miei live",
+    "#": 12,
+    "Test Group": "Mobile IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Mobile",
+    "Precondizioni": "Live events available",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user correctly views the lists of match with eye icon enabled.",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63508",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Live",
+        "Expected Result": "The user lands succesfully in the section by default in tab \"Live ora\"._x000D_\n"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on eye icon next to mach in \"Live ora\" section",
+        "Expected Result": "The match is correctly added  in \"I miei live\" section and a number icon is shown next to \"I miei Live\"_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on \"I miei live\"",
+        "Expected Result": "The user correctly views the lists of match with eye icon enabled."
+      }
+    ]
+  },
+  "DIGB-63555": {
+    "Title": "Reskin Betting - Tablet - Dettaglio Biglietto - Vincente con Cash Out",
+    "#": 13,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Place a bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "MyBets",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that the ticket detail displays the label “Hai vinto” followed by the value cashed out via Cash Out.\nThere are also:\n1. Puntata totale del biglietto\n2. Quota totale del biglietto  \n3. Bonus associato al biglietto\n4. Vincita potenziale originale del biglietto.\n\nSee the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=WKxXbw4kvTQIJ5Qh-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63555",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add an outcomes to cart and place a bet",
+        "Expected Result": "Succesfully bet"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on \"Mie Giocate->Chiuse\"",
+        "Expected Result": "A panel is opened from the bottom with a listing of all bets._x000D_\n The section is set by default on \"Aperte\"_x000D_\n The section is composed by:_x000D_\n 1.  Aperte_x000D_\n 2. Chiuse_x000D_\n_x000D_\n https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      },
+      {
+        "Step": 6,
+        "Step Description": "Tap on \"Vedi dettaglio\"",
+        "Expected Result": "The user verifies that the ticket detail displays the label “Hai vinto” followed by the value cashed out via Cash Out._x000D_\n There are also:_x000D_\n 1. Puntata totale del biglietto_x000D_\n 2. Quota totale del biglietto  _x000D_\n 3. Bonus associato al biglietto_x000D_\n 4. Vincita potenziale originale del biglietto._x000D_\n_x000D_\n See the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=WKxXbw4kvTQIJ5Qh-0"
+      }
+    ]
+  },
+  "DIGB-63594": {
+    "Title": "Reskin Betting - Tablet - Smart Search -Risultato Trovato",
+    "#": 14,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Enter characters in Smart Search",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Smart Search",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user views the results of the search",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63594",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_fe_drop7",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on Smart Search",
+        "Expected Result": "The user lands on a second-level page composed by:_x000D_\n_x000D_\n - Search bar with X and search icon"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Enter at least 3 characters (es: Inter)",
+        "Expected Result": "The user views the results of the search grouped in accordion"
+      }
+    ]
+  },
+  "DIGB-63603": {
+    "Title": "Reskin Betting - Tablet - Biglietto - SGP",
+    "#": 15,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Add outcomes to cart",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Biglietto",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that if there are two or more outcomes within the ticket referring to the same event and the ticket is in multiple status, the outcomes are graphically linked to each other by the appropriate element.\n\nSee the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63603",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add two or more outcomes referring to the same event",
+        "Expected Result": "The cart is populated and a number icon quota are shown next to \"Biglietto\""
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "A panel is opened from the bottom with the outcomes added to cart with a label \"Multipla/Sistema\" displayed."
+      },
+      {
+        "Step": 6,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "The user verifies that if there are two or more outcomes within the ticket referring to the same event and the ticket is in multiple status, the outcomes are graphically linked to each other by the appropriate element._x000D_\n_x000D_\n See the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      }
+    ]
+  },
+  "DIGB-67786": {
+    "Title": "Vendita Offerta di Gioco - Portale e APP - Vendita Scommessa 3 da SITO",
+    "#": 16,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Sito",
+    "Precondizioni": "The application must be available",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Vendita Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Check that the sale from FR is successful",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-67786",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "From FR sell a play with the cde 3",
+        "Expected Result": "Check that the sale from FR is successful"
+      }
+    ]
+  },
+  "DIGB-68096": {
+    "Title": "Creazione Offerta di Gioco - Simp - Inserimento Quote Manuale Scommessa 6513",
+    "#": 17,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "SIMP",
+    "Precondizioni": "The application must be available",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Creazione Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The quota insertion must be successful and the cde must be available on FR and APP",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-68096",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "N",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "Waiting Excel Download/Upload Solution",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "From SIMP enter the quotas of cde 6513 for the manually created event",
+        "Expected Result": "The quota insertion must be successful and the cde must be available on FR and APP"
+      }
+    ]
+  },
+  "DIGB-68416": {
+    "Title": "Gestione Offerta di Gioco - BODG  - Ripristina su un brand le legature di uno o più market type per una manifestazione in BODG - Ripristina",
+    "#": 18,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "BODG",
+    "Precondizioni": "The application must be reachable",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Gestione Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "6. Enable the \"Confirm\" button",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-68416",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Medium",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Click on the \"Restore\" button",
+        "Expected Result": "The system, after confirmation by the Actor, for each selected market type that has personalized binding values:1. Eliminates customizations on binding values 2. If the reference event has custom binding values: Displays in the grid the personalized binding values of the reference event 3. If the manifeReference station does NOT have personalized ligation values and the same market type has personalized ligation values for the reference sport: Displays in the grid the personalized binding values of the same market type for the reference sport;"
+      },
+      {
+        "Step": 2,
+        "Step Description": "*",
+        "Expected Result": "4. If the reference event does NOT have personalized ligation values, the same market type does NOT have personalized ligation values for the reference sportAnd the reference sport has personalized ligation values: Displays in the grid the personalized ligation values of the reference sport; 5. If the reference manifestation does NOT have personalized binding values, theSame market type does NOT have customized binding values for the reference sport and the reference sport does NOT have customized binding values: Displays the dashe \"-\" in the grid in correspondence with the four expected ligation values (theMinimum and maximum guarantee for prematch and live);"
+      },
+      {
+        "Step": 3,
+        "Step Description": "*",
+        "Expected Result": "6. Enable the \"Confirm\" button"
+      }
+    ]
+  },
+  "DIGB-69637": {
+    "Title": "Modulo Trading - Registro accettazione - Brand Master+Italia -    Dettaglio biglietto - Indicazione dispositivi di vendita su biglietti venduti da TG Best Agenzia",
+    "#": 19,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.Sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Registro Accettazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "In the Ticket Detail, before the list of predictions, the Brand, the channel, the subchannel, the device and the number of sales TG must be reported.With tickets sold by portal by the Italia brand you can see: \"ITALY - RETAIL - Agency - BEST - 191\" followed by the thumbs up icon and the name of the trader who accepted the bet",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-69637",
+    "Analysis": "Not Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Medium",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Login to the TG Best certified on the agency network",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "From the SPORT section select from the tree on the left the discipline and then the event and compile a multiple bet by entering a bet that sends the bet to the console and then click on the bet button",
+        "Expected Result": "The message is displayed \"The bet is being accepted  Our players are evaluating your play. Don't refresh the page.\""
+      },
+      {
+        "Step": 3,
+        "Step Description": "Access the Trading Module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console and enable the console by clicking on AcceptNe ticket- Ticket acceptance and alarms and accept the bet just made",
+        "Expected Result": "The bet is correctly sold"
+      },
+      {
+        "Step": 4,
+        "Step Description": "From the trading module, Click sUl menu Monitoring - Register Acceptances and alarms and set through the selectboxes present in the header, the brand as master+Italy, the currency in EUR and on the selectbox Type leave \"Acceptance\" and press search and then click on the newly sold TSN",
+        "Expected Result": "In the Ticket Detail, before the list of predictions, the Brand, the channel, the subchannel, the device and the number of sales TG must be reported.With tickets sold by portal by the Italia brand you can see: \"ITALY - RETAIL - Agency - BEST - 191\" followed by the thumbs up icon and the name of the trader who accepted the bet"
+      }
+    ]
+  },
+  "DIGB-69737": {
+    "Title": "Modulo Trading - Registro autorizzazione - Brand Master+Pokerstars - Dettaglio Autorizzazione - Stato Rifiutato timeout",
+    "#": 20,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.Sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Registro Accettazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The Authorization Detail opens and at the top right must be the red Label \"Rejected timeout\"",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-69737",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the trading module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Click on the Monitoring menu - Acceptances and alarms register and set through the selectboxes in the header, the brand as master+Pokerstars and the currencyIn EUR and on the selectbox Type leave \"Acceptance\"",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Set the date set to \"Date from\" by entering a few days back from the current date so as to have a rangeOf wider results and set on the selectbox \"Status\" the Rejected timeout status and click on the search button",
+        "Expected Result": "Tickets ordered by default by descending date, from the most recent to the oldest that meet the criterion are returnedEntered, in this case the tickets with the status Rejected timeout issued by the date-Time set."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click on an authorization code",
+        "Expected Result": "The Authorization Detail opens and at the top right must be the red Label \"Rejected timeout\""
+      }
+    ]
+  },
+  "DIGB-70068": {
+    "Title": "Modulo Trading - Ricerca Biglietto - Brand Master + Pokerstars -    Dettaglio biglietto -  Stato biglietto Pagato",
+    "#": 21,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Ricerca Biglietti",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The ticket detail opens and the green label \"Paid\" must be shown at the top right",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-70068",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the trading module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "ClickAnd on the menu Monitoring - Search Ticket and set through the selectboxes present in the header, the brand as master+Pokerstars and the currency in EUR",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Set the date set to \"Issued by\" by entering a few days back from the current date in order to have a range of resultsLarger and set the status Paid on the \"Status\" select box and click on the search button",
+        "Expected Result": "Tickets ordered by default by decreasing date, from the most recent to the oldest that meet the criterion entered, are returned, in thisOr case the tickets with the Paid status issued by the date-Time set."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click on a TSN to open the ticket",
+        "Expected Result": "The ticket detail opens and the green label \"Paid\" must be shown at the top right"
+      }
+    ]
+  },
+  "DIGB-70895": {
+    "Title": "Inserimento Risultati - Blocco Pagamenti - Verifiche lato My Bets - Scommessa Singola Prematch - Cluster semplici - Biglietto 1",
+    "#": 22,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "High",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "FR",
+    "Precondizioni": "Access to the My BETS section",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Blocco Pagamenti",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "Biglietto 1",
+    "Risultato Atteso": "The system will show the winning tickets with the winning label in green with their amount and the balance upstream of the page will be increased.There will also be a link to view the ticket details",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Corsi Alessia",
+    "Assignee(s)": "Corsi Alessia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-70895",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the link https://testfr-www.sisal.it/scommesse-matchpoint, authenticate NO with your user and anGive in the My Bets section and search for the winning tickets among the CLOSED bets",
+        "Expected Result": "The system will show the vincent ticketsThem accompanied by a green winning label with its amount and the balance upstream of the page will be increased. There will also be a link to view the ticket details"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Access the ticket details",
+        "Expected Result": "By accessing the ticket details from the appropriate link, the system will open the relative pop-up with: - typeOgia played (SNG, MUL, SYS) and date/time of sale - preview winning amount - event detail (event, Pal/Avv, description and competence) - bet sold and relative quota (if available info icon for CdE regulations) - total bet - sales share- winning or potential winning - drop-down menu showing ticket information (code, account number, date/time of sale, expiration date) - Message: Attention The payment of the bet is waiting for all results to be confirmed by AAMS. For more deTtagli consult the official results of the last 72 hours."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Select the IB present in the ticket detail pop-up and copy it. Access the reserved area from the link https://testfr-www.sisal.it/scommesse-matchpoint, click on the Reserved Area icon at the top right, and on the \"Account Movements\" item in the menu on the left andSearch for movements related to the copied IB (e.g. DF07X00X0X00000X0000)",
+        "Expected Result": "The system will show the list of movements related to the IB sought (e.g. DF07X00X0X00000X0000), The systemBut it will allow you to limit the list of tickets to the type of game that will be organized for: - date - type (sales, credits, transfers, etc.) - description - amount - receipt and serial ID"
+      }
+    ]
+  },
+  "DIGB-81467": {
+    "Title": "Pokerstars Promo Generic Real Bonus - Edit",
+    "#": 23,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "Having configured a generic promo with bonus type real bonus (see promo creation test)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Generic Real Bonus - Edit",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The change is saved",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-81467",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "From the \"promotions\" list click on the promotions section click on generic",
+        "Expected Result": "The list of generic promotions is displayed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the pencil icon (edit promotion) of the reference promo",
+        "Expected Result": "the user sees the \"edit promotion\" mask"
+      },
+      {
+        "Step": 4,
+        "Step Description": "the user makes the change to the promo end date. click on the button: Save",
+        "Expected Result": "The change is saved"
+      }
+    ]
+  },
+  "DIGB-82965": {
+    "Title": "POKERSTARS Promo Lost Delayed Freebet with Optin - Edit Not Active promo",
+    "#": 24,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "Having logged in to the NPPL portal https://test-promo-manager-pokerstars.sisal.it/fe/#/promo Having a non-active promo in the promotions list (see promo creation test)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Lost Delayed Freebet - Edit Not Active promo",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The change is saved",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-82965",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "the user accesses the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "the user from the \"PROMOTIONS\" section clicks \"on products\"",
+        "Expected Result": "the user views the list of product promotions"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the Pencil icon (edit promotion)",
+        "Expected Result": "the user sees the Edit Promotion mask"
+      },
+      {
+        "Step": 4,
+        "Step Description": "the user makes a change to any field clicks on the button: Save",
+        "Expected Result": "The change is saved"
+      }
+    ]
+  },
+  "DIGB-83028": {
+    "Title": "POKERSTARS Promo Dynamic Recharge real bonus - Promo creation",
+    "#": 25,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "have valid login credentials (LDAP) have logged in to the NPPL portal https://test-promo-manager-pokerstars.sisal.it/fe/#/promo the promotional code must be made up of two alphanumeric strings separated by a hyphen (-)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Dynamic Recharge real bonus - Promo creation",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The promotion is successfully created by generating an identifying Promo ID.",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-83028",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "the user accesses the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "the user from the \"PROMOTIONS\" section clicks \"on products\"",
+        "Expected Result": "the user views the list of product promotions"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the button: CREATE",
+        "Expected Result": "the user opens the Create Promotion form"
+      },
+      {
+        "Step": 4,
+        "Step Description": "ANAGRAFICA TABfill in name fill in description select calculation type: top-up select promo category: test select prize nature: Bonus select bonus type: Real bonus select deductibility: deductible select promotion type: single select prize accrual method: dynamic select prize payment method: manual \"protocol required\" flag: active",
+        "Expected Result": "The \"Next\" CTA is activated"
+      },
+      {
+        "Step": 5,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the ELIGIBILITY tab"
+      },
+      {
+        "Step": 6,
+        "Step Description": "ELIGIBILITY TAB select \"Promo Eligibility Type\": public",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 7,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the CONDITIONS tab"
+      },
+      {
+        "Step": 8,
+        "Step Description": "CONDITIONS TAB select validity type: range insert date from/to select Membership method: promotional code fill in promotional code select Payment Channels: select all select Payment Methods: select all select Payment Channel Details: select all",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 9,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the CALCULATION PARAMETERS tab"
+      },
+      {
+        "Step": 10,
+        "Step Description": "CALCULATION PARAMETERS TAB select bonus payment: instant select bonus amount type: fixed select bach type: single enter minimum top-up: €50 bonus amount: €10",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 11,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the EROGAZIONE tab"
+      },
+      {
+        "Step": 12,
+        "Step Description": "EROGAZIONE TAB preview information flag: on Bonus distribution: single select template: casino select spendability channels: select all fill in bonus name select bonus expiry: within + number of days",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 13,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the INFORMATION tab"
+      },
+      {
+        "Step": 14,
+        "Step Description": "INFORMATION TAB click on: generate information",
+        "Expected Result": "inside the fields: \"title\" and \"information\" the information relating to the promo is generated"
+      },
+      {
+        "Step": 15,
+        "Step Description": "user clicks on CTA : save",
+        "Expected Result": "The promotion is successfully created by generating an identifying Promo ID."
+      }
+    ]
+  },
+  "RETB-8897": {
+    "Title": "[QA Automation] TG Best Italia - R2I - SPORT - 'Sisal.it' mode - Create and sell a \"Multipla with NUMBER OF ESITI = MAX NUMBER\" ticket from PREMATCH section",
+    "#": 26,
+    "Test Group": "Terminale",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "TG Best Italia R2I - Betting",
+    "Precondizioni": "-",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Compilazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The ticket is sold",
+    "Country": "Italy",
+    "Project": "Betting Retail",
+    "Author": "De Matteis Vera",
+    "Assignee(s)": "Baldassarre Silvia",
+    "Type": "Test ",
+    "_polarion": "retailbetting/RETB-8897",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user clicks on section PREMATCH (F1)",
+        "Expected Result": "Section opened_x000D_\n​​"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user select Client1from cart",
+        "Expected Result": "Cart section related to client selected is displayed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Using \"Sisal it\" mode, the user inserts 30 esiti for a MULTIPLA_x000D_\n (MAX NUMBER of esiti = 30)",
+        "Expected Result": "Esiti added to cart section related to Client selected"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user set a valid stake amout (default or higher) choosing one of the following ways:_x000D_\n _x000D_\n* OR clicking on + button_x000D_\n",
+        "Expected Result": "Stake amount inserted without errors"
+      },
+      {
+        "Step": 5,
+        "Step Description": "The user sell the ticket choosing one of the following ways:_x000D_\n _x000D_\n* OR using shortcut CTRL+ENTER _x000D_\n",
+        "Expected Result": "Verify that the ticket is sold"
+      }
+    ]
+  },
+  "RETB-10442": {
+    "Title": "[QA Automation] TG Best Italia - R2I - SPORT - Reservation by CODE - Check that reservation can be sold from cart",
+    "#": 27,
+    "Test Group": "Terminale",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "TG Best Italia R2I - Betting",
+    "Precondizioni": "A SINGOLA/MULTIPLA/SISTEMA reservation has been created from Betting Online",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Prenotazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Reservation' can be sold from cart",
+    "Country": "Italy",
+    "Project": "Betting Retail",
+    "Author": "De Matteis Vera",
+    "Assignee(s)": "Baldassarre Silvia",
+    "Type": "Test ",
+    "_polarion": "retailbetting/RETB-10442",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "High",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user clicks on section PRENOTAZIONI (F7)",
+        "Expected Result": "Section opened_x000D_\n​​"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user reads the actual cash balance and the current tickets status",
+        "Expected Result": "Information about cash balance, Client1's ticket status and Client2's ticket status are displayed "
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user select Client1 or Client2 from cart",
+        "Expected Result": "Cart section related to client selected is displayed"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user inserts the reservation Code of a SINGOLA reservation",
+        "Expected Result": "Reservation pop-up is opened_x000D_\n"
+      },
+      {
+        "Step": 5,
+        "Step Description": "The user clicks on MODIFY BUTTON from reservation",
+        "Expected Result": "Reservation is updated in the cart"
+      },
+      {
+        "Step": 6,
+        "Step Description": "The user clicks on SELL BUTTON from cart",
+        "Expected Result": "Verify that:_x000D_\n _x000D_\n* The ticket is sold from reservation section_x000D_\n* The TICKET NUMBER (emitted) is updated correctly for CLIENT selected in cart_x000D_\n* The TICKET NUMBER (emitted) is NOT updated for other CLIENT_x000D_\n* The TOTAL related to CLIENT selected in cart is updated correctly_x000D_\n* The TOTAL related to other CLIENT is NOT updated_x000D_\n* The CASH BALANCE is updated correctly_x000D_\n"
+      }
+    ]
+  },
+  "[[RED]]N/A[[/RED]]": {
+    "Dispositivo": "[[RED]]N/A[[/RED]]",
+    "Precondizioni": "[[RED]]N/A[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]N/A[[/RED]]",
+    "Risultato Atteso": "[[RED]]N/A[[/RED]]",
+    "Title": "[[RED]]The test case is not valid: The provided content is a process description, not a test case. Please provide a specific, atomic test case with clear steps, preconditions, and expected results according to the required format and rules.[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]N/A[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 32,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]N/A[[/RED]]",
+        "Expected Result": "[[RED]]N/A[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]N/A[[/RED]]",
+    "Test Stage": "[[RED]]N/A[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]N/A[[/RED]]",
+    "_polarion": "[[RED]]N/A[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]N/A[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "TC_DASH_001": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has valid credentials and access to the dashboard. Data sources are available and connected. The referenced attachment specifying required data fields is accessible.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Centralized Credit Management Dashboard",
+    "Risultato Atteso": "The dashboard displays all required customer data fields as specified in the attachment, aggregated from all relevant systems.",
+    "Title": "Verify data aggregation for customer in dashboard during Phase I",
+    "Automation": "",
+    "Dataset": "Test customer with data available in all connected systems.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 30,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the dashboard for centralized credit management.",
+        "Expected Result": "Dashboard is displayed successfully."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the data collection process for a specific customer.",
+        "Expected Result": "System retrieves and aggregates customer data from different systems as specified in the requirements."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Verify that the aggregated data for the customer matches the fields indicated in the referenced attachment.",
+        "Expected Result": "All required data fields for the customer are present and correctly populated in the dashboard."
+      }
+    ],
+    "Funzionalità": "Data aggregation and display for customer in dashboard (Phase I)",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "TC_ZENIT_001": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has valid credentials and access rights to the ZENIT system. POS data is available in the system for the selected identifier. Historical usage data is present for at least one POS.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "ZENIT POS Management",
+    "Risultato Atteso": "The user can extract all relevant POS data, including historical usage of daily and weekly credit limits, for a selected POS and related entities, and export the data to an Excel file.",
+    "Title": "Verify extraction of POS usage and credit limit data with historical information and Excel export",
+    "Automation": "",
+    "Dataset": "Valid user credentials; POS identifier with historical data; test environment with sample data.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 31,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the ZENIT system as a user with permission to view POS data.",
+        "Expected Result": "The user is successfully authenticated and the dashboard is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Search for a specific POS using a unique identifier (e.g., ID RICE).",
+        "Expected Result": "The system displays all data related to the selected POS, including historical usage of daily and weekly credit limits."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Verify that the system also retrieves data for other POS under the same owner (same VAT number or tax code) and any linked entities, if available.",
+        "Expected Result": "The system displays data for all relevant POS and linked entities."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Check the availability of an option to export the displayed data to an Excel file (e.g., 'ZENIT - Elenco Dati').",
+        "Expected Result": "An option to export the data to Excel is present."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Export the data to Excel using the provided option.",
+        "Expected Result": "The system generates and downloads an Excel file containing the displayed POS data, including historical usage information."
+      }
+    ],
+    "Funzionalità": "POS data extraction and reporting",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "REQ_ZENIT_001",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "[[RED]]TC_FIDO_GEN_001[[/RED]]": {
+    "Dispositivo": "computer",
+    "Precondizioni": "A PoS must exist in the system and be eligible for generalist product activation. Credit Policy and rating data must be available. SDD mandate process must be enabled for precaricato generalists.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Fido Management System",
+    "Risultato Atteso": "Fido is correctly assigned, modified, or reset for generalist PoS according to the business rules and Credit Policy.",
+    "Title": "[[RED]]Fido Management for Generalist PoS: Assignment, Modification, and Reset Flow[[/RED]]",
+    "Automation": "",
+    "Dataset": "PoS data, product type (GNTN/ONLINE), Cerved rating, SDD mandate status, Credit Policy table.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 33,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Ensure a PoS (Point of Sale) is being activated with a generalist product (GNTN or ONLINE) on the GEO management system.",
+        "Expected Result": "PoS is eligible for fido assignment according to product type and policy."
+      },
+      {
+        "Step": 2,
+        "Step Description": "For a standard generalist, verify that the fido is assigned based on the product installed and the rating defined by Cerved, as per the Credit Policy table.",
+        "Expected Result": "Fido is assigned to the PoS according to the rating and product type."
+      },
+      {
+        "Step": 3,
+        "Step Description": "For a precaricato generalist, verify that upon contract activation and pending SDD mandate alignment, a default fido of 300 EUR is assigned without requiring Credit Management authorization.",
+        "Expected Result": "PoS receives a default fido of 300 EUR and is flagged as precaricato."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Upon SDD mandate alignment, verify that the precaricato generalist is converted to a standard generalist and fido is recalculated as per policy.",
+        "Expected Result": "PoS status changes to standard generalist and fido is updated according to policy."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Request a fido modification (increase or decrease) due to a change in rating, game volume, payment regularity, guarantees, or FV report.",
+        "Expected Result": "Fido is modified according to the new parameters and policy."
+      },
+      {
+        "Step": 6,
+        "Step Description": "For ONLINE PoS, simulate a block due to unpaid debts and verify that the fido is reset to zero upon notification from Credit Management to GEO.",
+        "Expected Result": "Fido is set to zero for the ONLINE PoS after the block is triggered."
+      },
+      {
+        "Step": 7,
+        "Step Description": "For GNTN PoS, simulate an unpaid debt and verify that the fido is not reduced, but the PoS is blocked from collecting GNTN.",
+        "Expected Result": "Fido remains unchanged, but GNTN collection is inhibited for the PoS."
+      }
+    ],
+    "Funzionalità": "Fido assignment, modification, and reset for generalist PoS",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "backend",
+    "_polarion": "[[RED]]REQ_FIDO_GEN_001[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "backend",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "italy",
+    "Author": ""
+  },
+  "[[RED]]TC_FIDO_001[[/RED]]": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]A PoS is available for activation and the user has access to the FIDO management system. The Credit Policy table and Cerved ratings are defined in the system.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]FIDO Management[[/RED]]",
+    "Risultato Atteso": "[[RED]]FIDO is correctly assigned and managed for the selected PoS according to product type, management system, and rating policy.[[/RED]]",
+    "Title": "[[RED]]Verify FIDO Assignment and Management for Specialized Products[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]PoS data, product types, Cerved ratings, Credit Policy table (as reference, not hardcoded).[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 34,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Access the management system for FIDO assignment.[[/RED]]",
+        "Expected Result": "[[RED]]The system dashboard is displayed.[[/RED]]"
+      },
+      {
+        "Step": 2,
+        "Step Description": "[[RED]]Select a PoS (Point of Sale) for activation based on the installed product (GNTN, ONLINE, SPORT, VIRTUAL).[[/RED]]",
+        "Expected Result": "[[RED]]The PoS details and product type are displayed.[[/RED]]"
+      },
+      {
+        "Step": 3,
+        "Step Description": "[[RED]]Assign the FIDO type according to the management system (SIMP: daily/weekly, GEO: weekly only).[[/RED]]",
+        "Expected Result": "[[RED]]The correct FIDO type is associated with the PoS based on the management system.[[/RED]]"
+      },
+      {
+        "Step": 4,
+        "Step Description": "[[RED]]Verify that the FIDO amount is set according to the rating defined by Cerved as per the Credit Policy table.[[/RED]]",
+        "Expected Result": "[[RED]]The FIDO amount matches the rating and policy rules.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]FIDO assignment and management for specialized products[[/RED]]",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "[[RED]]REQ_FIDO_001[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "[[RED]]TC_DEFS_ABBR_001[[/RED]]": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]The documentation containing the definitions and abbreviations table is available and accessible to the tester.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "content",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]Documentation[[/RED]]",
+    "Risultato Atteso": "[[RED]]All abbreviations used in the documentation are correctly listed and defined in the table.[[/RED]]",
+    "Title": "[[RED]]Definitions and Abbreviations Table Verification[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]List of abbreviations used in the documentation (can be referenced, not hardcoded).[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 35,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Navigate to the section containing the definitions and abbreviations table in the documentation.[[/RED]]",
+        "Expected Result": "[[RED]]The definitions and abbreviations table is displayed.[[/RED]]"
+      },
+      {
+        "Step": 2,
+        "Step Description": "[[RED]]Verify that all abbreviations used in the documentation are listed in the table with their corresponding definitions.[[/RED]]",
+        "Expected Result": "[[RED]]Each abbreviation in the documentation has a corresponding entry and definition in the table.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Definitions and Abbreviations Table[[/RED]]",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Desktop[[/RED]]",
+    "_polarion": "[[RED]]REQ_DOC_001[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "[[RED]]# Description of Requirements[[/RED]]": {
+    "Dispositivo": "[[RED]]N/A[[/RED]]",
+    "Precondizioni": "[[RED]]Requirements documentation is available for review.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "content",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]N/A[[/RED]]",
+    "Risultato Atteso": "[[RED]]All requirements are clearly described and unambiguous.[[/RED]]",
+    "Title": "[[RED]]Description of Requirements[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]None required[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 36,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Review the documented requirements for completeness and clarity.[[/RED]]",
+        "Expected Result": "[[RED]]All requirements are clearly described and unambiguous.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Requirements Documentation Review[[/RED]]",
+    "Test Stage": "[[RED]]N/A[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]N/A[[/RED]]",
+    "_polarion": "[[RED]]N/A[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]N/A[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "[[RED]]N/A[[/RED]]",
+    "Author": ""
+  },
+  "TC_DATA_COLLECTION_001": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "All external systems are available and accessible. The 'ZENIT - Elenco Dati' file is available and up to date. User has access rights to initiate and monitor data collection.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Centralized Credit Management Data Aggregation",
+    "Risultato Atteso": "The system automatically collects, aggregates, and displays all required data from the connected systems according to the defined schedule, enabling accurate and timely analysis for centralized credit management.",
+    "Title": "Automated Data Collection from Connected Systems for Centralized Credit Management",
+    "Automation": "",
+    "Dataset": "Access credentials for all connected systems; up-to-date 'ZENIT - Elenco Dati' file.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 37,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Verify that the system is configured to connect to all required external systems as listed in the 'ZENIT - Elenco Dati' file.",
+        "Expected Result": "System connections to all required external sources are established and active."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Trigger the automated data collection process according to the schedule defined in the requirements.",
+        "Expected Result": "The system initiates data collection from all connected sources as per the specified timing."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Monitor the data aggregation process to ensure all required data fields are collected from each system (e.g., MDM, INVENTORY, COMMA 6, SI VLT, CERVED, DWH, CONTROLLO DI GESTIONE, SAP, RED LIST, SIMP, GEO, MST, ARXIVAR).",
+        "Expected Result": "All required data fields are successfully aggregated from each connected system."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Access the centralized data visualization interface and verify that the aggregated data is displayed correctly and matches the source data.",
+        "Expected Result": "Aggregated data is accurately displayed and matches the data from the source systems."
+      }
+    ],
+    "Funzionalità": "Automated data collection and aggregation from multiple external systems for credit management.",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "TC_DASHBOARD_001": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User is authenticated and has access rights to create and manage dashboards. Data for PoS is available as per requirement 3.1.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Dashboard",
+    "Risultato Atteso": "A dashboard is created that aggregates all required PoS data, allows searching, PoS management, report requests, and displays alerts as specified.",
+    "Title": "Verify creation of a dashboard aggregating PoS data and providing search, management, reporting, and alert features",
+    "Automation": "",
+    "Dataset": "Test PoS data as per requirement 3.1 (not hardcoded, but available in the environment).",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 38,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the dashboard creation section in the application.",
+        "Expected Result": "Dashboard creation interface is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Configure the dashboard to aggregate all data as specified in requirement 3.1.",
+        "Expected Result": "Dashboard is configured to display all relevant PoS data."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Save and open the newly created dashboard.",
+        "Expected Result": "Dashboard is created and displays aggregated PoS data."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Use the search functionality within the dashboard to search for a specific PoS or data aggregation.",
+        "Expected Result": "Search results display the relevant PoS or aggregated data."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Access the management options for a PoS from the dashboard.",
+        "Expected Result": "PoS management interface is accessible from the dashboard."
+      },
+      {
+        "Step": 6,
+        "Step Description": "Request a report from the dashboard interface.",
+        "Expected Result": "Report request is successfully initiated from the dashboard."
+      },
+      {
+        "Step": 7,
+        "Step Description": "Trigger or simulate an alert condition within the dashboard context.",
+        "Expected Result": "Dashboard displays or sends the appropriate alert notification."
+      }
+    ],
+    "Funzionalità": "Dashboard creation, data aggregation, search, PoS management, reporting, and alerting.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "REQ-3.1",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "[[RED]]TC_HIST_001[[/RED]]": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]User has access to the backend system with permissions to view historical credit usage data. Historical data must exist in the system for at least one user.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]Historical Data Management[[/RED]]",
+    "Risultato Atteso": "[[RED]]The system correctly maintains and displays historical information on daily and weekly credit usage and other relevant functional data for analysis and decision-making purposes.[[/RED]]",
+    "Title": "[[RED]]Verify Historical Data Retention for Daily and Weekly Credit Usage[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]Test user(s) with historical credit usage records available in the system.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 39,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Access the system and navigate to the section displaying historical data for daily and weekly credit usage.[[/RED]]",
+        "Expected Result": "[[RED]]The historical data for daily and weekly credit usage is displayed, including relevant functional information.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Historical data retention and retrieval for credit usage[[/RED]]",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "[[RED]]REQ-HIST-001[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "[[RED]]Test Case ID missing. Please provide a unique identifier for the test case.[[/RED]]": {
+    "Dispositivo": "[[RED]]Device missing. Please specify the hardware device involved in the test.[[/RED]]",
+    "Precondizioni": "[[RED]]Preconditions missing. Please specify the conditions or configurations required to execute the test case.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]Reference System missing. Please specify the functional area or application component under test.[[/RED]]",
+    "Risultato Atteso": "[[RED]]Overall expected result missing. Please specify the final objective of the scenario after all steps have been executed.[[/RED]]",
+    "Title": "[[RED]]Test Case title missing. Please provide a concise descriptive title summarizing the scope and objective of the test scenario.[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]Dataset missing. Please specify the data required for test execution, if any.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 40,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Test steps missing. Please provide a list of ordered steps for executing the test case, including detailed actions to perform.[[/RED]]",
+        "Expected Result": "[[RED]]Expected result for each step missing. Please provide the expected outcome after executing this step.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Functionality missing. Please specify the specific functionality or feature covered by this test case.[[/RED]]",
+    "Test Stage": "[[RED]]Test Stage missing. Please specify the testing environment or stage where the test is executed.[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Test Group missing. Please specify the device category or family on which the test will be executed.[[/RED]]",
+    "_polarion": "[[RED]]Polarion ID(s) of related requirements, user stories, or test cases missing. Please specify if applicable.[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Channel missing. Please specify the channel or interface used to interact with the application under test.[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "[[RED]]RU_4.1_FASE1_001[[/RED]]": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]The tester has access to the application and valid credentials. The MDM system contains up-to-date store master data. The data collection module is available for Phase 1.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]Data Collection Module[[/RED]]",
+    "Risultato Atteso": "[[RED]]The application successfully retrieves and displays store master data that does not require modification, sourced from the MDM system, in the Phase 1 data collection module.[[/RED]]",
+    "Title": "[[RED]]Data Collection Phase 1: Verify Retrieval of Store Master Data from MDM[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]Access to MDM system with sample store master data available for retrieval.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 41,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the data collection module for Phase 1 in the application.",
+        "Expected Result": "The data collection interface for Phase 1 is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the retrieval process for store master data that does not require modification.",
+        "Expected Result": "The system queries the company management system (MDM) for the relevant store master data."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Verify that the retrieved store master data is displayed in the application without requiring modification.",
+        "Expected Result": "The store master data is correctly displayed and matches the information from the MDM system."
+      }
+    ],
+    "Funzionalità": "[[RED]]Store master data retrieval from MDM[[/RED]]",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.1_DATI_SAP_TC01": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "The SAP system is operational and contains at least one configured Point of Sale (PoS) with data for Insoluti, Garanzie, Blocco al Sollecito, Crediti Aperti, and Hopper/Cambia monete. The integration interface for data extraction is active.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "SAP Data Integration",
+    "Risultato Atteso": "For each type of data change in SAP, the system transmits the required information fields as specified for Insoluti, Garanzie, Blocco al Sollecito, Crediti Aperti, and Hopper/Cambia monete flows.",
+    "Title": "Verify SAP Data Flows for PoS Information Updates",
+    "Automation": "",
+    "Dataset": "Test PoS records with varying data for each information flow (Insoluti, Garanzie, Blocco al Sollecito, Crediti Aperti, Hopper/Cambia monete).",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 42,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Trigger a change in the 'Insoluti' data for a Point of Sale (PoS) in the SAP system.",
+        "Expected Result": "The system sends the following information: PoS Identifier (IdRice), Total Number of Insoluti, Number of Insoluti for the Current Year, Number of Insoluti for the last 6 months (Rolling), Number of Insoluti for the last 12 months (Rolling)."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Trigger a change in the 'Garanzie' data for a PoS in the SAP system.",
+        "Expected Result": "The system sends the following information: PoS Identifier (IdRice), Guarantee Type (Accantonamenti a Piano, Fidejussioni, Depositi), Total Balance Amount per Guarantee Type, Guarantee Start Date (only for Fidejussioni), Guarantee Expiry Date (only for Fidejussioni)."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Trigger a change in the 'Blocco al Sollecito' status for a PoS in the SAP system.",
+        "Expected Result": "The system sends the following information: PoS Identifier (IdRice), Blocco al Sollecito status. Only the most severe block for each customer is sent, based on the severity hierarchy (e.g., legal > warning > repayment plan). The data is updated whenever the status of an open item changes."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Trigger a change in the 'Crediti Aperti' data for a PoS in the SAP system.",
+        "Expected Result": "The system sends the following information: PoS Identifier (IdRice), Total Balance Amount. The balances of open items for the specified accounts (COGE 158001, 150005, 150001 for SISAL SPA 3030; 152001, 158001 for SISAL ITALIA SPA 1012) are transmitted. Special attention is given to 'IAG' credits, which may remain open for a few hours after the IAG."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Trigger a change in the 'Hopper -- Cambia monete' data for a PoS in the SAP system.",
+        "Expected Result": "The system sends the following information: PoS Identifier (IdRice), Hopper IAG End-of-Relationship Balance, Hopper IAG Recovery Balance, Coin Changer Balance."
+      }
+    ],
+    "Funzionalità": "Data extraction and transmission from SAP for PoS information updates.",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU_4.1.1",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU 4.1.2 DATI SI VLT": {
+    "Dispositivo": "[[RED]]backend[[/RED]]",
+    "Precondizioni": "[[RED]]The system is configured to generate daily data flows and Points of Sale (PoS) data is available in the system.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]Data Flow Management[[/RED]]",
+    "Risultato Atteso": "[[RED]]The daily data flow is successfully created and contains IdRice, ZonaRice, Nr VLT, and Nr VLT Medie YTD for each PoS.[[/RED]]",
+    "Title": "[[RED]]Verify daily data flow creation for IdRice, ZonaRice, Nr VLT, and Nr VLT Medie YTD per PoS[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]PoS master data available in the environment; no hardcoded values required.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 43,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Trigger the daily data flow generation process for all Points of Sale (PoS).[[/RED]]",
+        "Expected Result": "[[RED]]The data flow process is initiated without errors.[[/RED]]"
+      },
+      {
+        "Step": 2,
+        "Step Description": "[[RED]]Verify that the generated data flow contains the following information for each PoS: IdRice, ZonaRice, Nr VLT, and Nr VLT Medie YTD.[[/RED]]",
+        "Expected Result": "[[RED]]The data flow includes IdRice, ZonaRice, Nr VLT, and Nr VLT Medie YTD for each PoS as expected.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Daily data flow generation for PoS information[[/RED]]",
+    "Test Stage": "[[RED]]test[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.3_DATI_SIMP": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "The user has access to the data flow configuration interface and the necessary permissions to create or modify data flows.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Data Flow Management",
+    "Risultato Atteso": "A data flow is created for the selected product type, including all specified SIMP data fields.",
+    "Title": "Verify data flow creation for SIMP data fields by product type",
+    "Automation": "",
+    "Dataset": "Product types and field names as listed in the test case description.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 44,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the system interface for data flow configuration.",
+        "Expected Result": "The data flow configuration interface is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Select the desired product type from the available options.",
+        "Expected Result": "The selected product type is highlighted and ready for configuration."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Configure the data flow to include the following fields: Id Rice, Alias, Zona/Rice, Prodotto, Soglia Base, Estensione, Totale, Consumato, % consumata, Residuo.",
+        "Expected Result": "All specified fields are added to the data flow configuration for the selected product type."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Save the data flow configuration.",
+        "Expected Result": "The configuration is saved successfully and the system confirms the data flow is created for the selected product type."
+      }
+    ],
+    "Funzionalità": "Data flow creation for SIMP data fields by product type",
+    "Test Stage": "[[RED]]test[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "RU_4.1.3",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU 4.1.4 DATI Pos Contracts & Procedure": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]User has access to the data flow management interface for POS contracts and procedures. Necessary permissions to create and save data flows are granted.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]POS Contracts & Procedure[[/RED]]",
+    "Risultato Atteso": "[[RED]]Data flows for both 'VLT' and 'Betting' contract types are successfully created and listed in the system.[[/RED]]",
+    "Title": "[[RED]]Verify Data Flow Creation for VLT and Betting Contract Types[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]No specific dataset required; contract types 'VLT' and 'Betting' must be available as options.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 45,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Access the data flow management interface for POS contracts and procedures.[[/RED]]",
+        "Expected Result": "[[RED]]The data flow management interface is displayed.[[/RED]]"
+      },
+      {
+        "Step": 2,
+        "Step Description": "[[RED]]Initiate the creation of a new data flow for contract type 'VLT'.[[/RED]]",
+        "Expected Result": "[[RED]]A new data flow configuration screen for 'VLT' contract type is presented.[[/RED]]"
+      },
+      {
+        "Step": 3,
+        "Step Description": "[[RED]]Save the data flow configuration for 'VLT' contract type.[[/RED]]",
+        "Expected Result": "[[RED]]The data flow for 'VLT' contract type is successfully created and listed.[[/RED]]"
+      },
+      {
+        "Step": 4,
+        "Step Description": "[[RED]]Initiate the creation of a new data flow for contract type 'Betting'.[[/RED]]",
+        "Expected Result": "[[RED]]A new data flow configuration screen for 'Betting' contract type is presented.[[/RED]]"
+      },
+      {
+        "Step": 5,
+        "Step Description": "[[RED]]Save the data flow configuration for 'Betting' contract type.[[/RED]]",
+        "Expected Result": "[[RED]]The data flow for 'Betting' contract type is successfully created and listed.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Data flow creation for contract types in POS Contracts & Procedure[[/RED]]",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "[[RED]]RU 4.1.4[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.5_DATI_NETWORK_DISTRIBUTION_TC01": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "The backend system is accessible. User has permissions to view and create data flows. MDM integration is configured.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Network Distribution Data Flow",
+    "Risultato Atteso": "All required network distribution information not acquired from MDM is available via newly created data flows. Phone numbers are verified to be PoS numbers, not personal, for privacy compliance.",
+    "Title": "Verify Data Flow Creation for Network Distribution Information Not Acquired from MDM",
+    "Automation": "",
+    "Dataset": "Access to backend system and MDM integration. Example data for each field may be used for validation.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 46,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the backend system responsible for data flow management.",
+        "Expected Result": "Backend system is accessible and operational."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Check if the following information is already acquired from the Master Data Management (MDM) system: Channel, Cluster, SIMP MDM Code, ZnRice, ZnRice short, IDRICE, AM, KA, Status, Activation, Number of AWP, Last Transfer Date, ZnRice short, Zn, Rice, Concession, Sports Right, Horse Racing Right, Exercise Type, Name, Company Name, VAT Number, Owner, Address, Municipality, Hamlet, Postal Code, Province, Region, Phone 1, Phone 2, Owner Mobile, Owner Mobile 2, Email.",
+        "Expected Result": "System displays which data fields are already acquired from MDM and which are missing."
+      },
+      {
+        "Step": 3,
+        "Step Description": "For each information field not acquired from MDM, create a data flow to acquire the missing information.",
+        "Expected Result": "Data flows are created for all missing fields not already acquired from MDM."
+      },
+      {
+        "Step": 4,
+        "Step Description": "For fields Phone 1, Phone 2, Owner Mobile, and Owner Mobile 2, verify that the phone numbers correspond to the Point of Sale (PoS) and are not personal numbers, in compliance with privacy requirements.",
+        "Expected Result": "Phone numbers for the specified fields are confirmed to be PoS numbers and not personal numbers."
+      }
+    ],
+    "Funzionalità": "Data flow creation for network distribution information not present in MDM.",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.6_DAILY_DATA_FLOW": {
+    "Dispositivo": "computer",
+    "Precondizioni": "User has valid credentials and access to the backend system. At least one PoS is configured in the system.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "PoS Data Management",
+    "Risultato Atteso": "A daily data flow is created for each PoS containing the specified information: ZonaRice, Number of AWP from other concessionaires, 'NOIAG' Credits, 'NOIAG' Hopper, AWP Drawer Keys, AWP Door Keys, and AWP Coin Changer Keys.",
+    "Title": "Verify daily data flow creation for PoS information (RU 4.1.6)",
+    "Automation": "",
+    "Dataset": "List of PoS configured in the backend system. Example data fields as listed in the requirements.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 47,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the backend system responsible for managing PoS data flows.",
+        "Expected Result": "Backend system dashboard is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the process to create a daily data flow for all Points of Sale (PoS).",
+        "Expected Result": "System prompts for selection of data fields to include in the daily data flow."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Select the following data fields for inclusion: ZonaRice, Number of AWP from other concessionaires, 'NOIAG' Credits, 'NOIAG' Hopper, AWP Drawer Keys, AWP Door Keys, AWP Coin Changer Keys.",
+        "Expected Result": "All selected data fields are displayed as part of the daily data flow configuration."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Confirm and execute the creation of the daily data flow.",
+        "Expected Result": "System confirms successful creation of the daily data flow for all PoS with the selected information."
+      }
+    ],
+    "Funzionalità": "Daily data flow creation for PoS information as per RU 4.1.6",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "backend",
+    "_polarion": "RU 4.1.6",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "backend",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "italy",
+    "Author": ""
+  },
+  "RU_4.1.7_DATI_GEO": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has valid credentials and access rights to the backend system for the specified product. The system is online and operational.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "GNTN - CONTI GIOCO - CORNER",
+    "Risultato Atteso": "A new GEO data flow is created for the GNTN - CONTI GIOCO - CORNER product with all specified fields correctly populated.",
+    "Title": "Verify creation of GEO data flow for GNTN - CONTI GIOCO - CORNER product",
+    "Automation": "",
+    "Dataset": "Test data for all required GEO fields (SIGLA ZONA, NUM RICE, FIDO BASE, ESTENS. FIDO, FIDO TOTALE, FIDO CONS., PERC. FIDO CONS., FIDO RESIDUO) must be available.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 48,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the backend system for the GNTN - CONTI GIOCO - CORNER product.",
+        "Expected Result": "The backend system for the specified product is accessible."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the creation of a new GEO data flow for the product.",
+        "Expected Result": "The interface for creating a new GEO data flow is displayed."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Enter the following data fields: SIGLA ZONA, NUM RICE, FIDO BASE, ESTENS. FIDO, FIDO TOTALE, FIDO CONS., PERC. FIDO CONS., FIDO RESIDUO.",
+        "Expected Result": "All required data fields are available for input and accept valid values."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Save or submit the new GEO data flow.",
+        "Expected Result": "The GEO data flow is created and saved successfully."
+      }
+    ],
+    "Funzionalità": "GEO data flow creation for GNTN - CONTI GIOCO - CORNER product",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.8_DWH_DATA_FLOW": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has access to the DWH system with permissions to create and execute data flows. Required ticket data is available in the system.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "DWH Ticket Data Management",
+    "Risultato Atteso": "A new data flow is created in the DWH system for the specified ticket types, including all required fields, and executes successfully.",
+    "Title": "Verify DWH Data Flow Creation for Specific Ticket Types and Fields",
+    "Automation": "",
+    "Dataset": "Ticket data with various payment statuses and types as described in the steps.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 49,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the DWH system interface as a user with permissions to create data flows.",
+        "Expected Result": "DWH system interface is accessible and user is authenticated."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the creation of a new data flow for ticket data.",
+        "Expected Result": "Data flow creation interface is displayed."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Configure the data flow to include tickets that are: (a) paid in other agencies, (b) winning sports tickets not paid, and (c) winning VR tickets not paid.",
+        "Expected Result": "Data flow is configured to filter the specified ticket types."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add the following fields to the data flow: Agency Code (COD_AGENZIA), Zone (ZONA_RICE), Competence Day Code (COD_GIORNO_COMPETENZA), Cash Day Code (COD_GIORNO_CASSA), Payment Day Code (COD_GIORNO_PAGAMENTO), Payment Agency Code (COD_AGENZIA_PAGAMENTO), Payment Zone (ZONA_RICE_PAGAMENTO), Amount Played (IMP_GIOCATO), and Winning Amount (IMP_VINCITA).",
+        "Expected Result": "All specified fields are added to the data flow configuration."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Save and execute the data flow.",
+        "Expected Result": "Data flow is saved and executed without errors."
+      }
+    ],
+    "Funzionalità": "DWH data flow creation and field configuration for ticket data.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.1.8",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU 4.1.9_DATI_COMMA_6": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]User has access to the backend system with permissions to create and manage AWP data flows.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]AWP Data Management[[/RED]]",
+    "Risultato Atteso": "[[RED]]A new data flow is created with all specified AWP-related data points correctly configured and saved in the system.[[/RED]]",
+    "Title": "[[RED]]Verify Data Flow Creation for AWP Management and Metrics (RU 4.1.9, Paragraph 6)[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]No specific dataset required; use example values for each data point if needed to clarify input.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 50,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Access the system module responsible for AWP data management.[[/RED]]",
+        "Expected Result": "[[RED]]The module interface is displayed and accessible.[[/RED]]"
+      },
+      {
+        "Step": 2,
+        "Step Description": "[[RED]]Initiate the creation of a new data flow for AWP management.[[/RED]]",
+        "Expected Result": "[[RED]]A new data flow creation form or interface is presented.[[/RED]]"
+      },
+      {
+        "Step": 3,
+        "Step Description": "[[RED]]Enter or configure the following data points in the flow: - Number of AWP managed by IAG - Number of AWP managed by non-IAG - Number of third-party AWP (IAG) - Number of third-party AWP (non-IAG) - Average number of AWP YTD - Average coin per AWP - AWP ESA type[[/RED]]",
+        "Expected Result": "[[RED]]All required data fields are available and accept input as specified.[[/RED]]"
+      },
+      {
+        "Step": 4,
+        "Step Description": "[[RED]]Save or confirm the creation of the data flow.[[/RED]]",
+        "Expected Result": "[[RED]]The data flow is successfully created and the entered data is stored in the system.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]AWP data flow creation and field validation[[/RED]]",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "[[RED]]RU 4.1.9[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU 4.1.10 DATI CERVED": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]User has valid credentials and access rights to the CERVED data management system. The system is online and operational.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]CERVED Data Management[[/RED]]",
+    "Risultato Atteso": "[[RED]]Data flows for both 'CGS value' and 'Activity Status' are successfully created and visible in the CERVED data management interface.[[/RED]]",
+    "Title": "[[RED]]Verify Data Flow Creation for CGS Value and Activity Status in CERVED[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]No specific dataset required; use available configuration options in the system.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 51,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Access the CERVED data management interface.[[/RED]]",
+        "Expected Result": "[[RED]]The CERVED data management interface is displayed.[[/RED]]"
+      },
+      {
+        "Step": 2,
+        "Step Description": "[[RED]]Initiate the creation of a new data flow for 'CGS value'.[[/RED]]",
+        "Expected Result": "[[RED]]A new data flow configuration screen for 'CGS value' is presented.[[/RED]]"
+      },
+      {
+        "Step": 3,
+        "Step Description": "[[RED]]Configure the required parameters for the 'CGS value' data flow and save the configuration.[[/RED]]",
+        "Expected Result": "[[RED]]The 'CGS value' data flow is created and listed among available data flows.[[/RED]]"
+      },
+      {
+        "Step": 4,
+        "Step Description": "[[RED]]Initiate the creation of a new data flow for 'Activity Status'.[[/RED]]",
+        "Expected Result": "[[RED]]A new data flow configuration screen for 'Activity Status' is presented.[[/RED]]"
+      },
+      {
+        "Step": 5,
+        "Step Description": "[[RED]]Configure the required parameters for the 'Activity Status' data flow and save the configuration.[[/RED]]",
+        "Expected Result": "[[RED]]The 'Activity Status' data flow is created and listed among available data flows.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Data flow creation for CGS value and activity status in CERVED[[/RED]]",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "[[RED]]RU 4.1.10[[/RED]]",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.11_DATI_CONTROLLO_DI_GESTIONE": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has valid credentials and access rights to the management control data flow creation interface. The system is online and all required modules are available.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Management Control Data Flows",
+    "Risultato Atteso": "All specified data flows for Corner, Gaming Hall, and Shops are created successfully and are visible in the system.",
+    "Title": "Verify creation of management control data flows for Corner, Gaming Hall, and Shops",
+    "Automation": "",
+    "Dataset": "List of data points for Corner, Gaming Hall, and Shops as specified in the test case.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 52,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the management control data flow creation interface.",
+        "Expected Result": "The interface for creating management control data flows is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Select the 'Corner' section and create data flows for each of the following data points: ZR SHORT, Rac Sport, Rac CPS, Rac Ippica, Rac VR, Raccolta Betting, Raccolta AWP, Raccolta GNTN, Tournover tot, Net Rev Sport, Net Rev CPS, Net Rev Ippica, Net rew VR, Net Rev Betting, Net rev AWP, Net Rev GNTN, Product net revenues, Other net Rev Canone PGI/PGS, Other Net Canone My Sisal, Net Revenues tot, Fee Sport, Fee VR, Fee Betting, Fee AWP, Business Contribution, Revenues online, Revenues share online, PT online, Contribution Online, Busines Contribution post Online, Fee Lottery, Proiezione BC anno.",
+        "Expected Result": "Data flows for all specified 'Corner' data points are created successfully."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Select the 'Gaming Hall' section and create data flows for each of the following data points: ZR, Raccolta VLT, Raccolta AWP, EBITDA, Ebitda ADJ post Contrib. Online & Affitti, # AWP, # VLT.",
+        "Expected Result": "Data flows for all specified 'Gaming Hall' data points are created successfully."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Select the 'Shops' section and create data flows for each of the following data points: Zona Rice, TOT Raccolta, GL EBITDA ADJ, GL EBITDA Online, GL EBITDA ADJ Post Online, #AWP Medie, #VLT Medie.",
+        "Expected Result": "Data flows for all specified 'Shops' data points are created successfully."
+      }
+    ],
+    "Funzionalità": "Creation of management control data flows for specified business areas and data points.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.12_BA_001": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has access to the data management system and permission to create or modify data flows. MDM integration is available for field acquisition checks.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Business Analysis Data Management",
+    "Risultato Atteso": "A data flow is created and activated to collect all required business analysis fields not already acquired from MDM, ensuring phone numbers are related to the PoS and not personal numbers.",
+    "Title": "Verify Data Flow Creation for Business Analysis Fields Not Acquired from MDM",
+    "Automation": "",
+    "Dataset": "List of required business analysis fields. Access to MDM for field presence verification.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 53,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the data management interface as a user with permission to create data flows.",
+        "Expected Result": "The data management interface is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the creation of a new data flow for business analysis data.",
+        "Expected Result": "A new data flow creation form is presented."
+      },
+      {
+        "Step": 3,
+        "Step Description": "For each required field (e.g., ID RICE + date, Zona RICE, DENO, RAG SOC, comu, COD_FISC, PIVA, Mysisal, NOME AM QX-XXXX, NOME KA QX-XXXX, STATUS as of a specific date, CANALE Q1 FdV, nome AM Q1 2025, NOME KA Q1 2025, CLUSTER_PV, TIPO_PV, codice simp MDM, tipologia commerciale, N° AWP Gestione, N° AWP Solo Providing, TOT N° AWP, N° VLT, GNTN Raccolta media settimanale 2025, TITOL, Cognome Titol, Nome Titol, INDI, PROV, FRAZ, CAP, REGIONE, Telefono, Telefono 2, cell_titol, cell_titol_2, email), check if the field is already acquired from MDM.",
+        "Expected Result": "The system identifies which fields are not already acquired from MDM."
+      },
+      {
+        "Step": 4,
+        "Step Description": "For each field not acquired from MDM, configure the data flow to collect and store the field.",
+        "Expected Result": "The data flow is configured to collect and store all required fields not present in MDM."
+      },
+      {
+        "Step": 5,
+        "Step Description": "For fields Telefono, Telefono 2, cell_titol, and cell_titol_2, verify that the data collected corresponds to the PoS (Point of Sale) and not personal numbers, in compliance with privacy requirements.",
+        "Expected Result": "The system validates that phone numbers are related to the PoS and not personal numbers."
+      },
+      {
+        "Step": 6,
+        "Step Description": "Save and activate the new data flow configuration.",
+        "Expected Result": "The new data flow is saved and activated successfully."
+      }
+    ],
+    "Funzionalità": "Data flow creation for business analysis fields not present in MDM.",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.1.12",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.13_BackOffice_Albania_ContractType_Flows": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has valid credentials and access to the Back Office Albania system. The system is configured to allow creation of data flows for contract types.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Back Office Albania",
+    "Risultato Atteso": "Data flows for contract types PGS, PGI, and AWP with value 'REV' are successfully created and visible in the system.",
+    "Title": "Verify Data Flows Creation for Contract Types in Back Office Albania",
+    "Automation": "",
+    "Dataset": "No specific dataset required. Use example contract type values as indicated ('REV').",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 54,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the Back Office Albania system with valid credentials.",
+        "Expected Result": "Back Office Albania dashboard is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Navigate to the data flow management section for contract types.",
+        "Expected Result": "Data flow management interface is displayed."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Initiate the creation of a new data flow for PGS contract type with value 'REV'.",
+        "Expected Result": "Data flow for PGS contract type 'REV' is created and listed."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Initiate the creation of a new data flow for PGI contract type with value 'REV'.",
+        "Expected Result": "Data flow for PGI contract type 'REV' is created and listed."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Initiate the creation of a new data flow for AWP contract type with value 'REV'.",
+        "Expected Result": "Data flow for AWP contract type 'REV' is created and listed."
+      }
+    ],
+    "Funzionalità": "Data flow creation for contract types (PGS, PGI, AWP) in Back Office Albania.",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Albania",
+    "Author": ""
+  },
+  "RU_4.1.14_DATI_MST": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "Access to both ZENIT and MST systems with necessary permissions to configure data flows. Horse betting credit management process for SIMP-managed products is already established and documented.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Horse Betting Credit Management",
+    "Risultato Atteso": "A data flow is established between ZENIT and MST, enabling horse betting credit management as per the process used for SIMP-managed products.",
+    "Title": "Verify creation of data flow between ZENIT and MST for horse betting credit management",
+    "Automation": "",
+    "Dataset": "No specific dataset required; use available system configuration data.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 55,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Initiate the process to create a data flow between ZENIT and MST systems.",
+        "Expected Result": "The system allows initiation of a new data flow configuration between ZENIT and MST."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Configure the data flow to manage horse betting credit as per the process used for products managed by SIMP.",
+        "Expected Result": "The data flow is configured to handle horse betting credit management in the same way as for SIMP-managed products."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Save and activate the new data flow configuration.",
+        "Expected Result": "The data flow between ZENIT and MST is successfully created and activated for horse betting credit management."
+      }
+    ],
+    "Funzionalità": "Data flow creation and configuration between ZENIT and MST for horse betting credit management.",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.15_DATI_VALORIZZATORE": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has access to the valorizzatore data management interface with permissions to create and configure data flows.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Valorizzatore Data Management",
+    "Risultato Atteso": "The data flow is successfully created and retrieves all specified Borderò metrics as configured.",
+    "Title": "Verify data flow creation for retrieving Borderò metrics (RU 4.1.15)",
+    "Automation": "",
+    "Dataset": "Test environment with sample Borderò data available for retrieval.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 56,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the data management interface for the valorizzatore module.",
+        "Expected Result": "The valorizzatore data management interface is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the creation of a new data flow for Borderò metrics retrieval.",
+        "Expected Result": "A new data flow creation form is presented."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Configure the data flow to retrieve the following information: Borderò medio rolling 12 mesi, Borderò medio anno, Borderò settimanale, Numero Borderò settimanale, Periodo Contabile del Borderò settimanale.",
+        "Expected Result": "The data flow is configured with all required Borderò metrics."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Save and activate the configured data flow.",
+        "Expected Result": "The data flow is saved and activated successfully."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Verify that the data flow retrieves the expected Borderò metrics by executing a test run.",
+        "Expected Result": "The data flow returns the Borderò medio rolling 12 mesi, Borderò medio anno, Borderò settimanale, Numero Borderò settimanale, and Periodo Contabile del Borderò settimanale as configured."
+      }
+    ],
+    "Funzionalità": "Data flow creation and retrieval of Borderò metrics.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.16_DATI_ANAGRAFICI": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "The tester has access to the backend system with permissions to create and configure data flows. Requirements RU 4.1.5 and RU 4.1.12 are available for reference.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Personal Data Management",
+    "Risultato Atteso": "A data flow is created and activated that retrieves personal data as specified in requirements RU 4.1.5 and RU 4.1.12.",
+    "Title": "Verify data flow creation for retrieving personal data as per requirements RU 4.1.5 and RU 4.1.12",
+    "Automation": "",
+    "Dataset": "No specific dataset required; configuration references requirements only.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 57,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the system backend responsible for data flow management.",
+        "Expected Result": "The backend interface for data flow management is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the creation of a new data flow for retrieving personal data.",
+        "Expected Result": "A new data flow creation interface is presented."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Configure the data flow to retrieve information as specified in requirement RU 4.1.5 (Network Distribution Data).",
+        "Expected Result": "The data flow is configured to include Network Distribution Data."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Configure the data flow to retrieve information as specified in requirement RU 4.1.12 (Business Analysis Data).",
+        "Expected Result": "The data flow is configured to include Business Analysis Data."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Save and activate the configured data flow.",
+        "Expected Result": "The data flow is saved and activated successfully."
+      }
+    ],
+    "Funzionalità": "Data flow creation and configuration for personal data retrieval",
+    "Test Stage": "TEST",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.1.16",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.1.17_TC01": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User has access to the backend system with permissions to create and execute data flows. At least one PoS with terminal data exists in the system.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "PoS Data Management",
+    "Risultato Atteso": "The system successfully creates and executes a data flow that retrieves the terminal type and the number of terminals per type for each PoS.",
+    "Title": "Verify data flow creation for retrieving terminal type and count per PoS",
+    "Automation": "",
+    "Dataset": "Access credentials for backend system; PoS data with terminal information.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 58,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the backend system responsible for PoS data management.",
+        "Expected Result": "Backend system is accessible and operational."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Initiate the process to create a data flow for PoS terminal information retrieval.",
+        "Expected Result": "Data flow creation interface is displayed."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Configure the data flow to retrieve the terminal type for each PoS.",
+        "Expected Result": "Data flow is configured to extract terminal type information."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Configure the data flow to retrieve the number of terminals per type for each PoS.",
+        "Expected Result": "Data flow is configured to extract the count of terminals per type."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Save and execute the configured data flow.",
+        "Expected Result": "Data flow executes successfully and retrieves terminal type and count per PoS."
+      }
+    ],
+    "Funzionalità": "Data flow creation and terminal data retrieval for PoS.",
+    "Test Stage": "TEST",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.1.17",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU 4.2 DASHBOARD [FASE 1]": {
+    "Dispositivo": "",
+    "Precondizioni": "",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "",
+    "Risultato Atteso": "",
+    "Title": "RU 4.2 DASHBOARD [FASE 1]",
+    "Automation": "",
+    "Dataset": "",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 59,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [],
+    "Funzionalità": "",
+    "Test Stage": "",
+    "Priority": "Medium",
+    "Test Group": "",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "",
+    "Author": ""
+  },
+  "RU_4.2.1_Login_Logout_Profile_MFA": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User account with valid credentials and MFA setup is available. Application is accessible.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "User Authentication and Profile Management",
+    "Risultato Atteso": "Users can securely log in and log out using Multi-Factor Authentication, and information/search screens are consistent across user profiles.",
+    "Title": "Verify user login, logout, and profile management with Multi-Factor Authentication",
+    "Automation": "",
+    "Dataset": "Test user credentials with MFA enabled.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 60,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Navigate to the login page of the application.",
+        "Expected Result": "Login page is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Enter valid user credentials and submit the login form.",
+        "Expected Result": "System prompts for Multi-Factor Authentication (MFA)."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Complete the Multi-Factor Authentication process as prompted (e.g., enter code received via SMS or authenticator app).",
+        "Expected Result": "User is successfully logged in and redirected to the main dashboard."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Verify that the information displayed and search screens are consistent regardless of user profile.",
+        "Expected Result": "Displayed information and search screens are the same for all user profiles."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Initiate the logout process from the application.",
+        "Expected Result": "User is successfully logged out and redirected to the login page."
+      }
+    ],
+    "Funzionalità": "Login, logout, and profile management with Multi-Factor Authentication.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Desktop[[/RED]]",
+    "_polarion": "RU 4.2.1",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU-4.2.2-PROFILO-FULL-ACCESS": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User with Full Access profile exists and is provisioned via SailPoint. Access to the PoS management section is available. Bulk upload and data extraction features are enabled. Dispositive modifications are not yet implemented.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "User Profile Management",
+    "Risultato Atteso": "User with Full Access profile can consult, modify (as permitted), extract, and perform bulk uploads in the PoS management section. Access authorizations for OPERATOR and CONSULTANT profiles are managed via SailPoint and not directly by the user in ZENIT.",
+    "Title": "Verify Full Access Profile Permissions and Operations",
+    "Automation": "",
+    "Dataset": "Test user credentials with Full Access profile. Example PoS data for consultation, modification, extraction, and bulk upload.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 61,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Log in to the application as a user with the Full Access profile.",
+        "Expected Result": "User is successfully logged in and the Full Access profile is active."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Navigate to the PoS management section.",
+        "Expected Result": "All PoS management options are visible to the user."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Attempt to consult all available data in the PoS management section.",
+        "Expected Result": "User can view all data without restrictions."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Attempt to perform all modification actions permitted for PoS management (excluding dispositive modifications, which are not yet implemented).",
+        "Expected Result": "User can successfully perform all available modification actions for PoS management."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Attempt to extract all available data from the PoS management section.",
+        "Expected Result": "User can extract all data without restrictions."
+      },
+      {
+        "Step": 6,
+        "Step Description": "Attempt to perform a bulk upload operation in the PoS management section.",
+        "Expected Result": "Bulk upload operation is available and can be performed successfully."
+      },
+      {
+        "Step": 7,
+        "Step Description": "Verify that access authorizations for OPERATOR and CONSULTANT profiles are managed via SailPoint and not directly by the user in ZENIT.",
+        "Expected Result": "Access authorizations for OPERATOR and CONSULTANT profiles are managed through SailPoint, and users cannot modify these permissions directly in ZENIT."
+      }
+    ],
+    "Funzionalità": "Full Access profile permissions and operations for PoS management.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU-4.2.2",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.2.3_PROFILE_CONSULTATORE": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "A user account with the 'Consultatore' profile exists and is active. The user has access to the application.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "User Profile Management",
+    "Risultato Atteso": "The 'Consultatore' profile can only view and extract data within the permitted limitations. Any restricted data or extraction actions are blocked or hidden as per the profile's configuration.",
+    "Title": "Consultatore Profile: Data Consultation and Extraction Limitations",
+    "Automation": "",
+    "Dataset": "Valid 'Consultatore' user credentials.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 62,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Log in to the application as a user with the 'Consultatore' profile.",
+        "Expected Result": "The user is successfully logged in and the dashboard is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Navigate to the data consultation section.",
+        "Expected Result": "The data consultation interface is displayed with visible data fields."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Attempt to view data that should be restricted for the 'Consultatore' profile.",
+        "Expected Result": "Restricted data is not visible or access is denied according to the profile's limitations."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Attempt to extract data from the consultation section.",
+        "Expected Result": "Data extraction is either limited or denied according to the 'Consultatore' profile's permissions."
+      }
+    ],
+    "Funzionalità": "Profile-based data access and extraction limitations",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.2.3",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.2.4_OP_PROFILE_VIEW_LIMIT": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "Operator user exists with a profile configured to have limited data consultation permissions. The system is accessible and operational.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Operator Profile Management",
+    "Risultato Atteso": "Operator can consult data, but only within the limitations defined by the operator profile. Data outside the permitted scope is not visible.",
+    "Title": "Operator Profile: Data Consultation with View Limitations",
+    "Automation": "",
+    "Dataset": "Operator credentials with restricted profile permissions.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 63,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Log in to the system as an operator user with restricted profile permissions.",
+        "Expected Result": "Operator dashboard is displayed with access limited to permitted functionalities."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Navigate to the data consultation section available to the operator profile.",
+        "Expected Result": "Data consultation interface is displayed with visible data limited according to operator profile restrictions."
+      }
+    ],
+    "Funzionalità": "Operator profile data consultation with view limitations.",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.2.4",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backoffice[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.2.5_SCHERMATA_ACCESSO_Ricerca": {
+    "Dispositivo": "Computer",
+    "Precondizioni": "User has valid credentials and access to the ZENIT application. The application is available and reachable. User is authorized to perform searches and access the 'Report' section.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "ZENIT Access Screen",
+    "Risultato Atteso": "After login, all specified search fields are displayed, searches can be performed with any single field, all search types are available, and the 'Report' section is accessible from the Access (Ricerca) screen.",
+    "Title": "Verify Search Fields Displayed After Login in ZENIT Access Screen",
+    "Automation": "",
+    "Dataset": "Valid user credentials. No specific test data required for search fields as any single field can be used for search.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 64,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Log in to the ZENIT application with valid credentials.",
+        "Expected Result": "User is successfully logged in and redirected to the Access (Ricerca) screen."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Observe the search fields displayed on the Access (Ricerca) screen.",
+        "Expected Result": "The following search fields are visible: ID RICE, ZONA RICE, VAT Number, Tax Code of Owner, Company Name, Trade Name (Sign), CLUSTER_PV, CHANNEL I, CHANNEL II, Municipality."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Verify that it is possible to perform a search by filling in only one of the available fields and initiating the search.",
+        "Expected Result": "The system returns results matching the entered field, which may include a single Point of Sale or multiple Points of Sale with the specified characteristics."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Verify that the search types available are: Single, Multiple, and Linked Points of Sale.",
+        "Expected Result": "The search type options 'Single', 'Multiple', and 'Linked Points of Sale' are available for selection."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Check for the presence of a navigation option to access the 'Report' section from the Access (Ricerca) screen.",
+        "Expected Result": "A navigation option to the 'Report' section is present on the Access (Ricerca) screen."
+      }
+    ],
+    "Funzionalità": "Search functionality and navigation on the ZENIT Access (Ricerca) screen.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "Desktop",
+    "_polarion": "RU_4.2.5",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "Web",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.2.6_Single_Search_Result_Display": {
+    "Dispositivo": "Computer",
+    "Precondizioni": "User is authenticated and has access to the single search functionality. At least one record exists that will return a single result when searched.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Single Search Result Display",
+    "Risultato Atteso": "All required fields are displayed in the single search result, and the option to extract the displayed data is present.",
+    "Title": "Verify single search result displays all required fields and allows data extraction",
+    "Automation": "",
+    "Dataset": "Valid search criteria that will return a single result (example: unique identifier).",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 65,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Perform a single search for a record using the search functionality.",
+        "Expected Result": "The application navigates to the single search result details screen."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Observe the details displayed on the result screen.",
+        "Expected Result": "The following fields are displayed: id rice, zona rice, denomination, location, channel I, channel II, total number of AWP, total number of VLT, average coin in, average BC rolling 12 months, average BC current year, guarantees present, AM, KA, Cerved scoring, number of unpaid rolling 12 months, number of unpaid current year, red list (Yes/No), credit (single row total with indication of number of accounting slips), reminder block (single row), credit limits set for PoS, credit limit consumption, available cash at point of sale."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Check for the presence of a data extraction option on the result screen.",
+        "Expected Result": "An option to extract the displayed data is available."
+      }
+    ],
+    "Funzionalità": "Display of all required fields and data extraction option in single search result.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "Backend",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "Backoffice",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.2.7_TC01": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User is logged in and has access to the report and management section. Application is in Phase 1, where only the 'Export to Excel' button should be present.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Report and Management Section",
+    "Risultato Atteso": "The 'Export to Excel' button is present and visible in the report and management section during Phase 1.",
+    "Title": "Verify presence of 'Export to Excel' button in report and management section (Phase 1)",
+    "Automation": "",
+    "Dataset": "No specific data required; access to the section is sufficient.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 66,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Navigate to the report and management section of the application.",
+        "Expected Result": "The report and management section is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Check for the presence of the 'Export to Excel' button.",
+        "Expected Result": "The 'Export to Excel' button is visible in the report and management section."
+      }
+    ],
+    "Funzionalità": "Export report data to Excel",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Desktop[[/RED]]",
+    "_polarion": "RU 4.2.7",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.2.8_MultiPoS_Search": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "User is authenticated and has access to the search (access) screen. There are multiple PoS records in the system that match the search criteria, including closed PoS. Geographical search is not used.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "ZENIT PoS Management",
+    "Risultato Atteso": "The system displays all PoS matching the search criteria in a table with the total count, allows export to Excel, and enables selection of a single PoS for detailed view.",
+    "Title": "Verify multiple PoS results and Excel export after search from access screen",
+    "Automation": "",
+    "Dataset": "Valid user credentials; search criteria that return multiple PoS, including closed PoS.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 67,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the application and navigate to the search (access) screen.",
+        "Expected Result": "The search (access) screen is displayed."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Perform a search that is expected to return multiple PoS (Points of Sale) results.",
+        "Expected Result": "A list of PoS matching the search criteria is displayed in a tabular format, including closed PoS, with the total number of PoS indicated. Geographical search is excluded."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Verify that the displayed table contains a minimum set of data for each PoS.",
+        "Expected Result": "Each PoS row in the table displays the required minimum data set."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click the option to export the displayed PoS data to an Excel file.",
+        "Expected Result": "The data currently displayed in the table is exported and downloaded as an Excel file."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Select a specific PoS from the list.",
+        "Expected Result": "The application navigates to the single PoS details (Riscontro Singolo) screen for the selected PoS."
+      }
+    ],
+    "Funzionalità": "Multiple PoS search results, tabular display, Excel export, and navigation to single PoS details.",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.2.8",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "TC-429-01": {
+    "Dispositivo": "computer",
+    "Precondizioni": "At least one POS exists in the system with one or more linked POS based on the specified association fields. The tester has access to the backend interface and valid credentials to perform the request.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "POS Management",
+    "Risultato Atteso": "When requesting information for a POS, all related data is retrieved, any linked POS are displayed, the association field is indicated, and each linked POS is selectable.",
+    "Title": "Verify retrieval and display of linked POS information with association field indication",
+    "Automation": "",
+    "Dataset": "POS records with known associations based on the specified fields (no hardcoded values; use example data if needed for clarification).",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 68,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Request information for a specific POS using a unique identifier (e.g., POS ID or RICE ID) via the backend interface.",
+        "Expected Result": "All data related to the requested POS is retrieved as specified in RU 4.2.6."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Check the response for the presence of any linked POS based on the following fields: VAT number of POS, Tax code of POS, Holder's name, Holder's VAT number, Holder's tax code, Email, Company name, Denomination.",
+        "Expected Result": "Any linked POS are listed in the response, and the specific field that generated the association is clearly indicated for each linked POS."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Verify that each linked POS in the response can be selected for further operations (e.g., navigation or data retrieval).",
+        "Expected Result": "Each linked POS is selectable in the interface or via the backend operation."
+      }
+    ],
+    "Funzionalità": "Linked POS retrieval and association field indication",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "backend",
+    "_polarion": "RU 4.2.9",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "backend",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "RU_4.2.10_POS_Report_Excel_Button": {
+    "Dispositivo": "Computer",
+    "Precondizioni": "User has access to the ZENIT application and the POS reports section. The system is in Phase 1, where only the 'Export to Excel' button is available for reports.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "ZENIT POS Reports",
+    "Risultato Atteso": "The 'Export to Excel' button is present in the POS reports section and allows immediate export of the report in Excel format.",
+    "Title": "Verify presence and functionality of 'Export to Excel' button for POS reports in ZENIT (Phase 1)",
+    "Automation": "",
+    "Dataset": "Valid user credentials with access to POS reports. Example POS report data available for export.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 69,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Log in to the ZENIT application with valid credentials.",
+        "Expected Result": "User is successfully logged into the ZENIT application."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Navigate to the section where POS reports are available.",
+        "Expected Result": "The POS reports section is displayed."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Locate the 'Export to Excel' button in the POS reports section.",
+        "Expected Result": "The 'Export to Excel' button is visible in the POS reports section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click the 'Export to Excel' button.",
+        "Expected Result": "The POS report is immediately downloaded in Excel format."
+      }
+    ],
+    "Funzionalità": "POS report export functionality",
+    "Test Stage": "UAT",
+    "Priority": "High",
+    "Test Group": "Desktop",
+    "_polarion": "RU 4.2.10",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "Web",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "4.3 STORICO DATI [FASE 1]": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "[[RED]]User is authenticated and has access to the Data History section.[[/RED]]",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "[[RED]]Data Management[[/RED]]",
+    "Risultato Atteso": "[[RED]]The user can view the data history records in the Data History section.[[/RED]]",
+    "Title": "[[RED]]View Data History - Phase 1[[/RED]]",
+    "Automation": "",
+    "Dataset": "[[RED]]Test user with existing data history records.[[/RED]]",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 70,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "[[RED]]Navigate to the Data History section in the application.[[/RED]]",
+        "Expected Result": "[[RED]]The Data History page is displayed.[[/RED]]"
+      },
+      {
+        "Step": 2,
+        "Step Description": "[[RED]]Verify that the data history records are visible and correctly listed.[[/RED]]",
+        "Expected Result": "[[RED]]The data history records are displayed with correct details.[[/RED]]"
+      }
+    ],
+    "Funzionalità": "[[RED]]Data History Viewing[[/RED]]",
+    "Test Stage": "[[RED]]UAT[[/RED]]",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Web[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "TC-ARCH-001": {
+    "Dispositivo": "[[RED]]Computer[[/RED]]",
+    "Precondizioni": "System is live and configured for daily data archival. The 'ZENIT - elenco dati' file is available and correctly referenced by the system. Test PoS and product data are present in the system.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Data Archiving",
+    "Risultato Atteso": "The system archives a complete and accurate daily snapshot of all required data at 00:00, and allows future queries on historical data as specified.",
+    "Title": "Verify daily archival of data with historical snapshots at 00:00",
+    "Automation": "",
+    "Dataset": "Test PoS and product data as per 'ZENIT - elenco dati' file.",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 71,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Ensure the system date and time is set to just before 00:00.",
+        "Expected Result": "System is ready to perform daily archival at 00:00."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Wait until the system time reaches 00:00.",
+        "Expected Result": "System triggers the archival process for the previous day's data."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Verify that a snapshot of all required data, as specified in the 'ZENIT - elenco dati' file, is archived for the previous day.",
+        "Expected Result": "A complete and accurate snapshot of the previous day's data is archived according to the specified frequency."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Query the archived data for a specific PoS and product for a given day.",
+        "Expected Result": "The system returns the correct historical data for the selected PoS and product for the specified day."
+      }
+    ],
+    "Funzionalità": "Daily data archival and historical snapshot creation.",
+    "Test Stage": "[[RED]]TEST[[/RED]]",
+    "Priority": "High",
+    "Test Group": "[[RED]]Backend[[/RED]]",
+    "_polarion": "RU 4.3.1",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]Backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  },
+  "TC-432-01": {
+    "Dispositivo": "[[RED]]computer[[/RED]]",
+    "Precondizioni": "User has access to Zenit with permissions to import POS data. The POS data file is prepared according to the required format.",
+    "Test di no regression": "",
+    "Type": "Test Case",
+    "Project": "",
+    "Tipologia Test": "functional",
+    "Note": "",
+    "Modalità Operativa": "Manual",
+    "Analysis": "",
+    "Sistema di riferimento": "Zenit POS Data Management",
+    "Risultato Atteso": "The POS data file is successfully imported into Zenit, and the data is available for further management or modification.",
+    "Title": "Import POS Data File for Offline POS Archiving in Zenit",
+    "Automation": "",
+    "Dataset": "POS data file with required fields (example data can be provided if needed).",
+    "Volatility": "",
+    "Team Ownership Note": "",
+    "#": 72,
+    "Execution Time": "",
+    "Assignee(s)": "",
+    "Requires Script Maintenance": "",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Prepare a data file containing POS information with the required fields: ID RICE, ZONA RICE, DENOMINAZIONE, RAGIONE SOCIALE, INDIRIZZO, COMUNE, P.IVA, COD. FISCALE, IMPORTO CREDITO, STATUS, PASSAGGIO A PERDITA.",
+        "Expected Result": "A data file with the specified fields is available for import."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Access the Zenit application as a user with permissions to import POS data.",
+        "Expected Result": "Zenit application dashboard is displayed and user is authenticated."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Navigate to the POS data import section in Zenit.",
+        "Expected Result": "POS data import interface is displayed."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Upload the prepared POS data file through the import interface.",
+        "Expected Result": "The file is successfully uploaded and recognized by the system."
+      },
+      {
+        "Step": 5,
+        "Step Description": "Initiate the import process for the uploaded file.",
+        "Expected Result": "The system processes the file and imports the POS data. A confirmation message is displayed indicating successful import."
+      }
+    ],
+    "Funzionalità": "POS data import and archiving for offline POS.",
+    "Test Stage": "UAT",
+    "Priority": "Medium",
+    "Test Group": "[[RED]]backend[[/RED]]",
+    "_polarion": "RU 4.3.2",
+    "Dev Complexity": "",
+    "Team Ownership": "",
+    "Canale": "[[RED]]backend[[/RED]]",
+    "Developed": "",
+    "Coverage": "",
+    "Country": "Italy",
+    "Author": ""
+  }
+}

@@ -82,7 +82,7 @@ async def gen_TC(paragraph, results):
 
 def add_new_TC(new_TC, original_excel):
 
-    new_TC_list = [tc for tc in new_TC_list if tc is not None]
+    new_TC_list = [tc for tc in new_TC if tc is not None]
 
     if not new_TC_list:
         print("Nessun nuovo TC da aggiungere (tutti i requirement sono già coperti)")
