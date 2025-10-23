@@ -63,6 +63,7 @@ async def main():
 
     updated_json=add_new_TC(new_TC, dic)
     save_updated_json(updated_json, output_path='updated_test_cases.json')
+    
 
 
 if __name__ == "__main__":

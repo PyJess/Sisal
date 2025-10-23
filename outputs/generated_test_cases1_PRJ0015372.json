@@ -1,0 +1,239 @@
+{
+  "test_cases": [
+    {
+      "Title": "Successful User Login with Valid Credentials",
+      "ID": "TC-001",
+      "Steps": [
+        {
+          "Step": 1,
+          "Step Description": "Open the Zenit application on the mobile device.",
+          "Expected Result": "The application launches and displays the login screen."
+        },
+        {
+          "Step": 2,
+          "Step Description": "Enter a valid username and password into the respective fields.",
+          "Expected Result": "The username and password fields accept the input."
+        },
+        {
+          "Step": 3,
+          "Step Description": "Tap the 'Login' button.",
+          "Expected Result": "The system authenticates the credentials and navigates the user to the home/dashboard screen."
+        }
+      ],
+      "Test Group": "Mobile IOS",
+      "Channel": "App IOS",
+      "Device": "Smartphone",
+      "Priority": "High",
+      "Test Stage": "UAT",
+      "Reference System": "Authentication Module",
+      "Preconditions": "User has a registered account with valid credentials. The mobile device is connected to the internet.",
+      "Execution Mode": "Manual",
+      "Functionality": "User Authentication",
+      "Test Type": "functional",
+      "No Regression Test": true,
+      "Automation": true,
+      "Dataset": "Valid username and password (e.g., user1@example.com / Password123)",
+      "Expected Result": "User is successfully logged in and redirected to the home/dashboard screen.",
+      "Country": "Italy",
+      "Type": "Test Case",
+      "Partial Coverage Description": "",
+      "_polarion": "RU_ZENIT_V_0.4_FASE_1-REQ-LOGIN"
+    },
+    {
+      "Title": "Login Attempt with Invalid Credentials",
+      "ID": "TC-002",
+      "Steps": [
+        {
+          "Step": 1,
+          "Step Description": "Open the Zenit application on the mobile device.",
+          "Expected Result": "The application launches and displays the login screen."
+        },
+        {
+          "Step": 2,
+          "Step Description": "Enter an invalid username and/or password into the respective fields.",
+          "Expected Result": "The username and password fields accept the input."
+        },
+        {
+          "Step": 3,
+          "Step Description": "Tap the 'Login' button.",
+          "Expected Result": "The system displays an error message indicating invalid credentials and remains on the login screen."
+        }
+      ],
+      "Test Group": "Mobile Android",
+      "Channel": "App Android",
+      "Device": "Smartphone",
+      "Priority": "High",
+      "Test Stage": "UAT",
+      "Reference System": "Authentication Module",
+      "Preconditions": "User does not have valid credentials. The mobile device is connected to the internet.",
+      "Execution Mode": "Manual",
+      "Functionality": "User Authentication",
+      "Test Type": "functional",
+      "No Regression Test": true,
+      "Automation": true,
+      "Dataset": "Invalid username and/or password (e.g., user1@example.com / WrongPass)",
+      "Expected Result": "User is not logged in. An error message is displayed, and the login screen remains visible.",
+      "Country": "Italy",
+      "Type": "Test Case",
+      "Partial Coverage Description": "",
+      "_polarion": "RU_ZENIT_V_0.4_FASE_1-REQ-LOGIN"
+    },
+    {
+      "Title": "Password Recovery Flow - Valid Email",
+      "ID": "TC-003",
+      "Steps": [
+        {
+          "Step": 1,
+          "Step Description": "Open the Zenit application and navigate to the login screen.",
+          "Expected Result": "The login screen is displayed."
+        },
+        {
+          "Step": 2,
+          "Step Description": "Tap the 'Forgot Password?' link.",
+          "Expected Result": "The password recovery screen is displayed."
+        },
+        {
+          "Step": 3,
+          "Step Description": "Enter a registered email address and submit the request.",
+          "Expected Result": "A confirmation message is displayed indicating that a password reset email has been sent."
+        }
+      ],
+      "Test Group": "Mobile IOS",
+      "Channel": "App IOS",
+      "Device": "Smartphone",
+      "Priority": "Medium",
+      "Test Stage": "UAT",
+      "Reference System": "Authentication Module",
+      "Preconditions": "User has a registered account with a valid email address. The device is connected to the internet.",
+      "Execution Mode": "Manual",
+      "Functionality": "Password Recovery",
+      "Test Type": "functional",
+      "No Regression Test": true,
+      "Automation": true,
+      "Dataset": "Registered email address (e.g., user1@example.com)",
+      "Expected Result": "A password reset email is sent to the provided address, and the user is informed accordingly.",
+      "Country": "Italy",
+      "Type": "Test Case",
+      "Partial Coverage Description": "",
+      "_polarion": "RU_ZENIT_V_0.4_FASE_1-REQ-PASSWORD-RECOVERY"
+    },
+    {
+      "Title": "Password Recovery Flow - Unregistered Email",
+      "ID": "TC-004",
+      "Steps": [
+        {
+          "Step": 1,
+          "Step Description": "Open the Zenit application and navigate to the login screen.",
+          "Expected Result": "The login screen is displayed."
+        },
+        {
+          "Step": 2,
+          "Step Description": "Tap the 'Forgot Password?' link.",
+          "Expected Result": "The password recovery screen is displayed."
+        },
+        {
+          "Step": 3,
+          "Step Description": "Enter an unregistered email address and submit the request.",
+          "Expected Result": "An error message is displayed indicating that the email address is not recognized."
+        }
+      ],
+      "Test Group": "Mobile Android",
+      "Channel": "App Android",
+      "Device": "Smartphone",
+      "Priority": "Medium",
+      "Test Stage": "UAT",
+      "Reference System": "Authentication Module",
+      "Preconditions": "User does not have an account with the provided email address. The device is connected to the internet.",
+      "Execution Mode": "Manual",
+      "Functionality": "Password Recovery",
+      "Test Type": "functional",
+      "No Regression Test": true,
+      "Automation": true,
+      "Dataset": "Unregistered email address (e.g., notregistered@example.com)",
+      "Expected Result": "No password reset email is sent. The user is informed that the email address is not recognized.",
+      "Country": "Italy",
+      "Type": "Test Case",
+      "Partial Coverage Description": "",
+      "_polarion": "RU_ZENIT_V_0.4_FASE_1-REQ-PASSWORD-RECOVERY"
+    },
+    {
+      "Title": "Session Timeout After Inactivity",
+      "ID": "TC-005",
+      "Steps": [
+        {
+          "Step": 1,
+          "Step Description": "Log in to the Zenit application with valid credentials.",
+          "Expected Result": "User is logged in and navigated to the home/dashboard screen."
+        },
+        {
+          "Step": 2,
+          "Step Description": "Remain inactive (do not interact with the app) for the configured session timeout period (e.g., 15 minutes).",
+          "Expected Result": "The session remains active until the timeout period elapses."
+        },
+        {
+          "Step": 3,
+          "Step Description": "Observe the application after the timeout period.",
+          "Expected Result": "The user is automatically logged out and redirected to the login screen with a session timeout message."
+        }
+      ],
+      "Test Group": "Mobile IOS",
+      "Channel": "App IOS",
+      "Device": "Smartphone",
+      "Priority": "Medium",
+      "Test Stage": "UAT",
+      "Reference System": "Session Management",
+      "Preconditions": "User is logged in. The session timeout is configured (e.g., 15 minutes).",
+      "Execution Mode": "Manual",
+      "Functionality": "Session Timeout",
+      "Test Type": "functional",
+      "No Regression Test": true,
+      "Automation": false,
+      "Dataset": "Valid user credentials",
+      "Expected Result": "User is logged out after inactivity and redirected to the login screen with an appropriate message.",
+      "Country": "Italy",
+      "Type": "Test Case",
+      "Partial Coverage Description": "",
+      "_polarion": "RU_ZENIT_V_0.4_FASE_1-REQ-SESSION-TIMEOUT"
+    },
+    {
+      "Title": "Login Attempt with Empty Fields",
+      "ID": "TC-006",
+      "Steps": [
+        {
+          "Step": 1,
+          "Step Description": "Open the Zenit application on the mobile device.",
+          "Expected Result": "The application launches and displays the login screen."
+        },
+        {
+          "Step": 2,
+          "Step Description": "Leave the username and password fields empty.",
+          "Expected Result": "The fields remain empty."
+        },
+        {
+          "Step": 3,
+          "Step Description": "Tap the 'Login' button.",
+          "Expected Result": "The system displays an error message indicating that both fields are required."
+        }
+      ],
+      "Test Group": "Mobile IOS",
+      "Channel": "App IOS",
+      "Device": "Smartphone",
+      "Priority": "Medium",
+      "Test Stage": "UAT",
+      "Reference System": "Authentication Module",
+      "Preconditions": "None. The application is installed and accessible.",
+      "Execution Mode": "Manual",
+      "Functionality": "User Authentication",
+      "Test Type": "functional",
+      "No Regression Test": true,
+      "Automation": true,
+      "Dataset": "No input required",
+      "Expected Result": "User is not logged in. An error message is displayed indicating that both fields are required.",
+      "Country": "Italy",
+      "Type": "Test Case",
+      "Partial Coverage Description": "",
+      "_polarion": "RU_ZENIT_V_0.4_FASE_1-REQ-LOGIN"
+    }
+  ],
+  "total_count": 6
+}

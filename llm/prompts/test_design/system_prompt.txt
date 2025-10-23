@@ -21,7 +21,7 @@ Each test case must include the following fields:
 - Test Data: Input values or parameters (include explicit examples when possible).
 - Steps to Execute: Numbered, clear, step-by-step instructions for the tester.
 - Expected Result: The correct outcome if the system behaves as expected.
-- Priority / Severity (optional): Indicate test importance or impact (e.g., High, Medium, Low).
+- Priority / Severity (optional): Indicate test importance or impact (e.g., High, Medium, Low). Avoid marking too many tests as High. Reserve High priority/severity only for cases that directly affect critical system functionality, user safety, or compliance.
 
 Quality Expectations
 Clarity: Test steps and expected results must be precise and unambiguous.

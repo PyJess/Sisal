@@ -22,6 +22,7 @@ embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 
 
+
 async def prepare_prompt(input: Dict, context:str, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
     """Prepare prompt for the LLM"""
 
@@ -56,7 +57,10 @@ async def gen_TC(paragraph, context, mapping):
 
 
 def create_vectordb(paragraph, vectorstore, k=3, similarity_threshold=0.75):
-    docs_found = vectorstore.similarity_search_with_score(paragraph, k)
+    # Extract text content from paragraph if it's a Document object
+    query_text = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
+    
+    docs_found = vectorstore.similarity_search_with_score(query_text, k)
 
     closest_test=[]
     if docs_found:
@@ -118,16 +122,52 @@ async def process_paragraphs(paragraphs, vectorstore, mapping):
     return new_TC
 
 
+def extract_text_from_chunks(chunks):
+    """
+    Extract text content from chunks, handling both Document objects and strings.
+    Returns a flat list of strings suitable for FAISS.from_texts()
+    """
+    text_chunks = []
+    
+    for chunk in chunks:
+        # Handle Document objects with page_content attribute
+        if hasattr(chunk, 'page_content'):
+            text = chunk.page_content
+        # Handle string chunks
+        elif isinstance(chunk, str):
+            text = chunk
+        # Handle other types by converting to string
+        else:
+            text = str(chunk)
+        
+        # Only add non-empty text chunks
+        if text and text.strip():
+            text_chunks.append(text.strip())
+    
+    return text_chunks
+
+
 async def main():
 
-    input_path= os.path.join(os.path.dirname(__file__), "..", "input","RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
+    #input_path= os.path.join(os.path.dirname(__file__), "..", "input","2ESEMPI Requirement",  "2ESEMPI Requirement","PRJ0015372 - ZENIT Phase 1 - FA - Rev 1.0.docx")
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input", "2ESEMPI Requirement","2ESEMPI Requirement","RU_ZENIT_V_0.4_FASE_1 (1).docx")
     print(os.path.dirname(input_path))
     paragraphs=process_docx(input_path, os.path.dirname(input_path))
 
-    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
+    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "2ESEMPI Requirement","2ESEMPI Requirement","RU_ZENIT_V_0.4_FASE_1 (1).docx")
     chunks = process_docx(input_path, os.path.dirname(rag_path))
+    
+    # FIX: Extract text content from chunks before passing to FAISS
+    print(f"Processing chunks: {len(chunks)} items")
+    text_chunks = extract_text_from_chunks(chunks)
+    print(f"Extracted {len(text_chunks)} text chunks for embeddings")
+    
+    # Verify we have valid text chunks
+    if not text_chunks:
+        raise ValueError("No valid text chunks found for creating vector store")
+    
     embeddings = OpenAIEmbeddings(model=embedding_model)
-    vectorstore = FAISS.from_texts(chunks, embeddings)
+    vectorstore = FAISS.from_texts(text_chunks, embeddings)
 
     mapping = extract_field_mapping()
     #vectorstore = None
@@ -147,17 +187,12 @@ async def main():
     
     print(f"\n Total test cases updated: {len(updated_json['test_cases'])}")
 
-    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases3.json")
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases1_PRJ0015372.json")
     save_updated_json(updated_json, output_path)
     #json_to_excel = fill_excel_file(updated_json)
-    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases3.xlsx"))
+    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases_PRJ0015372.xlsx"))
 
 
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-
-
-
-

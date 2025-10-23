@@ -138,3 +138,93 @@ def process_docx(docx_path, output_base):
         chunks.append(chunk_text)
     
     return chunks
+
+
+import json
+import pandas as pd
+import os
+from openpyxl import load_workbook
+
+
+def convert_json_to_excel(json_data, output_path):
+    """
+    Converte il JSON con test_cases in un file Excel,
+    con gli step su righe separate (stile Polarion)
+    """
+    
+    # Definisci colonne finali
+    columns = [
+        'Title', 'ID', '#', 'Test Group', 'Channel', 'Device', 
+        'Priority', 'Test Stage', 'Reference System', 
+        'Preconditions', 'Execution Mode', 'Functionality', 
+        'Test Type', 'No Regression Test', 'Automation',
+        'Dataset', 'Expected Result', 
+        'Step', 'Step Description', 'Step Expected Result',
+        'Country', 'Project', 'Author', 'Assignee(s)', 'Type', 
+        'Partial Coverage Description', '_polarion',
+        'Analysis', 'Coverage', 'Dev Complexity', 'Execution Time', 
+        'Volatility', 'Developed', 'Note', 'Team Ownership', 
+        'Team Ownership Note', 'Requires Script Maintenance'
+    ]
+
+    rows = []
+    
+    # Estrai l'array test_cases dal JSON
+    test_cases = json_data.get('test_cases', [])
+    counter=1
+    
+    for tc_data in test_cases:
+        steps = tc_data.get('Steps', [])
+        
+        # Se non ci sono step, crea una riga vuota
+        if not steps:
+            steps = [{}]
+        
+        first = True
+        for step in steps:
+            row = {}
+
+            # Prima riga: compila tutti i campi del test case
+            if first:
+                for col in columns:
+                    if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                        row[col] = tc_data.get(col, '')
+                row['#'] = counter
+                counter += 1
+                first = False
+            else:
+                # Righe successive: lascia vuoti i campi del test case
+                for col in columns:
+                    if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                        row[col] = ''
+
+            # Compila i campi dello step
+            row['Step'] = step.get('Step', '')
+            row['Step Description'] = step.get('Step Description', '')
+            row['Step Expected Result'] = step.get('Expected Result', '')
+            
+            rows.append(row)
+
+    # Crea DataFrame
+    df = pd.DataFrame(rows, columns=columns)
+
+    # Salva Excel
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    df.to_excel(output_path, index=False)
+    
+    # Opzionale: formatta il file Excel
+    wb = load_workbook(output_path)
+    ws = wb.active
+    
+    # Auto-adatta larghezza colonne (opzionale)
+    for column in ws.columns:
+        max_length = 0
+        column_letter = column[0].column_letter
+        for cell in column:
+            if cell.value:
+                max_length = max(max_length, len(str(cell.value)))
+        adjusted_width = min(max_length + 2, 50)
+        ws.column_dimensions[column_letter].width = adjusted_width
+    
+    wb.save(output_path)
+    print(f"Excel salvato: {output_path}")

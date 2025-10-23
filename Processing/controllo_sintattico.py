@@ -143,7 +143,7 @@ def fill_excel_file(test_cases: dict):
     df = pd.DataFrame(rows, columns=columns)
 
 
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI_second.xlsx")
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI.xlsx")
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
 
     df.to_excel(excel_path, index=False)
@@ -157,14 +157,14 @@ def fill_excel_file(test_cases: dict):
                 apply_red_text(cell)
 
     wb.save(excel_path)
-    print(f"✅ Excel salvato con testi rossi: {excel_path}")
+    print(f"Excel salvato con testi rossi: {excel_path}")
 
 
 async def main():
     mapping = extract_field_mapping()
     print("finishing mapping")
     
-    input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")
+    input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases_modified.xlsx")
     dic = excel_to_json(input_path) 
     print("finishing excel to json")
  
@@ -184,7 +184,7 @@ async def main():
     print(f"Merged result: {merged_results}")
     
     fill_excel_file(merged_results)
-    print("✅ File Excel generato con successo!")
+    print("File Excel generato con successo!")
 
 
 
