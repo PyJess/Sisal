@@ -252,3 +252,34 @@ def fill_excel_file(test_cases: dict, output_path: str = None):
 
     wb.save(output_path)
     print(f"✅ Excel salvato con testi rossi: {output_path}")
+
+
+
+def prepare_test_texts(df):
+    """
+    Combina i campi di ogni test case in un unico testo da usare per embedding o LLM.
+    df: DataFrame Pandas con colonne tipo Title, Step, Step Description, Expected Result, Preconditions, Funzionalità, Device.
+    """
+    test_texts = []
+    
+    for idx, row in df.iterrows():
+        # Costruisci testo degli step
+        step_num = row.get("Step", "")
+        step_desc = row.get("Step Description", "")
+        expected = row.get("Expected Result", "")
+        steps_text = f"Step {step_num}: {step_desc}. Expected: {expected}. "
+        
+        # Combina tutto in un unico testo
+        combined_text = (
+            f"Title: {row.get('Title','')}. "
+            f"Functionality: {row.get('Funzionalità','')}. "
+            f"Preconditions: {row.get('Preconditions','')}. "
+            f"Steps: {steps_text}"
+        )
+        
+        test_texts.append({
+            "id": row.get("ID", idx),
+            "text": combined_text
+        })
+    
+    return test_texts
