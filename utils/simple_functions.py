@@ -119,11 +119,13 @@ def process_docx(docx_path, output_base):
             headers.append([clean_name, index, level])
             heading_list.append([clean_name, level])
     
+    
     headers.insert(0, ["== first line ==", 0, 0])
     headers.append(["== last line ==", len(text_lines), 0])
     heading_list.insert(0, ["== first line ==", 0])
     heading_list.append(["== last line ==", 0])
     
+    head=[]
     chunks = []
     for i in range(len(headers) - 1):
         start_idx = headers[i][1]
@@ -134,10 +136,13 @@ def process_docx(docx_path, output_base):
         header_cleaned = re.sub(r"\s*\{.*?\}", "", headers[i][0])
         header_cleaned = header_cleaned.replace("--", "–").strip(" *[]\n")
         chunk_text = header_cleaned + "\n" + chunk_text
-        
+
+        head.append(header_cleaned)
         chunks.append(chunk_text)
+        #print(f" Paragrafo {i+1}: {chunk_text} \n\n")
+        print(f" paragrafo {i+1} {header_cleaned}")
     
-    return chunks
+    return chunks, head
 
 
 import json

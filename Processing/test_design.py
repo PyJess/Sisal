@@ -49,7 +49,7 @@ async def gen_TC(paragraph, context, mapping):
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
         messages, schema = await prepare_prompt(paragraph, context, mapping)
         print("starting calling llm")
-        print(f"{messages}")
+        #print(f"{messages}")
         response = await a_invoke_model(messages, schema, model="gpt-4.1")
         print("Test Case generato con successo!")
         return response
@@ -100,15 +100,21 @@ def merge_TC(new_TC):
         "total_count": len(all_test_cases)
     }
 
-async def process_paragraphs(paragraphs, vectorstore, mapping):
+async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
     """Process all paragraphs asynchronously to generate test cases."""
     
     async def process_single_paragraph(i, par):
+        print(f"numero: {i}")
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
         context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
         print(f"Context retrieved: {context}")
         #context = ""
         tc = await gen_TC(par, context, mapping)
+
+        if isinstance(tc, dict) and "test_cases" in tc:
+            for test_case in tc["test_cases"]:
+                test_case["_polarion"] = headers[i - 1] 
+
         return tc
     
     # Crea tutte le tasks e le esegue in parallelo
@@ -122,17 +128,18 @@ async def main():
 
     input_path= os.path.join(os.path.dirname(__file__), "..", "input","RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
     print(os.path.dirname(input_path))
-    paragraphs=process_docx(input_path, os.path.dirname(input_path))
+    paragraphs, headers =process_docx(input_path, os.path.dirname(input_path))
 
     rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
-    chunks = process_docx(input_path, os.path.dirname(rag_path))
+    chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
     embeddings = OpenAIEmbeddings(model=embedding_model)
     vectorstore = FAISS.from_texts(chunks, embeddings)
 
     mapping = extract_field_mapping()
     #vectorstore = None
     print("finishing mapping")
-    new_TC= await process_paragraphs(paragraphs, vectorstore, mapping)
+
+    new_TC= await process_paragraphs(paragraphs, headers, vectorstore, mapping)
 
     updated_json=merge_TC(new_TC)
 

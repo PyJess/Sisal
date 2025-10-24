@@ -22,6 +22,8 @@ Each test case must include the following fields:
 - Steps to Execute: Numbered, clear, step-by-step instructions for the tester.
 - Expected Result: The correct outcome if the system behaves as expected.
 - Priority / Severity (optional): Indicate test importance or impact (e.g., High, Medium, Low). Avoid marking too many tests as High. Reserve High priority/severity only for cases that directly affect critical system functionality, user safety, or compliance.
+- Reference System: Indicate the Operating System and the Application System ( e.g., Android, iOS, Web)
+- Functionality: Specific topic or feature covered by this test case. (e.g, Log-In)
 
 Quality Expectations
 Clarity: Test steps and expected results must be precise and unambiguous.
