@@ -5,6 +5,11 @@ from collections import defaultdict
 import subprocess
 import re
 from pathlib import Path
+from typing import Dict, List, Tuple, Any
+from llm.llm import a_invoke_model
+from langchain_openai import ChatOpenAI
+from openpyxl import load_workbook
+from openpyxl.styles import Font
 
 def load_file(filepath:str):
     with open(filepath, encoding="utf-8") as f:
@@ -78,19 +83,18 @@ def group_by_funzionalita(data):
     #print(json.dumps(grouped, indent=2, ensure_ascii=False))
     return (json.dumps(grouped, indent=2, ensure_ascii=False))
 
-
-PANDOC_EXE = "pandoc" 
+PANDOC_EXE = "pandoc"
 def process_docx(docx_path, output_base):
     """
     Process a DOCX file using Pandoc and split it into sections based on Markdown headers (#, ##, etc.).
     """
-    
+   
     txt_output_path = os.path.join(output_base, Path(docx_path).stem + ".txt")
-    
+   
     docx_path = os.path.normpath(docx_path)
     txt_output_path = os.path.normpath(txt_output_path)
     os.makedirs(output_base, exist_ok=True)
-    
+   
     # Convert in md
     command = [
         PANDOC_EXE,
@@ -99,46 +103,50 @@ def process_docx(docx_path, output_base):
         "-t", "markdown",
         "-o", txt_output_path
     ]
-    
+   
     try:
         subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
     except Exception as e:
         print(f"[ERROR] Pandoc conversion failed: {e}")
         return [], os.path.basename(docx_path), []
-    
+   
     with open(txt_output_path, "r", encoding="utf-8") as f:
         text_lines = f.read().splitlines()
-    
+   
     headers = []
     heading_list = []
-    
+   
     for index, line in enumerate(text_lines):
         if line.startswith("#"):
             level = line.count("#")
             clean_name = line.replace("#", "").strip()
             headers.append([clean_name, index, level])
             heading_list.append([clean_name, level])
-    
+   
+   
     headers.insert(0, ["== first line ==", 0, 0])
     headers.append(["== last line ==", len(text_lines), 0])
     heading_list.insert(0, ["== first line ==", 0])
     heading_list.append(["== last line ==", 0])
-    
+   
+    head=[]
     chunks = []
     for i in range(len(headers) - 1):
         start_idx = headers[i][1]
         end_idx = headers[i + 1][1]
         section_lines = text_lines[start_idx:end_idx]
         chunk_text = "\n".join(section_lines).strip()
-        
+       
         header_cleaned = re.sub(r"\s*\{.*?\}", "", headers[i][0])
         header_cleaned = header_cleaned.replace("--", "–").strip(" *[]\n")
         chunk_text = header_cleaned + "\n" + chunk_text
-        
+ 
+        head.append(header_cleaned)
         chunks.append(chunk_text)
-    
-    return chunks
-
+        #print(f" Paragrafo {i+1}: {chunk_text} \n\n")
+        print(f" paragrafo {i+1} {header_cleaned}")
+   
+    return chunks, head
 
 
 def fill_excel_file(test_cases: dict, output_path: str = None):
@@ -283,3 +291,174 @@ def prepare_test_texts(df):
         })
     
     return test_texts
+
+
+def prepare_prompt_requisiti(req: str,context: str, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
+    """Prepare prompt for the LLM"""
+    system_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_requisiti", "system_prompt.txt"))
+    user_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_requisiti", "user_prompt.txt")) 
+    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
+
+    user_prompt = user_prompt.replace("{req}", req)
+    user_prompt = user_prompt.replace("{context}", context)
+    mapping_as_string = mapping.to_json() 
+    user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
+
+    print("finishing prepare prompt")
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    return messages, schema
+
+
+def a_invoke_model_requisiti(msgs, schema, model="gpt-4.1"):
+        """Invoke the LLM model"""
+
+        gpt = ChatOpenAI(model=model, temperature=0.1).with_structured_output(schema=schema, strict=True)
+
+
+        result =  gpt.invoke(msgs)
+    
+        # Estrai i token usage
+        if isinstance(result, dict) and 'raw' in result:
+            usage = result['raw'].response_metadata.get('token_usage', {})
+            print(f"\n📊 Token Usage:")
+            print(f"  Input tokens:  {usage.get('prompt_tokens', 0)}")
+            print(f"  Output tokens: {usage.get('completion_tokens', 0)}")
+            print(f"  Total tokens:  {usage.get('total_tokens', 0)}")
+            
+            # Restituisci solo i dati parsati
+            return result['parsed']
+        
+        return result
+        #return await gpt.ainvoke(msgs)
+
+
+def AI_check_TC_requisiti(req: str,context: str, mapping: str = None) -> Dict:
+    messages, schema =  prepare_prompt_requisiti(req,context, mapping)
+    print("starting calling llm")
+    print(f"{messages}")
+    response = a_invoke_model_requisiti(messages, schema, model="gpt-4.1")
+    return response
+
+
+def color_new_testcases_red(excel_path: Path, new_rows_count: int):
+    """
+    Colora di rosso le ultime `new_rows_count` righe nel file Excel.
+    """
+    wb = load_workbook(excel_path)
+    ws = wb.active
+
+    # Stili di font rosso
+    red_font = Font(color="FF0000")  # rosso acceso
+
+    max_row = ws.max_row
+    max_col = ws.max_column
+
+    # Righe da colorare: ultime `new_rows_count`
+    start_row = max_row - new_rows_count + 1
+
+    for row in ws.iter_rows(min_row=start_row, max_row=max_row, max_col=max_col):
+        for cell in row:
+            cell.font = red_font
+
+    wb.save(excel_path)
+    wb.close()
+    print(f"🟥 Colorate di rosso {new_rows_count} righe in {excel_path.name}")
+
+
+def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
+    """
+    Converte i test case generati dall'LLM in un DataFrame Excel compatibile
+    con la struttura del file di input.
+    Ogni step viene riportato su una riga separata.
+    """
+    import pandas as pd
+
+    # 🔹 Colonne di default (in caso non vengano passate)
+    if base_columns is None:
+        base_columns = [
+            'Title', 'ID', '#', 'Test Group', 'Channel', 'Device',
+            'Priority', 'Test Stage', 'Reference System',
+            'Preconditions', 'Execution Mode', 'Functionality',
+            'Test Type', 'No Regression Test', 'Automation',
+            'Dataset', 'Expected Result',
+            'Step', 'Step Description', 'Step Expected Result',
+            'Country', 'Project', 'Author', 'Assignee(s)', 'Type',
+            'Partial Coverage Description', '_polarion',
+            'Analysis', 'Coverage', 'Dev Complexity', 'Execution Time',
+            'Volatility', 'Developed', 'Note', 'Team Ownership',
+            'Team Ownership Note', 'Requires Script Maintenance'
+        ]
+
+    # 🔁 Mappa per eventuali chiavi italiane
+    field_mapping = {
+        'Canale': 'Channel',
+        'Dispositivo': 'Device',
+        'Sistema di riferimento': 'Reference System',
+        'Modalità Operativa': 'Execution Mode',
+        'Funzionalità': 'Functionality',
+        'Tipologia Test': 'Test Type',
+        'Test di no regression': 'No Regression Test',
+        'Automation': 'Automation',
+        'Risultato Atteso': 'Expected Result',
+        '_polarion': '_polarion'
+    }
+
+    rows = []
+
+    # 🔍 Gestione dei vari livelli annidati
+    for tc_group in test_cases.values():
+        if isinstance(tc_group, dict) and "test_cases" in tc_group:
+            tcs = tc_group["test_cases"]
+        elif isinstance(tc_group, list):
+            tcs = tc_group
+        else:
+            tcs = [tc_group]
+
+        for tc_data in tcs:
+            # Estrai gli step, se non ci sono aggiungi riga singola
+            steps = tc_data.get("Steps", [])
+            if not steps:
+                steps = [{}]
+
+            for i, step in enumerate(steps):
+                row = {}
+
+                # 🧱 Prima riga → tutti i dati generali del test case
+                if i == 0:
+                    for col in base_columns:
+                        if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                            value = tc_data.get(col, '')
+                            if not value:
+                                italian_key = next((k for k, v in field_mapping.items() if v == col), None)
+                                if italian_key:
+                                    value = tc_data.get(italian_key, '')
+                            row[col] = value
+                else:
+                    # Righe successive → copia solo colonne step-related
+                    for col in base_columns:
+                        if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                            row[col] = ''
+
+                # 🔹 Inserisci i dati dello step
+                row['Step'] = step.get('Step', '')
+                row['Step Description'] = step.get('Step Description', '')
+                row['Step Expected Result'] = step.get('Expected Result', '')
+
+                rows.append(row)
+
+    # 🔸 Crea DataFrame ordinato
+    df = pd.DataFrame(rows, columns=base_columns)
+
+    # Rimuove eventuali colonne duplicate
+    df = df.loc[:, ~df.columns.duplicated()]
+
+    print(f"📘 Generato DataFrame con {len(df)} righe e {len(df.columns)} colonne")
+    print(f"📄 Prime colonne: {list(df.columns[:6])}")
+    print(f"🧩 Esempio step: {df[['Title','Step','Step Description']].head(3)}")
+
+    return df

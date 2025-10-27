@@ -10,7 +10,7 @@ from langchain_community.vectorstores import FAISS
 # from langchain.vectorstores import FAISS
 import pandas as pd
 from langchain_openai import ChatOpenAI
-from docx import Document
+# from docx import Document
 import sys
 import os
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'

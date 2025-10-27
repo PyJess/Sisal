@@ -4,7 +4,7 @@ import os
 
 load_dotenv()
 
-async def a_invoke_model(msgs, schema, model="gpt-4.1"):
+async def a_invoke_model(msgs, schema, model="gpt-4o-mini"):
         """Invoke the LLM model"""
 
         gpt = ChatOpenAI(model=model, temperature=0.1).with_structured_output(schema=schema, strict=True)

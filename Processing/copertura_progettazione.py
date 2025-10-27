@@ -87,5 +87,5 @@ async def main():
 # Gestire il caso “no merge” quando non ci sono nuovi test.
 
 
-# if __name__ == "__main__":
-#     asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())

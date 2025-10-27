@@ -1,0 +1,25 @@
+Here is the requirement to analyze:
+
+{req}
+
+Below is the contextual paragraph extracted from the document, providing functional and descriptive context:
+
+{context}
+
+Here is the field mapping that defines the structure and expected columns of the Test Case output:
+
+{mapping}
+
+Your task:
+Generate one or more complete test cases that ensure coverage for the above requirement.
+Each test case must follow the field mapping provided, including at least:
+- Title
+- Preconditions
+- Step
+- Step Description
+- Expected Result
+- Device (if applicable)
+
+Follow the naming rule:
+[Nome] [proj_numero] requisito-funzionalità/applicativo - TEST - Device (android/ios/Desktop)_AIproposal_requisiti
+
