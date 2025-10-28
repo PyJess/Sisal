@@ -4,16 +4,13 @@ import os
 from pathlib import Path
 import json
 
-# Percorso assoluto della cartella principale del progetto
 project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 from utils.simple_functions import process_docx, AI_check_TC_requisiti, color_new_testcases_red, fill_excel_file_requisiti
 from Input_extraction.extract_polarion_field_mapping import *
 
 path_output = Path(__file__).parent.parent/"outputs"
-
 test_case_input = Path(__file__).parent.parent/"input"/"generated_test_cases3_label_rimosse.xlsx"
-
 documents_word = Path(__file__).parent.parent/"input"/"RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx"
 
 
@@ -23,14 +20,12 @@ print(df_testcase_polarion.unique())
 
 chunks,head= process_docx(documents_word,path_output)
 
-# 🔹 Limita il numero di requisiti per test rapido
-
 mapping = extract_field_mapping()
+
 # === Pipeline ===
 new_testcases = []
 
 for req in head:
-    
     if "first line" in req.lower():
         continue
 
@@ -70,7 +65,6 @@ structured_testcases = {}
 
 counter = 1
 for group in new_testcases:
-    # Se è stringa JSON, decodifica
     if isinstance(group, str):
         try:
             group = json.loads(group)
@@ -78,12 +72,11 @@ for group in new_testcases:
             print(f"⚠️ Gruppo non valido, salto.")
             continue
 
-    # Se è un gruppo con chiave "test_cases"
     if isinstance(group, dict) and "test_cases" in group:
         for single_tc in group["test_cases"]:
             structured_testcases[f"AI_TC_{counter}"] = single_tc
             counter += 1
-    # Se è un test case singolo
+
     elif isinstance(group, dict):
         structured_testcases[f"AI_TC_{counter}"] = group
         counter += 1
