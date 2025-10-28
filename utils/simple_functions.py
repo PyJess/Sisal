@@ -353,7 +353,6 @@ def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
     con la struttura del file di input.
     Ogni step viene riportato su una riga separata.
     """
-    import pandas as pd
 
     # 🔹 Colonne di default (in caso non vengano passate)
     if base_columns is None:
@@ -371,7 +370,7 @@ def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
             'Team Ownership Note', 'Requires Script Maintenance'
         ]
 
-    # 🔁 Mappa per eventuali chiavi italiane
+    # Mappa per eventuali chiavi italiane
     field_mapping = {
         'Canale': 'Channel',
         'Dispositivo': 'Device',
@@ -387,7 +386,7 @@ def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
 
     rows = []
 
-    # 🔍 Gestione dei vari livelli annidati
+    # Gestione dei vari livelli annidati
     for tc_group in test_cases.values():
         if isinstance(tc_group, dict) and "test_cases" in tc_group:
             tcs = tc_group["test_cases"]
@@ -397,7 +396,7 @@ def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
             tcs = [tc_group]
 
         for tc_data in tcs:
-            # Estrai gli step, se non ci sono aggiungi riga singola
+
             steps = tc_data.get("Steps", [])
             if not steps:
                 steps = [{}]
@@ -405,7 +404,7 @@ def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
             for i, step in enumerate(steps):
                 row = {}
 
-                # 🧱 Prima riga → tutti i dati generali del test case
+                # Prima riga → tutti i dati generali del test case
                 if i == 0:
                     for col in base_columns:
                         if col not in ['Step', 'Step Description', 'Step Expected Result']:
@@ -416,26 +415,22 @@ def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
                                     value = tc_data.get(italian_key, '')
                             row[col] = value
                 else:
-                    # Righe successive → copia solo colonne step-related
                     for col in base_columns:
                         if col not in ['Step', 'Step Description', 'Step Expected Result']:
                             row[col] = ''
 
-                # 🔹 Inserisci i dati dello step
+                # Inserisci i dati dello step
                 row['Step'] = step.get('Step', '')
                 row['Step Description'] = step.get('Step Description', '')
                 row['Step Expected Result'] = step.get('Expected Result', '')
 
                 rows.append(row)
 
-    # 🔸 Crea DataFrame ordinato
     df = pd.DataFrame(rows, columns=base_columns)
-
-    # Rimuove eventuali colonne duplicate
     df = df.loc[:, ~df.columns.duplicated()]
 
-    print(f"📘 Generato DataFrame con {len(df)} righe e {len(df.columns)} colonne")
-    print(f"📄 Prime colonne: {list(df.columns[:6])}")
-    print(f"🧩 Esempio step: {df[['Title','Step','Step Description']].head(3)}")
+    print(f"Generato DataFrame con {len(df)} righe e {len(df.columns)} colonne")
+    print(f"Prime colonne: {list(df.columns[:6])}")
+    print(f"Esempio step: {df[['Title','Step','Step Description']].head(3)}")
 
     return df
