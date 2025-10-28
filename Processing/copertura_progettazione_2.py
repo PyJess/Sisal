@@ -66,9 +66,9 @@ async def main():
     input_path = Path(__file__).parent.parent / "input" / "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx"
     
     paragraphs,title=process_docx(input_path, os.path.dirname(input_path))
-    # 🔹 Limita il test solo ai primi 2 paragrafi e titoli
-    paragraphs = paragraphs[:3]
-    title = title[:3]
+    # Limita il test solo ai primi 3 paragrafi e titoli per test veloci
+    # paragraphs = paragraphs[:3]
+    # title = title[:3]
     print(title)    
     print("***************************")
     print(paragraphs)
