@@ -159,11 +159,11 @@ def convert_json_to_excel(json_data, output_path):
     
     # Definisci colonne finali
     columns = [
-        'Title', 'ID', '#', 'Test Group', 'Canale', 'Dispositivo', 
-        'Priority', 'Test Stage', 'Sistema di riferimento', 
-        'Precondizioni', 'Modalità Operativa', 'Funzionalità', 
-        'Tipologia Test', 'Test di no regression', 'Automation',
-        'Dataset', 'Risultato Atteso', 
+        'Title', 'ID', '#', 'Test Group', 'Channel', 'Device', 
+        'Priority', 'Test Stage', 'Reference System', 
+        'Preconditions', 'Execution Mode', 'Functionality', 
+        'Test Type', 'No Regression Test', 'Automation',
+        'Dataset', 'Expected Result', 
         'Step', 'Step Description', 'Step Expected Result',
         'Country', 'Project', 'Author', 'Assignee(s)', 'Type', 
         'Partial Coverage Description', '_polarion',

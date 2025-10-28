@@ -124,68 +124,19 @@ async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
     
     return new_TC
 
-def translate_column(json: Dict) -> Dict :
-    key_mapping = {
-        "Title": "Title",
-        "ID": "ID",
-        "#":"#",
-        "Steps": "Step",
-        "Step Description": "Step Description",
-        "Expected Result": "Expected Result",
-        "Test Group": "Test Group",
-        "Channel": "Canale",
-        "Device": "Dispositivo",
-        "Priority": "Priority",
-        "Test Stage": "Test Stage",
-        "Reference System": "Sistema di riferimento",
-        "Preconditions": "Precondizioni",
-        "Execution Mode": "Modalità Operativa",
-        "Functionality": "Funzionalità",
-        "Test Type": "Tipologia Test",
-        "No Regression Test": "Test di no regression",
-        "Automation": "Automation",
-        "Dataset": "Dataset",
-        "Expected Result": "Risultato Atteso",
-        "Country": "Country",
-        "Type": "Type",
-        "Partial Coverage Description": "Description Partial Coverage",
-        "_polarion": "_polarion"  
-    }
-
-    step_key_mapping = {
-                    "Step": "Step",
-                    "Step Description": "Step Description",
-                    "Expected Result": "Risultato Atteso"
-                }
-
-    for test_case in json.get("test_cases", []):
-        for old_key, new_key in key_mapping.items():
-            if old_key in test_case:
-                test_case[new_key] = test_case.pop(old_key)
-
-        if "Step" in test_case:  
-                for step in test_case["Step"]:
-                    for old_s_key, new_s_key in step_key_mapping.items():
-                        if old_s_key in step:
-                            step[new_s_key] = step.pop(old_s_key)
-
-    return json
-
-
 
 async def main():
 
-    input_path= os.path.join(os.path.dirname(__file__), "..", "input","RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input","Esempio 1","PRJ0015372 - ZENIT Phase 1 - FA - Rev 1.0.docx")
     print(os.path.dirname(input_path))
     paragraphs, headers =process_docx(input_path, os.path.dirname(input_path))
 
-    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
+    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 1","RU_ZENIT_V_0.4_FASE_1 (1).docx")
     chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
     embeddings = OpenAIEmbeddings(model=embedding_model)
     vectorstore = FAISS.from_texts(chunks, embeddings)
 
     mapping = extract_field_mapping()
-    #vectorstore = None
     print("finishing mapping")
 
     new_TC= await process_paragraphs(paragraphs, headers, vectorstore, mapping)
@@ -199,13 +150,10 @@ async def main():
         old_id = test_case.get("ID", "N/A")
         new_id = f"{prefix}-{str(i).zfill(padding)}"
         test_case["ID"] = new_id
-        #print(f"Updated ID: {old_id} -> {new_id}")
     
     print(f"\n Total test cases updated: {len(updated_json['test_cases'])}")
 
-    #updated_json = translate_column(updated_json)
-
-    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_feedbackAI.json")
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_Zenit_feedbackAI.json")
     save_updated_json(updated_json, output_path)
     #json_to_excel = fill_excel_file(updated_json)
     convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_feedbackAI.xlsx"))

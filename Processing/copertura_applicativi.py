@@ -10,28 +10,23 @@ from langchain.vectorstores import FAISS
 import openpyxl
 from openpyxl.styles import Font
 from openpyxl.utils import get_column_letter
-
+from openpyxl import Workbook
+from openpyxl.styles import PatternFill
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from utils.simple_functions import group_by_funzionalita, load_json
 from Processing.controllo_sintattico import *
 import json
-
-data= load_json("C:\\Users\\x.hita\\OneDrive - Reply\\Workspace\\Sisal\\Test_Design\\input\\tests_output.json")
+from Processing.test_design import create_vectordb
 
 embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 
 
-import pandas as pd
-from openpyxl import load_workbook
-from openpyxl.styles import Font
-import os
 
-async def save_test_cases_to_excel(existing_tests, new_tests, output_path):
+def convert_to_DF(test_cases: dict):
     """
-    Salva i test case in Excel, mantenendo gli step su righe separate
-    e colorando in rosso i nuovi test cases.
+    Structure the test cases into a DataFrame suitable for Excel export,
     """
     field_mapping = {
         'Canale': 'Channel',
@@ -46,7 +41,7 @@ async def save_test_cases_to_excel(existing_tests, new_tests, output_path):
         '_polarion': '_polarion'
     }
     
-    # Definisci colonne finali
+    # Definisci colonne finali (solo inglese)
     columns = [
         'Title', 'ID', '#', 'Test Group', 'Channel', 'Device', 
         'Priority', 'Test Stage', 'Reference System', 
@@ -61,21 +56,8 @@ async def save_test_cases_to_excel(existing_tests, new_tests, output_path):
         'Team Ownership Note', 'Requires Script Maintenance'
     ]
 
-    # Combina i test esistenti e nuovi
-    all_tests = []
-    
-    # Aggiungi test esistenti
-    for test in existing_tests:
-        all_tests.append((test, False))  # False = non nuovo
-    
-    # Aggiungi test nuovi
-    for test in new_tests:
-        all_tests.append((test, True))  # True = nuovo
-    
     rows = []
-    row_metadata = []  # Track which rows belong to new tests
-    
-    for tc_data, is_new in all_tests:
+    for tc_id, tc_data in test_cases.items():
         steps = tc_data.get('Steps', [])
         
         if not steps:
@@ -86,12 +68,11 @@ async def save_test_cases_to_excel(existing_tests, new_tests, output_path):
             row = {}
 
             if first:
-                # Prima riga: tutti i dati del test case
+
                 for col in columns:
                     if col not in ['Step', 'Step Description', 'Step Expected Result']:
                         value = tc_data.get(col, '')
                         
-                        # Fallback per chiavi italiane
                         if not value:
                             italian_key = next((k for k, v in field_mapping.items() if v == col), None)
                             if italian_key:
@@ -100,43 +81,19 @@ async def save_test_cases_to_excel(existing_tests, new_tests, output_path):
                         row[col] = value
                 first = False
             else:
-                # Righe successive: solo gli step
                 for col in columns:
                     if col not in ['Step', 'Step Description', 'Step Expected Result']:
                         row[col] = ''
 
-            # Aggiungi dati dello step
             row['Step'] = step.get('Step', '')
             row['Step Description'] = step.get('Step Description', '')
-            row['Step Expected Result'] = step.get('Step Expected Result', step.get('Expected Result', ''))
+            row['Step Expected Result'] = step.get('Expected Result', '')
             
             rows.append(row)
-            row_metadata.append(is_new)  # Traccia se questa riga è nuova
 
     df = pd.DataFrame(rows, columns=columns)
 
-    # Crea directory se non esiste
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-    # Salva in Excel
-    df.to_excel(output_path, index=False)
-
-    # Applica formattazione rossa ai nuovi test
-    wb = load_workbook(output_path)
-    ws = wb.active
-    
-    red_font = Font(color="FF0000")
-
-    for idx, is_new in enumerate(row_metadata, start=2):  # start=2 per saltare l'header
-        if is_new:
-            for cell in ws[idx]:  # Colora tutte le celle della riga
-                if cell.value:  # Solo se c'è un valore
-                    cell.font = red_font
-
-    wb.save(output_path)
-    print(f"✅ Excel salvato con nuovi TC in rosso: {output_path}")
-    print(f"   - TC esistenti: {len([t for t, is_new in all_tests if not is_new])}")
-    print(f"   - TC nuovi (in rosso): {len([t for t, is_new in all_tests if is_new])}")
+    return df
 
 
 async def prepare_prompt_application(input: str, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
@@ -199,38 +156,52 @@ async def main():
     print("finishing excel to json")
 
     mapping = extract_field_mapping()
-    # print("finishing mapping")
     
     application_list = []
     input_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
-    requirements, name = process_docx(input_path, os.path.dirname(input_path))
+    requirements, title = process_docx(input_path, os.path.dirname(input_path))
     
-    # rag_path= input_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
-    # chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
-    # embeddings = OpenAIEmbeddings(model=embedding_model)
-    # chunks= chunks + requirements
-    # vectorstore = FAISS.from_texts(chunks, embeddings)
+    rag_path= input_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
+    chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
+    embeddings = OpenAIEmbeddings(model=embedding_model)
+    chunks= chunks + requirements
+    vectorstore = FAISS.from_texts(chunks, embeddings)
     
     tasks = [AI_check_applications(input=req) for req in requirements]
-    application_list.append( await asyncio.gather(*tasks))
+    applications_results = await asyncio.gather(*tasks)
+
+    normalized_results = []
+    for res in applications_results:
+        if isinstance(res, dict) and "applications" in res:
+            normalized_results.append(res["applications"])
+        elif isinstance(res, list):  
+            normalized_results.append(res)
+        else:
+            normalized_results.append([])
+
+    application_list = []
+    for t, apps in zip(title, normalized_results):
+        application_list.append({
+            "title": t,
+            "applications": apps
+        })
 
     # Eliminates duplicates based on application_name
-    unique_apps = {}
-    for sublist in application_list:
-        for result in sublist:
-            for app in result.get("applications", []):
-                name = app.get("application_name")
-                text = app.get("specific_text")
-                if name: 
-                    if name not in unique_apps:
-                        unique_apps[name] = {
-                            "application_name": name.strip(),
-                            "specific_text": text.strip() if text else ""
-                        }
+    unique_apps_dict = {}
 
-    application_list = [
-        {"applications": list(unique_apps.values())}
-    ]
+    for sublist in application_list:
+        for app in sublist.get("applications", []):
+            name = app.get("application_name")
+            if name:
+                unique_apps_dict[name.strip()] = {
+                    "title": sublist.get("title"),
+                    "application_name": name.strip(),
+                    "specific_text": app.get("specific_text", "").strip()
+                }
+
+    unique_apps = list(unique_apps_dict.values())
+
+    application_list = [{"applications": unique_apps}]
 
     print("Applications found: \n\n")
     for app in application_list[0]["applications"]:
@@ -241,8 +212,10 @@ async def main():
         new_TC=[]
         for app in result.get("applications", []):
             app_name = app.get("application_name", "").strip()
+            app_title= app.get("title", "").strip()
             print(f"\n{'='*50}")
             print(f"Checking application: '{app_name}'")
+            print(app_title)
             present = False
             
             test_cases = dic.values() 
@@ -282,22 +255,49 @@ async def main():
             else:
                 print(f"{app_name}: non presente")
                 app_text= app.get("specific_text", "")
-                #fare il retrived del context in base al app_text
-                context=""
+                context = create_vectordb(app_text, vectorstore, k=3, similarity_threshold=0.75)
                 context= str(context)
-                new_TC.append(await AI_gen_TC(app_text, context, mapping))
+                generated_tc= await AI_gen_TC(app_text, context, mapping)
+                if "test_cases" in generated_tc:
+                    for tc in generated_tc["test_cases"]:
+                        tc["_polarion"] = app_title
+
+                new_TC.append(generated_tc)
 
 
-    combined_test_cases= list(dic.values()) + new_TC
-    print(f"\nTotal existing TCs: {len(dic)}")
-    print(f"Total new TCs generated: {len(new_TC)}")
-    print(f"Total combined TCs: {len(combined_test_cases)}")
-    #print(combined_test_cases)
-    output_excel = os.path.join(os.path.dirname(__file__), "..", "outputs", "combined_test_cases.xlsx")
-    await save_test_cases_to_excel(dic.values(), new_TC, output_excel)
+    all_generated = []
+
+    for result in new_TC:
+        all_generated.extend(result.get("test_cases", []))
+
+    new_TC_dict = {tc["ID"]: tc for tc in all_generated}
+    df2= convert_to_DF(dic)
+    df2["#"] = pd.to_numeric(df2["#"], errors="coerce")
+    max_num = int(df2["#"].max()) if not df2["#"].empty else 0
+
+    for i, tc_id in enumerate(new_TC_dict, start=1):
+        new_TC_dict[tc_id]["#"] = max_num + i
+
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI.xlsx")
+    os.makedirs(os.path.dirname(excel_path), exist_ok=True)
+
+    df1=convert_to_DF(new_TC_dict)
+
+    df_combined = pd.concat([df2, df1], ignore_index=True)
+    df_combined.to_excel(excel_path, index=False)
+
+    wb = load_workbook(excel_path)
+    ws = wb.active
+
+    start_row = 2 + len(df2)  
+    end_row = start_row + len(df1) 
+    for row_idx in range(start_row, end_row):
+        for cell in ws[row_idx]:
+            if cell.value is not None:
+                cell.font = Font(color="FF0000")
 
 
-    
+    wb.save(excel_path)
     
 
 if __name__ == "__main__":
