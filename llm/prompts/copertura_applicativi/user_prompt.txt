@@ -1,0 +1,5 @@
+Here you find the text containing software or business requirements:
+
+{input}
+
+Extract all the applications if present.

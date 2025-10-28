@@ -43,6 +43,7 @@ async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[st
 
 
 async def AI_check_TC(input: Dict, mapping: str = None) -> Dict:
+    """Call LLM to check test case syntax"""
     messages, schema = await prepare_prompt(input, mapping)
     print("starting calling llm")
     print(f"{messages}")

@@ -46,6 +46,7 @@ async def prepare_prompt(input: Dict, context:str, mapping: str = None) -> Tuple
     return messages, schema
 
 async def gen_TC(paragraph, context, mapping):
+        """Call LLM to generate test cases from paragraph"""
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
         messages, schema = await prepare_prompt(paragraph, context, mapping)
         print("starting calling llm")
@@ -123,6 +124,54 @@ async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
     
     return new_TC
 
+def translate_column(json: Dict) -> Dict :
+    key_mapping = {
+        "Title": "Title",
+        "ID": "ID",
+        "#":"#",
+        "Steps": "Step",
+        "Step Description": "Step Description",
+        "Expected Result": "Expected Result",
+        "Test Group": "Test Group",
+        "Channel": "Canale",
+        "Device": "Dispositivo",
+        "Priority": "Priority",
+        "Test Stage": "Test Stage",
+        "Reference System": "Sistema di riferimento",
+        "Preconditions": "Precondizioni",
+        "Execution Mode": "Modalità Operativa",
+        "Functionality": "Funzionalità",
+        "Test Type": "Tipologia Test",
+        "No Regression Test": "Test di no regression",
+        "Automation": "Automation",
+        "Dataset": "Dataset",
+        "Expected Result": "Risultato Atteso",
+        "Country": "Country",
+        "Type": "Type",
+        "Partial Coverage Description": "Description Partial Coverage",
+        "_polarion": "_polarion"  
+    }
+
+    step_key_mapping = {
+                    "Step": "Step",
+                    "Step Description": "Step Description",
+                    "Expected Result": "Risultato Atteso"
+                }
+
+    for test_case in json.get("test_cases", []):
+        for old_key, new_key in key_mapping.items():
+            if old_key in test_case:
+                test_case[new_key] = test_case.pop(old_key)
+
+        if "Step" in test_case:  
+                for step in test_case["Step"]:
+                    for old_s_key, new_s_key in step_key_mapping.items():
+                        if old_s_key in step:
+                            step[new_s_key] = step.pop(old_s_key)
+
+    return json
+
+
 
 async def main():
 
@@ -154,10 +203,12 @@ async def main():
     
     print(f"\n Total test cases updated: {len(updated_json['test_cases'])}")
 
-    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases3.json")
+    #updated_json = translate_column(updated_json)
+
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_feedbackAI.json")
     save_updated_json(updated_json, output_path)
     #json_to_excel = fill_excel_file(updated_json)
-    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases3.xlsx"))
+    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_feedbackAI.xlsx"))
 
 
 

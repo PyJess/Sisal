@@ -104,7 +104,7 @@ def process_docx(docx_path, output_base):
         subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
     except Exception as e:
         print(f"[ERROR] Pandoc conversion failed: {e}")
-        return [], os.path.basename(docx_path), []
+        return [], [] 
     
     with open(txt_output_path, "r", encoding="utf-8") as f:
         text_lines = f.read().splitlines()
@@ -159,11 +159,11 @@ def convert_json_to_excel(json_data, output_path):
     
     # Definisci colonne finali
     columns = [
-        'Title', 'ID', '#', 'Test Group', 'Channel', 'Device', 
-        'Priority', 'Test Stage', 'Reference System', 
-        'Preconditions', 'Execution Mode', 'Functionality', 
-        'Test Type', 'No Regression Test', 'Automation',
-        'Dataset', 'Expected Result', 
+        'Title', 'ID', '#', 'Test Group', 'Canale', 'Dispositivo', 
+        'Priority', 'Test Stage', 'Sistema di riferimento', 
+        'Precondizioni', 'Modalità Operativa', 'Funzionalità', 
+        'Tipologia Test', 'Test di no regression', 'Automation',
+        'Dataset', 'Risultato Atteso', 
         'Step', 'Step Description', 'Step Expected Result',
         'Country', 'Project', 'Author', 'Assignee(s)', 'Type', 
         'Partial Coverage Description', '_polarion',
