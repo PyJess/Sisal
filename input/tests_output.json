@@ -1,2721 +1,1553 @@
 {
-  "TC-001": {
-    "Title": "Verify SGP Generator Full Responsiveness on Desktop",
-    "#": 1.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "No specific data required; use default SGP Generator interface.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only desktop browser responsiveness.",
-    "_polarion": NaN,
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the SGP Generator application in a desktop web browser (e.g., Chrome, Firefox, Edge).",
-        "Step Expected Result": "SGP Generator loads successfully without layout issues."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Resize the browser window to various widths (e.g., 1920px, 1366px, 1024px, 800px).",
-        "Step Expected Result": "SGP Generator layout adapts smoothly to each width, maintaining usability and readability."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Interact with all main features (e.g., add selections, remove selections, generate SGP) at each width.",
-        "Step Expected Result": "All features remain accessible and functional at all tested widths."
-      }
-    ]
-  },
-  "TC-002": {
-    "Title": "Verify SGP Generator Full Responsiveness on Mobile Devices",
-    "#": 2.0,
-    "Test Group": "Mobile",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "No specific data required; use default SGP Generator interface.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only mobile browser responsiveness.",
-    "_polarion": NaN,
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the SGP Generator application on a mobile device (e.g., iPhone, Android phone) using a mobile browser.",
-        "Step Expected Result": "SGP Generator loads successfully without layout issues."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Rotate the device between portrait and landscape orientations.",
-        "Step Expected Result": "SGP Generator layout adapts smoothly to both orientations, maintaining usability and readability."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Interact with all main features (e.g., add selections, remove selections, generate SGP) in both orientations.",
-        "Step Expected Result": "All features remain accessible and functional in both orientations."
-      }
-    ]
-  },
-  "TC-003": {
-    "Title": "Verify SGP Generator Full Responsiveness on Tablet Devices",
-    "#": 3.0,
-    "Test Group": "Tablet",
+  "ANB-5368": {
+    "Title": "[NRT] Update real bonus service - betting bonus",
+    "#": 1,
+    "Test Group": "App IOS",
+    "Canale": "Ciao",
+    "Dispositivo": "Mobile",
     "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "No specific data required; use default SGP Generator interface.",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "iOS",
+    "Precondizioni": "Open ANB app while logged in and land on home page and profile menu.",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "ProfileMenu",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Replace the current Real Bonus Service with the new one",
     "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only tablet browser responsiveness.",
-    "_polarion": NaN,
+    "Project": "App Nativa Betting Agile",
+    "Author": "Sota Mario",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-5368",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
     "Steps": [
       {
         "Step": 1,
-        "Step Description": "Open the SGP Generator application on a tablet device (e.g., iPad, Android tablet) using a mobile browser.",
-        "Step Expected Result": "SGP Generator loads successfully without layout issues."
+        "Step Description": "Open the ANB app while logged in with an account balance of 0 euros.",
+        "Expected Result": "ANB App opens correctly and user lands on homepage when logged in."
       },
       {
         "Step": 2,
-        "Step Description": "Rotate the device between portrait and landscape orientations.",
-        "Step Expected Result": "SGP Generator layout adapts smoothly to both orientations, maintaining usability and readability."
+        "Step Description": "Add a betting bonus (e.g. 10eu) from the NPPL platform.",
+        "Expected Result": "The bonus addition is successful."
       },
       {
         "Step": 3,
-        "Step Description": "Interact with all main features (e.g., add selections, remove selections, generate SGP) in both orientations.",
-        "Step Expected Result": "All features remain accessible and functional in both orientations."
-      }
-    ]
-  },
-  "TC-004": {
-    "Title": "Verify SGP Generator Layout and Functionality on Edge Case Resolutions",
-    "#": 4.0,
-    "Test Group": "Desktop/Mobile/Tablet",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "No specific data required; use default SGP Generator interface.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers edge case resolutions for responsiveness.",
-    "_polarion": NaN,
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the SGP Generator application in a browser or emulator set to an uncommon screen resolution (e.g., 320x480, 2560x1440).",
-        "Step Expected Result": "SGP Generator loads successfully without layout issues."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Interact with all main features (e.g., add selections, remove selections, generate SGP) at each tested resolution.",
-        "Step Expected Result": "All features remain accessible and functional at all tested resolutions."
-      }
-    ]
-  },
-  "TC-005": {
-    "Title": "Verify SGP Generator Accessibility of All Features Across Devices",
-    "#": 5.0,
-    "Test Group": "Desktop/Mobile/Tablet",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "No specific data required; use default SGP Generator interface.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers feature accessibility across device types.",
-    "_polarion": NaN,
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the SGP Generator application on desktop, mobile, and tablet devices.",
-        "Step Expected Result": "SGP Generator loads successfully on all devices."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Attempt to access and use all main features (e.g., add selections, remove selections, generate SGP) on each device type.",
-        "Step Expected Result": "All features are accessible and functional on all device types."
-      }
-    ]
-  },
-  "TC-006": {
-    "Title": "Verify Carousel Display Conditions on Home Page",
-    "#": 6.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "No specific data required; use default SGP Generator interface.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only display conditions, not card structure or caching.",
-    "_polarion": "Sommario",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Home Page of the application.",
-        "Step Expected Result": "The Home Page loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the carousel section on the Home Page.",
-        "Step Expected Result": "The carousel is displayed only if the display conditions are met (e.g., there are available cards to show)."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Check the scenario where no cards are available for the carousel.",
-        "Step Expected Result": "The carousel section is not displayed on the Home Page."
-      }
-    ]
-  },
-  "TC-007": {
-    "Title": "Verify Structure of a Single Precompiled Card in Home Page Carousel",
-    "#": 7.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Sample precompiled card data (image, title, description, CTA).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Focuses on card structure, not carousel behavior or caching.",
-    "_polarion": "Sommario",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Home Page with carousel enabled and at least one precompiled card available.",
-        "Step Expected Result": "The carousel is visible with at least one card."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Inspect the structure of the first card in the carousel.",
-        "Step Expected Result": "The card displays all required elements (e.g., image, title, description, call-to-action button) as per design specifications."
-      }
-    ]
-  },
-  "TC-008": {
-    "Title": "Verify Caching of Precompiled Cards in Home Page Carousel",
-    "#": 8.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data; cache enabled/disabled scenarios.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for Home Page carousel, not for event detail.",
-    "_polarion": "Sommario",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Home Page with carousel enabled and precompiled cards available.",
-        "Step Expected Result": "The carousel and its cards are displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Reload the Home Page without clearing the cache.",
-        "Step Expected Result": "The carousel loads quickly, and the same precompiled cards are displayed from cache."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Clear the application/browser cache and reload the Home Page.",
-        "Step Expected Result": "The carousel fetches fresh precompiled cards from the server and displays them."
-      }
-    ]
-  },
-  "TC-009": {
-    "Title": "Verify Skeleton Loader Display on Home Page During Carousel Data Fetch",
-    "#": 9.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (simulate slow network or delayed API response).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only skeleton loader behavior, not carousel content.",
-    "_polarion": "Sommario",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Simulate slow network conditions or delay the carousel data response.",
-        "Step Expected Result": "The Home Page loads, but carousel data is not immediately available."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the carousel section while data is loading.",
-        "Step Expected Result": "A skeleton loader (placeholder UI) is displayed in the carousel area until the data is fully loaded."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Wait for the carousel data to finish loading.",
-        "Step Expected Result": "The skeleton loader is replaced by the actual carousel cards once data is available."
-      }
-    ]
-  },
-  "TC-010": {
-    "Title": "Verify Carousel Display Conditions in Event Detail (Bet Builder Tab)",
-    "#": 10.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event with and without relevant carousel cards.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only display conditions for event detail carousel.",
-    "_polarion": "Sommario",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Event Detail page and select the Bet Builder tab.",
-        "Step Expected Result": "The Bet Builder tab loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the carousel section within the Bet Builder tab.",
-        "Step Expected Result": "The carousel is displayed only if the display conditions are met (e.g., relevant cards are available for the event)."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Check the scenario where no cards are available for the event.",
-        "Step Expected Result": "The carousel section is not displayed in the Bet Builder tab."
-      }
-    ]
-  },
-  "TC-011": {
-    "Title": "Verify Structure of a Precompiled Card in Event Detail Carousel (Bet Builder Tab)",
-    "#": 11.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Sample precompiled card data for event (image, title, description, CTA).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Focuses on card structure in event detail, not carousel behavior or caching.",
-    "_polarion": "Sommario",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Event Detail page with carousel enabled in the Bet Builder tab and at least one precompiled card available.",
-        "Step Expected Result": "The carousel is visible with at least one card in the Bet Builder tab."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Inspect the structure of the first card in the carousel within the Bet Builder tab.",
-        "Step Expected Result": "The card displays all required elements (e.g., image, title, description, call-to-action button) as per design specifications."
-      }
-    ]
-  },
-  "TC-012": {
-    "Title": "Verify Caching of Precompiled Cards in Event Detail Carousel (Bet Builder Tab)",
-    "#": 12.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data for event; cache enabled/disabled scenarios.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for event detail carousel, not for Home Page.",
-    "_polarion": "Sommario",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Event Detail page with carousel enabled in the Bet Builder tab and precompiled cards available.",
-        "Step Expected Result": "The carousel and its cards are displayed in the Bet Builder tab."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Reload the Event Detail page without clearing the cache.",
-        "Step Expected Result": "The carousel loads quickly, and the same precompiled cards are displayed from cache."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Clear the application/browser cache and reload the Event Detail page.",
-        "Step Expected Result": "The carousel fetches fresh precompiled cards from the server and displays them."
-      }
-    ]
-  },
-  "TC-013": {
-    "Title": "Display of Randomly Generated Same Game Parlay (SGP) Precompiled Bets on Full Responsive Frontend (Italy)",
-    "#": 13.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for event detail carousel, not for Home Page.",
-    "_polarion": "Introduzione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Betting Full Responsive frontend (Italy version) via a supported browser on desktop.",
-        "Step Expected Result": "The homepage loads successfully, displaying betting options."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to a sports event eligible for Same Game Parlay bets.",
-        "Step Expected Result": "The event page loads, showing available betting markets."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Locate the section for precompiled SGP bets generated by the SGP Generator.",
-        "Step Expected Result": "A section labeled for precompiled SGP bets is visible on the event page."
+        "Step Description": "Tap on another section of the app (e.g. mybets/cart).",
+        "Expected Result": "User finds the updated bonus balance on the app header."
       },
       {
         "Step": 4,
-        "Step Description": "Verify that the displayed SGP bets are generated randomly and differ upon page refresh or event change.",
-        "Step Expected Result": "Each page refresh or event change results in a new set of randomly generated SGP bets."
+        "Step Description": "Tap on Profile menu.",
+        "Expected Result": "The user's profile menu should be opened and the betting bonus balance should be updated."
       }
     ]
   },
-  "TC-014": {
-    "Title": "Display of Randomly Generated Same Game Parlay (SGP) Precompiled Bets on Full Responsive Frontend (Morocco)",
-    "#": 14.0,
+  "ANB-6078": {
+    "Title": "[NRT] - Bookings - Bookings - Booking with username + Point of sale (PDV)",
+    "#": 2,
+    "Test Group": "App IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Casa",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "iOS",
+    "Precondizioni": "Registered user on sisal",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Viewing successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Pizzo Davide EXT",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-6078",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app",
+        "Expected Result": "The app must be opened correctly."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Bring results to cart (single/multiple/system).",
+        "Expected Result": "The cart it must be populated correctly with the results."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on the CTA \"Book\"",
+        "Expected Result": "It is verified that the ticket must be booked correctly and the informative snackbar \"Bet booked - Go to mybets\" comes out"
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on CTA \"Add store\" from mybets booked.",
+        "Expected Result": "It is verified that when you tap on the item 'Add point of sale' a panel is displayed as follows:  Title: 'Add point of sale' Icon X > closes the panel without memorizing any characters entered in the input fields (it is possible to closeAlso by swipe down or tap in the section outside the panel) Description: 'Speed up the validation process of your booked plays' Input field Point of sale code > (described in the next ac) Input field username > (described in the next ac)Text: 'You can always play your reservations in all points of sale even if you haven't set a favorite one' CTA 'Save' > activates only if all fields have been filled in"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Bring another bet on Book with configured point of sale code.",
+        "Expected Result": "It is verified that the ticket card appears at the lInstant Book together with the username of the store."
+      }
+    ]
+  },
+  "ANB-7684": {
+    "Title": "[NRT] - Bookings - Prematch - Check on retail - multipla prematch without bonus IOS",
+    "#": 3,
+    "Test Group": "App IOS",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Terminale",
+    "Precondizioni": "multipla prematch without bonus bet made on app",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Booking successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-7684",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the reservation made on the app",
+        "Expected Result": "Verify that it is possible and that all the data corresponds to those of the original booking"
+      }
+    ]
+  },
+  "ANB-7692": {
+    "Title": "[NRT] - Bookings - Prematch - Check on retail - error correction system Android",
+    "#": 4,
+    "Test Group": "App Android",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Terminale",
+    "Precondizioni": "error correction system bet made on app",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Bookings",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "Dataset",
+    "Risultato Atteso": "Booking successful",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-7692",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the reservation made on the app",
+        "Expected Result": "Verify that it is possible and that all the data corresponds to those of the original booking"
+      }
+    ]
+  },
+  "ANB-8462": {
+    "Title": "[NRT] - TY Page - Thank You Page Postvendita - Sistema - Integrale",
+    "#": 5,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "ANDROID",
+    "Precondizioni": "Finalize the bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "TYPage",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that when TYP is closed, the user's balance in the header appears to be updated..",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8462",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user logs ANB app",
+        "Expected Result": "The app opens correctly and the user lands on Home Page"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user brings a (sistema- integrale) \"Live\" outcome to cart",
+        "Expected Result": "Cart is populated correctly"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user taps on CTA \"Scommetti\" and finalizes the bet",
+        "Expected Result": "Succesfully bet and the user lands on TYP (Thank You Page) with a label_x000D_\n \"Complimenti! La scommessa è andata a buon fine!\"._x000D_\n_x000D_\n TYP is composed by :_x000D_\n_x000D_\n 1. Codice biglietto_x000D_\n 2. L'importo di Puntata_x000D_\n 3. Quota totale_x000D_\n 4. Vincita Potenziale (in €)_x000D_\n 5. Dettaglio Biglietto_x000D_\n_x000D_\n TYP is composed by CTA:_x000D_\n_x000D_\n 0. CTA \" X\"_x000D_\n 1. Riporta Eventi Nel Biglietto_x000D_\n 2. Notifiche_x000D_\n 3. Contina a scommettere_x000D_\n 4. Condividi_x000D_\n 5. Pubblica su Tipster_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user exits the TYP",
+        "Expected Result": "The user verifies that when TYP is closed, the user's balance in the header appears to be updated."
+      }
+    ]
+  },
+  "ANB-8468": {
+    "Title": "[NRT] - TY Page - Thank You Page Postvendita - Link Sharing",
+    "#": 6,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "ANDROID",
+    "Precondizioni": "Finalize the bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "TYPage",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "On tap on \"Condividi il link per far rigiocare il biglietto\", the device sharing panel opens.",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8468",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user logs ANB app",
+        "Expected Result": "The app opens correctly and the user lands on Home Page"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user brings a (single) Prematch outcome to cart_x000D_\n",
+        "Expected Result": "Cart is populated correctly"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user taps on CTA \"Scommetti\" and finalizes the bet",
+        "Expected Result": "Succesfully bet and the user lands on TYP (Thank You Page) with a label_x000D_\n \"Complimenti! La scommessa è andata a buon fine!\"._x000D_\n_x000D_\n TYP is composed by :_x000D_\n_x000D_\n 1. Codice biglietto_x000D_\n 2. L'importo di Puntata_x000D_\n 3. Quota totale_x000D_\n 4. Vincita Potenziale (in €)_x000D_\n 5. Dettaglio Biglietto_x000D_\n_x000D_\n TYP is composed by CTA:_x000D_\n_x000D_\n 0. CTA \" X\"_x000D_\n 1. Riporta Eventi Nel Biglietto_x000D_\n 2. Notifiche_x000D_\n 3. Contina a scommettere_x000D_\n 4. Condividi_x000D_\n 5. Pubblica su Tipster_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user taps on CTA \"Condividi\"",
+        "Expected Result": "The user verifies that by tapping on CTA \"Condividi\", the ticket link or image sharing panel opens"
+      },
+      {
+        "Step": 5,
+        "Step Description": "The user taps on \"Condividi il link per far rigiocare il biglietto \"",
+        "Expected Result": "On tap on \"Condividi il link per far rigiocare il biglietto\", the device sharing panel opens"
+      }
+    ]
+  },
+  "ANB-8737": {
+    "Title": "[NRT] Update real bonus service - Freebet bonus",
+    "#": 7,
+    "Test Group": "App Android",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Android",
+    "Precondizioni": "Open ANB app while logged in and land on home page and profile menu.",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "ProfileMenu",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Replace the current Real Bonus Service with the new one",
+    "Country": "Italy",
+    "Project": "App Nativa Betting Agile",
+    "Author": "Di Nuzzo Lucia",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbettingagile/ANB-8737",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": NaN,
+    "Requires Script Maintenance": NaN,
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open the ANB app while logged in.",
+        "Expected Result": "ANB App opens correctly and user lands on homepage when logged in."
+      },
+      {
+        "Step": 2,
+        "Step Description": "Add a Freebet (e.g. 10eu) from NPPL platform.",
+        "Expected Result": "The bonus addition is successful."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Profile menu.",
+        "Expected Result": "The user profile menu should be opened and the Freebet label should be updated."
+      }
+    ]
+  },
+  "DIGB-55563": {
+    "Title": "Reskin Betting - Sezione Live - Live Ora",
+    "#": 8,
     "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for event detail carousel, not for Home Page.",
-    "_polarion": "Introduzione",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "precondition",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Navigazione - Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "By default the user lands in the Live Ora - Quote Top section",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-55563",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
     "Steps": [
       {
         "Step": 1,
-        "Step Description": "Access the Betting Full Responsive frontend (Morocco version) via a supported browser on desktop.",
-        "Step Expected Result": "The homepage loads successfully, displaying betting options."
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
       },
       {
         "Step": 2,
-        "Step Description": "Navigate to a sports event eligible for Same Game Parlay bets.",
-        "Step Expected Result": "The event page loads, showing available betting markets."
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
       },
       {
         "Step": 3,
-        "Step Description": "Locate the section for precompiled SGP bets generated by the SGP Generator.",
-        "Step Expected Result": "A section labeled for precompiled SGP bets is visible on the event page."
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
       },
       {
         "Step": 4,
-        "Step Description": "Verify that the displayed SGP bets are generated randomly and differ upon page refresh or event change.",
-        "Step Expected Result": "Each page refresh or event change results in a new set of randomly generated SGP bets."
+        "Step Description": "The user click on Live",
+        "Expected Result": "By default the user lands in the Live Ora - Quote Top section"
       }
     ]
   },
-  "TC-015": {
-    "Title": "Display of SGP Precompiled Bets on Mobile Devices (Italy and Morocco)",
-    "#": 15.0,
-    "Test Group": "Mobile",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for event detail carousel, not for Home Page.",
-    "_polarion": "Introduzione",
+  "DIGB-55565": {
+    "Title": "Reskin Betting - Sezione Live - Ordinamento Manifestazione",
+    "#": 9,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "precondition",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Navigazione - Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Event sorting displayed correctly",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-55565",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
     "Steps": [
       {
         "Step": 1,
-        "Step Description": "Access the Betting Full Responsive frontend (Italy or Morocco version) via a supported browser on a mobile device (iOS or Android).",
-        "Step Expected Result": "The homepage loads successfully, displaying betting options in a mobile-optimized layout."
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
       },
       {
         "Step": 2,
-        "Step Description": "Navigate to a sports event eligible for Same Game Parlay bets.",
-        "Step Expected Result": "The event page loads, showing available betting markets in a responsive format."
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
       },
       {
         "Step": 3,
-        "Step Description": "Locate the section for precompiled SGP bets generated by the SGP Generator.",
-        "Step Expected Result": "A section labeled for precompiled SGP bets is visible and formatted correctly for mobile screens."
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
       },
       {
         "Step": 4,
-        "Step Description": "Verify that the displayed SGP bets are generated randomly and differ upon page refresh or event change.",
-        "Step Expected Result": "Each page refresh or event change results in a new set of randomly generated SGP bets."
+        "Step Description": "The user click on Live",
+        "Expected Result": "the user views for each discipline the events listed in the live schedule organized in lists"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Within the disciplines, the matches are grouped by competition",
+        "Expected Result": "Competition sorting displayed correctly"
       }
     ]
   },
-  "TC-016": {
-    "Title": "Display of SGP Precompiled Bets on Retail Terminal Devices (Italy and Morocco)",
-    "#": 16.0,
+  "DIGB-56024": {
+    "Title": "Reskin Betting - Metatemplate TOP SCOMMESSE CASA (CALCIO) (1000006)",
+    "#": 10,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "PokerStars",
+    "Precondizioni": "Configurare un metatemplate TOP SCOMMESSE CASA (CALCIO) (1000006)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Metatemplate",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "the metatemplate is displayed",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Girard Ludovica",
+    "Assignee(s)": "Di Nuzzo Lucia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-56024",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": NaN,
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "The user access to PokerStars",
+        "Expected Result": "The user view the HP"
+      },
+      {
+        "Step": 2,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "The user view a side menu"
+      },
+      {
+        "Step": 3,
+        "Step Description": "The user click on Sport",
+        "Expected Result": "User views pre-filtered page on All - Quote Top"
+      },
+      {
+        "Step": 4,
+        "Step Description": "The user selects a calcio event and clicks on Giocatori tab",
+        "Expected Result": "the metatemplate is displayed"
+      }
+    ]
+  },
+  "DIGB-63480": {
+    "Title": "Reskin Betting - Mobile - Biglietto - Composizione Sezione",
+    "#": 11,
+    "Test Group": "Mobile IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Mobile",
+    "Precondizioni": "Add outcomes to cart",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Biglietto",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "A panel is opened from the bottom with all outcomes added to cart.\nThe panel is composed as shown in the figma\nhttps://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63480",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add an outcome to cart",
+        "Expected Result": "The cart is populated and a number icon is shown next to \"Biglietto\""
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "A panel is opened from the bottom with all outcomes added to cart._x000D_\n The panel is composed as shown in the figma_x000D_\n https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      }
+    ]
+  },
+  "DIGB-63508": {
+    "Title": "Reskin Betting- Mobile - Sezione Live - I miei live",
+    "#": 12,
+    "Test Group": "Mobile IOS",
+    "Canale": "Mobile",
+    "Dispositivo": "Mobile",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Mobile",
+    "Precondizioni": "Live events available",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Live",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user correctly views the lists of match with eye icon enabled.",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63508",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Live",
+        "Expected Result": "The user lands succesfully in the section by default in tab \"Live ora\"._x000D_\n"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on eye icon next to mach in \"Live ora\" section",
+        "Expected Result": "The match is correctly added  in \"I miei live\" section and a number icon is shown next to \"I miei Live\"_x000D_\n"
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on \"I miei live\"",
+        "Expected Result": "The user correctly views the lists of match with eye icon enabled."
+      }
+    ]
+  },
+  "DIGB-63555": {
+    "Title": "Reskin Betting - Tablet - Dettaglio Biglietto - Vincente con Cash Out",
+    "#": 13,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Place a bet",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "MyBets",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that the ticket detail displays the label “Hai vinto” followed by the value cashed out via Cash Out.\nThere are also:\n1. Puntata totale del biglietto\n2. Quota totale del biglietto  \n3. Bonus associato al biglietto\n4. Vincita potenziale originale del biglietto.\n\nSee the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=WKxXbw4kvTQIJ5Qh-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63555",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": NaN,
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add an outcomes to cart and place a bet",
+        "Expected Result": "Succesfully bet"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on \"Mie Giocate->Chiuse\"",
+        "Expected Result": "A panel is opened from the bottom with a listing of all bets._x000D_\n The section is set by default on \"Aperte\"_x000D_\n The section is composed by:_x000D_\n 1.  Aperte_x000D_\n 2. Chiuse_x000D_\n_x000D_\n https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      },
+      {
+        "Step": 6,
+        "Step Description": "Tap on \"Vedi dettaglio\"",
+        "Expected Result": "The user verifies that the ticket detail displays the label “Hai vinto” followed by the value cashed out via Cash Out._x000D_\n There are also:_x000D_\n 1. Puntata totale del biglietto_x000D_\n 2. Quota totale del biglietto  _x000D_\n 3. Bonus associato al biglietto_x000D_\n 4. Vincita potenziale originale del biglietto._x000D_\n_x000D_\n See the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=WKxXbw4kvTQIJ5Qh-0"
+      }
+    ]
+  },
+  "DIGB-63594": {
+    "Title": "Reskin Betting - Tablet - Smart Search -Risultato Trovato",
+    "#": 14,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Enter characters in Smart Search",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Smart Search",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user views the results of the search",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63594",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_fe_drop7",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Tap on Smart Search",
+        "Expected Result": "The user lands on a second-level page composed by:_x000D_\n_x000D_\n - Search bar with X and search icon"
+      },
+      {
+        "Step": 5,
+        "Step Description": "Enter at least 3 characters (es: Inter)",
+        "Expected Result": "The user views the results of the search grouped in accordion"
+      }
+    ]
+  },
+  "DIGB-63603": {
+    "Title": "Reskin Betting - Tablet - Biglietto - SGP",
+    "#": 15,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Tablet",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Tablet",
+    "Precondizioni": "Add outcomes to cart",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Biglietto",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The user verifies that if there are two or more outcomes within the ticket referring to the same event and the ticket is in multiple status, the outcomes are graphically linked to each other by the appropriate element.\n\nSee the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Desantis Raffaella EXT",
+    "Assignee(s)": "Castorio Andrea",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-63603",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_FE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Open Pokerstars as logged-in user",
+        "Expected Result": "Succesfully login"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Tap on Hamburger Menu",
+        "Expected Result": "The section is composed by:_x000D_\n 1. CTA Back_x000D_\n 2. Title_x000D_\n 3. Icon to search"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Tap on Sport",
+        "Expected Result": "The user correctly lands in the section."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Add two or more outcomes referring to the same event",
+        "Expected Result": "The cart is populated and a number icon quota are shown next to \"Biglietto\""
+      },
+      {
+        "Step": 5,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "A panel is opened from the bottom with the outcomes added to cart with a label \"Multipla/Sistema\" displayed."
+      },
+      {
+        "Step": 6,
+        "Step Description": "Tap on Biglietto",
+        "Expected Result": "The user verifies that if there are two or more outcomes within the ticket referring to the same event and the ticket is in multiple status, the outcomes are graphically linked to each other by the appropriate element._x000D_\n_x000D_\n See the figma https://www.figma.com/design/8jaMLDoJsiAVekeJiUiBsX/FR-Pokestars-Betting?node-id=917-123663&p=f&t=M7iYGu8FUxQrzs3l-0"
+      }
+    ]
+  },
+  "DIGB-67786": {
+    "Title": "Vendita Offerta di Gioco - Portale e APP - Vendita Scommessa 3 da SITO",
+    "#": 16,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Sito",
+    "Precondizioni": "The application must be available",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Vendita Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Check that the sale from FR is successful",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-67786",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "From FR sell a play with the cde 3",
+        "Expected Result": "Check that the sale from FR is successful"
+      }
+    ]
+  },
+  "DIGB-68096": {
+    "Title": "Creazione Offerta di Gioco - Simp - Inserimento Quote Manuale Scommessa 6513",
+    "#": 17,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "SIMP",
+    "Precondizioni": "The application must be available",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Creazione Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The quota insertion must be successful and the cde must be available on FR and APP",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-68096",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "N",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "Waiting Excel Download/Upload Solution",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "From SIMP enter the quotas of cde 6513 for the manually created event",
+        "Expected Result": "The quota insertion must be successful and the cde must be available on FR and APP"
+      }
+    ]
+  },
+  "DIGB-68416": {
+    "Title": "Gestione Offerta di Gioco - BODG  - Ripristina su un brand le legature di uno o più market type per una manifestazione in BODG - Ripristina",
+    "#": 18,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "BODG",
+    "Precondizioni": "The application must be reachable",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Gestione Offerta di Gioco",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "6. Enable the \"Confirm\" button",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Fusco Edoardo",
+    "Assignee(s)": "Fusco Edoardo",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-68416",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Medium",
+    "Developed": "Y",
+    "Note": "Smart Search not working",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Click on the \"Restore\" button",
+        "Expected Result": "The system, after confirmation by the Actor, for each selected market type that has personalized binding values:1. Eliminates customizations on binding values 2. If the reference event has custom binding values: Displays in the grid the personalized binding values of the reference event 3. If the manifeReference station does NOT have personalized ligation values and the same market type has personalized ligation values for the reference sport: Displays in the grid the personalized binding values of the same market type for the reference sport;"
+      },
+      {
+        "Step": 2,
+        "Step Description": "*",
+        "Expected Result": "4. If the reference event does NOT have personalized ligation values, the same market type does NOT have personalized ligation values for the reference sportAnd the reference sport has personalized ligation values: Displays in the grid the personalized ligation values of the reference sport; 5. If the reference manifestation does NOT have personalized binding values, theSame market type does NOT have customized binding values for the reference sport and the reference sport does NOT have customized binding values: Displays the dashe \"-\" in the grid in correspondence with the four expected ligation values (theMinimum and maximum guarantee for prematch and live);"
+      },
+      {
+        "Step": 3,
+        "Step Description": "*",
+        "Expected Result": "6. Enable the \"Confirm\" button"
+      }
+    ]
+  },
+  "DIGB-69637": {
+    "Title": "Modulo Trading - Registro accettazione - Brand Master+Italia -    Dettaglio biglietto - Indicazione dispositivi di vendita su biglietti venduti da TG Best Agenzia",
+    "#": 19,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.Sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Registro Accettazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "In the Ticket Detail, before the list of predictions, the Brand, the channel, the subchannel, the device and the number of sales TG must be reported.With tickets sold by portal by the Italia brand you can see: \"ITALY - RETAIL - Agency - BEST - 191\" followed by the thumbs up icon and the name of the trader who accepted the bet",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-69637",
+    "Analysis": "Not Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "High",
+    "Execution Time": "Medium",
+    "Volatility": "Medium",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Login to the TG Best certified on the agency network",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "From the SPORT section select from the tree on the left the discipline and then the event and compile a multiple bet by entering a bet that sends the bet to the console and then click on the bet button",
+        "Expected Result": "The message is displayed \"The bet is being accepted  Our players are evaluating your play. Don't refresh the page.\""
+      },
+      {
+        "Step": 3,
+        "Step Description": "Access the Trading Module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console and enable the console by clicking on AcceptNe ticket- Ticket acceptance and alarms and accept the bet just made",
+        "Expected Result": "The bet is correctly sold"
+      },
+      {
+        "Step": 4,
+        "Step Description": "From the trading module, Click sUl menu Monitoring - Register Acceptances and alarms and set through the selectboxes present in the header, the brand as master+Italy, the currency in EUR and on the selectbox Type leave \"Acceptance\" and press search and then click on the newly sold TSN",
+        "Expected Result": "In the Ticket Detail, before the list of predictions, the Brand, the channel, the subchannel, the device and the number of sales TG must be reported.With tickets sold by portal by the Italia brand you can see: \"ITALY - RETAIL - Agency - BEST - 191\" followed by the thumbs up icon and the name of the trader who accepted the bet"
+      }
+    ]
+  },
+  "DIGB-69737": {
+    "Title": "Modulo Trading - Registro autorizzazione - Brand Master+Pokerstars - Dettaglio Autorizzazione - Stato Rifiutato timeout",
+    "#": 20,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.Sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Registro Accettazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The Authorization Detail opens and at the top right must be the red Label \"Rejected timeout\"",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-69737",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the trading module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Click on the Monitoring menu - Acceptances and alarms register and set through the selectboxes in the header, the brand as master+Pokerstars and the currencyIn EUR and on the selectbox Type leave \"Acceptance\"",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Set the date set to \"Date from\" by entering a few days back from the current date so as to have a rangeOf wider results and set on the selectbox \"Status\" the Rejected timeout status and click on the search button",
+        "Expected Result": "Tickets ordered by default by descending date, from the most recent to the oldest that meet the criterion are returnedEntered, in this case the tickets with the status Rejected timeout issued by the date-Time set."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click on an authorization code",
+        "Expected Result": "The Authorization Detail opens and at the top right must be the red Label \"Rejected timeout\""
+      }
+    ]
+  },
+  "DIGB-70068": {
+    "Title": "Modulo Trading - Ricerca Biglietto - Brand Master + Pokerstars -    Dettaglio biglietto -  Stato biglietto Pagato",
+    "#": 21,
+    "Test Group": "Desktop",
+    "Canale": "Backoffice",
+    "Dispositivo": "Computer",
+    "Priority": "Highest",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "Modulo Trading",
+    "Precondizioni": "NMT login, NMT address: https://test-mt.sisal.com/risk-management-console/",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Ricerca Biglietti",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The ticket detail opens and the green label \"Paid\" must be shown at the top right",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Zuco Alessandro",
+    "Assignee(s)": "Zuco Alessandro",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-70068",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "betting_be_drop1",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the trading module, with special credentials, through the link: https://test-mt.sisal.com/risk-management-console",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 2,
+        "Step Description": "ClickAnd on the menu Monitoring - Search Ticket and set through the selectboxes present in the header, the brand as master+Pokerstars and the currency in EUR",
+        "Expected Result": "The operation will be allowed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "Set the date set to \"Issued by\" by entering a few days back from the current date in order to have a range of resultsLarger and set the status Paid on the \"Status\" select box and click on the search button",
+        "Expected Result": "Tickets ordered by default by decreasing date, from the most recent to the oldest that meet the criterion entered, are returned, in thisOr case the tickets with the Paid status issued by the date-Time set."
+      },
+      {
+        "Step": 4,
+        "Step Description": "Click on a TSN to open the ticket",
+        "Expected Result": "The ticket detail opens and the green label \"Paid\" must be shown at the top right"
+      }
+    ]
+  },
+  "DIGB-70895": {
+    "Title": "Inserimento Risultati - Blocco Pagamenti - Verifiche lato My Bets - Scommessa Singola Prematch - Cluster semplici - Biglietto 1",
+    "#": 22,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "High",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "FR",
+    "Precondizioni": "Access to the My BETS section",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Blocco Pagamenti",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "NO",
+    "Automation": "NO",
+    "Dataset": "Biglietto 1",
+    "Risultato Atteso": "The system will show the winning tickets with the winning label in green with their amount and the balance upstream of the page will be increased.There will also be a link to view the ticket details",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Corsi Alessia",
+    "Assignee(s)": "Corsi Alessia",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-70895",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Terminal access request",
+    "Team Ownership": "Accenture",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the link https://testfr-www.sisal.it/scommesse-matchpoint, authenticate NO with your user and anGive in the My Bets section and search for the winning tickets among the CLOSED bets",
+        "Expected Result": "The system will show the vincent ticketsThem accompanied by a green winning label with its amount and the balance upstream of the page will be increased. There will also be a link to view the ticket details"
+      },
+      {
+        "Step": 2,
+        "Step Description": "Access the ticket details",
+        "Expected Result": "By accessing the ticket details from the appropriate link, the system will open the relative pop-up with: - typeOgia played (SNG, MUL, SYS) and date/time of sale - preview winning amount - event detail (event, Pal/Avv, description and competence) - bet sold and relative quota (if available info icon for CdE regulations) - total bet - sales share- winning or potential winning - drop-down menu showing ticket information (code, account number, date/time of sale, expiration date) - Message: Attention The payment of the bet is waiting for all results to be confirmed by AAMS. For more deTtagli consult the official results of the last 72 hours."
+      },
+      {
+        "Step": 3,
+        "Step Description": "Select the IB present in the ticket detail pop-up and copy it. Access the reserved area from the link https://testfr-www.sisal.it/scommesse-matchpoint, click on the Reserved Area icon at the top right, and on the \"Account Movements\" item in the menu on the left andSearch for movements related to the copied IB (e.g. DF07X00X0X00000X0000)",
+        "Expected Result": "The system will show the list of movements related to the IB sought (e.g. DF07X00X0X00000X0000), The systemBut it will allow you to limit the list of tickets to the type of game that will be organized for: - date - type (sales, credits, transfers, etc.) - description - amount - receipt and serial ID"
+      }
+    ]
+  },
+  "DIGB-81467": {
+    "Title": "Pokerstars Promo Generic Real Bonus - Edit",
+    "#": 23,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "Having configured a generic promo with bonus type real bonus (see promo creation test)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Generic Real Bonus - Edit",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The change is saved",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-81467",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "Access the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "From the \"promotions\" list click on the promotions section click on generic",
+        "Expected Result": "The list of generic promotions is displayed"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the pencil icon (edit promotion) of the reference promo",
+        "Expected Result": "the user sees the \"edit promotion\" mask"
+      },
+      {
+        "Step": 4,
+        "Step Description": "the user makes the change to the promo end date. click on the button: Save",
+        "Expected Result": "The change is saved"
+      }
+    ]
+  },
+  "DIGB-82965": {
+    "Title": "POKERSTARS Promo Lost Delayed Freebet with Optin - Edit Not Active promo",
+    "#": 24,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "Having logged in to the NPPL portal https://test-promo-manager-pokerstars.sisal.it/fe/#/promo Having a non-active promo in the promotions list (see promo creation test)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Lost Delayed Freebet - Edit Not Active promo",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The change is saved",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-82965",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "the user accesses the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "the user from the \"PROMOTIONS\" section clicks \"on products\"",
+        "Expected Result": "the user views the list of product promotions"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the Pencil icon (edit promotion)",
+        "Expected Result": "the user sees the Edit Promotion mask"
+      },
+      {
+        "Step": 4,
+        "Step Description": "the user makes a change to any field clicks on the button: Save",
+        "Expected Result": "The change is saved"
+      }
+    ]
+  },
+  "DIGB-83028": {
+    "Title": "POKERSTARS Promo Dynamic Recharge real bonus - Promo creation",
+    "#": 25,
+    "Test Group": "Desktop",
+    "Canale": "Desktop",
+    "Dispositivo": "Computer",
+    "Priority": "Medium",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "NPPL Pokerstars",
+    "Precondizioni": "have valid login credentials (LDAP) have logged in to the NPPL portal https://test-promo-manager-pokerstars.sisal.it/fe/#/promo the promotional code must be made up of two alphanumeric strings separated by a hyphen (-)",
+    "Modalità Operativa": "manuale",
+    "Funzionalità": "Promo Dynamic Recharge real bonus - Promo creation",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The promotion is successfully created by generating an identifying Promo ID.",
+    "Country": "Italy",
+    "Project": "Betting Digital",
+    "Author": "Battimo Giuseppe EXT",
+    "Assignee(s)": "Battimo Giuseppe EXT",
+    "Type": "Test ",
+    "_polarion": "digitalbetting/DIGB-83028",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "Medium",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
+    "Steps": [
+      {
+        "Step": 1,
+        "Step Description": "the user accesses the NPPL portal: https://test-promo-manager-pokerstars.sisal.it/fe/#/promo",
+        "Expected Result": "the user views the promotions list"
+      },
+      {
+        "Step": 2,
+        "Step Description": "the user from the \"PROMOTIONS\" section clicks \"on products\"",
+        "Expected Result": "the user views the list of product promotions"
+      },
+      {
+        "Step": 3,
+        "Step Description": "the user clicks on the button: CREATE",
+        "Expected Result": "the user opens the Create Promotion form"
+      },
+      {
+        "Step": 4,
+        "Step Description": "ANAGRAFICA TABfill in name fill in description select calculation type: top-up select promo category: test select prize nature: Bonus select bonus type: Real bonus select deductibility: deductible select promotion type: single select prize accrual method: dynamic select prize payment method: manual \"protocol required\" flag: active",
+        "Expected Result": "The \"Next\" CTA is activated"
+      },
+      {
+        "Step": 5,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the ELIGIBILITY tab"
+      },
+      {
+        "Step": 6,
+        "Step Description": "ELIGIBILITY TAB select \"Promo Eligibility Type\": public",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 7,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the CONDITIONS tab"
+      },
+      {
+        "Step": 8,
+        "Step Description": "CONDITIONS TAB select validity type: range insert date from/to select Membership method: promotional code fill in promotional code select Payment Channels: select all select Payment Methods: select all select Payment Channel Details: select all",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 9,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the CALCULATION PARAMETERS tab"
+      },
+      {
+        "Step": 10,
+        "Step Description": "CALCULATION PARAMETERS TAB select bonus payment: instant select bonus amount type: fixed select bach type: single enter minimum top-up: €50 bonus amount: €10",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 11,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the EROGAZIONE tab"
+      },
+      {
+        "Step": 12,
+        "Step Description": "EROGAZIONE TAB preview information flag: on Bonus distribution: single select template: casino select spendability channels: select all fill in bonus name select bonus expiry: within + number of days",
+        "Expected Result": "the \"Next\" CTA is activated"
+      },
+      {
+        "Step": 13,
+        "Step Description": "user clicks on CTA : next",
+        "Expected Result": "the user moves to the INFORMATION tab"
+      },
+      {
+        "Step": 14,
+        "Step Description": "INFORMATION TAB click on: generate information",
+        "Expected Result": "inside the fields: \"title\" and \"information\" the information relating to the promo is generated"
+      },
+      {
+        "Step": 15,
+        "Step Description": "user clicks on CTA : save",
+        "Expected Result": "The promotion is successfully created by generating an identifying Promo ID."
+      }
+    ]
+  },
+  "RETB-8897": {
+    "Title": "[QA Automation] TG Best Italia - R2I - SPORT - 'Sisal.it' mode - Create and sell a \"Multipla with NUMBER OF ESITI = MAX NUMBER\" ticket from PREMATCH section",
+    "#": 26,
     "Test Group": "Terminale",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for event detail carousel, not for Home Page.",
-    "_polarion": "Introduzione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Betting Full Responsive frontend (Italy or Morocco version) via a supported browser on a retail terminal device.",
-        "Step Expected Result": "The homepage loads successfully, displaying betting options in a terminal-optimized layout."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to a sports event eligible for Same Game Parlay bets.",
-        "Step Expected Result": "The event page loads, showing available betting markets."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Locate the section for precompiled SGP bets generated by the SGP Generator.",
-        "Step Expected Result": "A section labeled for precompiled SGP bets is visible and formatted correctly for terminal screens."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Verify that the displayed SGP bets are generated randomly and differ upon page refresh or event change.",
-        "Step Expected Result": "Each page refresh or event change results in a new set of randomly generated SGP bets."
-      }
-    ]
-  },
-  "TC-017": {
-    "Title": "Error Handling: SGP Generator Unavailable",
-    "#": 17.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (service is unavailable)",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for event detail carousel, not for Home Page.",
-    "_polarion": "Introduzione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Simulate SGP Generator service unavailability (e.g., by disconnecting the service or using a mock failure).",
-        "Step Expected Result": "The Betting Full Responsive frontend detects the unavailability of the SGP Generator."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Access the event page where SGP precompiled bets would normally be displayed.",
-        "Step Expected Result": "The SGP precompiled bets section is either hidden or displays an appropriate error message (e.g., 'SGP bets currently unavailable')."
-      }
-    ]
-  },
-  "TC-018": {
-    "Title": "Responsiveness of SGP Precompiled Bets Section Across Devices and Screen Sizes",
-    "#": 18.0,
-    "Test Group": "Desktop, Mobile, Terminale",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers caching only for event detail carousel, not for Home Page.",
-    "_polarion": "Introduzione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Betting Full Responsive frontend (Italy or Morocco version) on desktop, mobile, and terminal devices.",
-        "Step Expected Result": "The homepage loads successfully on each device type."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to a sports event eligible for Same Game Parlay bets.",
-        "Step Expected Result": "The event page loads, showing available betting markets."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Locate the section for precompiled SGP bets generated by the SGP Generator.",
-        "Step Expected Result": "The SGP section is visible and formatted appropriately for the device and screen size."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Resize the browser window or rotate the device (where applicable) to various screen sizes and orientations.",
-        "Step Expected Result": "The SGP section adapts responsively, maintaining usability and readability across all tested screen sizes and orientations."
-      }
-    ]
-  },
-  "TC-019": {
-    "Title": "Verify Requirements Section Presence and Accessibility",
-    "#": 19.0,
-    "Test Group": "Desktop",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
     "Priority": "Medium",
     "Test Stage": "TEST",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
+    "Sistema di riferimento": "TG Best Italia R2I - Betting",
+    "Precondizioni": "-",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Compilazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "The ticket is sold",
     "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the presence and accessibility of the requirements section.",
-    "_polarion": "Requisiti",
+    "Project": "Betting Retail",
+    "Author": "De Matteis Vera",
+    "Assignee(s)": "Baldassarre Silvia",
+    "Type": "Test ",
+    "_polarion": "retailbetting/RETB-8897",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Low",
+    "Execution Time": "Low",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
     "Steps": [
       {
         "Step": 1,
-        "Step Description": "Navigate to the application main page or documentation portal.",
-        "Step Expected Result": "The main page or documentation portal loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Locate the section labeled 'Requisiti' or '# Requisiti'.",
-        "Step Expected Result": "The 'Requisiti' or '# Requisiti' section is visible and accessible on the page."
-      }
-    ]
-  },
-  "TC-020": {
-    "Title": "Verify Requirements Section Content is Not Empty",
-    "#": 20.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "TEST",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the presence of content within the requirements section.",
-    "_polarion": "Requisiti",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the 'Requisiti' or '# Requisiti' section of the application or documentation.",
-        "Step Expected Result": "The section is displayed to the user."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Check that the section contains at least one requirement or descriptive content.",
-        "Step Expected Result": "The section is not empty and contains requirement details or descriptions."
-      }
-    ]
-  },
-  "TC-021": {
-    "Title": "Verify Requirements Section is Displayed Correctly on Mobile Devices",
-    "#": 21.0,
-    "Test Group": "Mobile",
-    "Priority": "Medium",
-    "Test Stage": "TEST",
-    "Automation": 0.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the mobile display and formatting of the requirements section.",
-    "_polarion": "Requisiti",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the application or documentation portal on a mobile device.",
-        "Step Expected Result": "The application or portal loads successfully on the mobile device."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the 'Requisiti' or '# Requisiti' section.",
-        "Step Expected Result": "The section is visible and accessible on the mobile device."
+        "Step Description": "The user clicks on section PREMATCH (F1)",
+        "Expected Result": "Section opened_x000D_\n​​"
       },
       {
         "Step": 3,
-        "Step Description": "Verify that the section content is readable and properly formatted for mobile view.",
-        "Step Expected Result": "The requirements section content is displayed correctly and is readable without layout issues."
-      }
-    ]
-  },
-  "TC-022": {
-    "Title": "Verify Error Handling When Requirements Section is Missing",
-    "#": 22.0,
-    "Test Group": "Desktop",
-    "Priority": "Low",
-    "Test Stage": "TEST",
-    "Automation": 0.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Requisiti",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the application or documentation portal where the 'Requisiti' or '# Requisiti' section is intentionally removed or unavailable.",
-        "Step Expected Result": "The application or portal loads without the requirements section."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the application's behavior and any error messages displayed.",
-        "Step Expected Result": "The application displays a user-friendly message indicating the requirements section is unavailable, or handles the absence gracefully without crashing."
-      }
-    ]
-  },
-  "TC-023": {
-    "Title": "Verify Carosello Display and Title on Home Page (Full Responsive Online & Retail)",
-    "#": 23.0,
-    "Test Group": "Desktop, Terminale, Mobile",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses live event data and SGP Generator output)",
-    "Country": "Italy, France",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Home Page on Full Responsive Online.",
-        "Step Expected Result": "The Home Page loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the top section of the Home Page.",
-        "Step Expected Result": "A carousel titled 'Bet Builder in evidenza / Bet Builder en vedette' is visible."
+        "Step Description": "The user select Client1from cart",
+        "Expected Result": "Cart section related to client selected is displayed"
       },
       {
         "Step": 3,
-        "Step Description": "Scroll below the carousel.",
-        "Step Expected Result": "Two items labeled 'Calcio / Football' and 'Basket' are displayed below the carousel."
+        "Step Description": "Using \"Sisal it\" mode, the user inserts 30 esiti for a MULTIPLA_x000D_\n (MAX NUMBER of esiti = 30)",
+        "Expected Result": "Esiti added to cart section related to Client selected"
       },
       {
         "Step": 4,
-        "Step Description": "Repeat steps 1-3 on Full Responsive Retail.",
-        "Step Expected Result": "The same carousel and items are visible on Full Responsive Retail Home Page."
-      }
-    ]
-  },
-  "TC-024": {
-    "Title": "Verify Carosello Content Changes Based on Selected Item (Calcio/Football or Basket)",
-    "#": 24.0,
-    "Test Group": "Desktop, Terminale, Mobile",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "SGP cards for Calcio and Basket preloaded in BE engine.",
-    "Country": "Italy, France",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Home Page with the carousel visible.",
-        "Step Expected Result": "Carousel and items 'Calcio / Football' and 'Basket' are displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Select the 'Calcio / Football' item below the carousel.",
-        "Step Expected Result": "The carousel updates to display SGP cards dedicated to Calcio (Football) bets."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Select the 'Basket' item below the carousel.",
-        "Step Expected Result": "The carousel updates to display SGP cards dedicated to Basket bets."
-      }
-    ]
-  },
-  "TC-025": {
-    "Title": "Verify Carousel Visibility Toggle on Full Responsive Retail (Hot Configuration)",
-    "#": 25.0,
-    "Test Group": "Terminale, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 0.0,
-    "Dataset": "SGP cards for Calcio and Basket preloaded in BE engine.",
-    "Country": "Italy, France",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the configuration panel for Full Responsive Retail.",
-        "Step Expected Result": "Configuration panel is accessible without system release."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Set the carousel visibility to 'disabled' and save changes.",
-        "Step Expected Result": "Configuration is saved successfully."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate to the Home Page on Full Responsive Retail.",
-        "Step Expected Result": "The carousel is not displayed on the Home Page."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Return to the configuration panel and set the carousel visibility to 'enabled'.",
-        "Step Expected Result": "Configuration is saved successfully."
+        "Step Description": "The user set a valid stake amout (default or higher) choosing one of the following ways:_x000D_\n _x000D_\n* OR clicking on + button_x000D_\n",
+        "Expected Result": "Stake amount inserted without errors"
       },
       {
         "Step": 5,
-        "Step Description": "Refresh the Home Page on Full Responsive Retail.",
-        "Step Expected Result": "The carousel is now displayed on the Home Page."
+        "Step Description": "The user sell the ticket choosing one of the following ways:_x000D_\n _x000D_\n* OR using shortcut CTRL+ENTER _x000D_\n",
+        "Expected Result": "Verify that the ticket is sold"
       }
     ]
   },
-  "TC-026": {
-    "Title": "Verify Carousel Not Displayed When Disabled via Configuration (Retail Only)",
-    "#": 26.0,
-    "Test Group": "Terminale, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "SGP cards for Calcio and Basket preloaded in BE engine.",
-    "Country": "Italy, France",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure carousel is disabled in the Full Responsive Retail configuration panel.",
-        "Step Expected Result": "Carousel is set to 'disabled' in configuration."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Home Page on Full Responsive Retail.",
-        "Step Expected Result": "The carousel is not displayed on the Home Page."
-      }
-    ]
-  },
-  "TC-027": {
-    "Title": "Verify Carousel is Displayed on All Supported Devices (Responsiveness)",
-    "#": 27.0,
-    "Test Group": "Desktop, Terminale, Mobile, Tablet",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "SGP cards for Calcio and Basket preloaded in BE engine.",
-    "Country": "Italy, France",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the Home Page on a desktop browser (Full Responsive Online).",
-        "Step Expected Result": "Carousel is displayed correctly."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Home Page on a tablet device (Full Responsive Online).",
-        "Step Expected Result": "Carousel is displayed correctly and adapts to tablet screen size."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate to the Home Page on a smartphone device (Full Responsive Online).",
-        "Step Expected Result": "Carousel is displayed correctly and adapts to smartphone screen size."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Repeat steps 1-3 on Full Responsive Retail.",
-        "Step Expected Result": "Carousel is displayed and responsive on all device types for Retail (if enabled)."
-      }
-    ]
-  },
-  "TC-028": {
-    "Title": "Verify Error Handling When SGP Cards Are Not Available from BE Engine",
-    "#": 28.0,
-    "Test Group": "Desktop, Terminale, Mobile",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 0.0,
-    "Dataset": "No SGP cards available from BE engine.",
-    "Country": "Italy, France",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Simulate a scenario where the BE engine does not provide SGP cards for Calcio or Basket.",
-        "Step Expected Result": "System recognizes that SGP cards are unavailable."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Home Page with the carousel enabled.",
-        "Step Expected Result": "Carousel is displayed with a message indicating no SGP cards are available, or the carousel is hidden according to business rules."
-      }
-    ]
-  },
-  "TC-029": {
-    "Title": "Carosello HP not displayed when no precompiled data is received from backend",
-    "#": 29.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "No precompiled data for Calcio and Basket in backend response.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Condizioni di visualizzazione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the backend is configured to return no precompiled data (neither Calcio nor Basket) for the Home Page request.",
-        "Step Expected Result": "Backend returns an empty response for precompiled data."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Home Page of the application.",
-        "Step Expected Result": "Home Page loads successfully."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Observe the presence of the Carosello HP component on the Home Page.",
-        "Step Expected Result": "Carosello HP is not displayed on the Home Page."
-      }
-    ]
-  },
-  "TC-030": {
-    "Title": "Carosello HP displays only Calcio when Basket precompiled data is missing",
-    "#": 30.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled data for Calcio only in backend response.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Condizioni di visualizzazione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the backend is configured to return precompiled data only for Calcio and not for Basket.",
-        "Step Expected Result": "Backend returns precompiled data for Calcio only."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Home Page of the application.",
-        "Step Expected Result": "Home Page loads successfully."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Observe the items displayed in the Carosello HP component.",
-        "Step Expected Result": "Carosello HP is displayed with only the Calcio item visible."
-      }
-    ]
-  },
-  "TC-031": {
-    "Title": "Carosello HP displays only Basket when Calcio precompiled data is missing",
-    "#": 31.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled data for Basket only in backend response.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Condizioni di visualizzazione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the backend is configured to return precompiled data only for Basket and not for Calcio.",
-        "Step Expected Result": "Backend returns precompiled data for Basket only."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Home Page of the application.",
-        "Step Expected Result": "Home Page loads successfully."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Observe the items displayed in the Carosello HP component.",
-        "Step Expected Result": "Carosello HP is displayed with only the Basket item visible."
-      }
-    ]
-  },
-  "TC-032": {
-    "Title": "Display of Event Names for Both Teams in Single Card",
-    "#": 32.0,
-    "Test Group": "Mobile IOS",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with two teams: Team A and Team B.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and locate the fields for team names.",
-        "Step Expected Result": "Two separate strings are displayed, each representing the name of one team."
-      }
-    ]
-  },
-  "TC-033": {
-    "Title": "Display of Team Icons from Redax Configuration",
-    "#": 33.0,
-    "Test Group": "Mobile Android",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with Team A and Team B, both having icons set in Redax.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and locate the icons for both teams.",
-        "Step Expected Result": "Icons for both teams are displayed as per the Redax configuration."
-      }
-    ]
-  },
-  "TC-034": {
-    "Title": "Display of Event Date and Time in Card",
-    "#": 34.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with a valid date and time (e.g., 2024-07-01 20:45).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and locate the date and time fields.",
-        "Step Expected Result": "Date and time of the event are displayed in the correct format."
-      }
-    ]
-  },
-  "TC-035": {
-    "Title": "Display of Discipline Icon in Event Card",
-    "#": 35.0,
-    "Test Group": "Desktop Mac",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with a discipline icon (e.g., football).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and locate the discipline icon.",
-        "Step Expected Result": "The discipline icon is displayed as provided by the backend."
-      }
-    ]
-  },
-  "TC-036": {
-    "Title": "Display of Event Manifestation Name in Card",
-    "#": 36.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with a manifestation name (e.g., 'Serie A').",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and locate the manifestation name field.",
-        "Step Expected Result": "The manifestation name is displayed as provided by the backend."
-      }
-    ]
-  },
-  "TC-037": {
-    "Title": "Display of Pronostici Descriptions in Italian for Full Responsive Italy",
-    "#": 37.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with pronostici descriptions mapped in Italian.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Set the application to Full Responsive Italy mode.",
-        "Step Expected Result": "Application is in Full Responsive Italy mode."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Identify the event card and locate the pronostici section.",
-        "Step Expected Result": "Each pronostico is displayed with two strings: the first in bold (top), the second in grey (below), both in Italian as per business mapping."
-      }
-    ]
-  },
-  "TC-038": {
-    "Title": "Display of Pronostici Descriptions in French for Full Responsive Morocco",
-    "#": 38.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with pronostici descriptions mapped in French.",
-    "Country": "Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Set the application to Full Responsive Morocco mode.",
-        "Step Expected Result": "Application is in Full Responsive Morocco mode."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Identify the event card and locate the pronostici section.",
-        "Step Expected Result": "Each pronostico is displayed with two strings: the first in bold (top), the second in grey (below), both in French as per business mapping."
-      }
-    ]
-  },
-  "TC-039": {
-    "Title": "Display of Quota Button with Correct Total Odds Including Bonus",
-    "#": 39.0,
-    "Test Group": "Mobile IOS",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with individual odds (e.g., 1.5, 2.0) and bonus (e.g., 10%).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and locate the Quota button.",
-        "Step Expected Result": "Quota button is visible on the card."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Verify the value displayed on the Quota button matches the product of the individual odds, including any applicable bonus.",
-        "Step Expected Result": "Quota button displays the correct total odds as calculated."
-      }
-    ]
-  },
-  "TC-040": {
-    "Title": "Display of Number of Additional Markets (+n) for SGP Cards on App",
-    "#": 40.0,
-    "Test Group": "Mobile Android",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with additional markets count (e.g., 5).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards on the mobile app.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and locate the additional markets indicator (+n).",
-        "Step Expected Result": "The number of additional markets not shown in the card is displayed as '+n'."
-      }
-    ]
-  },
-  "TC-041": {
-    "Title": "Display of Live Streaming Indicator for SGP Cards on App",
-    "#": 41.0,
-    "Test Group": "Mobile IOS",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with live streaming flag set to true.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards on the mobile app.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify the event card and check for the live streaming indicator (if the event is live and streaming is available).",
-        "Step Expected Result": "A live streaming indicator is displayed on the card if the event is live and streaming is available."
-      }
-    ]
-  },
-  "TC-042": {
-    "Title": "Negative Test: Missing Team Icon Fallback Handling",
-    "#": 42.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with missing team icon(s).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Configure an event in the backend with one or both team icons missing in Redax.",
-        "Step Expected Result": "Event data is available with missing team icon(s)."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Identify the event card and check the team icon fields.",
-        "Step Expected Result": "A default or placeholder icon is displayed for any missing team icon."
-      }
-    ]
-  },
-  "TC-043": {
-    "Title": "Negative Test: Pronostici Mapping Fallback for Unsupported Locale",
-    "#": 43.0,
-    "Test Group": "Desktop",
-    "Priority": "Low",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event data with pronostici mapping in Italian and French only.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Carosello HP - Struttura singola card/precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Set the application to a locale other than Italian or French (e.g., English).",
-        "Step Expected Result": "Application is in the unsupported locale mode."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the homepage carousel displaying SGP Generator cards.",
-        "Step Expected Result": "The carousel is visible with at least one SGP card displayed."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Identify the event card and locate the pronostici section.",
-        "Step Expected Result": "Pronostici descriptions are displayed in a default language (e.g., Italian) or a fallback message is shown."
-      }
-    ]
-  },
-  "TC-044": {
-    "Title": "Add all precompilata outcomes to cart via quota button (empty cart)",
-    "#": 44.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials, precompilata card with 4 outcomes.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Pulsante quota",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the cart is empty.",
-        "Step Expected Result": "Cart contains no outcomes."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify a precompilata card with 4 outcomes.",
-        "Step Expected Result": "Precompilata card with 4 outcomes is visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Tap the quota button on the precompilata card.",
-        "Step Expected Result": "Quota button is graphically selected."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Check the cart contents.",
-        "Step Expected Result": "All 4 outcomes from the precompilata are added to the cart."
-      }
-    ]
-  },
-  "TC-045": {
-    "Title": "Add precompilata outcomes to cart when cart already contains outcomes (including system mode)",
-    "#": 45.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials, cart with 2 outcomes, precompilata card with 3 outcomes.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Pulsante quota",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the cart contains 2 outcomes from previous selections.",
-        "Step Expected Result": "Cart contains 2 outcomes."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify a precompilata card with 3 outcomes (none of which are in the cart).",
-        "Step Expected Result": "Precompilata card with 3 outcomes is visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Tap the quota button on the precompilata card.",
-        "Step Expected Result": "Quota button is graphically selected."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Check the cart contents and ticket mode.",
-        "Step Expected Result": "All 3 outcomes from the precompilata are added to the cart (total 5). If this triggers system mode, ticket is in system mode."
-      }
-    ]
-  },
-  "TC-046": {
-    "Title": "Quota button is graphically selected if all precompilata outcomes are already in cart",
-    "#": 46.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials, cart with all outcomes from a precompilata card.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Pulsante quota",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the cart contains all outcomes from a specific precompilata card (added manually or via quota button).",
-        "Step Expected Result": "Cart contains all outcomes from the precompilata."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Locate the corresponding precompilata card.",
-        "Step Expected Result": "Precompilata card is visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Observe the quota button on the precompilata card.",
-        "Step Expected Result": "Quota button is graphically selected."
-      }
-    ]
-  },
-  "TC-047": {
-    "Title": "Quota button is disabled if only some precompilata outcomes are in cart",
-    "#": 47.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials, cart with 3 of 4 outcomes from a precompilata card.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Pulsante quota",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the cart contains only 3 out of 4 outcomes from a specific precompilata card.",
-        "Step Expected Result": "Cart contains 3 of 4 outcomes from the precompilata."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Locate the corresponding precompilata card.",
-        "Step Expected Result": "Precompilata card is visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Observe the quota button on the precompilata card.",
-        "Step Expected Result": "Quota button is disabled (not tappable/clickable)."
-      }
-    ]
-  },
-  "TC-048": {
-    "Title": "Remove precompilata outcomes from cart by tapping selected quota button",
-    "#": 48.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials, cart with all outcomes from a precompilata card.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Pulsante quota",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the cart contains all outcomes from a specific precompilata card (added via quota button).",
-        "Step Expected Result": "Cart contains all outcomes from the precompilata."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Locate the corresponding precompilata card with quota button graphically selected.",
-        "Step Expected Result": "Quota button is graphically selected."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Tap the selected quota button.",
-        "Step Expected Result": "Quota button is graphically deselected."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Check the cart contents.",
-        "Step Expected Result": "All outcomes from the precompilata are removed from the cart."
-      }
-    ]
-  },
-  "TC-049": {
-    "Title": "Error when adding precompilata outcomes exceeds leg max constraint (system mode)",
-    "#": 49.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials, cart with 3 outcomes (one with leg max=5), precompilata card with 5 outcomes.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Pulsante quota",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the cart contains 3 outcomes, one of which has a leg max=5 constraint.",
-        "Step Expected Result": "Cart contains 3 outcomes, including one with leg max=5."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify a precompilata card with 5 outcomes.",
-        "Step Expected Result": "Precompilata card with 5 outcomes is visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Tap the quota button on the precompilata card.",
-        "Step Expected Result": "No outcomes from the precompilata are added to the cart. An error message is displayed indicating the constraint violation."
-      }
-    ]
-  },
-  "TC-050": {
-    "Title": "Error when adding precompilata outcomes exceeds maximum events/outcomes allowed",
-    "#": 50.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials, cart with 28 events, precompilata card with 5 outcomes.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Pulsante quota",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Ensure the cart contains 28 events in multipla mode.",
-        "Step Expected Result": "Cart contains 28 events."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Identify a precompilata card with 5 outcomes.",
-        "Step Expected Result": "Precompilata card with 5 outcomes is visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Tap the quota button on the precompilata card.",
-        "Step Expected Result": "No outcomes from the precompilata are added to the cart. An error message is displayed indicating the maximum number of events/outcomes has been reached."
-      }
-    ]
-  },
-  "TC-051": {
-    "Title": "Verify precompiled cards are cached and persist for X minutes on homepage revisit",
-    "#": 51.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses default homepage precompiled cards)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Memorizzazione in cache delle precompilate",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the website and land on the homepage (HP) at time T0.",
-        "Step Expected Result": "Homepage loads and precompiled cards are displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the content and order of the precompiled cards displayed.",
-        "Step Expected Result": "Content and order of precompiled cards are recorded for later comparison."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the homepage to another section of the website.",
-        "Step Expected Result": "User is successfully navigated to a different section; homepage is no longer visible."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Wait for a period less than X minutes (e.g., X-1 minutes).",
-        "Step Expected Result": "Elapsed time is less than the configured cache duration X."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Return to the homepage within X minutes from the initial visit.",
-        "Step Expected Result": "Homepage reloads."
-      },
-      {
-        "Step": 6,
-        "Step Description": "Observe the precompiled cards displayed on the homepage.",
-        "Step Expected Result": "The same precompiled cards (content and order) as seen at T0 are displayed."
-      }
-    ]
-  },
-  "TC-052": {
-    "Title": "Verify precompiled cards are refreshed after cache expiration (X minutes)",
-    "#": 52.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses default homepage precompiled cards)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the application's behavior when the requirements section is missing.",
-    "_polarion": "Memorizzazione in cache delle precompilate",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the website and land on the homepage (HP) at time T0.",
-        "Step Expected Result": "Homepage loads and precompiled cards are displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the content and order of the precompiled cards displayed.",
-        "Step Expected Result": "Content and order of precompiled cards are recorded for later comparison."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the homepage to another section of the website.",
-        "Step Expected Result": "User is successfully navigated to a different section; homepage is no longer visible."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Wait for a period greater than X minutes (e.g., X+1 minutes).",
-        "Step Expected Result": "Elapsed time exceeds the configured cache duration X."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Return to the homepage after X minutes have passed since the initial visit.",
-        "Step Expected Result": "Homepage reloads."
-      },
-      {
-        "Step": 6,
-        "Step Description": "Observe the precompiled cards displayed on the homepage.",
-        "Step Expected Result": "Precompiled cards are refreshed and may differ in content and/or order from those seen at T0."
-      }
-    ]
-  },
-  "TC-053": {
-    "Title": "Verify cache duration X is only changeable via release and not runtime",
-    "#": 53.0,
-    "Test Group": "Backend",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 0.0,
-    "Dataset": "Current and new values for X (e.g., X=5, X=10)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers configuration management, not user-facing cache behavior.",
-    "_polarion": "Memorizzazione in cache delle precompilate",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the system configuration for cache duration X.",
-        "Step Expected Result": "Configuration interface or file for cache duration is accessible."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Attempt to change the value of X during runtime (without a release/deployment).",
-        "Step Expected Result": "System does not allow changing cache duration X at runtime."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Perform a system release/deployment with a new value for X.",
-        "Step Expected Result": "System accepts the new value for X after release/deployment."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Verify that the new cache duration X is in effect after the release.",
-        "Step Expected Result": "Cache duration for precompiled cards matches the newly configured value."
-      }
-    ]
-  },
-  "TC-054": {
-    "Title": "Verify precompiled cards caching works for different browsers and devices",
-    "#": 54.0,
-    "Test Group": "Desktop, Mobile",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "N/A (uses default homepage precompiled cards)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers cross-browser and cross-device compatibility.",
-    "_polarion": "Memorizzazione in cache delle precompilate",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Open the website homepage on Browser A (e.g., Chrome) at time T0.",
-        "Step Expected Result": "Homepage loads and precompiled cards are displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the content and order of the precompiled cards displayed.",
-        "Step Expected Result": "Content and order of precompiled cards are recorded for later comparison."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the homepage and return within X minutes.",
-        "Step Expected Result": "Homepage reloads."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Verify that the same precompiled cards are displayed as at T0.",
-        "Step Expected Result": "Precompiled cards match those seen at T0."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Repeat steps 1-4 on Browser B (e.g., Firefox) and on a mobile device (e.g., iOS/Android).",
-        "Step Expected Result": "Precompiled cards caching works consistently across browsers and devices."
-      }
-    ]
-  },
-  "TC-055": {
-    "Title": "Verify that cache is user/session-specific and not shared across users",
-    "#": 55.0,
-    "Test Group": "Desktop, Mobile",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 0.0,
-    "Dataset": "N/A (uses default homepage precompiled cards)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers session/user isolation for cache.",
-    "_polarion": "Memorizzazione in cache delle precompilate",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "User A opens the website homepage at time T0 and notes the precompiled cards displayed.",
-        "Step Expected Result": "User A sees a set of precompiled cards and records their content/order."
-      },
-      {
-        "Step": 2,
-        "Step Description": "User B opens the website homepage at time T0 on a different device or browser.",
-        "Step Expected Result": "User B sees a set of precompiled cards (may differ from User A's cards) and records their content/order."
-      },
-      {
-        "Step": 3,
-        "Step Description": "User A navigates away from and returns to the homepage within X minutes.",
-        "Step Expected Result": "User A sees the same precompiled cards as initially displayed."
-      },
-      {
-        "Step": 4,
-        "Step Description": "User B navigates away from and returns to the homepage within X minutes.",
-        "Step Expected Result": "User B sees the same precompiled cards as initially displayed to User B."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Compare the precompiled cards seen by User A and User B.",
-        "Step Expected Result": "Cache is user/session-specific; User A and User B do not see each other's cached cards."
-      }
-    ]
-  },
-  "TC-056": {
-    "Title": "Display Only Non-Expired Events in Carousel Cards",
-    "#": 56.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials; Event data with mixed start times (past and future).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Does not cover cache expiration or backend refresh scenarios.",
-    "_polarion": "Eventi da visualizzare nelle card",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Log in to the application and navigate to the Home Page (HP).",
-        "Step Expected Result": "User is successfully logged in and the HP is displayed."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Verify the carousel displays event cards fetched from the backend engine (SGP).",
-        "Step Expected Result": "Carousel displays event cards as provided by the backend."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Check the start date and time of each event displayed in the carousel.",
-        "Step Expected Result": "All displayed events have a start date and time that is in the future (i.e., not yet passed)."
-      }
-    ]
-  },
-  "TC-057": {
-    "Title": "Expired Events Are Removed from Carousel Upon Return to Home Page Within Cache Validity",
-    "#": 57.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials; Event data with start times close to current time.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Does not cover scenario where all events expire.",
-    "_polarion": "Eventi da visualizzare nelle card",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Log in and navigate to the Home Page (HP).",
-        "Step Expected Result": "User is on the HP and carousel displays event cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the list of events displayed in the carousel, including their start date and time.",
-        "Step Expected Result": "List of events with their start times is recorded."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the HP (e.g., to another section of the app).",
-        "Step Expected Result": "User leaves the HP."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Wait until the start date and time of one or more displayed events has passed, but remain within the cache validity period (X minutes).",
-        "Step Expected Result": "Some events have now expired, but cache is still valid."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Return to the HP.",
-        "Step Expected Result": "Carousel updates to remove expired events; only non-expired events are displayed."
-      }
-    ]
-  },
-  "TC-058": {
-    "Title": "Frontend Requests New Events When All Cached Events Are Expired",
-    "#": 58.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials; Event data with start times about to expire.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers only the scenario where all events expire within cache validity.",
-    "_polarion": "Eventi da visualizzare nelle card",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Log in and navigate to the Home Page (HP).",
-        "Step Expected Result": "User is on the HP and carousel displays event cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the list of events displayed in the carousel, all with start date and time close to the current time.",
-        "Step Expected Result": "All events are about to expire."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the HP (e.g., to another section of the app).",
-        "Step Expected Result": "User leaves the HP."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Wait until all events' start date and time have passed, but remain within the cache validity period (X minutes).",
-        "Step Expected Result": "All events are now expired, but cache is still valid."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Return to the HP.",
-        "Step Expected Result": "Frontend detects all events are expired, triggers a new backend call, and displays new event cards. Cache timer is reset."
-      }
-    ]
-  },
-  "TC-059": {
-    "Title": "No Backend Call When At Least One Event Is Still Valid in Cache",
-    "#": 59.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials; Event data with staggered start times.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Does not cover cache expiration or all events expired scenarios.",
-    "_polarion": "Eventi da visualizzare nelle card",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Log in and navigate to the Home Page (HP).",
-        "Step Expected Result": "User is on the HP and carousel displays event cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the list of events displayed, ensuring at least one event has a start date/time in the future and others are about to expire.",
-        "Step Expected Result": "At least one event is still valid."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the HP.",
-        "Step Expected Result": "User leaves the HP."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Wait until all but one event have expired, but remain within the cache validity period (X minutes).",
-        "Step Expected Result": "Only one event remains valid."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Return to the HP.",
-        "Step Expected Result": "Frontend does not make a new backend call; carousel displays only the remaining valid event(s)."
-      }
-    ]
-  },
-  "TC-060": {
-    "Title": "Expired Events Are Not Displayed After Cache Expiry and New Backend Call",
-    "#": 60.0,
-    "Test Group": "Mobile IOS, Mobile Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials; Event data with start times in the near future.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Focuses on cache expiration and backend refresh.",
-    "_polarion": "Eventi da visualizzare nelle card",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Log in and navigate to the Home Page (HP).",
-        "Step Expected Result": "User is on the HP and carousel displays event cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate away from the HP.",
-        "Step Expected Result": "User leaves the HP."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Wait until the cache expires (after X minutes).",
-        "Step Expected Result": "Cache is now invalid."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Return to the HP.",
-        "Step Expected Result": "Frontend makes a new backend call and displays only non-expired events in the carousel."
-      }
-    ]
-  },
-  "TC-061": {
-    "Title": "Verify Skeleton Home Page Updates with Carousel Presence",
-    "#": 61.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials; Event data with start times in the near future.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Focuses on cache expiration and backend refresh.",
-    "_polarion": "Skeleton Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Home Page FR when the carousel is configured as visible.",
-        "Step Expected Result": "The skeleton layout on the Home Page FR displays the carousel placeholder in the expected position."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the overall skeleton structure and placement of the carousel element.",
-        "Step Expected Result": "The carousel element is present and the skeleton layout is updated accordingly."
-      }
-    ]
-  },
-  "TC-062": {
-    "Title": "Verify Skeleton Home Page Updates When Carousel is Hidden",
-    "#": 62.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User credentials; Event data with start times in the near future.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Focuses on cache expiration and backend refresh.",
-    "_polarion": "Skeleton Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Home Page FR when the carousel is configured as hidden (e.g., during summer/off-season).",
-        "Step Expected Result": "The skeleton layout on the Home Page FR does not display the carousel placeholder."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the overall skeleton structure and confirm absence of the carousel element.",
-        "Step Expected Result": "The carousel element is not present and the skeleton layout is updated accordingly."
-      }
-    ]
-  },
-  "TC-063": {
-    "Title": "Verify Hot Configuration Change for Carousel Visibility Without Release",
-    "#": 63.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Admin credentials for configuration access.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Focuses on cache expiration and backend refresh.",
-    "_polarion": "Skeleton Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the configuration panel for the Home Page FR skeleton.",
-        "Step Expected Result": "Configuration panel is accessible and displays the carousel visibility option."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Change the carousel visibility setting from 'hidden' to 'visible' (or vice versa) and save the configuration.",
-        "Step Expected Result": "Configuration is saved successfully without requiring a system release or deployment."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Refresh the Home Page FR.",
-        "Step Expected Result": "The skeleton layout updates immediately to reflect the new carousel visibility setting."
-      }
-    ]
-  },
-  "TC-064": {
-    "Title": "Verify Skeleton Home Page Layout on Mobile Devices with Carousel Visible",
-    "#": 64.0,
-    "Test Group": "Mobile",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Admin credentials for configuration access.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers mobile-specific layout adaptation.",
-    "_polarion": "Skeleton Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Home Page FR on a mobile device when the carousel is configured as visible.",
-        "Step Expected Result": "The skeleton layout on the mobile Home Page FR displays the carousel placeholder in the expected position."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the overall skeleton structure and placement of the carousel element on the mobile device.",
-        "Step Expected Result": "The carousel element is present and the skeleton layout is updated accordingly for mobile view."
-      }
-    ]
-  },
-  "TC-065": {
-    "Title": "Verify Error Handling When Carousel Configuration is Invalid",
-    "#": 65.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Admin credentials; invalid configuration value (e.g., 'invalid_value').",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Skeleton Home Page",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the configuration panel for the Home Page FR skeleton.",
-        "Step Expected Result": "Configuration panel is accessible."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Set the carousel visibility configuration to an invalid value (e.g., unsupported string or null).",
-        "Step Expected Result": "System accepts the input and attempts to save."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Refresh the Home Page FR.",
-        "Step Expected Result": "The skeleton layout handles the invalid configuration gracefully, either by defaulting to a safe state (e.g., carousel hidden) or displaying an appropriate error message."
-      }
-    ]
-  },
-  "TC-066": {
-    "Title": "Verify presence and correct title of Bet Builder carousel in event detail (Italy, Morocco, Full Responsive)",
-    "#": 66.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Prematch event with Bet Builder enabled and SGP Precompiled bets available; user location set to Italy or Morocco.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello in Dettaglio Avvenimento (Tab Bet Builder)",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the online Full Responsive version of the platform from a supported browser.",
-        "Step Expected Result": "The Full Responsive version loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the event detail page of a prematch event that supports Bet Builder functionality.",
-        "Step Expected Result": "The event detail page is displayed with the Bet Builder tab visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Select the Bet Builder tab within the event detail page.",
-        "Step Expected Result": "The Bet Builder tab content is displayed."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Observe the area above the SGP Experience section within the Bet Builder tab.",
-        "Step Expected Result": "A carousel is displayed above the SGP Experience area."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Check the title of the carousel.",
-        "Step Expected Result": "The carousel title is 'Bet Builder in evidenza' (Italy) or 'Bet Builder en vedette' (Morocco), depending on the selected country."
-      }
-    ]
-  },
-  "TC-067": {
-    "Title": "Verify SGP Precompiled bets are displayed in the Bet Builder carousel (Full Responsive, Italy/Morocco)",
-    "#": 67.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Prematch event with Bet Builder enabled and SGP Precompiled bets available from backend; user location set to Italy or Morocco.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello in Dettaglio Avvenimento (Tab Bet Builder)",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the online Full Responsive version of the platform from a supported browser.",
-        "Step Expected Result": "The Full Responsive version loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the event detail page of a prematch event with Bet Builder and SGP Precompiled bets available.",
-        "Step Expected Result": "The event detail page is displayed with the Bet Builder tab visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Select the Bet Builder tab within the event detail page.",
-        "Step Expected Result": "The Bet Builder tab content is displayed."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Locate the carousel above the SGP Experience area.",
-        "Step Expected Result": "The carousel is visible above the SGP Experience area."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Check the content of the carousel for SGP Precompiled bets.",
-        "Step Expected Result": "The carousel displays SGP Precompiled bets dedicated to the specific event, as provided by the backend SGP Generator."
-      }
-    ]
-  },
-  "TC-068": {
-    "Title": "Verify carousel is not displayed in Bet Builder tab for events without SGP Precompiled bets",
-    "#": 68.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Prematch event with Bet Builder enabled but no SGP Precompiled bets available from backend; user location set to Italy or Morocco.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello in Dettaglio Avvenimento (Tab Bet Builder)",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the online Full Responsive version of the platform from a supported browser.",
-        "Step Expected Result": "The Full Responsive version loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the event detail page of a prematch event that supports Bet Builder but does NOT have SGP Precompiled bets available from the backend.",
-        "Step Expected Result": "The event detail page is displayed with the Bet Builder tab visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Select the Bet Builder tab within the event detail page.",
-        "Step Expected Result": "The Bet Builder tab content is displayed."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Observe the area above the SGP Experience section within the Bet Builder tab.",
-        "Step Expected Result": "No carousel is displayed above the SGP Experience area."
-      }
-    ]
-  },
-  "TC-069": {
-    "Title": "Verify carousel is not displayed in retail versions (Prenotatore, Self)",
-    "#": 69.0,
+  "RETB-10442": {
+    "Title": "[QA Automation] TG Best Italia - R2I - SPORT - Reservation by CODE - Check that reservation can be sold from cart",
+    "#": 27,
     "Test Group": "Terminale",
+    "Canale": "Terminale",
+    "Dispositivo": "Terminale",
     "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Prematch event with Bet Builder enabled and SGP Precompiled bets available; access via retail terminal.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello in Dettaglio Avvenimento (Tab Bet Builder)",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the retail version of the platform (Prenotatore or Self) from a supported device.",
-        "Step Expected Result": "The retail version loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the event detail page of a prematch event that supports Bet Builder and has SGP Precompiled bets available.",
-        "Step Expected Result": "The event detail page is displayed with the Bet Builder tab visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Select the Bet Builder tab within the event detail page.",
-        "Step Expected Result": "The Bet Builder tab content is displayed."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Observe the area above the SGP Experience section within the Bet Builder tab.",
-        "Step Expected Result": "No carousel is displayed above the SGP Experience area."
-      }
-    ]
-  },
-  "TC-070": {
-    "Title": "Verify carousel adapts correctly on different screen sizes (Full Responsive)",
-    "#": 70.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Prematch event with Bet Builder enabled and SGP Precompiled bets available; user location set to Italy or Morocco.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello in Dettaglio Avvenimento (Tab Bet Builder)",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the online Full Responsive version of the platform from a supported browser on a desktop device.",
-        "Step Expected Result": "The Full Responsive version loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the event detail page of a prematch event with Bet Builder and SGP Precompiled bets available.",
-        "Step Expected Result": "The event detail page is displayed with the Bet Builder tab visible."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Select the Bet Builder tab within the event detail page.",
-        "Step Expected Result": "The Bet Builder tab content is displayed."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Resize the browser window to simulate different screen sizes (desktop, tablet, mobile).",
-        "Step Expected Result": "The carousel remains visible and adapts its layout appropriately for each screen size."
-      }
-    ]
-  },
-  "TC-071": {
-    "Title": "Display of Bet Builder Carousel when SGP Precompiled Bets are Enabled and Available",
-    "#": 71.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event with SGP precompiled bets enabled and available (e.g., Football Match A in Competition X).",
+    "Test Stage": "TEST",
+    "Sistema di riferimento": "TG Best Italia R2I - Betting",
+    "Precondizioni": "A SINGOLA/MULTIPLA/SISTEMA reservation has been created from Betting Online",
+    "Modalità Operativa": "Manuale",
+    "Funzionalità": "Prenotazione",
+    "Tipologia Test": "Functional",
+    "Test di no regression": "SI",
+    "Automation": "SI",
+    "Dataset": "dataset",
+    "Risultato Atteso": "Reservation' can be sold from cart",
     "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Condizioni di visualizzazione",
+    "Project": "Betting Retail",
+    "Author": "De Matteis Vera",
+    "Assignee(s)": "Baldassarre Silvia",
+    "Type": "Test ",
+    "_polarion": "retailbetting/RETB-10442",
+    "Analysis": "Automatable",
+    "Coverage": "Highest [100%]",
+    "Dev Complexity": "Medium",
+    "Execution Time": "High",
+    "Volatility": "Low",
+    "Developed": "Y",
+    "Note": "Test case developed for NPPL Italy: https://prod-polarion.sisal.it/polarion/#/project/promoeloyalty/workitems/test?query=NPPL-8110",
+    "Team Ownership": "Sisal",
+    "Team Ownership Note": "BETTING_BE_NRT",
+    "Requires Script Maintenance": "Y",
     "Steps": [
       {
         "Step": 1,
-        "Step Description": "Access the event detail page for an event belonging to a competition where SGP precompiled bets have been enabled in the SGP Generator section of Redax.",
-        "Step Expected Result": "The event detail page loads successfully."
+        "Step Description": "The user clicks on section PRENOTAZIONI (F7)",
+        "Expected Result": "Section opened_x000D_\n​​"
       },
       {
         "Step": 2,
-        "Step Description": "Ensure that the backend engine provides precompiled SGP bets for the selected event (i.e., there are SGP markets with odds available).",
-        "Step Expected Result": "Precompiled SGP bets are received by the frontend for this event."
+        "Step Description": "The user reads the actual cash balance and the current tickets status",
+        "Expected Result": "Information about cash balance, Client1's ticket status and Client2's ticket status are displayed "
       },
       {
         "Step": 3,
-        "Step Description": "Observe the area above the SGP Experience section on the event detail page.",
-        "Step Expected Result": "The Bet Builder carousel is displayed above the SGP Experience area, showing the precompiled SGP bets for the event."
-      }
-    ]
-  },
-  "TC-072": {
-    "Title": "Absence of Bet Builder Carousel when SGP Precompiled Bets are Disabled in Redax",
-    "#": 72.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event with SGP precompiled bets disabled (e.g., Football Match B in Competition Y).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Condizioni di visualizzazione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the event detail page for an event belonging to a competition where SGP precompiled bets have NOT been enabled in the SGP Generator section of Redax.",
-        "Step Expected Result": "The event detail page loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the area above the SGP Experience section on the event detail page.",
-        "Step Expected Result": "The Bet Builder carousel is NOT displayed above the SGP Experience area."
-      }
-    ]
-  },
-  "TC-073": {
-    "Title": "Absence of Bet Builder Carousel when Backend Does Not Provide Precompiled SGP Bets",
-    "#": 73.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event with SGP precompiled bets enabled but not available (e.g., Football Match C in Competition X, but no SGP markets currently quoted).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Condizioni di visualizzazione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the event detail page for an event belonging to a competition where SGP precompiled bets have been enabled in Redax (SGP Generator section).",
-        "Step Expected Result": "The event detail page loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Ensure that the backend engine does NOT provide precompiled SGP bets for the selected event (e.g., due to lack of SGP markets with odds at this time).",
-        "Step Expected Result": "No precompiled SGP bets are received by the frontend for this event."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Observe the area above the SGP Experience section on the event detail page.",
-        "Step Expected Result": "The Bet Builder carousel is NOT displayed above the SGP Experience area."
-      }
-    ]
-  },
-  "TC-074": {
-    "Title": "Bet Builder Carousel Not Displayed on Non-Event Detail Pages",
-    "#": 74.0,
-    "Test Group": "Mobile IOS, Mobile Android, App IOS, App Android, Desktop",
-    "Priority": "Low",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Any non-event detail page (e.g., homepage, competition overview).",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Condizioni di visualizzazione",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Navigate to a page that is NOT an event detail page (e.g., homepage, competition overview, or results page).",
-        "Step Expected Result": "The selected non-event detail page loads successfully."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Observe the area where the Bet Builder carousel would normally appear on an event detail page.",
-        "Step Expected Result": "The Bet Builder carousel is NOT displayed on non-event detail pages."
-      }
-    ]
-  },
-  "TC-075": {
-    "Title": "Verify Pronostico Descriptions Displayed in Correct Language (Italy)",
-    "#": 75.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data with mapped Italian pronostico descriptions.",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Struttura Card Precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Full Responsive Italia version of the application.",
-        "Step Expected Result": "The application loads in Italian localization."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Carosello Dett Avv section and locate a precompiled card for a specific event.",
-        "Step Expected Result": "A precompiled card is displayed with a list of pronostici."
-      },
-      {
-        "Step": 3,
-        "Step Description": "For each pronostico, verify that the description is displayed as two strings: String 1 (top, bold), String 2 (below, grey).",
-        "Step Expected Result": "Each pronostico shows String 1 in bold at the top and String 2 in grey below."
+        "Step Description": "The user select Client1 or Client2 from cart",
+        "Expected Result": "Cart section related to client selected is displayed"
       },
       {
         "Step": 4,
-        "Step Description": "Check that both strings are displayed in Italian, as per business mapping.",
-        "Step Expected Result": "Both strings for each pronostico are in Italian."
-      }
-    ]
-  },
-  "TC-076": {
-    "Title": "Verify Pronostico Descriptions Displayed in Correct Language (Morocco)",
-    "#": 76.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data with mapped French pronostico descriptions.",
-    "Country": "Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Struttura Card Precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Full Responsive Marocco version of the application.",
-        "Step Expected Result": "The application loads in French localization."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Carosello Dett Avv section and locate a precompiled card for a specific event.",
-        "Step Expected Result": "A precompiled card is displayed with a list of pronostici."
-      },
-      {
-        "Step": 3,
-        "Step Description": "For each pronostico, verify that the description is displayed as two strings: String 1 (top, bold), String 2 (below, grey).",
-        "Step Expected Result": "Each pronostico shows String 1 in bold at the top and String 2 in grey below."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Check that both strings are displayed in French, as per business mapping.",
-        "Step Expected Result": "Both strings for each pronostico are in French."
-      }
-    ]
-  },
-  "TC-077": {
-    "Title": "Verify Pronostico Description Formatting (Bold and Grey)",
-    "#": 77.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data with mapped pronostico descriptions.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Struttura Card Precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Full Responsive Italia or Marocco version of the application.",
-        "Step Expected Result": "The application loads in the selected localization."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Carosello Dett Avv section and locate a precompiled card for a specific event.",
-        "Step Expected Result": "A precompiled card is displayed with a list of pronostici."
-      },
-      {
-        "Step": 3,
-        "Step Description": "For each pronostico, verify that String 1 is displayed at the top in bold font.",
-        "Step Expected Result": "String 1 is at the top and rendered in bold."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Verify that String 2 is displayed below String 1 in a grey font.",
-        "Step Expected Result": "String 2 is below String 1 and rendered in grey."
-      }
-    ]
-  },
-  "TC-078": {
-    "Title": "Verify Quota Button Displays Correct Total Odds Including Bonus",
-    "#": 78.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data with individual odds and bonus values.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Struttura Card Precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Full Responsive Italia or Marocco version of the application.",
-        "Step Expected Result": "The application loads in the selected localization."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Carosello Dett Avv section and locate a precompiled card for a specific event.",
-        "Step Expected Result": "A precompiled card is displayed with a Quota button."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Obtain the individual odds for each pronostico outcome and any applicable bonus.",
-        "Step Expected Result": "Individual odds and bonus information are available."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Calculate the expected total odds as the product of the individual odds, including the bonus if applicable.",
-        "Step Expected Result": "Expected total odds value is determined."
+        "Step Description": "The user inserts the reservation Code of a SINGOLA reservation",
+        "Expected Result": "Reservation pop-up is opened_x000D_\n"
       },
       {
         "Step": 5,
-        "Step Description": "Verify that the Quota button displays the calculated total odds value.",
-        "Step Expected Result": "Quota button displays the correct total odds, including any bonus."
-      }
-    ]
-  },
-  "TC-079": {
-    "Title": "Verify Quota Button Interaction as per Norms (par 2.1.2.1)",
-    "#": 79.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data; reference to par 2.1.2.1 for expected interaction.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Struttura Card Precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Full Responsive Italia or Marocco version of the application.",
-        "Step Expected Result": "The application loads in the selected localization."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Carosello Dett Avv section and locate a precompiled card for a specific event.",
-        "Step Expected Result": "A precompiled card is displayed with a Quota button."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Click on the Quota button.",
-        "Step Expected Result": "The system responds as specified in paragraph 2.1.2.1 (e.g., adds the bet to the betslip, shows confirmation, etc.)."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Verify that the interaction is consistent with the requirements in par 2.1.2.1.",
-        "Step Expected Result": "Quota button interaction matches the specified behavior (refer to par 2.1.2.1 for details)."
-      }
-    ]
-  },
-  "TC-080": {
-    "Title": "Verify Handling of Missing or Invalid Pronostico Data",
-    "#": 80.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Precompiled card data with missing or invalid pronostico strings.",
-    "Country": "Italy, Morocco",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Carosello Dett Avv – Struttura Card Precompilata",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the Full Responsive Italia or Marocco version of the application.",
-        "Step Expected Result": "The application loads in the selected localization."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Navigate to the Carosello Dett Avv section and locate a precompiled card with missing or invalid pronostico data (e.g., missing String 1 or String 2).",
-        "Step Expected Result": "A precompiled card is displayed with incomplete pronostico data."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Observe the display and behavior of the pronostico list.",
-        "Step Expected Result": "The application handles missing or invalid data gracefully (e.g., displays a placeholder, hides the pronostico, or shows an error message as per design)."
-      }
-    ]
-  },
-  "TC-081": {
-    "Title": "Verify precompiled cards are cached and persist for X minutes after first event detail access",
-    "#": 81.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event ID, User credentials (if login required), Cache duration X (e.g., 10 minutes)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Memorizzazione in cache delle precompilate su avvenimento",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the event listing page and select a specific event to view its detail page (T0).",
-        "Step Expected Result": "The event detail page loads and displays the precompiled cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the content and data of the precompiled cards displayed at T0.",
-        "Step Expected Result": "Precompiled cards are visible and their content is recorded."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the event detail page to another section of the site (e.g., homepage or another event).",
-        "Step Expected Result": "User is redirected to the selected section; event detail page is no longer visible."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Return to the same event detail page within X minutes from T0.",
-        "Step Expected Result": "Event detail page reloads."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Observe the precompiled cards displayed upon return.",
-        "Step Expected Result": "The precompiled cards are identical to those seen at T0 (no changes in content or data)."
-      }
-    ]
-  },
-  "TC-082": {
-    "Title": "Verify cache expiration: precompiled cards are refreshed after X minutes",
-    "#": 82.0,
-    "Test Group": "Desktop",
-    "Priority": "High",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event ID, User credentials (if login required), Cache duration X (e.g., 10 minutes)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Memorizzazione in cache delle precompilate su avvenimento",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the event listing page and select a specific event to view its detail page (T0).",
-        "Step Expected Result": "The event detail page loads and displays the precompiled cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the content and data of the precompiled cards displayed at T0.",
-        "Step Expected Result": "Precompiled cards are visible and their content is recorded."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the event detail page to another section of the site.",
-        "Step Expected Result": "User is redirected to the selected section."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Wait for more than X minutes (e.g., X+1 minutes) after T0.",
-        "Step Expected Result": "Elapsed time exceeds the cache duration."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Return to the same event detail page after X minutes have passed.",
-        "Step Expected Result": "Event detail page reloads."
+        "Step Description": "The user clicks on MODIFY BUTTON from reservation",
+        "Expected Result": "Reservation is updated in the cart"
       },
       {
         "Step": 6,
-        "Step Description": "Observe the precompiled cards displayed upon return.",
-        "Step Expected Result": "The precompiled cards are refreshed and may differ from those seen at T0 (if data has changed)."
-      }
-    ]
-  },
-  "TC-083": {
-    "Title": "Verify cache isolation between different events: precompiled cards are not shared across events",
-    "#": 83.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "Event A ID, Event B ID, User credentials (if login required), Cache duration X (e.g., 10 minutes)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers error handling for configuration.",
-    "_polarion": "Memorizzazione in cache delle precompilate su avvenimento",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the event listing page and select Event A to view its detail page (T0A).",
-        "Step Expected Result": "Event A detail page loads and displays its precompiled cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the content of Event A's precompiled cards.",
-        "Step Expected Result": "Event A's precompiled cards are visible and content is recorded."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate to Event B's detail page (T0B).",
-        "Step Expected Result": "Event B detail page loads and displays its precompiled cards."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Note the content of Event B's precompiled cards.",
-        "Step Expected Result": "Event B's precompiled cards are visible and content is recorded."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Navigate away from Event B and return to Event A's detail page within X minutes from T0A.",
-        "Step Expected Result": "Event A detail page reloads."
-      },
-      {
-        "Step": 6,
-        "Step Description": "Observe the precompiled cards for Event A.",
-        "Step Expected Result": "Event A's precompiled cards are the same as initially displayed at T0A and are not affected by Event B's cards."
-      }
-    ]
-  },
-  "TC-084": {
-    "Title": "Verify cache is user-specific: precompiled cards are not shared across different users",
-    "#": 84.0,
-    "Test Group": "Desktop",
-    "Priority": "Medium",
-    "Test Stage": "UAT",
-    "Automation": 1.0,
-    "Dataset": "User 1 credentials, User 2 credentials, Event ID, Cache duration X (e.g., 10 minutes)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Assumes precompiled cards are user-specific; if not, this test may be skipped.",
-    "_polarion": "Memorizzazione in cache delle precompilate su avvenimento",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "User 1 logs in and accesses the event detail page for a specific event (T0).",
-        "Step Expected Result": "Event detail page loads and displays precompiled cards for User 1."
-      },
-      {
-        "Step": 2,
-        "Step Description": "User 1 notes the content of the precompiled cards.",
-        "Step Expected Result": "User 1's precompiled cards are visible and content is recorded."
-      },
-      {
-        "Step": 3,
-        "Step Description": "User 2 logs in (on a different browser or incognito window) and accesses the same event detail page.",
-        "Step Expected Result": "Event detail page loads and displays precompiled cards for User 2."
-      },
-      {
-        "Step": 4,
-        "Step Description": "User 2 notes the content of the precompiled cards.",
-        "Step Expected Result": "User 2's precompiled cards are visible and content is recorded."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Compare the precompiled cards displayed to User 1 and User 2.",
-        "Step Expected Result": "Precompiled cards are not shared between users; each user sees their own cards (if cards are user-specific)."
-      }
-    ]
-  },
-  "TC-085": {
-    "Title": "Verify cache is cleared when browser cache is cleared",
-    "#": 85.0,
-    "Test Group": "Desktop",
-    "Priority": "Low",
-    "Test Stage": "UAT",
-    "Automation": 0.0,
-    "Dataset": "Event ID, User credentials (if login required), Cache duration X (e.g., 10 minutes)",
-    "Country": "Italy",
-    "Type": "Test Case",
-    "Partial Coverage Description": "Covers browser cache interaction; may not apply if caching is server-side only.",
-    "_polarion": "Memorizzazione in cache delle precompilate su avvenimento",
-    "Steps": [
-      {
-        "Step": 1,
-        "Step Description": "Access the event detail page for a specific event (T0).",
-        "Step Expected Result": "Event detail page loads and displays precompiled cards."
-      },
-      {
-        "Step": 2,
-        "Step Description": "Note the content of the precompiled cards.",
-        "Step Expected Result": "Precompiled cards are visible and content is recorded."
-      },
-      {
-        "Step": 3,
-        "Step Description": "Navigate away from the event detail page.",
-        "Step Expected Result": "User is redirected to another section."
-      },
-      {
-        "Step": 4,
-        "Step Description": "Clear the browser cache (all site data).",
-        "Step Expected Result": "Browser cache is cleared."
-      },
-      {
-        "Step": 5,
-        "Step Description": "Return to the same event detail page within X minutes from T0.",
-        "Step Expected Result": "Event detail page reloads."
-      },
-      {
-        "Step": 6,
-        "Step Description": "Observe the precompiled cards displayed upon return.",
-        "Step Expected Result": "Precompiled cards are refreshed (not loaded from previous cache); may differ from those seen at T0 if data has changed."
+        "Step Description": "The user clicks on SELL BUTTON from cart",
+        "Expected Result": "Verify that:_x000D_\n _x000D_\n* The ticket is sold from reservation section_x000D_\n* The TICKET NUMBER (emitted) is updated correctly for CLIENT selected in cart_x000D_\n* The TICKET NUMBER (emitted) is NOT updated for other CLIENT_x000D_\n* The TOTAL related to CLIENT selected in cart is updated correctly_x000D_\n* The TOTAL related to other CLIENT is NOT updated_x000D_\n* The CASH BALANCE is updated correctly_x000D_\n"
       }
     ]
   }
