@@ -149,43 +149,18 @@ def process_docx(docx_path, output_base):
     return chunks, head
 
 
+
+
+from openpyxl.styles import Font
+import pandas as pd
+from openpyxl import load_workbook
+import os, re
+
 def fill_excel_file(test_cases: dict, output_path: str = None):
     """
-    Salva i test case in un file Excel, mantenendo gli step su righe separate
-    e applica i testi rossi dove necessario.
-
-    Args:
-        test_cases (dict): Dizionario contenente i test case da salvare.
-        output_path (str, opzionale): Percorso personalizzato del file Excel da salvare.
-                                      Se non fornito, salva in ../outputs/testbook_feedbackAI.xlsx
+    Salva i test case in un file Excel, mantenendo gli step su righe separate.
+    Evidenzia in rosso i test generati dall'AI (marcati con [[RED]]...[[/RED]]).
     """
-    import pandas as pd
-    from openpyxl import load_workbook
-    from openpyxl.cell.rich_text import CellRichText, TextBlock
-    from openpyxl.cell.text import InlineFont
-    import os, re
-
-    def apply_red_text(cell):
-        """Color text in [[RED]]...[[/RED]] red, preserving the rest."""
-        text = str(cell.value)
-        if "[[RED]]" not in text:
-            return  
-
-        parts = re.split(r'(\[\[RED\]\]|\[\[/RED\]\])', text)
-        rich_text = CellRichText()
-
-        red = False
-        for part in parts:
-            if part == "[[RED]]":
-                red = True
-            elif part == "[[/RED]]":
-                red = False
-            elif part:
-                font = InlineFont(color="FF0000") if red else InlineFont(color="000000")
-                rich_text.append(TextBlock(font, part))
-
-        cell.value = rich_text
-
     field_mapping = {
         'Canale': 'Channel',
         'Dispositivo': 'Device',
@@ -253,15 +228,17 @@ def fill_excel_file(test_cases: dict, output_path: str = None):
     wb = load_workbook(output_path)
     ws = wb.active
 
+    red_font = Font(color="FF0000")
+
     for row in ws.iter_rows(min_row=2):
         for cell in row:
             if cell.value and isinstance(cell.value, str) and "[[RED]]" in cell.value:
-                apply_red_text(cell)
+                clean_text = re.sub(r'\[\[/?RED\]\]', '', cell.value)
+                cell.value = clean_text
+                cell.font = red_font  # 🔴 colora tutto il testo della cella in rosso
 
     wb.save(output_path)
     print(f"✅ Excel salvato con testi rossi: {output_path}")
-
-
 
 def prepare_test_texts(df):
     """

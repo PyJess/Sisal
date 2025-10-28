@@ -22,6 +22,7 @@ async def prepare_prompt(input: Dict,excel: Dict, mapping: str = None) -> Tuple[
     schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
 
     user_prompt = user_prompt.replace("{input}", json.dumps(input))
+    
     mapping_as_string = mapping.to_json() 
     user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
     user_prompt = user_prompt.replace("{TC}", json.dumps(excel))
@@ -38,7 +39,6 @@ async def prepare_prompt(input: Dict,excel: Dict, mapping: str = None) -> Tuple[
 
 async def gen_new_TC(paragraph,title, results,mapping):
         print("finishing mapping")
-        title = 
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
         messages, schema = await prepare_prompt(paragraph,results, mapping)
         print("starting calling llm")
