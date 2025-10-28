@@ -36,8 +36,9 @@ async def prepare_prompt(input: Dict,excel: Dict, mapping: str = None) -> Tuple[
     return messages, schema
 
 
-async def gen_new_TC(paragraph, results,mapping):
+async def gen_new_TC(paragraph,title, results,mapping):
         print("finishing mapping")
+        title = 
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
         messages, schema = await prepare_prompt(paragraph,results, mapping)
         print("starting calling llm")
@@ -52,7 +53,7 @@ async def main():
     print(input_path)
     
     print(os.path.dirname(input_path))
-    paragraphs=process_docx(input_path, os.path.dirname(input_path))
+    paragraphs,title=process_docx(input_path, os.path.dirname(input_path))
     excel_path = Path(os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx"))
     
     dic = excel_to_json(excel_path) 
@@ -62,16 +63,19 @@ async def main():
 
     new_TC=[]
     
-    for i, par in enumerate(paragraphs, 1):
+    for i, par in enumerate(title, 1):
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
         result = research_vectordb(par, dic, k=20, similarity_threshold=0.75)
+        #cercare title nella colonna polarion -> prendere tutti test che hanno quel title
+        #mettere  content_title in gen_new_tc
+        #dire al prompt di confrontare i testcase presenti col contenuto del title  IF all case lasciare vuoto array return else genera
         new_TC.append(await gen_new_TC(par, result,mapping))
         print(new_TC)
 
     updated_json=add_new_TC(new_TC, dic)
     
     
-    json_to_excel = fill_excel_file(updated_json, excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase.xlsx"))
+    json_to_excel = fill_excel_file(updated_json, excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase_progettazione.xlsx"))
 
 
 ## PER TESTING JSON INTO EXCEL

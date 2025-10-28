@@ -2,6 +2,8 @@ import pandas as pd
 import sys
 import os
 from pathlib import Path
+import json
+
 # Percorso assoluto della cartella principale del progetto
 project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
@@ -10,20 +12,18 @@ from Input_extraction.extract_polarion_field_mapping import *
 
 path_output = Path(__file__).parent.parent/"outputs"
 
-test_case_input = Path(__file__).parent.parent/"input"/"generated_test_cases3.xlsx"
+test_case_input = Path(__file__).parent.parent/"input"/"generated_test_cases3_label_rimosse.xlsx"
 
 documents_word = Path(__file__).parent.parent/"input"/"RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx"
 
 
 df_testcase = pd.read_excel(test_case_input)
-
 df_testcase_polarion = df_testcase['_polarion'].astype(str).str.lower().str.strip()
+print(df_testcase_polarion.unique())
 
 chunks,head= process_docx(documents_word,path_output)
 
 # 🔹 Limita il numero di requisiti per test rapido
-head = [h for h in head if "first line" not in h.lower() and "last line" not in h.lower()]
-head = head[:3]   
 
 mapping = extract_field_mapping()
 # === Pipeline ===
@@ -35,8 +35,9 @@ for req in head:
         continue
 
     req_norm = req.lower().strip()
-
-    if any(req_norm == p for p in df_testcase["_polarion"]):
+    print(req_norm)
+    
+    if any(req_norm == p for p in df_testcase_polarion):
         print(f"✅ {req} già coperto")
         continue
 
@@ -46,18 +47,26 @@ for req in head:
     try:
         llm_new_tc = AI_check_TC_requisiti(req,context,mapping)
         print(llm_new_tc)
+        if isinstance(llm_new_tc, dict) and "test_cases" in llm_new_tc:
+            for tc in llm_new_tc["test_cases"]:
+                tc["_polarion"] = req_norm
+        elif isinstance(llm_new_tc, list):
+                    for tc in llm_new_tc:
+                        tc["_polarion"] = req_norm
+        elif isinstance(llm_new_tc, dict):
+                    llm_new_tc["_polarion"] = req_norm
+            
         new_testcases.append(llm_new_tc)
-
         #vettorizzare file word per vector search con req e context mi restituscip outpit
         #vector search da context
         print(f"🧠 Generato test case per '{req}'")
+        #req
     except Exception as e:
         print(f"⚠️ Errore generazione LLM per '{req}': {e}")
 
 # === Salvataggio nuovi test case ===
 
 structured_testcases = {}
-import json
 
 counter = 1
 for group in new_testcases:

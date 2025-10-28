@@ -21,5 +21,5 @@ Each test case must follow the field mapping provided, including at least:
 - Device (if applicable)
 
 Follow the naming rule:
-[Nome] [proj_numero] requisito-funzionalità/applicativo - TEST - Device (android/ios/Desktop)_AIproposal_requisiti
+This is for the label of the Title [Nome] [proj_numero] requisito-funzionalità/applicativo - TEST - Device (android/ios/Desktop)_AIproposal_requisiti
 
