@@ -24,6 +24,7 @@ Each test case must follow the field mapping provided, including at least:
 Follow the naming rule:
 This is for the label of the Title [Nome] [proj_numero] requisito-funzionalità/applicativo - TEST - Device (android/ios/Desktop)_AIproposal_requisiti
 
+<<<<<<< HEAD
 =======
 Here you find the software requirement:
 
@@ -37,3 +38,6 @@ Here the test cases associated with the requirement:
 
 {TC}
 >>>>>>> origin/Jess
+=======
+
+>>>>>>> 846f1234b17d065433696b42882cbac5e6d86aa7

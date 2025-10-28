@@ -1,11 +1,20 @@
-Here you find the software requirement:
+Here is the requirement extracted from the documentation:
 
 {input}
 
-Use the following field mapping as the ground truth for your generation if needed:
+Title of the related requirement:
+{title}
 
+Below is the field mapping for the test case structure:
 {mapping}
 
-Here the test cases associated with the requirement:
-
+Here are the currently available test cases for this title:
 {TC}
+
+Based on the system instructions, analyze the requirement and the listed test cases.
+- Identify any missing or incorrect applications of black-box testing techniques.
+- Modify or generate additional test cases only if needed, ensuring full coverage.
+- Keep the same schema and structure as defined in the mapping.
+
+Return only the list of updated and/or new test cases.
+If no changes are required, return an empty array [].

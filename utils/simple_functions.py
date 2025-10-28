@@ -148,19 +148,31 @@ def process_docx(docx_path, output_base):
     return chunks, head
 
 
-import json
+
+
+from openpyxl.styles import Font
 import pandas as pd
-import os
 from openpyxl import load_workbook
+import os, re
 
+def fill_excel_file(test_cases: dict, output_path: str = None):
+    """
+    Salva i test case in un file Excel, mantenendo gli step su righe separate.
+    Evidenzia in rosso i test generati dall'AI (marcati con [[RED]]...[[/RED]]).
+    """
+    field_mapping = {
+        'Canale': 'Channel',
+        'Dispositivo': 'Device',
+        'Sistema di riferimento': 'Reference System',
+        'Modalità Operativa': 'Execution Mode',
+        'Funzionalità': 'Functionality',
+        'Tipologia Test': 'Test Type',
+        'Test di no regression': 'No Regression Test',
+        'Automation': 'Automation',
+        'Risultato Atteso': 'Expected Result',
+        '_polarion': '_polarion'
+    }
 
-def convert_json_to_excel(json_data, output_path):
-    """
-    Converte il JSON con test_cases in un file Excel,
-    con gli step su righe separate (stile Polarion)
-    """
-    
-    # Definisci colonne finali
     columns = [
         'Title', 'ID', '#', 'Test Group', 'Channel', 'Device', 
         'Priority', 'Test Stage', 'Reference System', 
@@ -223,16 +235,210 @@ def convert_json_to_excel(json_data, output_path):
     # Opzionale: formatta il file Excel
     wb = load_workbook(output_path)
     ws = wb.active
-    
-    # Auto-adatta larghezza colonne (opzionale)
-    for column in ws.columns:
-        max_length = 0
-        column_letter = column[0].column_letter
-        for cell in column:
-            if cell.value:
-                max_length = max(max_length, len(str(cell.value)))
-        adjusted_width = min(max_length + 2, 50)
-        ws.column_dimensions[column_letter].width = adjusted_width
-    
+
+    red_font = Font(color="FF0000")
+
+    for row in ws.iter_rows(min_row=2):
+        for cell in row:
+            if cell.value and isinstance(cell.value, str) and "[[RED]]" in cell.value:
+                clean_text = re.sub(r'\[\[/?RED\]\]', '', cell.value)
+                cell.value = clean_text
+                cell.font = red_font  # 🔴 colora tutto il testo della cella in rosso
+
     wb.save(output_path)
-    print(f"Excel salvato: {output_path}")
+    print(f"✅ Excel salvato con testi rossi: {output_path}")
+
+def prepare_test_texts(df):
+    """
+    Combina i campi di ogni test case in un unico testo da usare per embedding o LLM.
+    df: DataFrame Pandas con colonne tipo Title, Step, Step Description, Expected Result, Preconditions, Funzionalità, Device.
+    """
+    test_texts = []
+    
+    for idx, row in df.iterrows():
+        # Costruisci testo degli step
+        step_num = row.get("Step", "")
+        step_desc = row.get("Step Description", "")
+        expected = row.get("Expected Result", "")
+        steps_text = f"Step {step_num}: {step_desc}. Expected: {expected}. "
+        
+        # Combina tutto in un unico testo
+        combined_text = (
+            f"Title: {row.get('Title','')}. "
+            f"Functionality: {row.get('Funzionalità','')}. "
+            f"Preconditions: {row.get('Preconditions','')}. "
+            f"Steps: {steps_text}"
+        )
+        
+        test_texts.append({
+            "id": row.get("ID", idx),
+            "text": combined_text
+        })
+    
+    return test_texts
+
+
+def prepare_prompt_requisiti(req: str,context: str, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
+    """Prepare prompt for the LLM"""
+    system_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_requisiti", "system_prompt.txt"))
+    user_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_requisiti", "user_prompt.txt")) 
+    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
+
+    user_prompt = user_prompt.replace("{req}", req)
+    user_prompt = user_prompt.replace("{context}", context)
+    mapping_as_string = mapping.to_json() 
+    user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
+
+    print("finishing prepare prompt")
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    return messages, schema
+
+
+def a_invoke_model_requisiti(msgs, schema, model="gpt-4.1"):
+        """Invoke the LLM model"""
+
+        gpt = ChatOpenAI(model=model, temperature=0.1).with_structured_output(schema=schema, strict=True)
+
+
+        result =  gpt.invoke(msgs)
+    
+        # Estrai i token usage
+        if isinstance(result, dict) and 'raw' in result:
+            usage = result['raw'].response_metadata.get('token_usage', {})
+            print(f"\n📊 Token Usage:")
+            print(f"  Input tokens:  {usage.get('prompt_tokens', 0)}")
+            print(f"  Output tokens: {usage.get('completion_tokens', 0)}")
+            print(f"  Total tokens:  {usage.get('total_tokens', 0)}")
+            
+            # Restituisci solo i dati parsati
+            return result['parsed']
+        
+        return result
+        #return await gpt.ainvoke(msgs)
+
+
+def AI_check_TC_requisiti(req: str,context: str, mapping: str = None) -> Dict:
+    messages, schema =  prepare_prompt_requisiti(req,context, mapping)
+    print("starting calling llm")
+    print(f"{messages}")
+    response = a_invoke_model_requisiti(messages, schema, model="gpt-4.1")
+    return response
+
+
+def color_new_testcases_red(excel_path: Path, new_rows_count: int):
+    """
+    Colora di rosso le ultime `new_rows_count` righe nel file Excel.
+    """
+    wb = load_workbook(excel_path)
+    ws = wb.active
+
+    # Stili di font rosso
+    red_font = Font(color="FF0000")  # rosso acceso
+
+    max_row = ws.max_row
+    max_col = ws.max_column
+
+    # Righe da colorare: ultime `new_rows_count`
+    start_row = max_row - new_rows_count + 1
+
+    for row in ws.iter_rows(min_row=start_row, max_row=max_row, max_col=max_col):
+        for cell in row:
+            cell.font = red_font
+
+    wb.save(excel_path)
+    wb.close()
+    print(f"🟥 Colorate di rosso {new_rows_count} righe in {excel_path.name}")
+
+
+def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
+    """
+    Converte i test case generati dall'LLM in un DataFrame Excel compatibile
+    con la struttura del file di input.
+    Ogni step viene riportato su una riga separata.
+    """
+
+    # 🔹 Colonne di default (in caso non vengano passate)
+    if base_columns is None:
+        base_columns = [
+            'Title', 'ID', '#', 'Test Group', 'Channel', 'Device',
+            'Priority', 'Test Stage', 'Reference System',
+            'Preconditions', 'Execution Mode', 'Functionality',
+            'Test Type', 'No Regression Test', 'Automation',
+            'Dataset', 'Expected Result',
+            'Step', 'Step Description', 'Step Expected Result',
+            'Country', 'Project', 'Author', 'Assignee(s)', 'Type',
+            'Partial Coverage Description', '_polarion',
+            'Analysis', 'Coverage', 'Dev Complexity', 'Execution Time',
+            'Volatility', 'Developed', 'Note', 'Team Ownership',
+            'Team Ownership Note', 'Requires Script Maintenance'
+        ]
+
+    # Mappa per eventuali chiavi italiane
+    field_mapping = {
+        'Canale': 'Channel',
+        'Dispositivo': 'Device',
+        'Sistema di riferimento': 'Reference System',
+        'Modalità Operativa': 'Execution Mode',
+        'Funzionalità': 'Functionality',
+        'Tipologia Test': 'Test Type',
+        'Test di no regression': 'No Regression Test',
+        'Automation': 'Automation',
+        'Risultato Atteso': 'Expected Result',
+        '_polarion': '_polarion'
+    }
+
+    rows = []
+
+    # Gestione dei vari livelli annidati
+    for tc_group in test_cases.values():
+        if isinstance(tc_group, dict) and "test_cases" in tc_group:
+            tcs = tc_group["test_cases"]
+        elif isinstance(tc_group, list):
+            tcs = tc_group
+        else:
+            tcs = [tc_group]
+
+        for tc_data in tcs:
+
+            steps = tc_data.get("Steps", [])
+            if not steps:
+                steps = [{}]
+
+            for i, step in enumerate(steps):
+                row = {}
+
+                # Prima riga → tutti i dati generali del test case
+                if i == 0:
+                    for col in base_columns:
+                        if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                            value = tc_data.get(col, '')
+                            if not value:
+                                italian_key = next((k for k, v in field_mapping.items() if v == col), None)
+                                if italian_key:
+                                    value = tc_data.get(italian_key, '')
+                            row[col] = value
+                else:
+                    for col in base_columns:
+                        if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                            row[col] = ''
+
+                # Inserisci i dati dello step
+                row['Step'] = step.get('Step', '')
+                row['Step Description'] = step.get('Step Description', '')
+                row['Step Expected Result'] = step.get('Expected Result', '')
+
+                rows.append(row)
+
+    df = pd.DataFrame(rows, columns=base_columns)
+    df = df.loc[:, ~df.columns.duplicated()]
+
+    print(f"Generato DataFrame con {len(df)} righe e {len(df.columns)} colonne")
+    print(f"Prime colonne: {list(df.columns[:6])}")
+    print(f"Esempio step: {df[['Title','Step','Step Description']].head(3)}")
+
+    return df
