@@ -89,6 +89,8 @@ async def main():
 
 
 # Gestire il caso “no merge” quando non ci sono nuovi test.
+    save_updated_json(updated_json, output_path='updated_test_cases.json')
+    
 
 
 if __name__ == "__main__":

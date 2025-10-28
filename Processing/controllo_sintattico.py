@@ -27,7 +27,7 @@ async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[st
     """Prepare prompt for the LLM"""
     system_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "system_prompt.txt"))
     user_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "user_prompt.txt")) 
-    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
+    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output1.json"))
 
     user_prompt = user_prompt.replace("{input}", json.dumps(input))
     mapping_as_string = mapping.to_json() 
@@ -43,6 +43,7 @@ async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[st
 
 
 async def AI_check_TC(input: Dict, mapping: str = None) -> Dict:
+    """Call LLM to check test case syntax"""
     messages, schema = await prepare_prompt(input, mapping)
     print("starting calling llm")
     print(f"{messages}")
@@ -143,7 +144,7 @@ def fill_excel_file(test_cases: dict):
     df = pd.DataFrame(rows, columns=columns)
 
 
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI_second.xlsx")
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI.xlsx")
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
 
     df.to_excel(excel_path, index=False)
@@ -157,14 +158,14 @@ def fill_excel_file(test_cases: dict):
                 apply_red_text(cell)
 
     wb.save(excel_path)
-    print(f"✅ Excel salvato con testi rossi: {excel_path}")
+    print(f"Excel salvato con testi rossi: {excel_path}")
 
 
 async def main():
     mapping = extract_field_mapping()
     print("finishing mapping")
     
-    input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")
+    input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases_modified.xlsx")
     dic = excel_to_json(input_path) 
     print("finishing excel to json")
  
@@ -184,7 +185,7 @@ async def main():
     print(f"Merged result: {merged_results}")
     
     fill_excel_file(merged_results)
-    print("✅ File Excel generato con successo!")
+    print("File Excel generato con successo!")
 
 
 

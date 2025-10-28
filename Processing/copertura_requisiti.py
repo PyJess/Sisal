@@ -21,11 +21,32 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from Input_extraction.extract_polarion_field_mapping import *
 from utils.simple_functions import *
 from llm.llm import a_invoke_model
-from Processing.controllo_sintattico import prepare_prompt
+from typing import Tuple, List, Dict, Any
+
 
 embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 
+
+async def prepare_prompt(input: Dict, results: Dict, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
+    """Prepare prompt for the LLM"""
+    system_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_requisiti", "system_prompt.txt"))
+    user_prompt = load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_requisiti", "user_prompt.txt")) 
+    schema = load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output1.json"))
+
+    user_prompt = user_prompt.replace("{input}", json.dumps(input))
+    #mapping_as_string = mapping.to_json() 
+    user_prompt = user_prompt.replace("{mapping}", str(mapping))
+    user_prompt = user_prompt.replace("{TC}", str(results))
+
+    print("finishing prepare prompt")
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    return messages, schema
 
 def prepare_test_texts(excel):
     test_texts = []
@@ -38,27 +59,33 @@ def prepare_test_texts(excel):
     return test_texts
 
 
-def research_vectordb(paragraph, excel, k=1, similarity_threshold=0.75):
+def research_vectordb(paragraph, excel, k=20, similarity_threshold=0.65):
     test_texts = prepare_test_texts(excel)
     embeddings = OpenAIEmbeddings(model=embedding_model)
     vectorstore = FAISS.from_texts(test_texts, embeddings)
+    num_documents = len(vectorstore.index_to_docstore_id)
+    print(f"Numero di documenti salvati nel vectorstore: {num_documents}")
     docs_found = vectorstore.similarity_search_with_score(paragraph, k)
+    print(f"Documents found: {len(docs_found)}")
+    closest_doc, score = docs_found[0]
+    print(f"Score: {1 - (score / 2)}")
 
-    if docs_found:
-        closest_doc, score = docs_found[0]
-        score = 1 - (score / 2)
-        if score >= similarity_threshold:  
-            print(f"Score: {score}")
-            closest_test = closest_doc.page_content
-        else:
-            closest_test = None
-    else:
-        closest_test = None
+    matching_docs = []
+
+    for doc, score in docs_found:
+        normalized_score = 1 - (score / 2)  # normalizzazione
+        if normalized_score >= similarity_threshold:
+            matching_docs.append({
+                "content": doc.page_content,
+                "score": normalized_score
+            })
+
+    
 
 
     result = {
         "Paragraph": paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph),
-        "Closest_Test": closest_test
+        "Closest_Test": matching_docs if matching_docs else None
     }
     return result
 
@@ -66,18 +93,18 @@ def research_vectordb(paragraph, excel, k=1, similarity_threshold=0.75):
 
 async def gen_TC(paragraph, results):
     if results["Closest_Test"] is not None:
-        print(f"✅ Requirement già coperto da: {results['Closest_Test'][:100]}...")
+        print(f" Requirement già coperto da: {results['Closest_Test'][:100]}...")
         return None
     else:
         print("This requirement has no TC")
         mapping = extract_field_mapping()
         print("finishing mapping")
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
-        messages, schema = await prepare_prompt(paragraph, mapping)
+        messages, schema = await prepare_prompt(paragraph, mapping, results)
         print("starting calling llm")
-        print(f"{messages}")
+        #print(f"{messages}")
         response = await a_invoke_model(messages, schema, model="gpt-4.1")
-        print("✅ File Excel generato con successo!")
+        print("File Excel generato con successo!")
 
 
 def add_new_TC(new_TC, original_excel):
@@ -156,24 +183,22 @@ def save_updated_json(updated_json, output_path='updated_test_cases.json'):
 async def main():
     
 
-    input_path = Path(__file__).parent.parent / "input" / "RU_ZENIT_V_0.4_FASE_1.docx"
-
-    # input_path=r"C:\Users\x.hita\OneDrive - Reply\Workspace\Sisal\Test_Design\input\RU_ZENIT_V_0.4_FASE_1.docx"
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 2", "RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
     print(os.path.dirname(input_path))
-    paragraphs=process_docx(input_path, os.path.dirname(input_path))
-    input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")
+    paragraphs, headers =process_docx(input_path, os.path.dirname(input_path))
+    input_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases3 - Copy.xlsx")
     dic = excel_to_json(input_path) 
     print("finishing excel to json")
 
     new_TC=[]
     for i, par in enumerate(paragraphs, 1):
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
-        result = research_vectordb(par, dic, k=1, similarity_threshold=0.75)
+        result = research_vectordb(par, dic, k=20, similarity_threshold=0.65)
         tc = await gen_TC(par, result)
         new_TC.append(tc)
 
     updated_json=add_new_TC(new_TC, dic)
-    save_updated_json(updated_json, output_path='updated_test_cases.json')
+    save_updated_json(updated_json, output_path='updated_test_cases1.json')
 
 
 

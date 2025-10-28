@@ -22,6 +22,7 @@ embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 
 
+
 async def prepare_prompt(input: Dict, context:str, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
     """Prepare prompt for the LLM"""
 
@@ -46,18 +47,20 @@ async def prepare_prompt(input: Dict, context:str, mapping: str = None) -> Tuple
     return messages, schema
 
 async def gen_TC(paragraph, context, mapping):
-        """Call LLM to generate test cases from paragraph"""
         paragraph = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
         messages, schema = await prepare_prompt(paragraph, context, mapping)
         print("starting calling llm")
-        #print(f"{messages}")
+        print(f"{messages}")
         response = await a_invoke_model(messages, schema, model="gpt-4.1")
         print("Test Case generato con successo!")
         return response
 
 
 def create_vectordb(paragraph, vectorstore, k=3, similarity_threshold=0.75):
-    docs_found = vectorstore.similarity_search_with_score(paragraph, k)
+    # Extract text content from paragraph if it's a Document object
+    query_text = paragraph.page_content if hasattr(paragraph, 'page_content') else str(paragraph)
+    
+    docs_found = vectorstore.similarity_search_with_score(query_text, k)
 
     closest_test=[]
     if docs_found:
@@ -101,21 +104,15 @@ def merge_TC(new_TC):
         "total_count": len(all_test_cases)
     }
 
-async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
+async def process_paragraphs(paragraphs, vectorstore, mapping):
     """Process all paragraphs asynchronously to generate test cases."""
     
     async def process_single_paragraph(i, par):
-        print(f"numero: {i}")
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
         context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
         print(f"Context retrieved: {context}")
         #context = ""
         tc = await gen_TC(par, context, mapping)
-
-        if isinstance(tc, dict) and "test_cases" in tc:
-            for test_case in tc["test_cases"]:
-                test_case["_polarion"] = headers[i - 1] 
-
         return tc
     
     # Crea tutte le tasks e le esegue in parallelo
@@ -125,21 +122,57 @@ async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
     return new_TC
 
 
+def extract_text_from_chunks(chunks):
+    """
+    Extract text content from chunks, handling both Document objects and strings.
+    Returns a flat list of strings suitable for FAISS.from_texts()
+    """
+    text_chunks = []
+    
+    for chunk in chunks:
+        # Handle Document objects with page_content attribute
+        if hasattr(chunk, 'page_content'):
+            text = chunk.page_content
+        # Handle string chunks
+        elif isinstance(chunk, str):
+            text = chunk
+        # Handle other types by converting to string
+        else:
+            text = str(chunk)
+        
+        # Only add non-empty text chunks
+        if text and text.strip():
+            text_chunks.append(text.strip())
+    
+    return text_chunks
+
+
 async def main():
 
-    input_path= os.path.join(os.path.dirname(__file__), "..", "input","Esempio 1","PRJ0015372 - ZENIT Phase 1 - FA - Rev 1.0.docx")
+    #input_path= os.path.join(os.path.dirname(__file__), "..", "input","2ESEMPI Requirement",  "2ESEMPI Requirement","PRJ0015372 - ZENIT Phase 1 - FA - Rev 1.0.docx")
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input", "2ESEMPI Requirement","2ESEMPI Requirement","RU_ZENIT_V_0.4_FASE_1 (1).docx")
     print(os.path.dirname(input_path))
-    paragraphs, headers =process_docx(input_path, os.path.dirname(input_path))
+    paragraphs=process_docx(input_path, os.path.dirname(input_path))
 
-    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 1","RU_ZENIT_V_0.4_FASE_1 (1).docx")
-    chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
+    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "2ESEMPI Requirement","2ESEMPI Requirement","RU_ZENIT_V_0.4_FASE_1 (1).docx")
+    chunks = process_docx(input_path, os.path.dirname(rag_path))
+    
+    # FIX: Extract text content from chunks before passing to FAISS
+    print(f"Processing chunks: {len(chunks)} items")
+    text_chunks = extract_text_from_chunks(chunks)
+    print(f"Extracted {len(text_chunks)} text chunks for embeddings")
+    
+    # Verify we have valid text chunks
+    if not text_chunks:
+        raise ValueError("No valid text chunks found for creating vector store")
+    
     embeddings = OpenAIEmbeddings(model=embedding_model)
-    vectorstore = FAISS.from_texts(chunks, embeddings)
+    vectorstore = FAISS.from_texts(text_chunks, embeddings)
 
     mapping = extract_field_mapping()
+    #vectorstore = None
     print("finishing mapping")
-
-    new_TC= await process_paragraphs(paragraphs, headers, vectorstore, mapping)
+    new_TC= await process_paragraphs(paragraphs, vectorstore, mapping)
 
     updated_json=merge_TC(new_TC)
 
@@ -150,20 +183,16 @@ async def main():
         old_id = test_case.get("ID", "N/A")
         new_id = f"{prefix}-{str(i).zfill(padding)}"
         test_case["ID"] = new_id
+        #print(f"Updated ID: {old_id} -> {new_id}")
     
     print(f"\n Total test cases updated: {len(updated_json['test_cases'])}")
 
-    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_Zenit_feedbackAI.json")
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases1_PRJ0015372.json")
     save_updated_json(updated_json, output_path)
     #json_to_excel = fill_excel_file(updated_json)
-    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_feedbackAI.xlsx"))
+    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases_PRJ0015372.xlsx"))
 
 
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-
-
-
-

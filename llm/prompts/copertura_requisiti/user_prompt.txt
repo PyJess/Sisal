@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Here is the requirement to analyze:
 
 {req}
@@ -23,3 +24,16 @@ Each test case must follow the field mapping provided, including at least:
 Follow the naming rule:
 This is for the label of the Title [Nome] [proj_numero] requisito-funzionalità/applicativo - TEST - Device (android/ios/Desktop)_AIproposal_requisiti
 
+=======
+Here you find the software requirement:
+
+{input}
+
+Use the following field mapping as the ground truth for your generation if needed:
+
+{mapping}
+
+Here the test cases associated with the requirement:
+
+{TC}
+>>>>>>> origin/Jess

@@ -63,7 +63,7 @@
             },
             "Reference System": {
               "type": "string",
-              "description": "Functional area or application component under test."
+              "description": "Indicate the Operating System and the Application System"
             },
             "Preconditions": {
               "type": "string",
@@ -76,7 +76,7 @@
             },
             "Functionality": {
               "type": "string",
-              "description": "Specific functionality or feature covered by this test case."
+              "description": "Specific topic or feature covered by this test case."
             },
             "Test Type": {
               "type": "string",
