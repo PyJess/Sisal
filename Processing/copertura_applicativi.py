@@ -158,10 +158,10 @@ async def main():
     mapping = extract_field_mapping()
     
     application_list = []
-    input_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
+    input_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 2", "RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
     requirements, title = process_docx(input_path, os.path.dirname(input_path))
     
-    rag_path= input_path=os.path.join(os.path.dirname(__file__), "..", "input", "RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx")
+    rag_path= input_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 2", "RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
     chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
     embeddings = OpenAIEmbeddings(model=embedding_model)
     chunks= chunks + requirements
@@ -278,7 +278,7 @@ async def main():
     for i, tc_id in enumerate(new_TC_dict, start=1):
         new_TC_dict[tc_id]["#"] = max_num + i
 
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI.xlsx")
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_applicativi_feedbackAI.xlsx")
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
 
     df1=convert_to_DF(new_TC_dict)

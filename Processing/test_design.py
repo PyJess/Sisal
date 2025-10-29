@@ -15,11 +15,84 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from Input_extraction.extract_polarion_field_mapping import *
 from utils.simple_functions import *
 from llm.llm import a_invoke_model
-from Processing.copertura_requisiti import add_new_TC, save_updated_json
 from Processing.controllo_sintattico import fill_excel_file
 
 embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
+
+def add_new_TC(new_TC, original_excel):
+
+    new_TC_list = [tc for tc in new_TC_list if tc is not None]
+
+    if not new_TC_list:
+        print("Nessun nuovo TC da aggiungere (tutti i requirement sono già coperti)")
+        return original_excel
+
+    field_mapping = {
+        'Title': 'Title',
+        'Test Group': 'Test Group',
+        'Channel': 'Canale',
+        'Device': 'Dispositivo',
+        'Priority': 'Priority',
+        'Test Stage': 'Test Stage',
+        'Reference System': 'Sistema di riferimento',
+        'Preconditions': 'Precondizioni',
+        'Execution Mode': 'Modalità Operativa',
+        'Functionality': 'Funzionalità',
+        'Test Type': 'Tipologia Test',
+        'Dataset': 'Dataset',
+        'Expected Result': 'Risultato Atteso',
+        'Country': 'Country',
+        'Type': 'Type',
+        '_polarion': '_polarion'
+    }
+
+    all_columns = set()
+    for test_data in original_excel.values():
+        all_columns.update(test_data.keys())
+
+    max_number = max(
+        (int(test_data.get('#', 0)) for test_data in original_excel.values() 
+         if '#' in test_data and isinstance(test_data['#'], (int, float))),
+        default=0
+    )
+
+    for new_test in new_TC:
+        test_id = new_test.get('ID', '')
+        max_number += 1
+
+        new_test_case = {}
+        for col in all_columns:
+            if col == 'Steps':
+                new_test_case[col] = []
+            else:
+                new_test_case[col] = ''
+        new_test_case['#'] = max_number
+
+        for ai_field, json_field in field_mapping.items():
+            if ai_field in new_test and new_test[ai_field] is not None and new_test[ai_field] != '':
+                new_test_case[json_field] = new_test[ai_field]
+
+        if 'Steps' in new_test and new_test['Steps']:
+                new_test_case['Steps'] = new_test['Steps']
+        original_excel[test_id] = new_test_case
+    return original_excel
+
+            
+def save_updated_json(updated_json, output_path='updated_test_cases.json'):
+    """
+    Salva il JSON aggiornato su file.
+    
+    Args:
+        updated_json (dict): JSON con i test cases aggiornati
+        output_path (str): Percorso del file di output
+    """
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(updated_json, f, ensure_ascii=False, indent=2)
+    print(f"JSON aggiornato salvato in: {output_path}")
+
+
+
 
 
 async def prepare_prompt(input: Dict, context:str, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
