@@ -156,8 +156,8 @@ async def main():
     
     paragraphs,title=process_docx(input_path, os.path.dirname(input_path))
 
-    # paragraphs = paragraphs
-    # title = title
+    # paragraphs = paragraphs[0:5]
+    # title = title[0:5]
     print(title)    
     print("***************************")
     #print(paragraphs)
@@ -166,6 +166,7 @@ async def main():
     excel_path = Path(os.path.join(os.path.dirname(__file__), "..", "input", "generated_test_cases3_label_rimosse.xlsx"))
     
     dic = excel_to_json(excel_path) 
+
     print("finishing excel to json")
     mapping = extract_field_mapping()
 
@@ -179,34 +180,36 @@ async def main():
         if "first line" in current_title.lower():
             print(f" Skipping title: {current_title}")
             continue
+        
 
         # Cerca nel file Excel i test case che contengono questo titolo in _polarion
         matching_tests = [
-            t for t in dic.get("test_cases", [])
-            if current_title.lower() in str(t.get("_polarion", "")).lower()
+            t for t in dic.values()
+            if isinstance(t.get("_polarion", ""), str)
+            and current_title.lower() in t["_polarion"].lower()
         ]
-        print(f" Mattching tests found: {matching_tests}")
+        print(f" Matching tests found ({len(matching_tests)}): {[t.get('Title','N/A') for t in matching_tests]}")
+
 
         #result = research_vectordb(par, dic, k=5, similarity_threshold=0.75)
 
         # Genera nuovi test case (se necessari)
-        # llm_new_tc = await gen_new_TC(par, current_title, matching_tests, mapping)
+        llm_new_tc = await gen_new_TC(par, current_title, matching_tests, mapping)
 
-        # # Aggiungi il titolo corrente come valore del campo _polarion
-        # if isinstance(llm_new_tc, dict) and "test_cases" in llm_new_tc:
-        #     for tc in llm_new_tc["test_cases"]:
-        #         tc["_polarion"] = current_title
-        #     new_TC.append(llm_new_tc)
-        # elif isinstance(llm_new_tc, list):
-        #     for tc in llm_new_tc:
-        #         tc["_polarion"] = current_title
-        #     new_TC.extend(llm_new_tc)
-        # elif isinstance(llm_new_tc, dict):
-        #     llm_new_tc["_polarion"] = current_title
-        #     new_TC.append(llm_new_tc)
+        # Aggiungi il titolo corrente come valore del campo _polarion
+        if isinstance(llm_new_tc, dict) and "test_cases" in llm_new_tc:
+            for tc in llm_new_tc["test_cases"]:
+                tc["_polarion"] = current_title
+            new_TC.append(llm_new_tc)
+        elif isinstance(llm_new_tc, list):
+            for tc in llm_new_tc:
+                tc["_polarion"] = current_title
+            new_TC.extend(llm_new_tc)
+        elif isinstance(llm_new_tc, dict):
+            llm_new_tc["_polarion"] = current_title
+            new_TC.append(llm_new_tc)
 
         # print(new_TC)
-    sys.exit(0)
     updated_json=add_new_TC(new_TC, dic)
     
     
