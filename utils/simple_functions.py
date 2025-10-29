@@ -437,7 +437,7 @@ def color_new_testcases_red(excel_path: Path, new_rows_count: int):
 
     wb.save(excel_path)
     wb.close()
-    print(f"🟥 Colorate di rosso {new_rows_count} righe in {excel_path.name}")
+    print(f"Colorate di rosso {new_rows_count} righe in {excel_path.name}")
 
 
 def fill_excel_file_requisiti(test_cases: dict, base_columns=None):
@@ -611,3 +611,79 @@ def convert_json_to_excel(json_data, output_path):
     
     wb.save(output_path)
     print(f"Excel salvato: {output_path}")
+    
+    
+
+
+
+def convert_to_DF(test_cases: dict):
+    """
+    Structure the test cases into a DataFrame suitable for Excel export,
+    """
+    field_mapping = {
+        'Canale': 'Channel',
+        'Dispositivo': 'Device',
+        'Sistema di riferimento': 'Reference System',
+        'Modalità Operativa': 'Execution Mode',
+        'Funzionalità': 'Functionality',
+        'Tipologia Test': 'Test Type',
+        'Test di no regression': 'No Regression Test',
+        'Automation': 'Automation',
+        'Risultato Atteso': 'Expected Result',
+        '_polarion': '_polarion'
+    }
+    
+    # Definisci colonne finali (solo inglese)
+    columns = [
+        'Title', 'ID', '#', 'Test Group', 'Channel', 'Device', 
+        'Priority', 'Test Stage', 'Reference System', 
+        'Preconditions', 'Execution Mode', 'Functionality', 
+        'Test Type', 'No Regression Test', 'Automation',
+        'Dataset', 'Expected Result', 
+        'Step', 'Step Description', 'Step Expected Result',
+        'Country', 'Project', 'Author', 'Assignee(s)', 'Type', 
+        'Partial Coverage Description', '_polarion',
+        'Analysis', 'Coverage', 'Dev Complexity', 'Execution Time', 
+        'Volatility', 'Developed', 'Note', 'Team Ownership', 
+        'Team Ownership Note', 'Requires Script Maintenance'
+    ]
+
+    rows = []
+    for tc_id, tc_data in test_cases.items():
+        steps = tc_data.get('Steps', [])
+        
+        if not steps:
+            steps = [{}]
+        
+        first = True
+        for step in steps:
+            row = {}
+
+            if first:
+
+                for col in columns:
+                    if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                        value = tc_data.get(col, '')
+                        
+                        if not value:
+                            italian_key = next((k for k, v in field_mapping.items() if v == col), None)
+                            if italian_key:
+                                value = tc_data.get(italian_key, '')
+                        
+                        row[col] = value
+                first = False
+            else:
+                for col in columns:
+                    if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                        row[col] = ''
+
+            row['Step'] = step.get('Step', '')
+            row['Step Description'] = step.get('Step Description', '')
+            row['Step Expected Result'] = step.get('Expected Result', '')
+            
+            rows.append(row)
+
+    df = pd.DataFrame(rows, columns=columns)
+
+    return df
+

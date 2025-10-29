@@ -21,6 +21,9 @@ print(df_testcase_polarion.unique())
 chunks,head= process_docx(documents_word,path_output)
 
 mapping = extract_field_mapping()
+#per testare solo pochi paragrafi
+# chunks = chunks[:3]
+# head = head[:3]
 
 # === Pipeline ===
 new_testcases = []
@@ -33,10 +36,10 @@ for req in head:
     print(req_norm)
     
     if any(req_norm == p for p in df_testcase_polarion):
-        print(f"✅ {req} già coperto")
+        print(f" {req} già coperto")
         continue
 
-    print(f"❌ {req} mancante → generazione AI...")
+    print(f"{req} mancante → generazione AI...")
     context = chunks[head.index(req)]
     print("--------------------------")
     try:
@@ -52,12 +55,10 @@ for req in head:
                     llm_new_tc["_polarion"] = req_norm
             
         new_testcases.append(llm_new_tc)
-        #vettorizzare file word per vector search con req e context mi restituscip outpit
-        #vector search da context
-        print(f"🧠 Generato test case per '{req}'")
+        print(f" Generato test case per '{req}'")
         #req
     except Exception as e:
-        print(f"⚠️ Errore generazione LLM per '{req}': {e}")
+        print(f" Errore generazione LLM per '{req}': {e}")
 
 # === Salvataggio nuovi test case ===
 
@@ -69,7 +70,7 @@ for group in new_testcases:
         try:
             group = json.loads(group)
         except json.JSONDecodeError:
-            print(f"⚠️ Gruppo non valido, salto.")
+            print(f" Gruppo non valido, salto.")
             continue
 
     if isinstance(group, dict) and "test_cases" in group:
@@ -81,8 +82,8 @@ for group in new_testcases:
         structured_testcases[f"AI_TC_{counter}"] = group
         counter += 1
     else:
-        print(f"⚠️ Tipo non riconosciuto: {type(group)}")
-print(f"\n✅ Riconosciuti {len(structured_testcases)} test case totali")
+        print(f"Tipo non riconosciuto: {type(group)}")
+print(f"\n Riconosciuti {len(structured_testcases)} test case totali")
 for k, v in list(structured_testcases.items())[:3]:
     print(f"{k} → {v.get('Title', '')}")
 
@@ -95,7 +96,7 @@ if new_testcases:
     
     color_new_testcases_red(output_excel, len(df_new))
 
-    print(f"✅ File aggiornato salvato in: {output_excel}")
+    print(f" File aggiornato salvato in: {output_excel}")
 else:
     print("Tutti i requisiti sono già coperti.")
     

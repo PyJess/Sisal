@@ -16,9 +16,9 @@ Definire "input_path", "rag_path" ed "excel_path", si può runnare il codice dir
  
 COPERTURA REQUISITI: 
 Accedere alla cartella Processing, aprire file "copertura_requisiti.py", definire il path del file excel nella variabile "test_case_input" , ripetere lo stesso procedimento per il file docx nella variabile "documents_word". A partire da requirement viene eseguito un confronto dei codici "_polarion" presente nei testcase con quelli presenti nel file docx.
-Qualora ci fossero dei requirement mancanti l'agente IA si attiva e procederà a generare i testcase a partire dalla documentazione fornita. L'output si trovera dentro la "input" assieme all'excel originale con lo stesso nome+_feedbackAI_requisiti.xlsx
+Qualora ci fossero dei requirement mancanti l'agente IA si attiva e procederà a generare i testcase a partire dalla documentazione fornita. L'output si trovera dentro la cartella "input"(NON OUTPUT) assieme all'excel originale con lo stesso nome+_feedbackAI_requisiti.xlsx.Si può limitare il tempo di output togliendo dai commenti le variabili "chunks" e "head", il numero all'interno dello variabile si può modificare ovviamente a seconda della lunghezza del documento importa ad es. -> 16 paragrafi da  0 a 16 si può selezionare.
+
 
 COPERTURA PROGETTAZIONE:
 Accedere alla cartella Processing, aprire file "copertura_proggetazione.py", definire il path del file excel nella variabile "excel_path" , ripetere lo stesso procedimento per il file docx nella variabile "input_path".  A partire da requirement viene eseguito un confronto dei codici "_polarion" presente nei testcase con quelli presenti nel file docx.
-Qualora ci fossero dei requirement mancanti l'agente IA si attiva e procederà a generare i testcase o a modificarli per colmare delle lacune a partire dalla documentazione fornita. L'output si trovera dentro la "input" assieme all'excel originale con lo stesso nome+_feedbackAI_testcase_progettazione.xlsx
-
+Qualora ci fossero dei requirement mancanti l'agente IA si attiva e procederà a generare i testcase o a modificarli per colmare delle lacune a partire dalla documentazione fornita. L'output si trovera dentro la "outputs" assieme all'excel originale con lo stesso nome+_feedbackAI_testcase_progettazione.xlsx . Si può limitare il tempo di output togliendo dai commenti le variabili "paragraphs" e "title", il numero all'interno dello variabile si può modificare ovviamente a seconda della lunghezza del documento importa ad es. -> 16 paragrafi da  0 a 16 si può selezionare.
