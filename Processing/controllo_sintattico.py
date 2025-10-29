@@ -144,7 +144,7 @@ def fill_excel_file(test_cases: dict):
     df = pd.DataFrame(rows, columns=columns)
 
 
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI.xlsx")
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_controllosintattico_feedbackAI.xlsx")
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
 
     df.to_excel(excel_path, index=False)
