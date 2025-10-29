@@ -11,7 +11,7 @@ from utils.simple_functions import *
 from llm.llm import a_invoke_model
 #from Processing.controllo_sintattico import prepare_prompt
 from Processing.copertura_requisiti import add_new_TC, save_updated_json
-from utils.simple_functions import fill_excel_file,color_new_testcases_red
+from utils.simple_functions import fill_excel_file_progettazione,color_new_testcases_red
 
 from typing import List, Dict, Any, Tuple
 
@@ -67,8 +67,8 @@ async def main():
     
     paragraphs,title=process_docx(input_path, os.path.dirname(input_path))
     # Limita il test solo ai primi 3 paragrafi e titoli per test veloci
-    # paragraphs = paragraphs[:3]
-    # title = title[:3]
+    paragraphs = paragraphs[:3]
+    title = title[:3]
     print(title)    
     print("***************************")
     print(paragraphs)
@@ -126,7 +126,7 @@ async def main():
     updated_json=add_new_TC(new_TC, dic)
     
     
-    json_to_excel = fill_excel_file(updated_json, excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase_progettazione.xlsx"))
+    json_to_excel = fill_excel_file_progettazione(updated_json, excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase_progettazione.xlsx"))
 
         
     # 2Colora le ultime righe aggiunte (ad esempio len(new_TC))

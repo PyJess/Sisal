@@ -155,6 +155,7 @@ import pandas as pd
 from openpyxl import load_workbook
 import os, re
 
+
 def fill_excel_file(test_cases: dict, output_path: str = None):
     """
     Salva i test case in un file Excel, mantenendo gli step su righe separate.
@@ -248,6 +249,90 @@ def fill_excel_file(test_cases: dict, output_path: str = None):
     wb.save(output_path)
     print(f"✅ Excel salvato con testi rossi: {output_path}")
 
+
+def fill_excel_file_progettazione(test_cases: dict, output_path: str = None):
+    """
+    Salva i test case in un file Excel, mantenendo gli step su righe separate.
+    Evidenzia in rosso i test generati dall'AI (marcati con [[RED]]...[[/RED]]).
+    """
+    field_mapping = {
+        'Canale': 'Channel',
+        'Dispositivo': 'Device',
+        'Sistema di riferimento': 'Reference System',
+        'Modalità Operativa': 'Execution Mode',
+        'Funzionalità': 'Functionality',
+        'Tipologia Test': 'Test Type',
+        'Test di no regression': 'No Regression Test',
+        'Automation': 'Automation',
+        'Risultato Atteso': 'Expected Result',
+        '_polarion': '_polarion'
+    }
+
+    columns = [
+        'Title', 'ID', '#', 'Test Group', 'Channel', 'Device', 
+        'Priority', 'Test Stage', 'Reference System', 
+        'Preconditions', 'Execution Mode', 'Functionality', 
+        'Test Type', 'No Regression Test', 'Automation',
+        'Dataset', 'Expected Result', 
+        'Step', 'Step Description', 'Step Expected Result',
+        'Country', 'Project', 'Author', 'Assignee(s)', 'Type', 
+        'Partial Coverage Description', '_polarion',
+        'Analysis', 'Coverage', 'Dev Complexity', 'Execution Time', 
+        'Volatility', 'Developed', 'Note', 'Team Ownership', 
+        'Team Ownership Note', 'Requires Script Maintenance'
+    ]
+
+    rows = []
+    for tc_id, tc_data in test_cases.items():
+        steps = tc_data.get('Steps', [])
+        if not steps:
+            steps = [{}]
+        
+        first = True
+        for step in steps:
+            row = {}
+            if first:
+                for col in columns:
+                    if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                        value = tc_data.get(col, '')
+                        if not value:
+                            italian_key = next((k for k, v in field_mapping.items() if v == col), None)
+                            if italian_key:
+                                value = tc_data.get(italian_key, '')
+                        row[col] = value
+                first = False
+            else:
+                for col in columns:
+                    if col not in ['Step', 'Step Description', 'Step Expected Result']:
+                        row[col] = ''
+
+            row['Step'] = step.get('Step', '')
+            row['Step Description'] = step.get('Step Description', '')
+            row['Step Expected Result'] = step.get('Expected Result', '')
+            rows.append(row)
+
+    df = pd.DataFrame(rows, columns=columns)
+
+    if output_path is None:
+        output_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI.xlsx")
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    df.to_excel(output_path, index=False)
+
+    wb = load_workbook(output_path)
+    ws = wb.active
+
+    red_font = Font(color="FF0000")
+
+    for row in ws.iter_rows(min_row=2):
+        for cell in row:
+            if cell.value and isinstance(cell.value, str) and "[[RED]]" in cell.value:
+                clean_text = re.sub(r'\[\[/?RED\]\]', '', cell.value)
+                cell.value = clean_text
+                cell.font = red_font  # 🔴 colora tutto il testo della cella in rosso
+
+    wb.save(output_path)
+    print(f"✅ Excel salvato con testi rossi: {output_path}")
 def prepare_test_texts(df):
     """
     Combina i campi di ogni test case in un unico testo da usare per embedding o LLM.
