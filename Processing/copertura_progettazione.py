@@ -9,7 +9,7 @@ from Input_extraction.extract_polarion_field_mapping import *
 from utils.simple_functions import *
 from llm.llm import a_invoke_model
 #from Processing.controllo_sintattico import prepare_prompt
-from utils.simple_functions import fill_excel_file_progettazione,color_new_testcases_red
+from utils.simple_functions import fill_excel_file_progettazione,color_new_testcases_red, convert_to_DF
 
 from typing import List, Dict, Any, Tuple
 from langchain_openai import OpenAIEmbeddings
@@ -156,8 +156,8 @@ async def main():
     
     paragraphs,title=process_docx(input_path, os.path.dirname(input_path))
 
-    # paragraphs = paragraphs[0:5]
-    # title = title[0:5]
+    paragraphs = paragraphs[0:5]
+    title = title[0:5]
     print(title)    
     print("***************************")
     #print(paragraphs)
@@ -208,17 +208,54 @@ async def main():
         elif isinstance(llm_new_tc, dict):
             llm_new_tc["_polarion"] = current_title
             new_TC.append(llm_new_tc)
-
-        # print(new_TC)
-    updated_json=add_new_TC(new_TC, dic)
+            
+        print("questo è l'output dell LLM")
+        print(llm_new_tc)
+        print("questo è sotto è la lista dei newTc")
+        print(new_TC)
+    # updated_json=add_new_TC(new_TC, dic)
+    all_generated = []
+ 
+    for result in new_TC:
+        all_generated.extend(result.get("test_cases", []))
+ 
+    new_TC_dict = {tc["ID"]: tc for tc in all_generated}
+    df2= convert_to_DF(dic)
+    df2["#"] = pd.to_numeric(df2["#"], errors="coerce")
+    max_num = int(df2["#"].max()) if not df2["#"].empty else 0
+ 
+    for i, tc_id in enumerate(new_TC_dict, start=1):
+        new_TC_dict[tc_id]["#"] = max_num + i
+ 
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "copertura_progettazione_feedbackAI.xlsx")
+    os.makedirs(os.path.dirname(excel_path), exist_ok=True)
+ 
+    df1=convert_to_DF(new_TC_dict)
+ 
+    df_combined = pd.concat([df2, df1], ignore_index=True)
+    df_combined.to_excel(excel_path, index=False)
+ 
+    wb = load_workbook(excel_path)
+    ws = wb.active
+ 
+    start_row = 2 + len(df2)  
+    end_row = start_row + len(df1)
+    for row_idx in range(start_row, end_row):
+        for cell in ws[row_idx]:
+            if cell.value is not None:
+                cell.font = Font(color="FF0000")
+ 
+ 
+    wb.save(excel_path)
+   
+ 
     
-    
-    json_to_excel = fill_excel_file_progettazione(updated_json, excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase_progettazione.xlsx"))
-
+    # json_to_excel = fill_excel_file_progettazione(updated_json, excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase_progettazione.xlsx"))
+print("finished")
         
     # 2Colora le ultime righe aggiunte (ad esempio len(new_TC))
-    new_rows_count = sum(len(tc_block.get("test_cases", [])) for tc_block in new_TC if tc_block)
-    color_new_testcases_red(excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase_progettazione.xlsx"), new_rows_count)
+    # new_rows_count = sum(len(tc_block.get("test_cases", [])) for tc_block in new_TC if tc_block)
+    # color_new_testcases_red(excel_path.with_name(f"{excel_path.stem}_feedbackAI_testcase_progettazione.xlsx"), new_rows_count)
     
 ## PER TESTING JSON INTO EXCEL
 # test = fill_excel_file(json_test,Path(__file__).parent.parent/"outputs"/"testcase_feedbackAAAAA.xlsx")

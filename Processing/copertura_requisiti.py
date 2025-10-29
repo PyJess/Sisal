@@ -21,6 +21,9 @@ print(df_testcase_polarion.unique())
 chunks,head= process_docx(documents_word,path_output)
 
 mapping = extract_field_mapping()
+#per testare solo pochi paragrafi
+# chunks = chunks[:3]
+# head = head[:3]
 
 # === Pipeline ===
 new_testcases = []
