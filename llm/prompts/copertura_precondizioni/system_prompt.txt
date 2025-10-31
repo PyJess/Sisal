@@ -9,4 +9,4 @@ Guidelines:
 - Do not invent functional behavior; only infer realistic setup conditions.
 - If multiple preconditions exist, list them concisely, separated by semicolons.
 - Write the precondition in **English** and in a single sentence.
-- If no valid precondition can be inferred, return "No precondition identified.
+- If no valid precondition can be inferred, return "No precondition identified."

@@ -12,41 +12,26 @@ from langchain_openai import ChatOpenAI
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from utils.simple_functions import process_docx
+from utils.simple_functions import process_docx,load_file
 
 load_dotenv()
 
-def agent_preconditions(data_sample:str, head:str, chunks:str, model="gpt-4.1"):
+def agent_preconditions(data_sample: str, head: str, chunks: str, model="gpt-4.1"):
 
     gpt = ChatOpenAI(model=model, temperature=0.1)
 
-    system_prompt = """
-You are an AI testing assistant specialized in analyzing software test cases.
+    #Percorso ai prompt
+    base_path = os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "copertura_precondizioni")
 
-Your task is to identify missing *Preconditions* for a given test case,
-based on the surrounding documentation and contextual information.
+    system_prompt = load_file(os.path.join(base_path, "system_prompt.txt"))
+    user_prompt = load_file(os.path.join(base_path, "user_prompt.txt"))
+    
+    #Sostituzione dei placeholder nel prompt utente
+    user_prompt = user_prompt.replace("{head}", str(head))
+    user_prompt = user_prompt.replace("{chunks}", str(chunks))
+    user_prompt = user_prompt.replace("{data_sample}", str(data_sample))
 
-Guidelines:
-- The precondition must describe the state or setup required before executing the test.
-- It must be atomic, clear, and reproducible.
-- Do not invent functional behavior; only infer realistic setup conditions.
-- If multiple preconditions exist, list them concisely, separated by semicolons.
-- Write the precondition in **English** and in a single sentence.
-- If no valid precondition can be inferred, return "No precondition identified."
-"""
-
-    user_prompt = f"""
-Context from documentation:
-- Section title: {head}
-- Section content: {chunks}
-
-Current test case data:
-{data_sample}
-
-Your task:
-Generate the most appropriate *Precondition* for this test case.
-"""
-
+  
     messages = [
         {"role": "system", "content": system_prompt.strip()},
         {"role": "user", "content": user_prompt.strip()},
@@ -93,9 +78,9 @@ for idx, case in df_cases.iterrows():
             req_norm = req.lower().strip()
             if req_norm == polarion:
                 context = chunks[head.index(req)]
-                print(req)
-                print("*********")
-                print(context)
+                # print(req)
+                # print("*********")
+                # print(context)
                 break
 
         #Fallback se nessuna sezione trovata
