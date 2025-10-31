@@ -5,59 +5,136 @@ from langchain_community.vectorstores import FAISS
 import sys
 import os
 from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from openpyxl import load_workbook
+from openpyxl.styles import Font
+from langchain_openai import ChatOpenAI
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.simple_functions import process_docx
 
-import tempfile
-
-temp_dir = tempfile.mkdtemp()
 load_dotenv()
 
-input_excel = Path(__file__).parent.parent/"outputs"/"testcase_feedbackAAAAA.xlsx"
+def agent_preconditions(data_sample:str, head:str, chunks:str, model="gpt-4.1"):
 
+    gpt = ChatOpenAI(model=model, temperature=0.1)
+
+    system_prompt = """
+You are an AI testing assistant specialized in analyzing software test cases.
+
+Your task is to identify missing *Preconditions* for a given test case,
+based on the surrounding documentation and contextual information.
+
+Guidelines:
+- The precondition must describe the state or setup required before executing the test.
+- It must be atomic, clear, and reproducible.
+- Do not invent functional behavior; only infer realistic setup conditions.
+- If multiple preconditions exist, list them concisely, separated by semicolons.
+- Write the precondition in **English** and in a single sentence.
+- If no valid precondition can be inferred, return "No precondition identified."
+"""
+
+    user_prompt = f"""
+Context from documentation:
+- Section title: {head}
+- Section content: {chunks}
+
+Current test case data:
+{data_sample}
+
+Your task:
+Generate the most appropriate *Precondition* for this test case.
+"""
+
+    messages = [
+        {"role": "system", "content": system_prompt.strip()},
+        {"role": "user", "content": user_prompt.strip()},
+    ]
+
+    response = gpt.invoke(messages)
+    return response.content
+
+input_excel = Path(__file__).parent.parent/"input"/"generated_test_cases3 - Copia.xlsx"
+# testcase precondizione mancante = "SGP Generator application is deployed and accessible via a supported desktop browser."
+# User is not logged in or is logged in; Home Page is accessible; SGP cards are available from BE engine.
 output_excel = input_excel.with_name(f"{input_excel.stem}_feedbackAI_precondizioni.xlsx")
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
-file_word_rag = "path for rag and info"
+path_document_word = Path(__file__).parent.parent/"input"/"RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx"
 
-processed_file_word_rag = process_docx(file_word_rag,temp_dir)
+path_output = Path(__file__).parent.parent/"outputs"
 
-vectorstore = FAISS.from_texts(processed_file_word_rag, embeddings)
+chunks,head= process_docx(path_document_word,path_output)
+
+df = pd.read_excel(input_excel)
+
+        
+# Filtra solo le righe che hanno un titolo per skippare le celle che sono step e non testcase
+df_cases = df[df["Title"].notna() & (df["Title"].astype(str).str.strip() != "")]
+print(f"Trovati {len(df_cases)} test case principali su {len(df)} righe totali")
 
 
-df_excel = pd.read_excel(input_excel)
 
-df_precondition_missing = df_excel["Preconditions"].isna()
+for idx, case in df_cases.iterrows():
+    title = str(case.get("Title", "")).strip()
+    precond = case.get("Preconditions", "")
+    polarion = str(case.get("_polarion", "")).lower().strip()
 
-for idx, sample in df_excel.iterrows():
-    current_precond = sample.get("Preconditions", "")
-    if pd.isna(current_precond) or str(current_precond).strip() == "":
-        knowledge_base_word = "documento"
-        # Combina tutti i campi non nulli in un unico testo leggibile
-        sample_text = " ".join(
-            f"{col}: {str(val)}"
-            for col, val in sample.items()
-            if pd.notna(val) and str(val).strip() != ""
+    context = ""
+
+    #Controlla se la precondizione manca
+    if pd.isna(precond) or str(precond).strip() == "":
+        print(f"⚠️ Manca precondizione per: {title}")
+
+        #Trova il paragrafo corrispondente nel documento Word
+        for req in head:
+            req_norm = req.lower().strip()
+            if req_norm == polarion:
+                context = chunks[head.index(req)]
+                print(req)
+                print("*********")
+                print(context)
+                break
+
+        #Fallback se nessuna sezione trovata
+        if not context:
+            context = "No matching documentation section found."
+
+        #Ricostruisco il data sample
+        data_sample = "\n".join(
+            [f"{col}: {val}" for col, val in case.items() if pd.notna(val) and str(val).strip() != ""]
         )
-        results = vectorstore.similarity_search_with_score(sample_text, k=1)
-        print(results)
 
-        # new_precond = generate_precondition_llm(results_vector)
-        # df_excel.at[idx, "Preconditions"] = new_precond
-        # print(f" Added AI precondition to test {sample['Title']}")
+        #Chiamata all’agente AI per generare la precondizione
+        generated_precond = agent_preconditions( data_sample,req,context)
 
-
-# print(df_excel.iterrows())
-
-# df_excel.to_excel(output_excel, index=False)
-# print(f"✅ File aggiornato salvato in: {output_excel}")
+        precond_text = f"[red] {generated_precond.strip()}"
 
 
- #applicativo zenith 
-#carosello filtering deve esser epiu generale
-#per ora nome paragrafo su id
+        df.at[idx, "Preconditions"] = precond_text
 
-#dove sta backend DESKTOP->testgroup E BACKOFFICE->canale (piu sensato al contrariio) quindi testgroup backoffice
-#Geo sistema di backoffice
+    else:
+        print(f"{title}: precondizione presente -> {precond}")
+   
+
+
+df.to_excel(output_excel, index=False)
+print(f"File aggiornato salvato in: {output_excel}")
+
+
+
+wb = load_workbook(output_excel)
+ws = wb.active
+
+col_index = df.columns.get_loc("Preconditions") + 1
+
+for row in range(2, ws.max_row + 1):  
+    cell = ws.cell(row=row, column=col_index)
+    if cell.value and "[red]" in str(cell.value):
+        cell.font = Font(color="FF0000")
+        cell.value = cell.value.replace("[red]", "").strip()
+
+wb.save(output_excel)
+print(" Celle con precondizioni AI colorate di rosso.")

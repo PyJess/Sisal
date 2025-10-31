@@ -1,0 +1,9 @@
+Context from documentation:
+- Section title: {head}
+- Section content: {chunks}
+
+Current test case data:
+{data_sample}
+
+Your task:
+Generate the most appropriate *Precondition* for this test case.
