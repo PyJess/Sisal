@@ -15,7 +15,7 @@ For each requirement, produce one or more test cases.
 Each test case must include the following fields:
 - Test Case ID: A unique identifier (e.g., TC-001, TC-002).
 - Requirement Reference (optional but recommended): The requirement or user story being validated.
-- Title: A concise and descriptive name of the test case. The title must follow this rule: Name-proj_number_requirement_funzionality/application_TEST_Device (android/ios/Desktop) 
+- Title: A concise and descriptive name of the test case. The title must follow this rule: <Nome_test>_XXX_<requisito>_<funzionalità/applicativo>_TEST_<Device>. 
 - Description / Objective: Explain what is being tested and why.
 - Preconditions: Any necessary setup, configurations, or system states before execution. Organize them logically in the order they must be satisfied, from the earliest required setup to the last.
 - Test Data: Input values or parameters (include explicit examples when possible).
