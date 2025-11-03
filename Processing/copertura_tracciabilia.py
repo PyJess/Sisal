@@ -45,7 +45,7 @@ async def prepare_prompt(input: str, context:str ="", testcase: Dict = None) -> 
 
 async def AI_gen_title(input: str, context:str, testcase: Dict = None) -> Dict:
     messages, schema = await prepare_prompt(input, context, testcase)
-    print("starting calling llm")
+    #print("starting calling llm")
     #print(f"{messages}")
     response = await a_invoke_model(messages, schema, model="gpt-4.1")
     return response
@@ -53,23 +53,29 @@ async def AI_gen_title(input: str, context:str, testcase: Dict = None) -> Dict:
 
 
 async def main():
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases3_withoutDHW.xlsx")
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_ZENIT_feedbackAI.xlsx")
     dic = excel_to_json(excel_path) 
     print("finishing excel to json")
 
-    rag_path = os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 2", 
-                            "RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
+    rag_path = os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 1", 
+                            "PRJ0015372 - ZENIT Phase 1 - FA - Rev 1.0.docx")
     chunks, _ = process_docx(rag_path, os.path.dirname(rag_path))
     embeddings = OpenAIEmbeddings(model=embedding_model)
     vectorstore = FAISS.from_texts(chunks, embeddings)
 
+    pattern = r"XXX"
+    i=0
     for test_id, testcase in dic.items():
+        i+=1
+        numero = f"{i:03d}"
+        print(f" NUMERO {numero} ")
         Title = testcase['Title']
         tc=str(testcase)
         context = create_vectordb(tc, vectorstore, k=3, similarity_threshold=0.75)
         context=""
         new_Title = await AI_gen_title(Title, context, testcase)
-        testcase['Title'] = new_Title["corrected_title"]
+        corrected_title_updated = re.sub(pattern, numero, new_Title["corrected_title"])
+        testcase['Title'] = corrected_title_updated
         print(f"Corrected Title for {test_id}: {new_Title}")
 
     

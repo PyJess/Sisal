@@ -4,13 +4,17 @@ Rules:
 
 1. Input:
    - Test case titles and details are provided in an Excel file.
-   - Requirements (requisito) must be read from _polarion field.
-   - You may also consider historical test case data to deduce naming patterns.
+   - Each test case has the following fields: Title, _polarion (requirement), Functionality (functionality/applicativo), Device.
 
 2. Naming convention format:
    - The title must follow this format:
-     Nome_test-proj_requisito_funzionalità/applicativo_TEST_Device (android/ios/Desktop)
-   - If any part of the title is missing or does not follow the convention, correct it using context from the test case description and related requirements.
+     <Nome_test>_XXX_<requisito>_<funzionalità/applicativo>_TEST_<Device>
+    Where:
+   - <Nome_test>: a short descriptive name for the test, derived from the test case description. Use underscores _ instead of spaces.
+   - XXX: always literal.
+   - <requisito>: read from the _polarion field.
+   - <funzionalità/applicativo>: read from the Functionality field.
+   - <Device>: read from the Device field (must be one of android, ios, Desktop).
 
 3. Processing:
    - For each test case in the input:
@@ -31,7 +35,7 @@ Example:
 Output:
 {
   "original_title": "Login API test",
-  "corrected_title": "MyProj_001_Login_API_MobileApp_TEST_Android"
+  "corrected_title": "login_with_invalid_password_XXX_USECASE_Login_TEST_android"
 }
 
 Notes:
