@@ -10,7 +10,7 @@ Rules for Test Cases:
 # Atomic and Independent
 - Each test case (TC) must be atomic and independent, focusing on a single objective.
 # Out of context
-- If there is a word or a sentence out of context just fix it.
+- If there is a word or a sentence out of context just fix it with the correct value.
 #Focused Expected Results
 - The navigation and GUI operations should only include expected results directly related to the main objective of the TC.
 - Any additional checks must be documented in separate, dedicated test cases.
