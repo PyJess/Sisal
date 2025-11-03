@@ -181,13 +181,15 @@ async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
         print(f"numero: {i}")
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
         context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
-        print(f"Context retrieved: {context}")
+        #print(f"Context retrieved: {context}")
         #context = ""
         tc = await gen_TC(par, context, mapping)
 
         if isinstance(tc, dict) and "test_cases" in tc:
             for test_case in tc["test_cases"]:
                 test_case["_polarion"] = headers[i - 1] 
+
+        
 
         return tc
     
@@ -200,21 +202,40 @@ async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
 
 async def main():
 
-    input_path= os.path.join(os.path.dirname(__file__), "..", "input","Esempio 1","PRJ0015372 - ZENIT Phase 1 - FA - Rev 1.0.docx")
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input","Esempio 2","RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
     print(os.path.dirname(input_path))
     paragraphs, headers =process_docx(input_path, os.path.dirname(input_path))
 
-    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 1","RU_ZENIT_V_0.4_FASE_1 (1).docx")
+    filtered_paragraphs = []
+    filtered_headers = []
+
+    for par, head in zip(paragraphs, headers):
+        if not head:
+            continue
+
+        head_clean = head.strip().lower()
+
+        if (
+            "== first line ==" in head_clean
+            or "sommario" in head_clean or "summary" in head_clean
+        ):
+            continue  
+
+        filtered_paragraphs.append(par)
+        filtered_headers.append(head)
+
+    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 2","RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
     chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
     embeddings = OpenAIEmbeddings(model=embedding_model)
     vectorstore = FAISS.from_texts(chunks, embeddings)
 
     mapping = extract_field_mapping()
-    print("finishing mapping")
-
-    new_TC= await process_paragraphs(paragraphs, headers, vectorstore, mapping)
+    #print("finishing mapping")
+    new_TC= await process_paragraphs(filtered_paragraphs, filtered_headers, vectorstore, mapping)
 
     updated_json=merge_TC(new_TC)
+
+    print("Finishing generating test cases from LLM")
 
     start_number = 1
     prefix = "TC"
@@ -228,9 +249,7 @@ async def main():
 
     output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_Zenit_feedbackAI.json")
     save_updated_json(updated_json, output_path)
-    #json_to_excel = fill_excel_file(updated_json)
-    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_feedbackAI.xlsx"))
-
+    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_ZENIT_feedbackAI.xlsx"))
 
 
 if __name__ == "__main__":

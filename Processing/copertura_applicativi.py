@@ -151,7 +151,7 @@ async def AI_gen_TC(input: str, context:str, mapping: str = None) -> Dict:
     return response
 
 async def main():
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_cases3_withoutDHW.xlsx")
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_feedbackAI.xlsx")
     dic = excel_to_json(excel_path) 
     print("finishing excel to json")
 
