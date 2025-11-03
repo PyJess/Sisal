@@ -10,7 +10,7 @@ from utils.simple_functions import process_docx, AI_check_TC_requisiti, color_ne
 from Input_extraction.extract_polarion_field_mapping import *
 
 path_output = Path(__file__).parent.parent/"outputs"
-test_case_input = Path(__file__).parent.parent/"input"/"generated_test_cases3_label_rimosse.xlsx"
+test_case_input = Path(__file__).parent.parent/"input"/"generated_test_cases3_video_showcase.xlsx"
 documents_word = Path(__file__).parent.parent/"input"/"RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx"
 
 

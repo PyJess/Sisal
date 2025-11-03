@@ -156,14 +156,14 @@ async def main():
     
     paragraphs,title=process_docx(input_path, os.path.dirname(input_path))
 
-    paragraphs = paragraphs[0:5]
+    paragraphs = paragraphs[0:5] 
     title = title[0:5]
     print(title)    
     print("***************************")
     #print(paragraphs)
     print(f"Test limitato ai primi {len(paragraphs)} paragrafi")
 
-    excel_path = Path(os.path.join(os.path.dirname(__file__), "..", "input", "generated_test_cases3_label_rimosse.xlsx"))
+    excel_path = Path(os.path.join(os.path.dirname(__file__), "..", "input", "generated_test_cases3.xlsx"))
     
     dic = excel_to_json(excel_path) 
 
@@ -209,10 +209,10 @@ async def main():
             llm_new_tc["_polarion"] = current_title
             new_TC.append(llm_new_tc)
             
-        print("questo è l'output dell LLM")
-        print(llm_new_tc)
-        print("questo è sotto è la lista dei newTc")
-        print(new_TC)
+        # print("questo è l'output dell LLM")
+        # print(llm_new_tc)
+        # print("questo è sotto è la lista dei newTc")
+        # print(new_TC)
     # updated_json=add_new_TC(new_TC, dic)
     all_generated = []
  
