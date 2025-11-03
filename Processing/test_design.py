@@ -247,9 +247,9 @@ async def main():
     
     print(f"\n Total test cases updated: {len(updated_json['test_cases'])}")
 
-    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_Zenit_feedbackAI.json")
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_SPORTBOOK_feedbackAI.json")
     save_updated_json(updated_json, output_path)
-    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_ZENIT_feedbackAI.xlsx"))
+    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_SPORTBOOK_feedbackAI.xlsx"))
 
 
 if __name__ == "__main__":

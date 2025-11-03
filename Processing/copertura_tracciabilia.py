@@ -53,7 +53,7 @@ async def AI_gen_title(input: str, context:str, testcase: Dict = None) -> Dict:
 
 
 async def main():
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_ZENIT_feedbackAI.xlsx")
+    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_SPORTBOOK_feedbackAI.xlsx")
     dic = excel_to_json(excel_path) 
     print("finishing excel to json")
 
