@@ -4,12 +4,11 @@ from pathlib import Path
 import asyncio
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from utils.simple_functions import process_docx, excel_to_json
 from Input_extraction.extract_polarion_field_mapping import *
 from utils.simple_functions import *
 from llm.llm import a_invoke_model
 #from Processing.controllo_sintattico import prepare_prompt
-from utils.simple_functions import fill_excel_file_progettazione,color_new_testcases_red, convert_to_DF
+from utils.simple_functions import fill_excel_file_progettazione,color_new_testcases_red, convert_to_DF,process_docx, excel_to_json
 
 from typing import List, Dict, Any, Tuple
 from langchain_openai import OpenAIEmbeddings
