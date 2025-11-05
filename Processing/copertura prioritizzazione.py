@@ -16,7 +16,7 @@ from utils.simple_functions import process_docx,load_file
 
 load_dotenv()
 
-def agent_priritizzazione(data_sample: str, head: str, chunks: str, model="gpt-4.1"):
+def agent_prioritizzazione(data_sample: str, head: str, chunks: str, model="gpt-4.1"):
 
     gpt = ChatOpenAI(model=model, temperature=0.1)
 
@@ -40,9 +40,12 @@ def agent_priritizzazione(data_sample: str, head: str, chunks: str, model="gpt-4
     response = gpt.invoke(messages)
     return response.content
 
-input_excel = Path(__file__).parent.parent/"input"/"generated_test_cases3.xlsx"
+input_excel = Path(__file__).parent.parent/"input"/"tests_cases.xlsx"
 
-output_excel = input_excel.with_name(f"{input_excel.stem}_feedbackAI_precondizioni.xlsx")
+
+path_output = Path(__file__).parent.parent / "outputs"
+
+output_excel = path_output / f"{input_excel.stem}_feedbackAI_priority.xlsx"
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
@@ -50,60 +53,51 @@ path_document_word = Path(__file__).parent.parent/"input"/"RU_SportsBookPlatform
 
 path_output = Path(__file__).parent.parent/"outputs"
 
-# chunks,head= process_docx(path_document_word,path_output)
+chunks,head= process_docx(path_document_word,path_output)
 
 df = pd.read_excel(input_excel)
 
-print(df.columns)
-sys.exit()        
 # Filtra solo le righe che hanno un titolo per skippare le celle che sono step e non testcase
 df_cases = df[df["Title"].notna() & (df["Title"].astype(str).str.strip() != "")]
+df_cases = df_cases.head(20) # per test rapidi 
+
 print(f"Trovati {len(df_cases)} test case principali su {len(df)} righe totali")
 
 
 
 for idx, case in df_cases.iterrows():
     title = str(case.get("Title", "")).strip()
-    precond = case.get("Preconditions", "")
+    current_priority = str(case.get("Priority", "")).strip()
     polarion = str(case.get("_polarion", "")).lower().strip()
-
+    req = "Unknown requirement"
     context = ""
 
-    #Controlla se la precondizione manca
-    if pd.isna(precond) or str(precond).strip() == "":
-        print(f"⚠️ Manca precondizione per: {title}")
+    # Trova il contesto nel documento Word (stesso meccanismo di prima)
+    for req in head:
+        req_norm = req.lower().strip()
+        if req_norm == polarion:
+            context = chunks[head.index(req)]
+            # print(req)
+            # print("*********")
+            # print(context)
+            break
 
-        #Trova il paragrafo corrispondente nel documento Word
-        for req in head:
-            req_norm = req.lower().strip()
-            if req_norm == polarion:
-                context = chunks[head.index(req)]
-                # print(req)
-                # print("*********")
-                # print(context)
-                break
+    # Ricostruzione del contesto testuale da passare al modello
+    data_sample = "\n".join(
+        [f"{col}: {val}" for col, val in case.items() if pd.notna(val) and str(val).strip() != ""]
+    )
 
-        #Fallback se nessuna sezione trovata
-        if not context:
-            context = "No matching documentation section found."
+    # Invoca il modello AI
+    generated_priority = agent_prioritizzazione(data_sample, req, context).strip()
 
-        #Ricostruisco il data sample
-        data_sample = "\n".join(
-            [f"{col}: {val}" for col, val in case.items() if pd.notna(val) and str(val).strip() != ""]
-        )
+    if not current_priority:  # Mancante → generata ex novo
+        priority_text = f"[red]{generated_priority}"
+    elif generated_priority.lower() != current_priority.lower():  # Diversa → modificata
+        priority_text = f"[red]{generated_priority}"
+    else:  # Uguale → lascia invariata
+        priority_text = current_priority
 
-        #Chiamata all’agente AI per generare la precondizione
-        # generated_precond = agent_preconditions( data_sample,req,context)
-
-        # precond_text = f"[red] {generated_precond.strip()}"
-
-
-        df.at[idx, "Preconditions"] = precond_text
-
-    else:
-        print(f"{title}: precondizione presente -> {precond}")
-   
-
+    df.at[idx, "Priority"] = priority_text
 
 df.to_excel(output_excel, index=False)
 print(f"File aggiornato salvato in: {output_excel}")
@@ -113,7 +107,7 @@ print(f"File aggiornato salvato in: {output_excel}")
 wb = load_workbook(output_excel)
 ws = wb.active
 
-col_index = df.columns.get_loc("Preconditions") + 1
+col_index = df.columns.get_loc("Priority") + 1
 
 for row in range(2, ws.max_row + 1):  
     cell = ws.cell(row=row, column=col_index)

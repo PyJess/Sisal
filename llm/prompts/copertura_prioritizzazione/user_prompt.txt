@@ -1,0 +1,18 @@
+You are tasked with verifying or assigning the test case priority according to the context.
+
+Context from documentation:
+- Section title: {head}
+- Section content: {chunks}
+
+Current test case data:
+{data_sample}
+
+Instructions:
+- If the "Priority" field in the test case is **empty**, infer the correct priority ("High", "Medium", or "Low").
+- If a "Priority" value already exists, verify if it aligns with the documentation and test case description.
+  - If it is coherent, return it unchanged.
+  - If it is not coherent, correct it.
+- Consider functional impact, risk, and criticality.
+
+Your output must be:
+→ A single word among: "High", "Medium", or "Low"  
