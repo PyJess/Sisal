@@ -1,0 +1,446 @@
++------+----------------------------------------------------------------------------------------------------------+----+
+|      |                                                                                                          |    |
++:====:+:========================================================================================================:+:===+
+|      | **Documentazione di progetto: requisiti utente**                                                         |    |
+|      |                                                                                                          |    |
+|      | **Innalzamento limite decriptazione vincite GNTN raccolti a distanza**                                   |    |
++------+----------------------------------------------------------------------------------------------------------+----+
+|      |                                                                                                          |    |
++------+----------------------------------------------------------------------------------------------------------+----+
+|      |                                                                                                          |    |
++------+----------------------------------------------------------------------------------------------------------+----+
+|      |                                                                                                          |    |
++------+----------------------------------------------------------------------------------------------------------+----+
+
++:------------------------------------------+:--------------------+:-------------+:-----------------------------------+
+| **Ciclo di emissione**                    | **Acronimi**        | **Data**     | **Firma**                          |
++-------------------------------------------+---------------------+--------------+------------------------------------+
+| Redatto da:                               | LOT                 | 31/05/2024   |                                    |
+|                                           |                     |              |                                    |
+| Team Product Lottery                      |                     |              |                                    |
+|                                           |                     |              |                                    |
+| Team Experience Lottery                   |                     |              |                                    |
+|                                           |                     |              |                                    |
+| Ufficio Premi                             |                     |              |                                    |
++-------------------------------------------+---------------------+--------------+------------------------------------+
+| Verificato da:                            | DM                  | 03/06/2024   |                                    |
+|                                           |                     |              |                                    |
+| Iole Truppia                              |                     |              |                                    |
+|                                           |                     |              |                                    |
+| Diego Marrara                             |                     |              |                                    |
++-------------------------------------------+---------------------+--------------+------------------------------------+
+| Approvato da:                             |                     |              |                                    |
++-------------------------------------------+---------------------+--------------+------------------------------------+
+
+  ------------- ------------------------------------------------------------------------------ --------------------------
+  **Rev. N.**   **Oggetto della revisione**                                                    **Data**
+
+  0.1           Prima emissione                                                                31/05/24
+
+  0.2           Aggiornato RU3, RU6 e RU7                                                      14/06/24
+
+                                                                                               
+
+                                                                                               
+
+                                                                                               
+  ------------- ------------------------------------------------------------------------------ --------------------------
+
+# Sommario {#sommario .TOC-Heading}
+
+[1 Introduzione [3](#introduzione)](#introduzione)
+
+[1.1 Descrizione del AS IS [3](#descrizione-del-as-is)](#descrizione-del-as-is)
+
+[1.1.1 Prize Payment [3](#prize-payment)](#prize-payment)
+
+[2 Definizioni e Abbreviazioni [4](#definizioni-e-abbreviazioni)](#definizioni-e-abbreviazioni)
+
+[3 Descrizione delle esigenze [5](#descrizione-delle-esigenze)](#descrizione-delle-esigenze)
+
+[3.1 Elenchi premi GNTN GAD da pagare [5](#elenchi-premi-gntn-gad-da-pagare)](#elenchi-premi-gntn-gad-da-pagare)
+
+[3.2 Pagabilità premi GNTN GAD [5](#pagabilità-premi-gntn-gad)](#pagabilità-premi-gntn-gad)
+
+[3.3 Corretta indicazione soglia di pagabilità automatica premi GNTN GAD
+[6](#corretta-indicazione-soglia-di-pagabilità-automatica-premi-gntn-gad)](#corretta-indicazione-soglia-di-pagabilità-automatica-premi-gntn-gad)
+
+[4 Specifica dei Requisiti [7](#specifica-dei-requisiti)](#specifica-dei-requisiti)
+
+[4.1 Elenco dei Requisiti Funzionali [7](#elenco-dei-requisiti-funzionali)](#elenco-dei-requisiti-funzionali)
+
+[4.2 Elenco dei Requisiti Non Funzionali
+[7](#elenco-dei-requisiti-non-funzionali)](#elenco-dei-requisiti-non-funzionali)
+
+[4.3 Elenco dei Requisiti di Sicurezza [8](#elenco-dei-requisiti-di-sicurezza)](#elenco-dei-requisiti-di-sicurezza)
+
+[4.4 Elenco di Privacy, Risk & Compliance [8](#elenco-di-privacy-risk-compliance)](#elenco-di-privacy-risk-compliance)
+
+[4.5 Descrizione dei requisiti [8](#descrizione-dei-requisiti)](#descrizione-dei-requisiti)
+
+[4.5.1 RU1 - Modifica Limite di Accredito vincite Online
+[8](#ru1---modifica-limite-di-accredito-vincite-online)](#ru1---modifica-limite-di-accredito-vincite-online)
+
+[4.5.2 RU2 - TG Punto Pagamenti Premi [8](#ru2---tg-punto-pagamenti-premi)](#ru2---tg-punto-pagamenti-premi)
+
+[4.5.3 RU3 - Gestione Concorso NPL [9](#ru3---gestione-concorso-npl)](#ru3---gestione-concorso-npl)
+
+[4.5.4 RU4 - Gestione Concorso SIRIO [10](#ru4---gestione-concorso-sirio)](#ru4---gestione-concorso-sirio)
+
+[4.5.5 RU5 - Software Ufficio Premi [10](#ru5---software-ufficio-premi)](#ru5---software-ufficio-premi)
+
+[4.5.6 RU6 - Commissione [11](#ru6---commissione)](#ru6---commissione)
+
+[4.5.7 RU7 - Documentazione tecnica per i rivenditori a distanza per Verifica Vincite
+[11](#ru7---documentazione-tecnica-per-i-rivenditori-a-distanza-per-verifica-vincite)](#ru7---documentazione-tecnica-per-i-rivenditori-a-distanza-per-verifica-vincite)
+
+[4.5.8 RU13 - Sicurezza [12](#ru13---sicurezza)](#ru13---sicurezza)
+
+[4.5.9 RU14 - Privacy, Risk & Compliance [12](#ru14---privacy-risk-compliance)](#ru14---privacy-risk-compliance)
+
+[5 Checklist per l'accettazione dei requisiti
+[13](#checklist-per-laccettazione-dei-requisiti)](#checklist-per-laccettazione-dei-requisiti)
+
+# Introduzione
+
+In considerazione del costante incremento della partecipazione al gioco a distanza e del conseguente aumento delle
+vincite online di importo superiore a 5.200,00 euro in occasione in particolare delle Iniziative Speciali del
+SuperEnalotto SuperStar, **è stata richiesta ad ADM la modifica della disciplina di pagamento delle vincite** conseguite
+online ai Giochi Numerici a Totalizzatore Nazionale.
+
+Questo documento ha **l'obiettivo di guidare la modifica delle procedure di pagamento dei premi, prevedendo
+l'innalzamento ad euro 10.500,00 dei limiti di importo delle vincite da sottoporre a decrittazione delle anagrafiche dei
+giocatori**, attualmente fissato in 5.200 euro.
+
+Si sottolinea che la richiesta è da riferirsi alle sole vincite conseguite ONLINE.
+
+## Descrizione del AS IS
+
+### Prize Payment
+
+La funzione Prize Payment paga i seguenti premi GNTN:
+
+1.  Premi realizzati con tagliandi fisici, di qualsiasi importo, che vengano richiesti presso gli sportelli premi di
+    Milano e Roma oppure inviati tramite posta o vettori di altro genere;
+
+2.  Premi realizzati con giocate online, di importo lordo superiore a € 5.200,00, richiesti presso gli sportelli premi
+    di Milano e Roma, previa verifica e autorizzazione da parte di apposite commissioni ADM;
+
+3.  Premi di importo lordo compreso tra € 5.200,00 e € 52.000,00, realizzati sia con tagliandi fisici che con giocate
+    online, il cui pagamento è stato prenotato tramite TG presso i Punti Pagamento Premi (PPP), previa commissione ADM
+    in caso di vincita online;
+
+Le procedure di pagamento dei premi vengono eseguite tramite i programmi Sirio (pagamento e prenotazione) per il gioco
+SuperEnalotto e NPL per tutti gli altri giochi GNTN.
+
+# Definizioni e Abbreviazioni
+
+Nella tabella seguente sono indicate tutte le abbreviazioni utilizzate nel documento:
+
+  --------------------------------------- --------------------------------------------------------------------------
+  TG                                      Terminale di Gioco
+
+  PDV                                     Punto di Vendita
+
+  PPP                                     Punto Pagamento Premi
+
+  NPL                                     Nuova Piattaforma Lottery
+
+  SIRIO                                   Piattaforma Lottery di SuperEnalotto
+  --------------------------------------- --------------------------------------------------------------------------
+
+# Descrizione delle esigenze
+
+Con il presente documento si richiede di adeguare la procedura di pagamento dei premi online GNTN, innalzando l'attuale
+limite di accredito delle vincite online da 5.200€ **a 10.500€.**
+
+L'esigenza è quella di implementare/aggiornare:
+
+1.  funzionalità servizio verifica vincite;
+
+2.  funzionalità accredito della vincita online sul conto di gioco;
+
+3.  funzionalità movimentazione conto;
+
+4.  terminali di gioco Punto Pagamenti Premi
+
+5.  software gestione concorso SIRIO
+
+6.  la documentazione tecnica dedicata ai Rivenditori a distanza;
+
+7.  la documentazione di regolamento dei GNTN;
+
+8.  materiali informativi con riferimento alla nuova fascia di vincita su tutti i canali di comunicazione a disposizione
+    dei rivenditori utenti finali.
+
+Relativamente a premi GNTN realizzati con giocate online, le operazioni di pagamento o di consultazione compiute da
+Prize Payment che attualmente sono possibili per le vincite lorde superiori a € 5.200,00 lordi dovranno essere possibili
+soltanto per importi lordi superiori a € 10.500,00.
+
+In altre parole, le vincite di importo lordo inferiore a € 10.500,00 non dovranno essere annoverate tra gli importi
+pagabili da Prize Payment. Di conseguenza, tutte le funzioni utilizzate da Prize Payment per visionare o gestire le
+vincite GNTN GAD di propria competenza dovranno considerare soltanto le vincite superiori a € 10.500,00 lordi.
+
+Tra i RU verranno indicate le richieste di stretta competenza di Prize Payment e non quelle riguardanti i settaggi dei
+Terminali di Gioco (TG, che dovranno permettere prenotazioni di bonifico per importi lordi compresi tra 10.500,00 e
+52.000,00 €) presenti presso i Punti di Pagamento Premi (PPP) che dovranno essere espresse dalle funzioni competenti.
+
+## Elenchi premi GNTN GAD da pagare 
+
+Visualizzare tra le vincite GNTN online con pagamento eseguibili esclusivamente da Prize Payment (direttamente o previa
+prenotazione di bonifico presso PPP) i premi di importo superiore a € 10.500,00 lordi.
+
+## Pagabilità premi GNTN GAD
+
+Eseguire operazioni di pagamento per premi GNTN online per i soli premi di importo superiore a € 10.500,00 lordi.
+
+## Corretta indicazione soglia di pagabilità automatica premi GNTN GAD
+
+Indicare la soglia massima aggiornata per la pagabilità automatica dei premi GNTN GAD (€ 10.500,00) su qualsiasi
+documento prodotto dagli applicativi di pagamento che dovessero riportarla.
+
+# Specifica dei Requisiti 
+
+## Elenco dei Requisiti Funzionali
+
+Dovranno essere soddisfatti i seguenti requisiti:
+
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+| **ID** | **Name**                       | **Type**       | **Notes**                                     | **Priority** |
++========+:===============================+:===============+:==============================================+=============:+
+| 1.     | Modifica Limite di Accredito   | Requirement    | Impatti eventuali                             | 1            |
+|        | vincite Online                 |                |                                               |              |
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+| 2.     | TG Punto Pagamenti Premi       | Requirement    | Il terminale dei PPP (ad oggi solo Galileo)   | 1            |
+|        |                                |                | deve poter fare i bonifici:                   |              |
+|        |                                |                |                                               |              |
+|        |                                |                | • retail da 5.200,01€ a 52.000,00€            |              |
+|        |                                |                |                                               |              |
+|        |                                |                | • online dalla nuova soglia 10.500,01€ a      |              |
+|        |                                |                | 52.000,00€                                    |              |
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+| 3.     | Gestione Concorso NPL          | Requirement    | Adeguamento soglie sulle schermate            | 1            |
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+| 4.     | Gestione Concorso SIRIO        | Requirement    | Adeguamento soglie sulle schermate            | 1            |
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+| 5.     | Software Ufficio Premi         | Requirement    | Adeguamento soglie sulle schermate            | 1            |
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+| 6.     | Commissione                    | Requirement    | Aggiornamento documenti                       | 1            |
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+| 7.     | Documentazione tecnica per i   | Requirement    | Creare una documentazione tecnica di          | 1            |
+|        | rivenditori a distanza per     |                | dettaglio da mettere a disposizione dei       |              |
+|        | Verifica Vincite               |                | rivenditori per l'integrazione per il         |              |
+|        |                                |                | Verifica Vincite impattati dall'innalzamento. |              |
++--------+--------------------------------+----------------+-----------------------------------------------+--------------+
+
+## Elenco dei Requisiti Non Funzionali
+
+Dovranno essere soddisfatti i seguenti requisiti:
+
++--------+--------------------------------+-------------------+------------------------------------------------------+--------------+
+| **ID** | **Name**                       | **Type**          | **Notes**                                            | **Priority** |
++========+:===============================+:==================+======================================================+=============:+
+| 8.     | Contratto Rivenditori a        | Non-Functional    | Revisione art.2 Obbligazioni Concessionario (com.1   | 1            |
+|        | distanza                       | Requirement       | let.e, com.2 let.d) - art.3 Obbligazioni PoS (com.C  |              |
+|        |                                |                   | n,7) - art.4 Rendicontazione e pagamenti (let c) -   |              |
+|        |                                |                   | art. 5 Pagamento vincite - art. 14 Riservatezza e    |              |
+|        |                                |                   | privacy                                              |              |
++--------+--------------------------------+-------------------+------------------------------------------------------+--------------+
+| 9.     | Vetrina di gioco classica      | Non-Functional    | Aggiornamento contenuti sezione \"come riscuotere\"  |              |
+|        |                                | Requirement       | all\'interno della vetrina classica per ogni         |              |
+|        |                                |                   | referenza GNTN                                       |              |
++--------+--------------------------------+-------------------+------------------------------------------------------+--------------+
+| 10.    | Regolamenti di gioco GNTN      | Non-Functional    | Sostituzione dei \"regolamento di gioco\" per ogni   |              |
+|        |                                | Requirement       | referenza GNTN sui siti                              |              |
+|        |                                |                   | <https://www.superenalotto.it/> e                    |              |
+|        |                                |                   | <https://www.giochinumerici.info/rivenditori-online> |              |
++--------+--------------------------------+-------------------+------------------------------------------------------+--------------+
+| 11.    | Comunicazione ai Rivenditori a | Non-Functional    | Invio di una comunicazione a tutti i Rivenditori a   |              |
+|        | distanza                       | Requirement       | distanza con eventuale condivisione della            |              |
+|        |                                |                   | documentazione tecnica (se necessario) utile ad      |              |
+|        |                                |                   | adeguarsi al nuovo limite.                           |              |
++--------+--------------------------------+-------------------+------------------------------------------------------+--------------+
+| 12.    | Brochure informativa           | Non-Functional    |                                                      |              |
+|        |                                | Requirement       |                                                      |              |
++--------+--------------------------------+-------------------+------------------------------------------------------+--------------+
+
+## Elenco dei Requisiti di Sicurezza
+
++--------+--------------------------------+-------------------+--------------------------------------------+--------------+
+| **ID** | **Name**                       | **Type**          | **Notes**                                  | **Priority** |
++========+:===============================+:==================+============================================+=============:+
+| 13.    | Sicurezza                      |                   |                                            | 1            |
++--------+--------------------------------+-------------------+--------------------------------------------+--------------+
+
+## Elenco di Privacy, Risk & Compliance
+
++--------+--------------------------------+-------------------+--------------------------------------------+--------------+
+| **ID** | **Name**                       | **Type**          | **Notes**                                  | **Priority** |
++========+:===============================+:==================+============================================+=============:+
+| 14.    | Privacy, Risk & Compliance     |                   |                                            | 1            |
++--------+--------------------------------+-------------------+--------------------------------------------+--------------+
+
+## Descrizione dei requisiti
+
+### RU1 - Modifica Limite di Accredito vincite Online
+
+A partire dal concorso n° [X]{.mark} del [DD/MM/AA]{.mark} il limite di accredito delle vincite online dovrà passare da
+5.200€ a 10.500€. Resta invariato il limite di 5.200€ per il pagamento delle vincite Retail.
+
+### RU2 - TG Punto Pagamenti Premi
+
+Il terminale dei PPP (ad oggi solo Galileo) deve poter fare i bonifici:
+
+- retail da 5.200,01€ a 52.000,00€;
+
+- online dalla nuova soglia 10.500,01€ a 52.000,00€.
+
+### RU3 - Gestione Concorso NPL
+
+All'interno del software di Gestione Concorso dovranno essere modificate le schermate relative al "Dettaglio Concorso"
+in cui sono presenti i limiti di pagamento. I giochi coinvolti da questa modifica sono i seguenti:
+
+- SiVinceTutto
+
+- Eurojackpot
+
+- WinForLife Classico
+
+- WinForLife Grattacieli / Super Win for Life
+
+- VinciCasa
+
+- PlayYourDate
+
+Di seguito viene riportata la modifica richiesta alla schermata di WinForLife Classico. Le stesse modifiche dovranno
+essere apportate a tutti i giochi presenti nella piattaforma NPL.
+
+![](media/image1.png){width="6.697915573053368in" height="3.1458333333333335in"}
+
+Il Box limiti di pagamento, dovrà essere sdoppiato per contenere sia i limiti di pagamento retail che online:
+
+![](media/image2.png){width="4.574752843394576in" height="1.6591535433070865in"}
+
+Anche il documento che si apre al click sul bottone "STAMPA" (allegato C) dovrà essere modificato inserendo il nuovo
+limite Online:
+
+**Lim Max Pag. Online** **€ 10.500,00**
+
+Sotto alla dicitura
+
+**Lim Max Pag. In Ricevitoria** **€ 5.200,00**
+
+### RU4 - Gestione Concorso SIRIO
+
+All'interno del software di Gestione Concorso di SuperEnalotto Sirio dovrà essere modificata la schermata delle Quote
+dove sono presenti i limiti di pagamento.
+
+![](media/image3.png){width="5.2273272090988625in" height="3.6014096675415574in"}
+
+### RU5 - Software Ufficio Premi
+
+Si dovranno aggiornare i software di Ufficio Premi come specificato nei paragrafi seguenti.
+
+#### Sirio -- Globali interi da pagare
+
+Il report "Globali interi da pagare", dal menu "Stampe vincite zona" di Sirio (Premi SuperEnalotto 2023), con flag "Solo
+vincite a distanza" selezionato deve restituire, per il concorso selezionato, l'elenco schede vincenti di importo lordo
+superiore a € 10.500,00.
+
+#### Sirio -- Richiesta di pagamento schedine GAD
+
+La funzione "Richiesta di pagamento schedine", dal menu "Gestione Premi" di Sirio, NON deve permettere la creazione di
+richieste di pagamento per giocate GAD vincenti premi di importo lordo inferiore a € 10.500,00.
+
+#### Sirio -- Richiesta di pagamento schedine SI.CE. GAD
+
+La funzione "Richiesta di pagamento schedine", dal menu "Gestione Premi Carature" di Sirio, NON deve permettere la
+creazione di richieste di pagamento per giocate SI.CE. GAD vincenti premi di importo lordo inferiore a € 10.500,00.
+
+#### NPL -- Globali interi da pagare
+
+Il report "Globali interi da pagare", dal menu "Liste e stampe" di NPL, per tutti i giochi, con flag "GAD" selezionato
+deve restituire, per il concorso selezionato, l'elenco schede vincenti di importo lordo superiore a € 10.500,00.
+
+#### NPL -- Richiesta di pagamento schedine
+
+La funzione "Gestione prenotazioni", dal menu "Premi" di NPL, NON deve permettere la creazione di richieste di pagamento
+per giocate GAD vincenti premi di importo lordo inferiore a € 10.500,00, comprese cedole speciali (solo EuroJackpot).
+
+#### Indicazione soglia pagamento automatico su documentazione
+
+Su qualsiasi documento prodotto nell'ambito del pagamento premi dagli applicativi Sirio e NPL in cui fosse indicata la
+soglia per il pagamento automatico delle vincite, la stessa deve essere modificata dall'importo lordo di 5.200,00 €
+all'importo di 10.500 € (a Prize Payment non risulta l'esistenza di documenti di nostra pertinenza che riportino la
+soglia di € 5.200,00).
+
+### RU6 - Commissione
+
+All'interno dei verbali word gestiti manualmente dal Team Commissione, dovrà essere modificata la dicitura da 5.200 € a
+10.500 €. In particolare, si dovrà modificare la dicitura "5.200,00 euro" con "10.500,00 euro" sul documento Word del
+Verbale di Decrypt. Si dovrà anche provvedere a modificare tale limite all'interno dell'Allegato C prodotto dal file di
+emergenza, il "File Excel delle Quote.
+
+Nessuna modifica è prevista all'interno del software.
+
+### RU7 - Documentazione tecnica per i rivenditori a distanza per Verifica Vincite 
+
+Al fine di poter consentire agli attuali rivenditori online di offrire ai propri utenti il servizio del Verifica
+Vincite, aggiornato al nuovo limite, si rende necessaria la condivisione di un documento tecnico, da mettere a
+disposizione dei Rivenditori a Distanza, con le specifiche utili all'integrazione del componente che dovrà essere
+disponibile per ognuno dei prodotti GNTN (SuperEnalotto, Eurojackpot, VinciCasa, SiVinceTutto, Win for Life classico e
+Super Win for Life e Play your Date), unitamente al plug-in aggiornato
+
+Il plug-in dovrà essere testato preventivamente in APP SuperEnalotto e giochi e dovrà essere validato anche dai test di
+sicurezza.
+
+#### Verifica vincite -- servizio di Accredito
+
+A verifica avvenuta, in fase di restituzione della risposta dell'esito, verrà mostrata la ricevuta digitale scansionata
+di tutti i prodotti GNTN.
+
+La ricevuta digitale consente l'accesso al servizio di accredito delle vincite, solo per le giocate con WinBox
+abilitato. In occasione di giocata con WinBox abilitato, in caso di vincita verrà mostrato un banner dedicato, a
+disposizione anche dei Rivenditori a distanza
+
+![](media/image4.png){width="1.9237095363079615in" height="0.8194870953630796in"}
+
+Il banner di accredito dovrà essere mostrato nei seguenti casi:
+
+**Caso 1** - ricevuta vincente per importi inferiori o uguali a 10.500€ (in precedenza il limite era fissato a 5200€)
+con utente **non loggato**:
+
+- al clic su accredita si attiva il flusso di registrazione in capo al Rivenditore. Nel caso in cui il Rivenditore non
+  fornisca questo passaggio è da prevedere una modale informativa con il seguente messaggio:
+
+*Per procedere hai bisogno di un conto di gioco.*
+
+*Accedi al tuo profilo se hai già un conto di gioco, oppure registrati dall'applicazione e riprova.*
+
+***Bottone ok, che chiude il pop up e mostra di nuovo la ricevuta.***
+
+**Caso 2** - ricevuta vincente per importi inferiori o uguali a 10.500€ (in precedenza il limite era fissato a 5200€)
+**con utente loggato**, ma non ha ancora attivato il servizio di accredito. Al clic sul bottone accredita si attiva il
+flusso di accredito o la prenotazione di accredito.
+
+Per vincite superiori a 10.500€ (in precedenza il limite era fissato a 5200€), il box di accredito non verrà
+visualizzato. Al suo posto si visualizzerà il box dedicato alle modalità di riscossione disponibili.
+
+![](media/image5.png){width="2.40290135608049in" height="0.8125415573053368in"}
+
+Al clic sulla cta si verrà reindirizzati a questa pagina <https://www.giochinumerici.info/come-riscuotere>
+
+### RU13 - Sicurezza
+
+Il progetto deve rispettare le politiche di sicurezza previste nella comunicazione delle informazioni tra i sistemi
+esistenti.
+
+### RU14 - Privacy, Risk & Compliance
+
+In termini di gestione della Privacy, non sono richieste particolari modifiche rispetto a quanto già previsto nella
+gestione dei dati.
+
+# Checklist per l'accettazione dei requisiti
+
+Il progetto si considera accettato a seguito di superamento della verifica interna con la Business Unit Lottery e con il
+Team Concession Compliance.

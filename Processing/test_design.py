@@ -202,7 +202,7 @@ async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
 
 async def main():
 
-    input_path= os.path.join(os.path.dirname(__file__), "..", "input","Esempio 2","RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
+    input_path= os.path.join(os.path.dirname(__file__), "..", "input","ru_accredito_vincite_online_v0.2.docx")
     print(os.path.dirname(input_path))
     paragraphs, headers =process_docx(input_path, os.path.dirname(input_path))
 
@@ -224,7 +224,7 @@ async def main():
         filtered_paragraphs.append(par)
         filtered_headers.append(head)
 
-    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 2","RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
+    rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "ru_accredito_vincite_online_v0.2.docx")
     chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
     embeddings = OpenAIEmbeddings(model=embedding_model)
     vectorstore = FAISS.from_texts(chunks, embeddings)
@@ -247,9 +247,9 @@ async def main():
     
     print(f"\n Total test cases updated: {len(updated_json['test_cases'])}")
 
-    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_SPORTBOOK_feedbackAI.json")
+    output_path= os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_AccreditoVincite_feedbackAI.json")
     save_updated_json(updated_json, output_path)
-    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_SPORTBOOK_feedbackAI.xlsx"))
+    convert_json_to_excel(updated_json, output_path=os.path.join(os.path.dirname(__file__), "..", "outputs", "generated_test_AccreditoVincite_feedbackAI.xlsx"))
 
 
 if __name__ == "__main__":

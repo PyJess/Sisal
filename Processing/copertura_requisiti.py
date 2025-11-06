@@ -10,8 +10,8 @@ from utils.simple_functions import process_docx, AI_check_TC_requisiti, color_ne
 from Input_extraction.extract_polarion_field_mapping import *
 
 path_output = Path(__file__).parent.parent/"outputs"
-test_case_input = Path(__file__).parent.parent/"input"/"generated_test_cases3_video_showcase.xlsx"
-documents_word = Path(__file__).parent.parent/"input"/"RU_SportsBookPlatform_SGP_Gen_FullResponsive_v1.1 - FE (2).docx"
+test_case_input = Path(__file__).parent.parent/"outputs"/"generated_test_AccreditoVincite_feedbackAI.xlsx"
+documents_word = Path(__file__).parent.parent/"input"/"ru_accredito_vincite_online_v0.2.docx"
 
 
 df_testcase = pd.read_excel(test_case_input)
@@ -90,7 +90,7 @@ for k, v in list(structured_testcases.items())[:3]:
 if new_testcases:
     df_new = fill_excel_file_requisiti(structured_testcases, base_columns=list(df_testcase.columns))
 
-    output_excel = test_case_input.with_name(f"{test_case_input.stem}_feedbackAI_requisiti.xlsx")
+    output_excel = test_case_input.with_name(f"{test_case_input.stem}_feedbackAI_requisitiAccreditoVincite.xlsx")
     df_final = pd.concat([df_testcase, df_new], ignore_index=True)
     df_final.to_excel(output_excel, index=False)
     
