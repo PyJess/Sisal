@@ -59,7 +59,7 @@ df = pd.read_excel(input_excel)
 
 # Filtra solo le righe che hanno un titolo per skippare le celle che sono step e non testcase
 df_cases = df[df["Title"].notna() & (df["Title"].astype(str).str.strip() != "")]
-df_cases = df_cases.head(20) # per test rapidi 
+#df_cases = df_cases.head(20) # per test rapidi 
 
 print(f"Trovati {len(df_cases)} test case principali su {len(df)} righe totali")
 
@@ -101,7 +101,6 @@ for idx, case in df_cases.iterrows():
 
 df.to_excel(output_excel, index=False)
 print(f"File aggiornato salvato in: {output_excel}")
-
 
 
 wb = load_workbook(output_excel)
