@@ -19,6 +19,9 @@ from Processing.controllo_sintattico import *
 import json
 from Processing.test_design import create_vectordb
 
+from dotenv import load_dotenv
+load_dotenv()
+
 embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 

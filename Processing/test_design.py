@@ -17,6 +17,10 @@ from utils.simple_functions import *
 from llm.llm import a_invoke_model
 from Processing.controllo_sintattico import fill_excel_file
 
+
+from dotenv import load_dotenv
+load_dotenv()
+
 embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 

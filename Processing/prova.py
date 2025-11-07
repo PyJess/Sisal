@@ -1,152 +1,205 @@
-import os
-import sys
-import pandas as pd
-# Ensure project root is on sys.path so local packages can be imported
-# when this module is executed directly (python Processing/controllo_sintattico.py)
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+import base64
+from pathlib import Path
+from langchain_openai import ChatOpenAI
+from langchain_core.messages import HumanMessage
+import fitz  # PyMuPDF
+from PIL import Image
+import io
 
-from llm.llm import a_invoke_model
-from utils.simple_functions import *
-import asyncio
-from typing import Tuple, List, Dict, Any
-from openpyxl import load_workbook
-from openpyxl.styles import Font
-from openpyxl.utils import get_column_letter
-from openpyxl.cell.rich_text import CellRichText, TextBlock
-import re
-from Input_extraction.extract_polarion_field_mapping import *
-from openpyxl.cell.text import InlineFont
-from openpyxl.cell.rich_text import TextBlock
-
-
-async def prepare_prompt(input:Dict, mapping:str =None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
-    """ Prepare prompt for the LLM"""
-
-    system_prompt= load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "system_prompt.txt"))
-    user_prompt= load_file(os.path.join(os.path.dirname(__file__), "..", "llm", "prompts", "controllo_sintattico", "user_prompt.txt")) 
-    schema= load_json(os.path.join(os.path.dirname(__file__), "..", "llm", "schema", "schema_output.json"))
-
-    user_prompt=user_prompt.replace("{input}", json.dumps(input))
-    mapping_as_string = mapping.to_json() 
-    user_prompt = user_prompt.replace("{mapping}", mapping_as_string)
-    print("finishing prepare prompt")
-
-    messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt},
-    ]
-
-    return messages, schema
-
-
-async def AI_check_TC(input:Dict, mapping:str =None) -> Dict:
-
-    #input = json.loads(input)
-    messages, schema= await prepare_prompt(input, mapping)
-    print("starting calling llm")
-    print(f"{messages}")
-    response = await a_invoke_model(messages, schema)
-
-    return response
-
-
-def apply_red_text(cell):
-        """Color text in [[RED]]...[[/RED]] red, preserving the rest."""
-
-        text = str(cell.value)
-        if "[[RED]]" not in text:
-            return  
-
-        parts = re.split(r'(\[\[RED\]\]|\[\[/RED\]\])', text)
-        rich_text = CellRichText()
-
-        red = False
-        for part in parts:
-            if part == "[[RED]]":
-                red = True
-            elif part == "[[/RED]]":
-                red = False
-            elif part:
-                rich_text.append(TextBlock(InlineFont(color="FF0000") if red else InlineFont(color="000000"), part))
-
-        cell.value = rich_text
-
-
-
-def fill_excel_file(test_cases: dict):
+def extract_pdf_content(pdf_path: str, save_images: bool = True, output_folder: str = "extracted_images"):
     """
-    Salva i test case in Excel, mantenendo gli step su righe separate
-    e applica i testi rossi dove necessario.
-    """
-    # Costruzione righe per DataFrame
-    columns = [
-        'Title', 'ID', 'Test Group', 'Channel', 'Device', 'Priority',
-        'Test Stage', 'Reference System', 'Preconditions', 'Execution Mode',
-        'Functionality', 'Test Type', 'No Regression Test', 'Automation',
-        'Expected Result', 'Step', 'Step Description', '_polarion'
-    ]
-
-    rows = []
-    for tc_id, tc_data in test_cases.items():
-        steps = tc_data.get('Steps', [])
-        first = True
-        for step in steps:
-            row = {}
-            if first:
-                for col in columns[:15]:
-                    row[col] = tc_data.get(col, '')
-                first = False
-            else:
-                for col in columns[:15]:
-                    row[col] = ''
-            row['Step'] = step.get('Step', '')
-            row['Step Description'] = step.get('Step Description', '')
-            row['Step Expected Result'] = step.get('Expected Result', '')
-            rows.append(row)
-
-    df = pd.DataFrame(rows, columns=columns)
-
-    # Percorso Excel
-    excel_path = os.path.join(os.path.dirname(__file__), "..", "outputs", "testbook_feedbackAI.xlsx")
-    os.makedirs(os.path.dirname(excel_path), exist_ok=True)
-
-    # 1️⃣ Prima: salva il file Excel (senza formattazione)
-    df.to_excel(excel_path, index=False)
-
-    # 2️⃣ Poi: riapri con openpyxl e applica apply_red_text
-    from openpyxl import load_workbook
-    wb = load_workbook(excel_path)
-    ws = wb.active
-
-    for row in ws.iter_rows():
-        for cell in row:
-            if cell.value and isinstance(cell.value, str) and "[[RED]]" in cell.value:
-                apply_red_text(cell)
-
-    # 3️⃣ Salva di nuovo con il testo colorato
-    wb.save(excel_path)
-    print(f"✅ Excel salvato con testi rossi: {excel_path}")
-
-
-async def main():
-    mapping = extract_field_mapping()
-    print("finishing mapping")
-    input_path = os.path.join(os.path.dirname(__file__), "..", "input", "tests_cases.xlsx")
-    dic = excel_to_json(input_path) 
-    print("finishing excel to json")
- 
-    tasks = [AI_check_TC(input={"ID": tc_id, **tc_data}, mapping=mapping) for tc_id, tc_data in dic.items()]
-    results_list = await asyncio.gather(*tasks)
-    print("finishing gpt call")
+    Estrae testo e immagini da un PDF.
     
-    merged_results = {tc["ID"]: tc for tc in results_list}
+    Args:
+        pdf_path: Path al file PDF
+        save_images: Se True, salva le immagini su disco
+        output_folder: Cartella dove salvare le immagini
+    
+    Returns:
+        dict con 'text', 'images' (list di base64) e 'image_paths' (paths salvati)
+    """
+    doc = fitz.open(pdf_path)
+    
+    full_text = ""
+    images = []
+    image_paths = []
+    
+    # Crea la cartella per le immagini se richiesto
+    if save_images:
+        output_path = Path(output_folder)
+        output_path.mkdir(exist_ok=True)
+        print(f"Cartella immagini: {output_path.absolute()}")
+    
+    for page_num in range(len(doc)):
+        page = doc[page_num]
+        
+        # Estrai testo
+        full_text += f"\n--- Pagina {page_num + 1} ---\n"
+        full_text += page.get_text()
+        
+        # Estrai immagini
+        image_list = page.get_images(full=True)
+        for img_index, img in enumerate(image_list):
+            xref = img[0]
+            base_image = doc.extract_image(xref)
+            image_bytes = base_image["image"]
+            
+            # Converti in base64
+            image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+            image_ext = base_image["ext"]
+            
+            # Salva l'immagine su disco se richiesto
+            if save_images:
+                image_filename = f"page{page_num + 1}_img{img_index + 1}.{image_ext}"
+                image_path = output_path / image_filename
+                
+                with open(image_path, "wb") as img_file:
+                    img_file.write(image_bytes)
+                
+                image_paths.append(str(image_path))
+                print(f"  Salvata: {image_filename}")
+            
+            images.append({
+                "data": image_base64,
+                "format": image_ext,
+                "page": page_num + 1,
+                "filename": image_filename if save_images else None
+            })
+    
+    doc.close()
+    
+    return {
+        "text": full_text,
+        "images": images,
+        "image_paths": image_paths
+    }
 
 
-    print(f"Merged result: {merged_results}")
+def process_pdf_with_langchain(pdf_path: str, query: str, api_key: str = None):
+    """
+    Processa un PDF (con testo e immagini) usando LangChain e OpenAI.
+    
+    Args:
+        pdf_path: Path al file PDF
+        query: Domanda o istruzione per l'LLM
+        api_key: API key di OpenAI (opzionale, usa variabile ambiente OPENAI_API_KEY)
+    
+    Returns:
+        Risposta dell'LLM
+    """
+    
+    # 1. Estrai contenuto dal PDF
+    pdf_path = Path(pdf_path)
+    if not pdf_path.exists():
+        raise FileNotFoundError(f"PDF non trovato: {pdf_path}")
+    
+    print("Estraendo contenuto dal PDF...")
+    content = extract_pdf_content(pdf_path, save_images=True, output_folder="extracted_images")
+    
+    # 2. Inizializza il modello
+    llm = ChatOpenAI(
+        model="gpt-4o",  # Supporta visione e testo
+        api_key=api_key,
+        temperature=0
+    )
+    
+    # 3. Costruisci il messaggio con testo e immagini
+    message_content = [
+        {
+            "type": "text",
+            "text": f"{query}\n\n=== CONTENUTO TESTUALE DEL PDF ===\n{content['text']}"
+        }
+    ]
+    
+    # Aggiungi le immagini
+    if content['images']:
+        message_content.append({
+            "type": "text",
+            "text": f"\n\n=== IMMAGINI ESTRATTE ({len(content['images'])} totali) ==="
+        })
+        
+        for idx, img in enumerate(content['images']):
+            message_content.append({
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/{img['format']};base64,{img['data']}"
+                }
+            })
+            message_content.append({
+                "type": "text",
+                "text": f"[Immagine {idx + 1} - dalla pagina {img['page']}]"
+            })
+    
+    message = HumanMessage(content=message_content)
+    
+    # 4. Invia la richiesta
+    print("Inviando richiesta all'LLM...")
+    response = llm.invoke([message])
+    
+    return response.content
 
-    fill_excel_file(merged_results)
+
+def process_pdf_text_only(pdf_path: str, query: str, api_key: str = None, save_images: bool = False):
+    """
+    Versione più semplice: processa solo il testo (più economica).
+    """
+    content = extract_pdf_content(pdf_path, save_images=save_images)
+    
+    llm = ChatOpenAI(
+        model="gpt-4o-mini",  # Più economico per solo testo
+        api_key=api_key,
+        temperature=0
+    )
+    
+    message = HumanMessage(
+        content=f"{query}\n\n=== CONTENUTO DEL PDF ===\n{content['text']}"
+    )
+    
+    response = llm.invoke([message])
+    return response.content
 
 
+# Esempio di utilizzo
 if __name__ == "__main__":
-    asyncio.run(main())
-
+    # Configura il path del PDF
+    pdf_path = r"C:\Users\x.hita\OneDrive - Reply\Workspace\Sisal\Test_Design\input\Figma\UX_UI App SEVV - Agile II.pdf"  # Modifica con il tuo path
+    
+    # Definisci la tua domanda/richiesta
+    query = """
+    Analizza questo documento e fornisci:
+    1. Un riassunto del contenuto testuale
+    2. Una descrizione delle immagini presenti
+    3. I punti chiave principali
+    """
+    
+    try:
+        # OPZIONE 1: Con testo e immagini (più costoso)
+        print("=== PROCESSAMENTO COMPLETO (testo + immagini) ===\n")
+        result = process_pdf_with_langchain(
+            pdf_path=pdf_path,
+            query=query,
+            # api_key="sk-..."  # Opzionale se usi variabile ambiente
+        )
+        
+        print("\n=== RISPOSTA ===")
+        print(result)
+        
+        # Mostra dove sono state salvate le immagini
+        # if content.get('image_paths'):
+        #     print(f"\n=== IMMAGINI SALVATE ({len(content['image_paths'])}) ===")
+        #     for img_path in content['image_paths']:
+        #         print(f"  - {img_path}")
+        
+        # OPZIONE 2: Solo testo (più economico e veloce)
+        # print("=== PROCESSAMENTO SOLO TESTO ===\n")
+        # result = process_pdf_text_only(
+        #     pdf_path=pdf_path,
+        #     query=query
+        # )
+        # print("\n=== RISPOSTA ===")
+        # print(result)
+        
+    except Exception as e:
+        print(f"Errore: {e}")
+        import traceback
+        traceback.print_exc()
