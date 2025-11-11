@@ -1,7 +1,8 @@
 from langchain.document_loaders import UnstructuredWordDocumentLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+#from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 import pandas as pd
 from langchain_openai import ChatOpenAI
 from docx import Document
@@ -14,14 +15,19 @@ import asyncio
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from Input_extraction.extract_polarion_field_mapping import *
 from utils.simple_functions import *
-from llm.llm import a_invoke_model
+#from llm.llm import a_invoke_model
 from Processing.controllo_sintattico import fill_excel_file
-
+from llm.llm import LLMClient, EmbeddingsClient
 
 from dotenv import load_dotenv
 load_dotenv()
 
-embedding_model = "text-embedding-3-large"
+llm_client = LLMClient()
+
+embeddings_client = EmbeddingsClient(model_name="text-embedding-3-large")
+embedding_model = embeddings_client.get_embeddings()
+
+#embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 
 def add_new_TC(new_TC, original_excel):
@@ -128,7 +134,8 @@ async def gen_TC(paragraph, context, mapping):
         messages, schema = await prepare_prompt(paragraph, context, mapping)
         print("starting calling llm")
         #print(f"{messages}")
-        response = await a_invoke_model(messages, schema, model="gpt-4.1")
+        #response = await a_invoke_model(messages, schema, model="gpt-4.1")
+        response = await llm_client.a_invoke_model(messages, schema)
         print("Test Case generato con successo!")
         return response
 
@@ -184,18 +191,17 @@ async def process_paragraphs(paragraphs, headers, vectorstore, mapping):
     async def process_single_paragraph(i, par):
         print(f"numero: {i}")
         print(f"\n--- Paragrafo {i}/{len(paragraphs)} ---")
-        context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
+        #context = create_vectordb(par, vectorstore, k=3, similarity_threshold=0.75)
         #print(f"Context retrieved: {context}")
-        #context = ""
-        tc = await gen_TC(par, context, mapping)
+        context = ""
+        while True:
+            tc = await gen_TC(par, context, mapping)
 
-        if isinstance(tc, dict) and "test_cases" in tc:
-            for test_case in tc["test_cases"]:
-                test_case["_polarion"] = headers[i - 1] 
+            if isinstance(tc, dict) and "test_cases" in tc:
+                for test_case in tc["test_cases"]:
+                    test_case["_polarion"] = headers[i - 1] 
 
-        
-
-        return tc
+                return tc
     
     # Crea tutte le tasks e le esegue in parallelo
     tasks = [process_single_paragraph(i, par) for i, par in enumerate(paragraphs, 1)]
@@ -230,11 +236,12 @@ async def main():
 
     rag_path=os.path.join(os.path.dirname(__file__), "..", "input", "ru_accredito_vincite_online_v0.2.docx")
     chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
-    embeddings = OpenAIEmbeddings(model=embedding_model)
-    vectorstore = FAISS.from_texts(chunks, embeddings)
+    #embeddings = OpenAIEmbeddings(model=embedding_model)
+    #vectorstore = FAISS.from_texts(chunks, embedding_model)
 
     mapping = extract_field_mapping()
     #print("finishing mapping")
+    vectorstore= None
     new_TC= await process_paragraphs(filtered_paragraphs, filtered_headers, vectorstore, mapping)
 
     updated_json=merge_TC(new_TC)

@@ -9,7 +9,7 @@ import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.cell.rich_text import TextBlock, CellRichText
 from openpyxl.cell.text import InlineFont
-from llm.llm import a_invoke_model
+from llm.llm import LLMClient
 from utils.simple_functions import *
 import asyncio
 from typing import Tuple, List, Dict, Any
@@ -22,6 +22,7 @@ from Input_extraction.extract_polarion_field_mapping import *
 from openpyxl.cell.text import InlineFont
 from openpyxl.cell.rich_text import TextBlock
 
+llm_client = LLMClient()
 
 async def prepare_prompt(input: Dict, mapping: str = None) -> Tuple[List[Dict[str, str]], Dict[str, Any]]:
     """Prepare prompt for the LLM"""
@@ -47,7 +48,8 @@ async def AI_check_TC(input: Dict, mapping: str = None) -> Dict:
     messages, schema = await prepare_prompt(input, mapping)
     print("starting calling llm")
     print(f"{messages}")
-    response = await a_invoke_model(messages, schema, model="gpt-4.1")
+    response = await llm_client.a_invoke_model(messages, schema)
+    #response = await llm_client.a_invoke_model(messages, schema, model="gpt-4o")
     return response
 
 
@@ -169,14 +171,27 @@ async def main():
     dic = excel_to_json(input_path) 
     print("finishing excel to json")
  
-    tasks = [AI_check_TC(input={"ID": tc_id, **tc_data}, mapping=mapping) for tc_id, tc_data in dic.items()]
-    results_list = await asyncio.gather(*tasks)
-    print("finishing gpt call")
+    max_attempts = 5
+    attempt = 0
+    while attempt < max_attempts:
+        attempt += 1
+        tasks = [AI_check_TC(input={"ID": tc_id, **tc_data}, mapping=mapping) for tc_id, tc_data in dic.items()]
+        results_list = await asyncio.gather(*tasks)
+        if all(isinstance(res, dict) and res for res in results_list):
+            print("finishing gpt call")
+            break
+        print(f"Tentativo {attempt} fallito, riprovo...")
+    else: 
+        print("Errore: impossibile ottenere risultati validi da AI_check_TC")
     
     # Merge LLM results with original input data
     merged_results = {}
-    for tc in results_list:
-        tc_id = tc["ID"]
+    for idx, tc in enumerate(results_list):
+        tc_id = tc.get("ID") or tc.get("Id") or tc.get("id")
+        #tc_id = tc["ID"]
+        if not tc_id:
+            print(f" Missing 'ID' field in test case at index {idx}: {tc}")
+            continue
         original_data = dic.get(tc_id, {})
  
         merged_tc = {**original_data, **tc}

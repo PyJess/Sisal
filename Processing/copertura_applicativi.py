@@ -18,11 +18,14 @@ from utils.simple_functions import group_by_funzionalita, load_json
 from Processing.controllo_sintattico import *
 import json
 from Processing.test_design import create_vectordb
-
+from llm.llm import LLMClient
 from dotenv import load_dotenv
 load_dotenv()
 
-embedding_model = "text-embedding-3-large"
+
+llm_client = LLMClient()
+
+#embedding_model = "text-embedding-3-large"
 PANDOC_EXE = "pandoc" 
 
 
@@ -121,7 +124,7 @@ async def AI_check_applications(input: str, mapping: str = None) -> Dict:
     messages, schema = await prepare_prompt_application(input)
     print("starting calling llm")
     #print(f"{messages}")
-    response = await a_invoke_model(messages, schema, model="gpt-4.1")
+    response = await llm_client.a_invoke_model(messages, schema)
     return response
 
 
@@ -150,7 +153,7 @@ async def AI_gen_TC(input: str, context:str, mapping: str = None) -> Dict:
     messages, schema = await prepare_prompt(input, context, mapping)
     print("starting calling llm")
     #print(f"{messages}")
-    response = await a_invoke_model(messages, schema, model="gpt-4.1")
+    response = await llm_client.a_invoke_model(messages, schema)
     return response
 
 async def main():
@@ -166,9 +169,9 @@ async def main():
     
     rag_path= input_path=os.path.join(os.path.dirname(__file__), "..", "input", "Esempio 2", "RU_Sportsbook_Platform_Fantacalcio_Prob. Form_v0.2 (1).docx")
     chunks, _ = process_docx(input_path, os.path.dirname(rag_path))
-    embeddings = OpenAIEmbeddings(model=embedding_model)
+    #embeddings = OpenAIEmbeddings(model=embedding_model)
     chunks= chunks + requirements
-    vectorstore = FAISS.from_texts(chunks, embeddings)
+    #vectorstore = FAISS.from_texts(chunks, embeddings)
     
     tasks = [AI_check_applications(input=req) for req in requirements]
     applications_results = await asyncio.gather(*tasks)
@@ -258,8 +261,10 @@ async def main():
             else:
                 print(f"{app_name}: non presente")
                 app_text= app.get("specific_text", "")
-                context = create_vectordb(app_text, vectorstore, k=3, similarity_threshold=0.75)
-                context= str(context)
+                vectorstore= None
+                #context = create_vectordb(app_text, vectorstore, k=3, similarity_threshold=0.75)
+                #context= str(context)
+                context=""
                 generated_tc= await AI_gen_TC(app_text, context, mapping)
                 if "test_cases" in generated_tc:
                     for tc in generated_tc["test_cases"]:
@@ -267,6 +272,16 @@ async def main():
 
                 new_TC.append(generated_tc)
 
+                while True:
+                    generated_tc= await AI_gen_TC(app_text, context, mapping)
+                    if isinstance(generated_tc, dict):
+                        if "test_cases" in generated_tc:
+                            for tc in generated_tc["test_cases"]:
+                                tc["_polarion"] = app_title
+
+                        new_TC.append(generated_tc)
+                        break
+                    print(f"generated tc non valido per '{app_title}', riprovo...")
 
     all_generated = []
 

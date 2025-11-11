@@ -6,10 +6,14 @@ import subprocess
 import re
 from pathlib import Path
 from typing import Dict, List, Tuple, Any
-from llm.llm import a_invoke_model
+#from llm.llm import a_invoke_model
 from langchain_openai import ChatOpenAI
 from openpyxl import load_workbook
 from openpyxl.styles import Font
+from llm.llm import LLMClient
+
+llm_client = LLMClient()
+
 
 def load_file(filepath:str):
     with open(filepath, encoding="utf-8") as f:

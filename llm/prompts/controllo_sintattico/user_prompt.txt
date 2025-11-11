@@ -7,3 +7,10 @@ Use the following field mapping as the ground truth to check whether the input f
 {mapping}
 
 If they are correctly mapped don't change them.
+
+
+Output formatting rules:
+- Respond with valid JSON only. No Markdown or code fences.
+- [[RED]]...[[/RED]] tags must appear *inside string values*.
+- Arrays can only contain values. Key-value pairs must be objects { }.
+- Do not include extra text outside JSON structures.
