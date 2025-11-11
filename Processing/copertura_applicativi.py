@@ -265,12 +265,12 @@ async def main():
                 #context = create_vectordb(app_text, vectorstore, k=3, similarity_threshold=0.75)
                 #context= str(context)
                 context=""
-                generated_tc= await AI_gen_TC(app_text, context, mapping)
-                if "test_cases" in generated_tc:
-                    for tc in generated_tc["test_cases"]:
-                        tc["_polarion"] = app_title
+                # generated_tc= await AI_gen_TC(app_text, context, mapping)
+                # if "test_cases" in generated_tc:
+                #     for tc in generated_tc["test_cases"]:
+                #         tc["_polarion"] = app_title
 
-                new_TC.append(generated_tc)
+                # new_TC.append(generated_tc)
 
                 while True:
                     generated_tc= await AI_gen_TC(app_text, context, mapping)
